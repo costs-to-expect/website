@@ -1,0 +1,11 @@
+version: '3'
+services:
+    website:
+        build:
+            context: .
+            dockerfile: /docker/Dockerfile
+        image: costs-to-expect-website
+        ports:
+            - 80:80
+        volumes:
+            - .:/.docker/app/php
