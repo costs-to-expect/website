@@ -1,0 +1,14 @@
+{
+    "name": "costs-to-expect-website",
+    "version": "1.0.0",
+    "description": "The Costs to Expect website for the service",
+    "license": "MIT",
+    "dependencies": {
+        "bootstrap": "^4.3.1",
+        "jquery": "^3.3.1",
+        "popper.js": "^1.14.7"
+    },
+    "main": "index.php",
+    "repository": "https://github.com/deanblackborough/costs-to-expect-website.git",
+    "author": "Dean Blackborough"
+}
