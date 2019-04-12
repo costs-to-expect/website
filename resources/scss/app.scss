@@ -1,5 +1,9 @@
+$body-bg: #f6f5f8;
+$font-family-sans-serif: 'Source Sans Pro', sans-serif;
 
-// Required for Bootstrap
+@import "../../public/node_modules/bootstrap/scss/bootstrap";
+
+/*// Required for Bootstrap
 @import "../../public/node_modules/bootstrap/scss/functions";
 @import "../../public/node_modules/bootstrap/scss/variables";
 @import "../../public/node_modules/bootstrap/scss/mixins";
@@ -9,4 +13,29 @@
 @import "../../public/node_modules/bootstrap/scss/type";
 @import "../../public/node_modules/bootstrap/scss/images";
 @import "../../public/node_modules/bootstrap/scss/code";
-@import "../../public/node_modules/bootstrap/scss/grid";
+@import "../../public/node_modules/bootstrap/scss/grid";*/
+
+html,body {
+    height: 100%;
+}
+
+.container-cte {
+    height: 100%;
+
+    .container-row {
+        height: 100%;
+
+        .container-column {
+            height: 100%;
+        }
+
+        .container-left {
+            background-color: $white;
+            height: 100%;
+        }
+
+        .container-right {
+
+        }
+    }
+}
