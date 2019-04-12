@@ -3,7 +3,7 @@ services:
     website:
         build:
             context: .
-            dockerfile: /docker/Dockerfile
+            dockerfile: .docker/Dockerfile
         image: costs-to-expect-website
         ports:
             - 80:80
