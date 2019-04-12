@@ -32,6 +32,9 @@ html,body {
         .container-left {
             background-color: $white;
             height: 100%;
+            background-image: url("../images/theme/left-sidebar.png");
+            background-repeat: no-repeat;
+            background-size: 100% auto;
         }
 
         .container-right {
@@ -39,3 +42,14 @@ html,body {
         }
     }
 }
+
+@media (max-width: 768px) {
+    .container-right {
+        background-image: url("../images/theme/right-sidebar.png");
+        background-repeat: no-repeat;
+        background-position: top right;
+    }
+
+}
+
+
