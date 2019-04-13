@@ -5,8 +5,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
-        <title>Costs to Expect.com</title>
+        <link rel="shortcut icon" href="{{ asset('images/theme/favicon.ico') }}">
+        <link rel="icon" sizes="16x16 32x32 64x64" href="{{ asset('images/theme/favicon.ico') }}">
+        <link rel="icon" type="image/png" sizes="196x196" href="{{ asset('images/theme/favicon-192.png') }}">
+        <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('images/theme/favicon-180.png') }}">
+        <meta name="msapplication-TileColor" content="#FFFFFF">
+        <meta name="msapplication-TileImage" content="{{ asset('images/theme/favicon-144.png') }}">
+        <title>Dashboard: Costs to Expect</title>
     </head>
     <body>
         <div class="container-fluid container-cte">
