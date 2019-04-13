@@ -5,6 +5,7 @@ $nav-link-padding-y: 0.5rem;
 $nav-link-padding-x: 1rem;
 $link-color: #939393;
 $nav-link-disabled-color: #bcbcbc;
+$table-cell-padding: 0.5rem;
 
 @import "../../public/node_modules/bootstrap/scss/bootstrap";
 
@@ -89,6 +90,25 @@ html,body {
                     font-size: 1.6rem;
                     font-weight: $font-weight-bolder;
                     color: $black;
+                }
+            }
+
+            .table-white {
+                background-color: white;
+                border-radius: 0.5rem;
+
+                th {
+                    color: #bcbcbc;
+                    font-size: 0.8rem;
+                }
+
+                span.category {
+                    font-size: 0.7rem;
+                    background-color: #f5f5f8;
+                    border-radius: 0.3rem;
+                    padding: 0.2rem 0.4rem;
+                    color: #645a90;
+                    font-weight: bold;
                 }
             }
         }
