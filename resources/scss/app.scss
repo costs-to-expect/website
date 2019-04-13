@@ -1,5 +1,6 @@
 $body-bg: #f6f5f8;
 $font-family-sans-serif: 'Source Sans Pro', sans-serif;
+$font-size-base: 0.85rem;
 
 @import "../../public/node_modules/bootstrap/scss/bootstrap";
 
@@ -35,10 +36,38 @@ html,body {
             background-image: url("../images/theme/left-sidebar.png");
             background-repeat: no-repeat;
             background-size: 100% auto;
+
+            .logo {
+                margin-top: 64px;
+                margin-bottom: 100px;
+            }
+
+            li.nav-item {
+
+                a.nav-link {
+
+                }
+            }
         }
 
         .container-right {
+            padding-top: 15px;
 
+            .screen-intro {
+
+                .icon {
+                    width: 32px;
+                    height: 32px;
+                    margin: 20px;
+                    float: left;
+                }
+                .welcome {
+                    padding-top: 0.5rem;
+                }
+                .title {
+
+                }
+            }
         }
     }
 }
@@ -48,6 +77,10 @@ html,body {
         background-image: url("../images/theme/right-sidebar.png");
         background-repeat: no-repeat;
         background-position: top right;
+
+        .screen-intro {
+            margin-top: 30px;
+        }
     }
 
 }
