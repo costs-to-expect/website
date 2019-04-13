@@ -43,7 +43,7 @@ html,body {
 
             .logo {
                 margin-top: 5rem;
-                margin-bottom: 8rem;
+                margin-bottom: 3rem;
             }
 
             li.nav-item {
@@ -86,7 +86,7 @@ html,body {
                 border-radius: 0.5rem;
 
                 p.total {
-                    font-size: 2rem;
+                    font-size: 1.6rem;
                     font-weight: $font-weight-bolder;
                     color: $black;
                 }
@@ -102,10 +102,9 @@ html,body {
         background-position: top right;
 
         .screen-intro {
-            margin-top: 30px;
+            margin-top: 5rem;
         }
     }
-
 }
 
 
