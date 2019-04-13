@@ -5,8 +5,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
-        <title>Costs to Expect.com</title>
+        <link rel="shortcut icon" href="{{ asset('images/theme/favicon.ico') }}">
+        <link rel="icon" sizes="16x16 32x32 64x64" href="{{ asset('images/theme/favicon.ico') }}">
+        <link rel="icon" type="image/png" sizes="196x196" href="{{ asset('images/theme/favicon-192.png') }}">
+        <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('images/theme/favicon-180.png') }}">
+        <meta name="msapplication-TileColor" content="#FFFFFF">
+        <meta name="msapplication-TileImage" content="{{ asset('images/theme/favicon-144.png') }}">
+        <title>Dashboard: Costs to Expect</title>
     </head>
     <body>
         <div class="container-fluid container-cte">
@@ -120,6 +125,112 @@
                                     <h6 class="mt-0">2019 <small class="text-muted">Total expenses in 2019</small></h6>
                                     <p class="total mb-0">&pound;1,605.61</p>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-12">
+                            <h4>The 50 most recent expenses for both children</h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="p-3 shadow-sm table-white-container">
+                                <table class="table table-borderless table-hover">
+                                    <caption>[Link to the API endpoint]</caption>
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">Child</th>
+                                        <th scope="col">Description</th>
+                                        <th scope="col">Date</th>
+                                        <th scope="col" class="d-none d-md-table-cell">Category</th>
+                                        <th scope="col" class="d-none d-md-table-cell">Subcategory</th>
+                                        <th scope="col">Amount</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr class="top">
+                                        <td>Jack</td>
+                                        <td>Easter egg</td>
+                                        <td><span class="d-none d-md-block">9th April 2019</span><span class="d-table-cell d-sm-block d-md-none">9/04/2019</span></td>
+                                        <td class="d-none d-md-table-cell"><span class="category">Non-Essential</span></td>
+                                        <td class="d-none d-md-table-cell"><span class="category">Clothes, Food, Medicine etc.</span></td>
+                                        <td><strong>&pound;7.00</strong></td>
+                                    </tr>
+                                    <tr class="top">
+                                        <td>Jack</td>
+                                        <td>Share of shopping</td>
+                                        <td><span class="d-none d-md-block">12th April 2019</span><span class="d-table-cell d-sm-block d-md-none">12/04/2019</span></td>
+                                        <td class="d-none d-md-table-cell"><span class="category">Essential</span></td>
+                                        <td class="d-none d-md-table-cell"><span class="category">Clothes, Food, Medicine etc.</span></td>
+                                        <td><strong>&pound;42.52</strong></td>
+                                    </tr>
+                                    <tr class="top">
+                                        <td>Jack</td>
+                                        <td>Share of pizza</td>
+                                        <td><span class="d-none d-md-block">12th April 2019</span><span class="d-table-cell d-sm-block d-md-none">12/04/2019</span></td>
+                                        <td class="d-none d-md-table-cell"><span class="category">Essential</span></td>
+                                        <td class="d-none d-md-table-cell"><span class="category">Clothes, Food, Medicine etc.</span></td>
+                                        <td><strong>&pound;7.00</strong></td>
+                                    </tr>
+                                    <tr class="top">
+                                        <td>Pending</td>
+                                        <td>Mattress for Moses basket</td>
+                                        <td><span class="d-none d-md-block">5th April 2019</span><span class="d-table-cell d-sm-block d-md-none">5/04/2019</span></td>
+                                        <td class="d-none d-md-table-cell"><span class="category">Essential</span></td>
+                                        <td class="d-none d-md-table-cell"><span class="category">Furniture</span></td>
+                                        <td><strong>&pound;12.38</strong></td>
+                                    </tr>
+                                    <tr class="top">
+                                        <td>...</td>
+                                        <td>...</td>
+                                        <td><span class="d-none d-md-block">...</span><span class="d-table-cell d-sm-block d-md-none">5/04/2019</span></td>
+                                        <td class="d-none d-md-table-cell"><span class="category">...</span></td>
+                                        <td class="d-none d-md-table-cell"><span class="category">...</span></td>
+                                        <td><strong>...</strong></td>
+                                    </tr>
+                                    <tr class="top">
+                                        <td>Jack</td>
+                                        <td>Easter egg</td>
+                                        <td><span class="d-none d-md-block">9th April 2019</span><span class="d-table-cell d-sm-block d-md-none">9/04/2019</span></td>
+                                        <td class="d-none d-md-table-cell"><span class="category">Non-Essential</span></td>
+                                        <td class="d-none d-md-table-cell"><span class="category">Clothes, Food, Medicine etc.</span></td>
+                                        <td><strong>&pound;7.00</strong></td>
+                                    </tr>
+                                    <tr class="top">
+                                        <td>Jack</td>
+                                        <td>Share of shopping</td>
+                                        <td><span class="d-none d-md-block">12th April 2019</span><span class="d-table-cell d-sm-block d-md-none">12/04/2019</span></td>
+                                        <td class="d-none d-md-table-cell"><span class="category">Essential</span></td>
+                                        <td class="d-none d-md-table-cell"><span class="category">Clothes, Food, Medicine etc.</span></td>
+                                        <td><strong>&pound;42.52</strong></td>
+                                    </tr>
+                                    <tr class="top">
+                                        <td>Jack</td>
+                                        <td>Share of pizza</td>
+                                        <td><span class="d-none d-md-block">12th April 2019</span><span class="d-table-cell d-sm-block d-md-none">12/04/2019</span></td>
+                                        <td class="d-none d-md-table-cell"><span class="category">Essential</span></td>
+                                        <td class="d-none d-md-table-cell"><span class="category">Clothes, Food, Medicine etc.</span></td>
+                                        <td><strong>&pound;7.00</strong></td>
+                                    </tr>
+                                    <tr class="top">
+                                        <td>Pending</td>
+                                        <td>Mattress for Moses basket</td>
+                                        <td><span class="d-none d-md-block">5th April 2019</span><span class="d-table-cell d-sm-block d-md-none">5/04/2019</span></td>
+                                        <td class="d-none d-md-table-cell"><span class="category">Essential</span></td>
+                                        <td class="d-none d-md-table-cell"><span class="category">Furniture</span></td>
+                                        <td><strong>&pound;12.38</strong></td>
+                                    </tr>
+                                    <tr class="top">
+                                        <td>...</td>
+                                        <td>...</td>
+                                        <td><span class="d-none d-md-block">...</span><span class="d-table-cell d-sm-block d-md-none">5/04/2019</span></td>
+                                        <td class="d-none d-md-table-cell"><span class="category">...</span></td>
+                                        <td class="d-none d-md-table-cell"><span class="category">...</span></td>
+                                        <td><strong>...</strong></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
