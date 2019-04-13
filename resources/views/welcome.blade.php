@@ -135,61 +135,103 @@
                     </div>
                     <div class="row">
                         <div class="col-12">
-                            <table class="table table-borderless table-hover table-white">
-                                <caption>[Link to the API endpoint]</caption>
-                                <thead>
-                                <tr>
-                                    <th scope="col">Child</th>
-                                    <th scope="col">Description</th>
-                                    <th scope="col">Date</th>
-                                    <th scope="col">Category</th>
-                                    <th scope="col">Subcategory</th>
-                                    <th scope="col">Amount</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>Jack</td>
-                                    <td>Easter egg</td>
-                                    <td><span class="d-none d-md-block">9th April 2019</span><span class="d-block d-sm-block d-md-none">9/04/2019</span></td>
-                                    <td><span class="category">Non-Essential</span></td>
-                                    <td><span class="category">Clothes, Food, Medicine etc.</span></td>
-                                    <td><strong>&pound;7.00</strong></td>
-                                </tr>
-                                <tr>
-                                    <td>Jack</td>
-                                    <td>Share of shopping</td>
-                                    <td><span class="d-none d-md-block">12th April 2019</span><span class="d-block d-sm-block d-md-none">12/04/2019</span></td>
-                                    <td><span class="category">Essential</span></td>
-                                    <td><span class="category">Clothes, Food, Medicine etc.</span></td>
-                                    <td><strong>&pound;42.52</strong></td>
-                                </tr>
-                                <tr>
-                                    <td>Jack</td>
-                                    <td>Share of pizza</td>
-                                    <td><span class="d-none d-md-block">12th April 2019</span><span class="d-block d-sm-block d-md-none">12/04/2019</span></td>
-                                    <td><span class="category">Luxuries</span></td>
-                                    <td><span class="category">Clothes, Food, Medicine etc.</span></td>
-                                    <td><strong>&pound;7.00</strong></td>
-                                </tr>
-                                <tr>
-                                    <td>Pending</td>
-                                    <td>Mattress for Moses basket</td>
-                                    <td><span class="d-none d-md-block">5th April 2019</span><span class="d-block d-sm-block d-md-none">5/04/2019</span></td>
-                                    <td><span class="category">Essential</span></td>
-                                    <td><span class="category">Furniture</span></td>
-                                    <td><strong>&pound;12.38</strong></td>
-                                </tr>
-                                <tr>
-                                    <td>...</td>
-                                    <td>...</td>
-                                    <td><span class="d-none d-md-block">...</span><span class="d-block d-sm-block d-md-none">5/04/2019</span></td>
-                                    <td><span class="category">...</span></td>
-                                    <td><span class="category">...</span></td>
-                                    <td><strong>...</strong></td>
-                                </tr>
-                                </tbody>
-                            </table>
+                            <div class="p-3 shadow-sm table-white-container">
+                                <table class="table table-borderless table-hover">
+                                    <caption>[Link to the API endpoint]</caption>
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">Child</th>
+                                        <th scope="col">Description</th>
+                                        <th scope="col">Date</th>
+                                        <th scope="col" class="d-none d-md-table-cell">Category</th>
+                                        <th scope="col" class="d-none d-md-table-cell">Subcategory</th>
+                                        <th scope="col">Amount</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr class="top">
+                                        <td>Jack</td>
+                                        <td>Easter egg</td>
+                                        <td><span class="d-none d-md-block">9th April 2019</span><span class="d-table-cell d-sm-block d-md-none">9/04/2019</span></td>
+                                        <td class="d-none d-md-table-cell"><span class="category">Non-Essential</span></td>
+                                        <td class="d-none d-md-table-cell"><span class="category">Clothes, Food, Medicine etc.</span></td>
+                                        <td><strong>&pound;7.00</strong></td>
+                                    </tr>
+                                    <tr class="top">
+                                        <td>Jack</td>
+                                        <td>Share of shopping</td>
+                                        <td><span class="d-none d-md-block">12th April 2019</span><span class="d-table-cell d-sm-block d-md-none">12/04/2019</span></td>
+                                        <td class="d-none d-md-table-cell"><span class="category">Essential</span></td>
+                                        <td class="d-none d-md-table-cell"><span class="category">Clothes, Food, Medicine etc.</span></td>
+                                        <td><strong>&pound;42.52</strong></td>
+                                    </tr>
+                                    <tr class="top">
+                                        <td>Jack</td>
+                                        <td>Share of pizza</td>
+                                        <td><span class="d-none d-md-block">12th April 2019</span><span class="d-table-cell d-sm-block d-md-none">12/04/2019</span></td>
+                                        <td class="d-none d-md-table-cell"><span class="category">Essential</span></td>
+                                        <td class="d-none d-md-table-cell"><span class="category">Clothes, Food, Medicine etc.</span></td>
+                                        <td><strong>&pound;7.00</strong></td>
+                                    </tr>
+                                    <tr class="top">
+                                        <td>Pending</td>
+                                        <td>Mattress for Moses basket</td>
+                                        <td><span class="d-none d-md-block">5th April 2019</span><span class="d-table-cell d-sm-block d-md-none">5/04/2019</span></td>
+                                        <td class="d-none d-md-table-cell"><span class="category">Essential</span></td>
+                                        <td class="d-none d-md-table-cell"><span class="category">Furniture</span></td>
+                                        <td><strong>&pound;12.38</strong></td>
+                                    </tr>
+                                    <tr class="top">
+                                        <td>...</td>
+                                        <td>...</td>
+                                        <td><span class="d-none d-md-block">...</span><span class="d-table-cell d-sm-block d-md-none">5/04/2019</span></td>
+                                        <td class="d-none d-md-table-cell"><span class="category">...</span></td>
+                                        <td class="d-none d-md-table-cell"><span class="category">...</span></td>
+                                        <td><strong>...</strong></td>
+                                    </tr>
+                                    <tr class="top">
+                                        <td>Jack</td>
+                                        <td>Easter egg</td>
+                                        <td><span class="d-none d-md-block">9th April 2019</span><span class="d-table-cell d-sm-block d-md-none">9/04/2019</span></td>
+                                        <td class="d-none d-md-table-cell"><span class="category">Non-Essential</span></td>
+                                        <td class="d-none d-md-table-cell"><span class="category">Clothes, Food, Medicine etc.</span></td>
+                                        <td><strong>&pound;7.00</strong></td>
+                                    </tr>
+                                    <tr class="top">
+                                        <td>Jack</td>
+                                        <td>Share of shopping</td>
+                                        <td><span class="d-none d-md-block">12th April 2019</span><span class="d-table-cell d-sm-block d-md-none">12/04/2019</span></td>
+                                        <td class="d-none d-md-table-cell"><span class="category">Essential</span></td>
+                                        <td class="d-none d-md-table-cell"><span class="category">Clothes, Food, Medicine etc.</span></td>
+                                        <td><strong>&pound;42.52</strong></td>
+                                    </tr>
+                                    <tr class="top">
+                                        <td>Jack</td>
+                                        <td>Share of pizza</td>
+                                        <td><span class="d-none d-md-block">12th April 2019</span><span class="d-table-cell d-sm-block d-md-none">12/04/2019</span></td>
+                                        <td class="d-none d-md-table-cell"><span class="category">Essential</span></td>
+                                        <td class="d-none d-md-table-cell"><span class="category">Clothes, Food, Medicine etc.</span></td>
+                                        <td><strong>&pound;7.00</strong></td>
+                                    </tr>
+                                    <tr class="top">
+                                        <td>Pending</td>
+                                        <td>Mattress for Moses basket</td>
+                                        <td><span class="d-none d-md-block">5th April 2019</span><span class="d-table-cell d-sm-block d-md-none">5/04/2019</span></td>
+                                        <td class="d-none d-md-table-cell"><span class="category">Essential</span></td>
+                                        <td class="d-none d-md-table-cell"><span class="category">Furniture</span></td>
+                                        <td><strong>&pound;12.38</strong></td>
+                                    </tr>
+                                    <tr class="top">
+                                        <td>...</td>
+                                        <td>...</td>
+                                        <td><span class="d-none d-md-block">...</span><span class="d-table-cell d-sm-block d-md-none">5/04/2019</span></td>
+                                        <td class="d-none d-md-table-cell"><span class="category">...</span></td>
+                                        <td class="d-none d-md-table-cell"><span class="category">...</span></td>
+                                        <td><strong>...</strong></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>

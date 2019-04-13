@@ -2,7 +2,6 @@
 /public/node_modules
 /public/hot
 /public/storage
-/public/css
 /storage/*.key
 .env
 /.docker/app
