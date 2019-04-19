@@ -16,7 +16,7 @@
     <body>
         <div class="container-fluid container-cte">
             <div class="row container-row">
-                <div class="col-xl-2 col-lg-3 col-md-3 container-column container-left d-none d-sm-none d-md-block">
+                <div class="col-xl-2 col-lg-3 col-md-3 container-column container-left d-none d-sm-none d-md-block sticky-top">
                     <div class="logo">
                         <a href="/"><img src="{{ asset('images/theme/logo-190.png') }}" width="64" height="64" alt="Logo" title="Costs to Expect" /></a>
                     </div>
@@ -53,10 +53,12 @@
                             <h2>Releases</h2>
 
                             <p>The changelog for the Costs to Expect service, we try not to just say
-                                <code>bug fixes and improvements</code> here, we try to be as open as possible.</p>
+                                <code>bug fixes and improvements</code>, we may on occasion not fully detail a
+                                change if we don't feel it is necessary, we will try to be as open as possible.</p>
 
                             <p>The changelog for the API can be found over on
-                                <a href="https://github.com/costs-to-expect/api/blob/master/CHANGELOG.md">GitHub</a>.</p>
+                                <a href="https://github.com/costs-to-expect/api/blob/master/CHANGELOG.md">GitHub</a>,
+                                the API changelog details every change, the API is Open Source.</p>
 
                             <hr />
 
@@ -65,29 +67,28 @@
                             <h3>Added</h3>
 
                             <ul>
-                                <li>Item 1</li>
-                                <li>Item 2..</li>
+                                <li>Release the initial design.</li>
+                                <li>Simple dashboard to show over of expenses.</li>
+                                <li>About page to provide a little detail on the service and website.</li>
+                                <li>Changelog, to  page to provide a little detail on the service and website.</li>
                             </ul>
 
                             <h3>Changed</h3>
 
                             <ul>
-                                <li>Item 1</li>
-                                <li>Item 2..</li>
+                                <li>Nothing this time.</li>
                             </ul>
 
                             <h3>Fixed</h3>
 
                             <ul>
-                                <li>Item 1</li>
-                                <li>Item 2..</li>
+                                <li>Nothing this time.</li>
                             </ul>
 
                             <h3>Removed</h3>
 
                             <ul>
-                                <li>Item 1</li>
-                                <li>Item 2..</li>
+                                <li>Nothing this time.</li>
                             </ul>
                         </div>
                     </div>

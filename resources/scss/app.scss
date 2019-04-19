@@ -66,6 +66,7 @@ html,body {
         }
 
         .container-right {
+            overflow-y: scroll;
             padding-top: 15px;
 
             .screen-intro {

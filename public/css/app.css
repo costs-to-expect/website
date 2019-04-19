@@ -9703,6 +9703,7 @@ html, body {
   font-weight: bolder;
 }
 .container-cte .container-row .container-right {
+  overflow-y: scroll;
   padding-top: 15px;
 }
 .container-cte .container-row .container-right .screen-intro .icon {
