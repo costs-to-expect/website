@@ -11,7 +11,7 @@
         <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('images/theme/favicon-180.png') }}">
         <meta name="msapplication-TileColor" content="#FFFFFF">
         <meta name="msapplication-TileImage" content="{{ asset('images/theme/favicon-144.png') }}">
-        <title>Dashboard: Costs to Expect</title>
+        <title>About: Costs to Expect</title>
     </head>
     <body>
         <div class="container-fluid container-cte">
@@ -71,11 +71,11 @@
                             <h3>Why?</h3>
 
                             <p>There are two core reasons as to why we have chosen to do this. I love data, the more then
-                                better, and, for as long I remember, it appears to have become accepted knowledge that
-                                it costs around £250,000 to raise a child in the UK.</p>
+                                merrier, secondly, for as long I remember, it appears to have become accepted knowledge
+                                that it costs approximately £250,000 to raise a child in the UK.</p>
 
-                            <p>If you think about the number, it becomes apparent quickly that it just can't be correct for
-                                the majority of the UK, on average over £10k a year?</p>
+                            <p>If you really think about that number, it becomes apparent very quickly that it just
+                                can't be correct for the majority of the UK, on average, over £10k a year?</p>
 
                             <hr />
 
@@ -84,11 +84,11 @@
                             <h3>Budgeting and Forecasting</h3>
 
                             <p>In addition to tracking historic costs the Costs to Expect service will include
-                                forecasting and budgeting tools, more details will be provided as the service expands,
-                                we have exciting plans for 2019 and 2020, we look forward to releasing the first version
-                                of the service before the year is out.</p>
+                                forecasting and budgeting tools, more details will be provided as the service expands.
+                                We have exciting plans for 2019 and 2020 and look forward to releasing the first
+                                version of the service before the year is out.</p>
 
-                            <p class="text-muted text-right">The Costs to Expect Team</p>
+                            <p class="text-muted text-right">Costs to Expect Team</p>
                             <p class="text-muted small text-right">April 2019</p>
                         </div>
                     </div>

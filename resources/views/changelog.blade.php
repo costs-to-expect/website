@@ -11,7 +11,7 @@
         <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('images/theme/favicon-180.png') }}">
         <meta name="msapplication-TileColor" content="#FFFFFF">
         <meta name="msapplication-TileImage" content="{{ asset('images/theme/favicon-144.png') }}">
-        <title>Dashboard: Costs to Expect</title>
+        <title>Changelog: Costs to Expect</title>
     </head>
     <body>
         <div class="container-fluid container-cte">
@@ -54,7 +54,8 @@
 
                             <p>The changelog for the Costs to Expect service, we try not to just say
                                 <code>bug fixes and improvements</code>, we may on occasion not fully detail a
-                                change if we don't feel it is necessary, we will try to be as open as possible.</p>
+                                change if we don't feel it is necessary, however, we will always try to be as
+                                open as possible.</p>
 
                             <p>The changelog for the API can be found over on
                                 <a href="https://github.com/costs-to-expect/api/blob/master/CHANGELOG.md">GitHub</a>,
@@ -68,7 +69,7 @@
 
                             <ul>
                                 <li>Release the initial design.</li>
-                                <li>Simple dashboard to show overview of expenses.</li>
+                                <li>Simple dashboard to show overview of expenses [Sample data].</li>
                                 <li>About page, to provide a little detail on the future service and website.</li>
                                 <li>Changelog, this page, every little change.</li>
                             </ul>
