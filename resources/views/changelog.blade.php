@@ -87,12 +87,12 @@
                         <div class="col-12">
                             <h2>Releases</h2>
 
-                            <p>The changelog for the Costs to Expect service, we try not to just say
+                            <p>The changelog for the Costs to Expect service, we try not to say
                                 <code>bug fixes and improvements</code>, we may on occasion not fully detail a
-                                change if we don't feel it is necessary, however, we will always try to be as
+                                change or fix if we don't feel it is necessary, however, we will always try to be as
                                 open as possible.</p>
 
-                            <p>The changelog for the API can be found over on
+                            <p>The changelog for the Costs to Expect API can be found over on
                                 <a href="https://github.com/costs-to-expect/api/blob/master/CHANGELOG.md">GitHub</a>,
                                 the API changelog details every change, the API is Open Source.</p>
 
@@ -106,7 +106,7 @@
                                 <li>Release the initial design.</li>
                                 <li>Simple dashboard to show overview of expenses [Sample data].</li>
                                 <li>About page, to provide a little detail on the future service and website.</li>
-                                <li>Changelog, this page, every little change.</li>
+                                <li>Changelog, this page, detail every little change.</li>
                             </ul>
 
                             <h3>Changed</h3>
