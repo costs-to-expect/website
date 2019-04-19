@@ -18,7 +18,7 @@
             <div class="row container-row">
                 <div class="col-xl-2 col-lg-3 col-md-3 container-column container-left d-none d-sm-none d-md-block">
                     <div class="logo">
-                        <img src="{{ asset('images/theme/logo-190.png') }}" width="64" height="64" alt="Logo" title="Costs to Expect" />
+                        <a href="/"><img src="{{ asset('images/theme/logo-190.png') }}" width="64" height="64" alt="Logo" title="Costs to Expect" /></a>
                     </div>
                     <ul class="nav flex-column">
                         <li class="nav-item">
@@ -39,7 +39,7 @@
                             <span class="nav-title">Costs to Expect</span>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link disabled" href="#">About</a>
+                            <a class="nav-link" href="/about">About</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link disabled" href="#">Changelog</a>
@@ -310,12 +310,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <hr />
-                        </div>
-                    </div>
-                    <div class="row">
+                    <div class="row mt-5 mb-5">
                         <div class="col-12">
                             <p class="text-center text-muted footer">
                                 <a href="https://www.costs-to-expect.com">Costs to Expect</a> Copyright &copy; <a href="https://www.deanblackborough.com">Dean Blackborough 2018-2019</a><br />

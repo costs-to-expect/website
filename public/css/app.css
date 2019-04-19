@@ -9670,7 +9670,17 @@ html, body {
   height: 100%;
 }
 
+.container-cte {
+  height: 100%;
+}
+.container-cte .container-row {
+  height: 100%;
+}
+.container-cte .container-row .container-column {
+  height: 100%;
+}
 .container-cte .container-row .container-left {
+  height: 100%;
   background-color: #fff;
   background-image: url("../images/theme/left-sidebar.png");
   background-repeat: no-repeat;
@@ -9698,7 +9708,7 @@ html, body {
 .container-cte .container-row .container-right .screen-intro .icon {
   width: 50px;
   height: 50px;
-  margin: 0.8rem;
+  margin: 0.8rem 0.8rem 0.8rem 0;
   float: left;
 }
 .container-cte .container-row .container-right .screen-intro .welcome {
@@ -9739,6 +9749,18 @@ html, body {
 }
 .container-cte .container-row .container-right p.footer a {
   color: #A8369B;
+}
+.container-cte .container-row .container-right .content {
+  font-size: 1.3rem;
+  color: #404040;
+}
+.container-cte .container-row .container-right .content h2 {
+  font-size: 2rem;
+  color: #732877;
+}
+.container-cte .container-row .container-right .content h3 {
+  font-size: 1.6rem;
+  color: #000000;
 }
 
 @media (max-width: 768px) {
