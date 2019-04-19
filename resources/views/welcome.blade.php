@@ -42,7 +42,7 @@
                             <a class="nav-link" href="/about">About</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link disabled" href="#">Changelog</a>
+                            <a class="nav-link" href="/changelog">Changelog</a>
                         </li>
                     </ul>
                 </div>

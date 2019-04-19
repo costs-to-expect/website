@@ -18,3 +18,7 @@ Route::get('/', function () {
 Route::get('/about', function () {
     return view('about');
 });
+
+Route::get('/changelog', function () {
+    return view('changelog');
+});

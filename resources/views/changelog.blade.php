@@ -25,10 +25,10 @@
                             <span class="nav-title">Costs to Expect</span>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="/about">About</a>
+                            <a class="nav-link" href="/about">About</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/changelog">Changelog</a>
+                            <a class="nav-link active" href="/changelog">Changelog</a>
                         </li>
                     </ul>
                 </div>
@@ -43,60 +43,59 @@
                                     <small class="text-muted">Costs to Expect.com</small>
                                 </div>
                                 <div class="title">
-                                    <h1>About</h1>
+                                    <h1>Changelog</h1>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="row content mt-5">
                         <div class="col-12">
-                            <h2>In short</h2>
+                            <h2>Releases</h2>
 
-                            <p>Costs to Expect is a service which will allow tracking and forecasting of any expenses, be
-                                they the costs to raise a child to the age of 18 or your Business account budget for the
-                                next financial year.</p>
+                            <p>The changelog for the Costs to Expect service, we try not to just say
+                                <code>bug fixes and improvements</code> here, we try to be as open as possible.</p>
 
-                            <p>The public side of Costs to Expect tracks the expenses involved in raising a child to the
-                                age of 18 in the UK.</p>
-
-                            <hr />
-
-                            <h2>The public site</h2>
-
-                            <h3>What does it cost to raise a child in the UK?</h3>
-
-                            <p>Costs to Expect is a long-term project, my wife and I are tracking the
-                                expenses to raise our child to adulthood, 18.</p>
-
-                            <h3>Why?</h3>
-
-                            <p>There are two core reasons as to why we have chosen to do this. I love data, the more then
-                                better, and, for as long I remember, it appears to have become accepted knowledge that
-                                it costs around £250,000 to raise a child in the UK.</p>
-
-                            <p>If you think about the number, it becomes apparent quickly that it just can't be correct for
-                                the majority of the UK, on average over £10k a year?</p>
+                            <p>The changelog for the API can be found over on
+                                <a href="https://github.com/costs-to-expect/api/blob/master/CHANGELOG.md">GitHub</a>.</p>
 
                             <hr />
 
-                            <h2>The service</h2>
+                            <h2>[v1.00.0] - Date</h2>
 
-                            <h3>Budgeting and Forecasting</h3>
+                            <h3>Added</h3>
 
-                            <p>In addition to tracking historic costs the Costs to Expect service will include
-                                forecasting and budgeting tools, more details will be provided as the service expands,
-                                we have exciting plans for 2019 and 2020, we look forward to releasing the first version
-                                of the service before the year is out.</p>
+                            <ul>
+                                <li>Item 1</li>
+                                <li>Item 2..</li>
+                            </ul>
 
-                            <p class="text-muted text-right">The Costs to Expect Team</p>
-                            <p class="text-muted small text-right">April 2019</p>
+                            <h3>Changed</h3>
+
+                            <ul>
+                                <li>Item 1</li>
+                                <li>Item 2..</li>
+                            </ul>
+
+                            <h3>Fixed</h3>
+
+                            <ul>
+                                <li>Item 1</li>
+                                <li>Item 2..</li>
+                            </ul>
+
+                            <h3>Removed</h3>
+
+                            <ul>
+                                <li>Item 1</li>
+                                <li>Item 2..</li>
+                            </ul>
                         </div>
                     </div>
                     <div class="row mt-5 mb-5">
                         <div class="col-12">
                             <p class="text-center text-muted footer">
                                 <a href="https://www.costs-to-expect.com">Costs to Expect</a> Copyright &copy; <a href="https://www.deanblackborough.com">Dean Blackborough 2018-2019</a><br />
-                                <a href="https://api.costs-to-expect.com">Costs to Expect API</a> | <a class="disabled" href="/changelog">Changelog</a><br />
+                                <a href="https://api.costs-to-expect.com">Costs to Expect API</a> | <a href="/changelog">Changelog</a><br />
                                 <small>v1.00.0 released xxth April 2019</small>
                             </p>
                         </div>
