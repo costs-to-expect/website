@@ -67,6 +67,7 @@
                                     <h4 class="mt-0">Jack Blackborough</h4>
                                     <h6 class="mt-0">Total expenses <small class="text-muted">From birth 28th June 2013</small></h6>
                                     <p class="total mb-0">&pound;39,951.29</p>
+                                    <p class="mt-1 mb-0 small text-muted" style="overflow-wrap: break-word; word-break: break-all; word-wrap: break-word">API Request:<br /><a href="https://api.costs-to-expect.com/v1/summary/resource-types/d185Q15grY/resources/kw8gLq31VB/items">/v1/summary/resource-types/d185Q15grY/resources/kw8gLq31VB/items</a></p>
                                 </div>
                             </div>
                         </div>
@@ -77,6 +78,7 @@
                                     <h4 class="mt-0">Pending Blackborough</h4>
                                     <h6 class="mt-0">Total expenses <small class="text-muted">From birth xx April 2019</small></h6>
                                     <p class="total mb-0">&pound;484.42</p>
+                                    <p class="mt-1 mb-0 small text-muted" style="overflow-wrap: break-word; word-break: break-all; word-wrap: break-word">API Request:<br /><a href="https://api.costs-to-expect.com/v1/summary/resource-types/d185Q15grY/resources/kw8gLq31VB/items">/v1/summary/resource-types/d185Q15grY/resources/kw8gLq31VB/items</a></p>
                                 </div>
                             </div>
                         </div>
@@ -87,6 +89,7 @@
                                     <h4 class="mt-0">Blackborough Children</h4>
                                     <h6 class="mt-0">Total expenses <small class="text-muted">Both children</small></h6>
                                     <p class="total mb-0">&pound;40,435.71</p>
+                                    <p class="mt-1 mb-0 small text-muted" style="overflow-wrap: break-word; word-break: break-all; word-wrap: break-word">API Request:<br /><a href="https://api.costs-to-expect.com/v1/summary/resource-types/d185Q15grY/items">/v1/summary/resource-types/d185Q15grY/items</a></p>
                                 </div>
                             </div>
                         </div>
@@ -137,7 +140,7 @@
                         <div class="col-12">
                             <div class="p-3 shadow-sm table-white-container">
                                 <table class="table table-borderless table-hover">
-                                    <caption>[Link to the API endpoint]</caption>
+                                    <caption>API Request: <a href="https://api.costs-to-expect.com/v1/resource-types/d185Q15grY/items">/v1/resource-types/d185Q15grY/items</a></caption>
                                     <thead>
                                     <tr>
                                         <th scope="col">Child</th>
