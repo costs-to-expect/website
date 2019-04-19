@@ -47,7 +47,42 @@
                     </ul>
                 </div>
                 <div class="col-xl-10 col-lg-9 col-md-9 col-sm-12 col-12 container-column container-right d-block">
-                    <div class="row">
+                    <nav class="navbar navbar-light d-md-none">
+                        <a class="navbar-brand" href="/">
+                            <img src="{{ asset('images/theme/logo.png') }}" width="30" height="30" class="d-inline-block align-top" alt="">
+                        </a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
+                                aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+
+                        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                                <li class="nav-item">
+                                    <span class="nav-title">Blackborough Children</span>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="/">Dashboard</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link disabled" href="#">Jack</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link disabled" href="#">Pending</a>
+                                </li>
+                                <li class="nav-item">
+                                    <span class="nav-title">Costs to Expect</span>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/about">About</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/changelog">Changelog</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                    <div class="row mb-3">
                         <div class="col-12">
                             <div class="screen-intro">
                                 <div class="icon">

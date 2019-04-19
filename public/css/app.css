@@ -9715,6 +9715,20 @@ html, body {
 .container-cte .container-row .container-right .screen-intro .welcome {
   padding-top: 0.5rem;
 }
+.container-cte .container-row .container-right nav.navbar {
+  padding-top: 0;
+}
+.container-cte .container-row .container-right nav.navbar li.nav-item a.active {
+  color: #000000;
+}
+.container-cte .container-row .container-right nav.navbar li.nav-item span.nav-title {
+  padding: 0.5rem 0rem;
+  display: block;
+  font-weight: bolder;
+}
+.container-cte .container-row .container-right nav.navbar li.nav-item.active {
+  background-color: red;
+}
 .container-cte .container-row .container-right .summary-block {
   background-color: #fff;
   padding: 1rem;
@@ -9769,9 +9783,10 @@ html, body {
     background-image: url("../images/theme/right-sidebar.png");
     background-repeat: no-repeat;
     background-position: top right;
+    padding-top: 0.5rem !important;
   }
   .container-right .screen-intro {
-    margin-top: 3rem;
+    margin-top: 2rem;
   }
 }
 

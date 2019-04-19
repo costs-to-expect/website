@@ -85,6 +85,27 @@ html,body {
                 }
             }
 
+            nav.navbar {
+                padding-top: 0;
+
+                li.nav-item {
+
+                    a.active {
+                        color: #000000;
+                    }
+
+                    span.nav-title {
+                        padding: 0.5rem 0rem;
+                        display: block;
+                        font-weight: $font-weight-bolder;
+                    }
+                }
+
+                li.nav-item.active {
+                    background-color: red;
+                }
+            }
+
             .summary-block {
                 background-color: $white;
                 padding: 1rem;
@@ -155,9 +176,10 @@ html,body {
         background-image: url("../images/theme/right-sidebar.png");
         background-repeat: no-repeat;
         background-position: top right;
+        padding-top: 0.5rem !important;
 
         .screen-intro {
-            margin-top: 3rem;
+            margin-top: 2rem;
         }
     }
 }
