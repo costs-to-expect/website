@@ -26,18 +26,15 @@ html,body {
 }
 
 .container-cte {
-    height: 100%;
 
     .container-row {
-        height: 100%;
 
         .container-column {
-            height: 100%;
+
         }
 
         .container-left {
             background-color: $white;
-            height: 100%;
             background-image: url("../images/theme/left-sidebar.png");
             background-repeat: no-repeat;
             background-size: 100% auto;

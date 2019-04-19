@@ -9670,18 +9670,8 @@ html, body {
   height: 100%;
 }
 
-.container-cte {
-  height: 100%;
-}
-.container-cte .container-row {
-  height: 100%;
-}
-.container-cte .container-row .container-column {
-  height: 100%;
-}
 .container-cte .container-row .container-left {
   background-color: #fff;
-  height: 100%;
   background-image: url("../images/theme/left-sidebar.png");
   background-repeat: no-repeat;
   background-size: 100% auto;

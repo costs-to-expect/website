@@ -67,7 +67,6 @@
                                     <h4 class="mt-0">Jack Blackborough</h4>
                                     <h6 class="mt-0">Total expenses <small class="text-muted">From birth 28th June 2013</small></h6>
                                     <p class="total mb-0">&pound;39,951.29</p>
-                                    <p class="mt-1 mb-0 small text-muted" style="overflow-wrap: break-word; word-break: break-all; word-wrap: break-word">API Request:<br /><a href="https://api.costs-to-expect.com/v1/summary/resource-types/d185Q15grY/resources/kw8gLq31VB/items">/v1/summary/resource-types/d185Q15grY/resources/kw8gLq31VB/items</a></p>
                                 </div>
                             </div>
                         </div>
@@ -78,7 +77,6 @@
                                     <h4 class="mt-0">Pending Blackborough</h4>
                                     <h6 class="mt-0">Total expenses <small class="text-muted">From birth xx April 2019</small></h6>
                                     <p class="total mb-0">&pound;484.42</p>
-                                    <p class="mt-1 mb-0 small text-muted" style="overflow-wrap: break-word; word-break: break-all; word-wrap: break-word">API Request:<br /><a href="https://api.costs-to-expect.com/v1/summary/resource-types/d185Q15grY/resources/kw8gLq31VB/items">/v1/summary/resource-types/d185Q15grY/resources/kw8gLq31VB/items</a></p>
                                 </div>
                             </div>
                         </div>
@@ -89,10 +87,10 @@
                                     <h4 class="mt-0">Blackborough Children</h4>
                                     <h6 class="mt-0">Total expenses <small class="text-muted">Both children</small></h6>
                                     <p class="total mb-0">&pound;40,435.71</p>
-                                    <p class="mt-1 mb-0 small text-muted" style="overflow-wrap: break-word; word-break: break-all; word-wrap: break-word">API Request:<br /><a href="https://api.costs-to-expect.com/v1/summary/resource-types/d185Q15grY/items">/v1/summary/resource-types/d185Q15grY/items</a></p>
                                 </div>
                             </div>
                         </div>
+                        <hr />
                     </div>
                     <div class="row mt-4">
                         <div class="col-12">
@@ -131,16 +129,21 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <hr />
+                        </div>
+                    </div>
                     <div class="row mt-4">
                         <div class="col-12">
-                            <h4>The 50 most recent expenses for both children</h4>
+                            <h4>The 25 most recent expenses for both children</h4>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-12">
                             <div class="p-3 shadow-sm table-white-container">
                                 <table class="table table-borderless table-hover">
-                                    <caption>API Request: <a href="https://api.costs-to-expect.com/v1/resource-types/d185Q15grY/items">/v1/resource-types/d185Q15grY/items</a></caption>
+                                    <caption>25 most recent expenses</caption>
                                     <thead>
                                     <tr>
                                         <th scope="col">Child</th>
@@ -235,6 +238,66 @@
                                     </tbody>
                                 </table>
                             </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <hr />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <h4>API Requests</h4>
+
+                            <p>This page was generated using the data returned from the following API requests.</p>
+
+                            <table class="table table-borderless table-sm">
+                                <caption>API Requests to https://api.costs-to-expect.com</caption>
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Page section</th>
+                                        <th scope="col">API request</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Total for Jack</td>
+                                        <td>/v1/summary/resource-types/d185Q15grY/resources/kw8gLq31VB/items</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>Total for Pending</td>
+                                        <td>/v1/summary/resource-types/d185Q15grY/resources/Eq9g6BgJL0/items</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>Total for Blackborough Children</td>
+                                        <td>/v1/summary/resource-types/d185Q15grY/items</td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>2019 Total for Jack</td>
+                                        <td>/v1/summary/resource-types/d185Q15grY/resources/kw8gLq31VB/items?years=2019</td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td>2019 Total for Pending</td>
+                                        <td>/v1/summary/resource-types/d185Q15grY/resources/Eq9g6BgJL0/items?years=2019</td>
+                                    </tr>
+                                    <tr>
+                                        <td>6</td>
+                                        <td>2019 Total for Blackborough Children</td>
+                                        <td>/v1/summary/resource-types/d185Q15grY/items?year=2019</td>
+                                    </tr>
+                                    <tr>
+                                        <td>7</td>
+                                        <td>50 most recent expenses</td>
+                                        <td>/v1/resource-types/d185Q15grY/items?limit=25</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
