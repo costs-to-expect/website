@@ -159,6 +159,8 @@
                                         <th scope="col">Date</th>
                                         <th scope="col" class="d-none d-md-table-cell">Category</th>
                                         <th scope="col" class="d-none d-md-table-cell">Subcategory</th>
+                                        <th scope="col" class="d-none d-xl-table-cell">Total</th>
+                                        <th scope="col" class="d-none d-xl-table-cell">Allocation</th>
                                         <th scope="col">Amount</th>
                                     </tr>
                                     </thead>
@@ -169,6 +171,8 @@
                                         <td><span class="d-none d-md-block">9th April 2019</span><span class="d-table-cell d-sm-block d-md-none">9/04/2019</span></td>
                                         <td class="d-none d-md-table-cell"><span class="category">Non-Essential</span></td>
                                         <td class="d-none d-md-table-cell"><span class="category">Clothes, Food, Medicine etc.</span></td>
+                                        <td class="d-none d-xl-table-cell">£7.00</td>
+                                        <td class="d-none d-xl-table-cell">100%</td>
                                         <td><strong>&pound;7.00</strong></td>
                                     </tr>
                                     <tr class="top">
@@ -177,6 +181,8 @@
                                         <td><span class="d-none d-md-block">12th April 2019</span><span class="d-table-cell d-sm-block d-md-none">12/04/2019</span></td>
                                         <td class="d-none d-md-table-cell"><span class="category">Essential</span></td>
                                         <td class="d-none d-md-table-cell"><span class="category">Clothes, Food, Medicine etc.</span></td>
+                                        <td class="d-none d-xl-table-cell">£42.52</td>
+                                        <td class="d-none d-xl-table-cell">100%</td>
                                         <td><strong>&pound;42.52</strong></td>
                                     </tr>
                                     <tr class="top">
@@ -185,6 +191,8 @@
                                         <td><span class="d-none d-md-block">12th April 2019</span><span class="d-table-cell d-sm-block d-md-none">12/04/2019</span></td>
                                         <td class="d-none d-md-table-cell"><span class="category">Essential</span></td>
                                         <td class="d-none d-md-table-cell"><span class="category">Clothes, Food, Medicine etc.</span></td>
+                                        <td class="d-none d-xl-table-cell">£7.00</td>
+                                        <td class="d-none d-xl-table-cell">100%</td>
                                         <td><strong>&pound;7.00</strong></td>
                                     </tr>
                                     <tr class="top">
@@ -193,6 +201,8 @@
                                         <td><span class="d-none d-md-block">5th April 2019</span><span class="d-table-cell d-sm-block d-md-none">5/04/2019</span></td>
                                         <td class="d-none d-md-table-cell"><span class="category">Essential</span></td>
                                         <td class="d-none d-md-table-cell"><span class="category">Furniture</span></td>
+                                        <td class="d-none d-xl-table-cell">£12.38</td>
+                                        <td class="d-none d-xl-table-cell">100%</td>
                                         <td><strong>&pound;12.38</strong></td>
                                     </tr>
                                     <tr class="top">
@@ -201,6 +211,8 @@
                                         <td><span class="d-none d-md-block">...</span><span class="d-table-cell d-sm-block d-md-none">5/04/2019</span></td>
                                         <td class="d-none d-md-table-cell"><span class="category">...</span></td>
                                         <td class="d-none d-md-table-cell"><span class="category">...</span></td>
+                                        <td class="d-none d-xl-table-cell">...</td>
+                                        <td class="d-none d-xl-table-cell">...</td>
                                         <td><strong>...</strong></td>
                                     </tr>
                                     <tr class="top">
@@ -209,6 +221,8 @@
                                         <td><span class="d-none d-md-block">9th April 2019</span><span class="d-table-cell d-sm-block d-md-none">9/04/2019</span></td>
                                         <td class="d-none d-md-table-cell"><span class="category">Non-Essential</span></td>
                                         <td class="d-none d-md-table-cell"><span class="category">Clothes, Food, Medicine etc.</span></td>
+                                        <td class="d-none d-xl-table-cell">£7.00</td>
+                                        <td class="d-none d-xl-table-cell">100%</td>
                                         <td><strong>&pound;7.00</strong></td>
                                     </tr>
                                     <tr class="top">
@@ -217,6 +231,8 @@
                                         <td><span class="d-none d-md-block">12th April 2019</span><span class="d-table-cell d-sm-block d-md-none">12/04/2019</span></td>
                                         <td class="d-none d-md-table-cell"><span class="category">Essential</span></td>
                                         <td class="d-none d-md-table-cell"><span class="category">Clothes, Food, Medicine etc.</span></td>
+                                        <td class="d-none d-xl-table-cell">£42.52</td>
+                                        <td class="d-none d-xl-table-cell">100%</td>
                                         <td><strong>&pound;42.52</strong></td>
                                     </tr>
                                     <tr class="top">
@@ -225,6 +241,8 @@
                                         <td><span class="d-none d-md-block">12th April 2019</span><span class="d-table-cell d-sm-block d-md-none">12/04/2019</span></td>
                                         <td class="d-none d-md-table-cell"><span class="category">Essential</span></td>
                                         <td class="d-none d-md-table-cell"><span class="category">Clothes, Food, Medicine etc.</span></td>
+                                        <td class="d-none d-xl-table-cell">£7.00</td>
+                                        <td class="d-none d-xl-table-cell">100%</td>
                                         <td><strong>&pound;7.00</strong></td>
                                     </tr>
                                     <tr class="top">
@@ -233,6 +251,8 @@
                                         <td><span class="d-none d-md-block">5th April 2019</span><span class="d-table-cell d-sm-block d-md-none">5/04/2019</span></td>
                                         <td class="d-none d-md-table-cell"><span class="category">Essential</span></td>
                                         <td class="d-none d-md-table-cell"><span class="category">Furniture</span></td>
+                                        <td class="d-none d-xl-table-cell">£12.38</td>
+                                        <td class="d-none d-xl-table-cell">100%</td>
                                         <td><strong>&pound;12.38</strong></td>
                                     </tr>
                                     <tr class="top">
@@ -241,6 +261,8 @@
                                         <td><span class="d-none d-md-block">...</span><span class="d-table-cell d-sm-block d-md-none">5/04/2019</span></td>
                                         <td class="d-none d-md-table-cell"><span class="category">...</span></td>
                                         <td class="d-none d-md-table-cell"><span class="category">...</span></td>
+                                        <td class="d-none d-xl-table-cell">...</td>
+                                        <td class="d-none d-xl-table-cell">...</td>
                                         <td><strong>...</strong></td>
                                     </tr>
                                     </tbody>
@@ -303,7 +325,7 @@
                                         <tr class="top">
                                             <td>7</td>
                                             <td>25 most recent expenses</td>
-                                            <td>/v1/resource-types/d185Q15grY/items?limit=25</td>
+                                            <td>/v1/resource-types/d185Q15grY/items?limit=25&amp;show-categories=true&show-subcategories=true</td>
                                         </tr>
                                     </tbody>
                                 </table>
