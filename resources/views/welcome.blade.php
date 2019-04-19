@@ -18,7 +18,7 @@
             <div class="row container-row">
                 <div class="col-xl-2 col-lg-3 col-md-3 container-column container-left d-none d-sm-none d-md-block">
                     <div class="logo">
-                        <img src="{{ asset('images/theme/logo-128.png') }}" width="64" height="64" alt="Logo" title="Costs to Expect" />
+                        <img src="{{ asset('images/theme/logo-190.png') }}" width="64" height="64" alt="Logo" title="Costs to Expect" />
                     </div>
                     <ul class="nav flex-column">
                         <li class="nav-item">
@@ -28,13 +28,21 @@
                             <a class="nav-link active" href="#">Dashboard</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Jack</a>
+                            <a class="nav-link disabled" href="#">Jack</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Pending</a>
+                            <a class="nav-link disabled" href="#">Pending</a>
+                        </li>
+                    </ul>
+                    <ul class="nav flex-column mt-5">
+                        <li class="nav-item">
+                            <span class="nav-title">Costs to Expect</span>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled menu item</a>
+                            <a class="nav-link disabled" href="#">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link disabled" href="#">Changelog</a>
                         </li>
                     </ul>
                 </div>
@@ -43,13 +51,13 @@
                         <div class="col-12">
                             <div class="screen-intro">
                                 <div class="icon">
-                                    <img src="{{ asset('images/theme/dashboard.png') }}" width="32" height="32" alt="Screen icon" title="Dashboard" />
+                                    <img src="{{ asset('images/theme/dashboard.png') }}" width="50" height="50" alt="Screen icon" title="Dashboard" />
                                 </div>
                                 <div class="welcome">
                                     <small class="text-muted">Welcome to Costs to Expect.com</small>
                                 </div>
                                 <div class="title">
-                                    <h2>The Dashboard</h2>
+                                    <h1>Dashboard</h1>
                                 </div>
                             </div>
                         </div>
@@ -251,53 +259,69 @@
 
                             <p>This page was generated using the data returned from the following API requests.</p>
 
-                            <table class="table table-borderless table-sm">
-                                <caption>API Requests to https://api.costs-to-expect.com</caption>
-                                <thead>
-                                    <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">Page section</th>
-                                        <th scope="col">API request</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Total for Jack</td>
-                                        <td>/v1/summary/resource-types/d185Q15grY/resources/kw8gLq31VB/items</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>Total for Pending</td>
-                                        <td>/v1/summary/resource-types/d185Q15grY/resources/Eq9g6BgJL0/items</td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>Total for Blackborough Children</td>
-                                        <td>/v1/summary/resource-types/d185Q15grY/items</td>
-                                    </tr>
-                                    <tr>
-                                        <td>4</td>
-                                        <td>2019 Total for Jack</td>
-                                        <td>/v1/summary/resource-types/d185Q15grY/resources/kw8gLq31VB/items?years=2019</td>
-                                    </tr>
-                                    <tr>
-                                        <td>5</td>
-                                        <td>2019 Total for Pending</td>
-                                        <td>/v1/summary/resource-types/d185Q15grY/resources/Eq9g6BgJL0/items?years=2019</td>
-                                    </tr>
-                                    <tr>
-                                        <td>6</td>
-                                        <td>2019 Total for Blackborough Children</td>
-                                        <td>/v1/summary/resource-types/d185Q15grY/items?year=2019</td>
-                                    </tr>
-                                    <tr>
-                                        <td>7</td>
-                                        <td>50 most recent expenses</td>
-                                        <td>/v1/resource-types/d185Q15grY/items?limit=25</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            <div class="p-3 shadow-sm table-white-container">
+                                <table class="table table-borderless table-sm">
+                                    <caption>API Requests to https://api.costs-to-expect.com</caption>
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">Page section</th>
+                                            <th scope="col">API request</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="top">
+                                            <td>1</td>
+                                            <td>Total for Jack</td>
+                                            <td>/v1/summary/resource-types/d185Q15grY/resources/kw8gLq31VB/items</td>
+                                        </tr>
+                                        <tr class="top">
+                                            <td>2</td>
+                                            <td>Total for Pending</td>
+                                            <td>/v1/summary/resource-types/d185Q15grY/resources/Eq9g6BgJL0/items</td>
+                                        </tr>
+                                        <tr class="top">
+                                            <td>3</td>
+                                            <td>Total for Blackborough Children</td>
+                                            <td>/v1/summary/resource-types/d185Q15grY/items</td>
+                                        </tr>
+                                        <tr class="top">
+                                            <td>4</td>
+                                            <td>2019 Total for Jack</td>
+                                            <td>/v1/summary/resource-types/d185Q15grY/resources/kw8gLq31VB/items?years=2019</td>
+                                        </tr>
+                                        <tr class="top">
+                                            <td>5</td>
+                                            <td>2019 Total for Pending</td>
+                                            <td>/v1/summary/resource-types/d185Q15grY/resources/Eq9g6BgJL0/items?years=2019</td>
+                                        </tr>
+                                        <tr class="top">
+                                            <td>6</td>
+                                            <td>2019 Total for Blackborough Children</td>
+                                            <td>/v1/summary/resource-types/d185Q15grY/items?year=2019</td>
+                                        </tr>
+                                        <tr class="top">
+                                            <td>7</td>
+                                            <td>25 most recent expenses</td>
+                                            <td>/v1/resource-types/d185Q15grY/items?limit=25</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <hr />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <p class="text-center text-muted footer">
+                                <a href="https://www.costs-to-expect.com">Costs to Expect</a> Copyright &copy; <a href="https://www.deanblackborough.com">Dean Blackborough 2018-2019</a><br />
+                                <a href="https://api.costs-to-expect.com">Costs to Expect API</a> | <a class="disabled" href="/changelog">Changelog</a><br />
+                                <small>v1.00.0 released xxth April 2019</small>
+                            </p>
                         </div>
                     </div>
                 </div>

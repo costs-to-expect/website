@@ -46,9 +46,14 @@ html,body {
 
             li.nav-item {
 
+
+
                 a.active {
                     background-color: #f6f5f8;
                     color: #404040;
+                    margin-right: -15px;
+                    margin-left: -15px;
+                    padding-left: 32px;
                 }
 
                 span.nav-title {
@@ -65,9 +70,9 @@ html,body {
             .screen-intro {
 
                 .icon {
-                    width: 32px;
-                    height: 32px;
-                    margin: 1.2rem;
+                    width: 50px;
+                    height: 50px;
+                    margin: 0.8rem;
                     float: left;
                 }
                 .welcome {
@@ -117,6 +122,13 @@ html,body {
                     }
                 }
             }
+
+            p.footer {
+
+                a {
+                    color: #A8369B;
+                }
+            }
         }
     }
 }
@@ -128,7 +140,7 @@ html,body {
         background-position: top right;
 
         .screen-intro {
-            margin-top: 5rem;
+            margin-top: 3rem;
         }
     }
 }

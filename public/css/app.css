@@ -9683,6 +9683,9 @@ html, body {
 .container-cte .container-row .container-left li.nav-item a.active {
   background-color: #f6f5f8;
   color: #404040;
+  margin-right: -15px;
+  margin-left: -15px;
+  padding-left: 32px;
 }
 .container-cte .container-row .container-left li.nav-item span.nav-title {
   padding: 0.5rem 1rem;
@@ -9693,9 +9696,9 @@ html, body {
   padding-top: 15px;
 }
 .container-cte .container-row .container-right .screen-intro .icon {
-  width: 32px;
-  height: 32px;
-  margin: 1.2rem;
+  width: 50px;
+  height: 50px;
+  margin: 0.8rem;
   float: left;
 }
 .container-cte .container-row .container-right .screen-intro .welcome {
@@ -9734,6 +9737,9 @@ html, body {
   color: #645a90;
   font-weight: bold;
 }
+.container-cte .container-row .container-right p.footer a {
+  color: #A8369B;
+}
 
 @media (max-width: 768px) {
   .container-right {
@@ -9742,7 +9748,7 @@ html, body {
     background-position: top right;
   }
   .container-right .screen-intro {
-    margin-top: 5rem;
+    margin-top: 3rem;
   }
 }
 
