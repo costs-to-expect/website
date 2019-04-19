@@ -68,9 +68,9 @@
 
                             <ul>
                                 <li>Release the initial design.</li>
-                                <li>Simple dashboard to show over of expenses.</li>
-                                <li>About page to provide a little detail on the service and website.</li>
-                                <li>Changelog, to  page to provide a little detail on the service and website.</li>
+                                <li>Simple dashboard to show overview of expenses.</li>
+                                <li>About page, to provide a little detail on the future service and website.</li>
+                                <li>Changelog, this page, every little change.</li>
                             </ul>
 
                             <h3>Changed</h3>
