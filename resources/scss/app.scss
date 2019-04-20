@@ -6,6 +6,8 @@ $nav-link-padding-x: 1rem;
 $link-color: #939393;
 $nav-link-disabled-color: #bcbcbc;
 $table-cell-padding: 0.5rem;
+$navbar-light-color: #ffffff;
+
 
 @import "../../public/node_modules/bootstrap/scss/bootstrap";
 
@@ -94,6 +96,14 @@ html,body {
                         color: #000000;
                     }
 
+                    a {
+                        color: #939393;
+
+                        &:hover {
+                            color: #616161;
+                        }
+                    }
+
                     span.nav-title {
                         padding: 0.5rem 0rem;
                         display: block;
@@ -180,6 +190,13 @@ html,body {
 
         .screen-intro {
             margin-top: 2rem;
+        }
+
+        .navbar-light {
+
+            .navbar-toggler {
+                border: none;
+            }
         }
     }
 }

@@ -132,7 +132,7 @@
                             <p class="text-center text-muted footer">
                                 <a href="https://www.costs-to-expect.com">Costs to Expect</a> Copyright &copy; <a href="https://www.deanblackborough.com">Dean Blackborough 2018-2019</a><br />
                                 <a href="https://api.costs-to-expect.com">Costs to Expect API</a> | <a class="disabled" href="/changelog">Changelog</a><br />
-                                <small>v1.00.0 released xxth April 2019</small>
+                                <small>v1.00.0 released 20th April 2019</small>
                             </p>
                         </div>
                     </div>

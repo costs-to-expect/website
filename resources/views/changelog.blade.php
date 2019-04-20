@@ -98,12 +98,12 @@
 
                             <hr />
 
-                            <h2>[v1.00.0] - Date</h2>
+                            <h2>[v1.00.0] - 20th April 2019</h2>
 
                             <h3>Added</h3>
 
                             <ul>
-                                <li>Release the initial design.</li>
+                                <li>Release the initial design, fully responsive, mobile through to Desktop.</li>
                                 <li>Simple dashboard to show overview of expenses [Sample data].</li>
                                 <li>About page, to provide a little detail on the future service and website.</li>
                                 <li>Changelog, this page, detail every little change.</li>
@@ -133,7 +133,7 @@
                             <p class="text-center text-muted footer">
                                 <a href="https://www.costs-to-expect.com">Costs to Expect</a> Copyright &copy; <a href="https://www.deanblackborough.com">Dean Blackborough 2018-2019</a><br />
                                 <a href="https://api.costs-to-expect.com">Costs to Expect API</a> | <a href="/changelog">Changelog</a><br />
-                                <small>v1.00.0 released xxth April 2019</small>
+                                <small>v1.00.0 released 20th April 2019</small>
                             </p>
                         </div>
                     </div>
