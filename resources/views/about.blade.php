@@ -101,11 +101,11 @@
                             <h3>What does it cost to raise a child in the UK?</h3>
 
                             <p>Costs to Expect is a long-term project, my wife and I are tracking the
-                                expenses to raise our child to adulthood, 18.</p>
+                                expenses to raise our children to adulthood, 18.</p>
 
                             <h3>Why?</h3>
 
-                            <p>There are two core reasons as to why we have chosen to do this. I love data, the more then
+                            <p>There are core reasons why we have chosen to do this. I love data, the more then
                                 merrier, secondly, for as long I remember, it appears to have become accepted knowledge
                                 that it costs approximately £250,000 to raise a child in the UK.</p>
 
