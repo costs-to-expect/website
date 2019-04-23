@@ -54,7 +54,7 @@
                                     <a class="nav-link disabled" href="#">Jack</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link disabled" href="#">Pending</a>
+                                    <a class="nav-link disabled" href="#">Niall</a>
                                 </li>
                                 <li class="nav-item">
                                     <span class="nav-title">Costs to Expect</span>
@@ -98,6 +98,32 @@
 
                             <hr />
 
+                            <h2>[v1.00.1] - 23rd April 2019</h2>
+
+                            <h3>Added</h3>
+
+                            <ul>
+                                <li>Nothing this time.</li>
+                            </ul>
+
+                            <h3>Changed</h3>
+
+                            <ul>
+                                <li>Minor content update, added Niall.</li>
+                            </ul>
+
+                            <h3>Fixed</h3>
+
+                            <ul>
+                                <li>Nothing this time.</li>
+                            </ul>
+
+                            <h3>Removed</h3>
+
+                            <ul>
+                                <li>Nothing this time.</li>
+                            </ul>
+
                             <h2>[v1.00.0] - 20th April 2019</h2>
 
                             <h3>Added</h3>
@@ -133,7 +159,7 @@
                             <p class="text-center text-muted footer">
                                 <a href="https://www.costs-to-expect.com">Costs to Expect</a> Copyright &copy; <a href="https://www.deanblackborough.com">Dean Blackborough 2018-2019</a><br />
                                 <a href="https://api.costs-to-expect.com">Costs to Expect API</a> | <a href="/changelog">Changelog</a><br />
-                                <small>v1.00.0 released 20th April 2019</small>
+                                <small>v1.00.1 released 23rd April 2019</small>
                             </p>
                         </div>
                     </div>

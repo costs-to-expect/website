@@ -31,7 +31,7 @@
                             <a class="nav-link disabled" href="#">Jack</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link disabled" href="#">Pending</a>
+                            <a class="nav-link disabled" href="#">Niall</a>
                         </li>
                     </ul>
                     <ul class="nav flex-column mt-5">
@@ -68,7 +68,7 @@
                                     <a class="nav-link disabled" href="#">Jack</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link disabled" href="#">Pending</a>
+                                    <a class="nav-link disabled" href="#">Niall</a>
                                 </li>
                                 <li class="nav-item">
                                     <span class="nav-title">Costs to Expect</span>
@@ -108,7 +108,7 @@
                                 <img src="{{ asset('images/theme/expenses.png') }}" class="mr-2" width="48" height="48" alt="icon">
                                 <div class="media-body">
                                     <h4 class="mt-0">Jack Blackborough</h4>
-                                    <h6 class="mt-0">Total expenses <small class="text-muted">From birth 28th June 2013</small></h6>
+                                    <h6 class="mt-0">Total expenses <small class="text-muted">From birth, 28th June 2013</small></h6>
                                     <p class="total mb-0">&pound;39,951.29</p>
                                 </div>
                             </div>
@@ -117,8 +117,8 @@
                             <div class="media summary-block shadow-sm h-100">
                                 <img src="{{ asset('images/theme/expenses.png') }}" class="mr-2" width="48" height="48" alt="icon">
                                 <div class="media-body">
-                                    <h4 class="mt-0">Pending Blackborough</h4>
-                                    <h6 class="mt-0">Total expenses <small class="text-muted">From birth xx April 2019</small></h6>
+                                    <h4 class="mt-0">Niall Blackborough</h4>
+                                    <h6 class="mt-0">Total expenses <small class="text-muted">From birth, 22nd April 2019</small></h6>
                                     <p class="total mb-0">&pound;484.42</p>
                                 </div>
                             </div>
@@ -155,7 +155,7 @@
                             <div class="media summary-block shadow-sm h-100">
                                 <img src="{{ asset('images/theme/expenses.png') }}" class="mr-2" width="48" height="48" alt="icon">
                                 <div class="media-body">
-                                    <h4 class="mt-0">Pending Blackborough</h4>
+                                    <h4 class="mt-0">Niall Blackborough</h4>
                                     <h6 class="mt-0">2019 <small class="text-muted">Expenses in 2019</small></h6>
                                     <p class="total mb-0">&pound;484.42</p>
                                 </div>
@@ -231,7 +231,7 @@
                                         <td><strong>&pound;7.00</strong></td>
                                     </tr>
                                     <tr class="top">
-                                        <td>Pending</td>
+                                        <td>Niall</td>
                                         <td>Mattress for Moses basket</td>
                                         <td><span class="d-none d-md-block">5th April 2019</span><span class="d-table-cell d-sm-block d-md-none">5/04/2019</span></td>
                                         <td class="d-none d-md-table-cell"><span class="category">Essential</span></td>
@@ -281,7 +281,7 @@
                                         <td><strong>&pound;7.00</strong></td>
                                     </tr>
                                     <tr class="top">
-                                        <td>Pending</td>
+                                        <td>Niall</td>
                                         <td>Mattress for Moses basket</td>
                                         <td><span class="d-none d-md-block">5th April 2019</span><span class="d-table-cell d-sm-block d-md-none">5/04/2019</span></td>
                                         <td class="d-none d-md-table-cell"><span class="category">Essential</span></td>
@@ -334,7 +334,7 @@
                                         </tr>
                                         <tr class="top">
                                             <td>2</td>
-                                            <td>Total for Pending</td>
+                                            <td>Total for Niall</td>
                                             <td>/v1/summary/resource-types/d185Q15grY/resources/Eq9g6BgJL0/items</td>
                                         </tr>
                                         <tr class="top">
@@ -349,7 +349,7 @@
                                         </tr>
                                         <tr class="top">
                                             <td>5</td>
-                                            <td>2019 Total for Pending</td>
+                                            <td>2019 Total for Niall</td>
                                             <td>/v1/summary/resource-types/d185Q15grY/resources/Eq9g6BgJL0/items?years=2019</td>
                                         </tr>
                                         <tr class="top">
@@ -372,7 +372,7 @@
                             <p class="text-center text-muted footer">
                                 <a href="https://www.costs-to-expect.com">Costs to Expect</a> Copyright &copy; <a href="https://www.deanblackborough.com">Dean Blackborough 2018-2019</a><br />
                                 <a href="https://api.costs-to-expect.com">Costs to Expect API</a> | <a class="disabled" href="/changelog">Changelog</a><br />
-                                <small>v1.00.0 released 20th April 2019</small>
+                                <small>v1.00.1 released 23rd April 2019</small>
                             </p>
                         </div>
                     </div>
