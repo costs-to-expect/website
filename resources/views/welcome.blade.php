@@ -25,7 +25,7 @@
                             <span class="nav-title">The Blackborough Children</span>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="#">Dashboard</a>
+                            <a class="nav-link active" href="#"><img src="{{ asset('images/theme/icon-expenses.png') }}" width="20" height="20" class="icon" alt="Dashboard" />  Dashboard</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link disabled" href="#">Jack</a>
