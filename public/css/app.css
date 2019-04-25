@@ -9800,7 +9800,10 @@ html, body {
   .container-right .screen-intro {
     margin-top: 2rem;
   }
-  .container-right .navbar-light .navbar-toggler {
+  .container-right .navbar {
+    padding: 0.5rem;
+  }
+  .container-right .navbar .navbar-toggler {
     border: none;
   }
 }

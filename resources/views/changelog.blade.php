@@ -112,6 +112,36 @@
 
                             <hr />
 
+                            <h2>[v1.01.0] - xxth Xxxxx 2019</h2>
+
+                            <h3>Added</h3>
+
+                            <ul>
+                                <li>Nothing this time.</li>
+                            </ul>
+
+                            <h3>Changed</h3>
+
+                            <ul>
+                                <li>Minor tweak to the mobile layout, corner image too large.</li>
+                                <li>Some Desktop menu items support icons.</li>
+                                <li>Update to the welcome section on mobile, showing the logo twice.</li>
+                                <li>Blackborough Children menu missing from About and Changelog views.</li>
+                                <li>API requests breaking out of table.</li>
+                            </ul>
+
+                            <h3>Fixed</h3>
+
+                            <ul>
+                                <li>Nothing this time.</li>
+                            </ul>
+
+                            <h3>Removed</h3>
+
+                            <ul>
+                                <li>Nothing this time.</li>
+                            </ul>
+
                             <h2>[v1.00.1] - 23rd April 2019</h2>
 
                             <h3>Added</h3>
