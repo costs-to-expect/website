@@ -25,13 +25,13 @@
                             <span class="nav-title">The Blackborough Children</span>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="#"><img src="{{ asset('images/theme/icon-expenses.png') }}" width="20" height="20" class="icon" alt="Dashboard" />  Dashboard</a>
+                            <a class="nav-link active icon" href="#"><img src="{{ asset('images/theme/icon-dashboard-on.png') }}" width="20" height="20" class="icon" alt="Dashboard" />  Dashboard</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link disabled" href="#">Jack</a>
+                            <a class="nav-link disabled icon" href="#"><img src="{{ asset('images/theme/icon-expenses.png') }}" width="20" height="20" class="icon" alt="Jack" /> Jack</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link disabled" href="#">Niall</a>
+                            <a class="nav-link disabled icon" href="#"><img src="{{ asset('images/theme/icon-expenses.png') }}" width="20" height="20" class="icon" alt="Niall" /> Niall</a>
                         </li>
                     </ul>
                     <ul class="nav flex-column mt-5">
@@ -39,17 +39,17 @@
                             <span class="nav-title">Costs to Expect</span>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/about">About</a>
+                            <a class="nav-link no-icon" href="/about">About</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/changelog">Changelog</a>
+                            <a class="nav-link no-icon" href="/changelog">Changelog</a>
                         </li>
                     </ul>
                 </div>
                 <div class="col-xl-10 col-lg-9 col-md-9 col-sm-12 col-12 container-column container-right d-block">
                     <nav class="navbar navbar-light d-md-none">
                         <a class="navbar-brand" href="/">
-                            <img src="{{ asset('images/theme/logo.png') }}" width="30" height="30" class="d-inline-block align-top" alt="">
+                            <img src="{{ asset('images/theme/logo.png') }}" width="30" height="30" class="d-inline-block align-middle" alt=""><span class="d-none">C</span>osts to Expect.com
                         </a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
                                 aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
@@ -184,7 +184,7 @@
                     </div>
                     <div class="row">
                         <div class="col-12">
-                            <div class="p-3 shadow-sm table-white-container">
+                            <div class="p-3 shadow-sm white-container">
                                 <table class="table table-borderless table-hover">
                                     <caption>25 most recent expenses</caption>
                                     <thead>
@@ -316,8 +316,8 @@
 
                             <p>This page was generated using the data returned from the following API requests.</p>
 
-                            <div class="p-3 shadow-sm table-white-container">
-                                <table class="table table-borderless table-sm">
+                            <div class="p-3 shadow-sm white-container">
+                                <table class="table table-borderless table-sm api-requests">
                                     <caption>API Requests to https://api.costs-to-expect.com</caption>
                                     <thead>
                                         <tr>

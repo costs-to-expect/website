@@ -22,6 +22,20 @@
                     </div>
                     <ul class="nav flex-column">
                         <li class="nav-item">
+                            <span class="nav-title">The Blackborough Children</span>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link icon" href="/"><img src="{{ asset('images/theme/icon-dashboard.png') }}" width="20" height="20" class="icon" alt="Dashboard" />  Dashboard</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link disabled icon" href="#"><img src="{{ asset('images/theme/icon-expenses.png') }}" width="20" height="20" class="icon" alt="Jack" /> Jack</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link disabled icon" href="#"><img src="{{ asset('images/theme/icon-expenses.png') }}" width="20" height="20" class="icon" alt="Niall" /> Niall</a>
+                        </li>
+                    </ul>
+                    <ul class="nav flex-column mt-5">
+                        <li class="nav-item">
                             <span class="nav-title">Costs to Expect</span>
                         </li>
                         <li class="nav-item">
@@ -35,7 +49,7 @@
                 <div class="col-xl-10 col-lg-9 col-md-9 col-sm-12 col-12 container-column container-right d-block">
                     <nav class="navbar navbar-light d-md-none">
                         <a class="navbar-brand" href="/">
-                            <img src="{{ asset('images/theme/logo.png') }}" width="30" height="30" class="d-inline-block align-top" alt="">
+                            <img src="{{ asset('images/theme/logo.png') }}" width="30" height="30" class="d-inline-block align-middle" alt=""><span class="d-none">C</span>osts to Expect.com
                         </a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
                                 aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
@@ -71,8 +85,8 @@
                     <div class="row mb-3">
                         <div class="col-12">
                             <div class="screen-intro">
-                                <div class="icon">
-                                    <img src="{{ asset('images/theme/logo.png') }}" width="50" height="50" alt="Screen icon" title="Dashboard" />
+                                <div class="icon d-none d-md-block">
+                                    <img src="{{ asset('images/theme/info.png') }}" width="50" height="50" alt="Screen icon" title="Dashboard" />
                                 </div>
                                 <div class="welcome">
                                     <small class="text-muted">Costs to Expect.com</small>

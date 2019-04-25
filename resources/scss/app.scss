@@ -61,6 +61,13 @@ html,body {
                     padding-left: 32px;
                 }
 
+                a.nav-link.icon {
+
+                    img {
+                        margin-right: 1rem;
+                    }
+                }
+
                 span.nav-title {
                     padding: 0.5rem 1rem;
                     display: block;
@@ -130,7 +137,7 @@ html,body {
                 }
             }
 
-            .table-white-container {
+            .white-container {
                 background-color: white;
                 border-radius: 0.5rem;
                 border-top: none;
@@ -155,6 +162,13 @@ html,body {
                         color: #645a90;
                         font-weight: bold;
                     }
+                }
+            }
+
+            table.api-requests {
+
+                td {
+                    word-break: break-word;
                 }
             }
 

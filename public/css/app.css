@@ -9697,6 +9697,9 @@ html, body {
   margin-left: -15px;
   padding-left: 32px;
 }
+.container-cte .container-row .container-left li.nav-item a.nav-link.icon img {
+  margin-right: 1rem;
+}
 .container-cte .container-row .container-left li.nav-item span.nav-title {
   padding: 0.5rem 1rem;
   display: block;
@@ -9745,28 +9748,31 @@ html, body {
   font-weight: bolder;
   color: #000;
 }
-.container-cte .container-row .container-right .table-white-container {
+.container-cte .container-row .container-right .white-container {
   background-color: white;
   border-radius: 0.5rem;
   border-top: none;
 }
-.container-cte .container-row .container-right .table-white-container table {
+.container-cte .container-row .container-right .white-container table {
   margin-bottom: 0;
 }
-.container-cte .container-row .container-right .table-white-container table th {
+.container-cte .container-row .container-right .white-container table th {
   color: #bcbcbc;
   font-size: 0.8rem;
 }
-.container-cte .container-row .container-right .table-white-container table tr.top {
+.container-cte .container-row .container-right .white-container table tr.top {
   border-top: 1px solid #f2f2f2;
 }
-.container-cte .container-row .container-right .table-white-container table span.category {
+.container-cte .container-row .container-right .white-container table span.category {
   font-size: 0.7rem;
   background-color: #f5f5f8;
   border-radius: 0.3rem;
   padding: 0.2rem 0.4rem;
   color: #645a90;
   font-weight: bold;
+}
+.container-cte .container-row .container-right table.api-requests td {
+  word-break: break-word;
 }
 .container-cte .container-row .container-right p.footer a {
   color: #A8369B;
