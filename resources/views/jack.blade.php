@@ -25,10 +25,10 @@
                             <span class="nav-title">The Blackborough Children</span>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active icon" href="#"><img src="{{ asset('images/theme/icon-dashboard-on.png') }}" width="20" height="20" class="icon" alt="Dashboard" />  Dashboard</a>
+                            <a class="nav-link icon" href="/"><img src="{{ asset('images/theme/icon-dashboard.png') }}" width="20" height="20" class="icon" alt="Dashboard" />  Dashboard</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link disabled icon" href="#"><img src="{{ asset('images/theme/icon-expenses.png') }}" width="20" height="20" class="icon" alt="Jack" /> Jack</a>
+                            <a class="nav-link active icon" href="#"><img src="{{ asset('images/theme/icon-expenses-on.png') }}" width="20" height="20" class="icon" alt="Jack" /> Jack</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link disabled icon" href="#"><img src="{{ asset('images/theme/icon-expenses.png') }}" width="20" height="20" class="icon" alt="Niall" /> Niall</a>
@@ -62,10 +62,10 @@
                                     <span class="nav-title">Blackborough Children</span>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link active" href="/">Dashboard</a>
+                                    <a class="nav-link" href="/">Dashboard</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link disabled" href="#">Jack</a>
+                                    <a class="nav-link active" href="/jack">Jack</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link disabled" href="#">Niall</a>
@@ -92,14 +92,14 @@
                                     <small class="text-muted">Welcome to Costs to Expect.com</small>
                                 </div>
                                 <div class="title">
-                                    <h1>Dashboard for Jack</h1>
+                                    <h1>Jack</h1>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="row mt-4">
                         <div class="col-12">
-                            <h4>Expenses total by category</h4>
+                            <h4>Total expenses by category</h4>
                         </div>
                     </div>
                     <div class="row">
@@ -179,7 +179,7 @@
                     </div>
                     <div class="row mt-4">
                         <div class="col-12">
-                            <h4>The 25 most recent expenses for both children</h4>
+                            <h4>The 25 most recent expenses for Jack</h4>
                         </div>
                     </div>
                     <div class="row">

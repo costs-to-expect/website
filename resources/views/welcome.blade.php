@@ -25,10 +25,10 @@
                             <span class="nav-title">The Blackborough Children</span>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active icon" href="#"><img src="{{ asset('images/theme/icon-dashboard-on.png') }}" width="20" height="20" class="icon" alt="Dashboard" />  Dashboard</a>
+                            <a class="nav-link active icon" href="/"><img src="{{ asset('images/theme/icon-dashboard-on.png') }}" width="20" height="20" class="icon" alt="Dashboard" />  Dashboard</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link disabled icon" href="#"><img src="{{ asset('images/theme/icon-expenses.png') }}" width="20" height="20" class="icon" alt="Jack" /> Jack</a>
+                            <a class="nav-link icon" href="/jack"><img src="{{ asset('images/theme/icon-expenses.png') }}" width="20" height="20" class="icon" alt="Jack" /> Jack</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link disabled icon" href="#"><img src="{{ asset('images/theme/icon-expenses.png') }}" width="20" height="20" class="icon" alt="Niall" /> Niall</a>
@@ -65,7 +65,7 @@
                                     <a class="nav-link active" href="/">Dashboard</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link disabled" href="#">Jack</a>
+                                    <a class="nav-link" href="/jack">Jack</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link disabled" href="#">Niall</a>
