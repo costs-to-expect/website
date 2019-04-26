@@ -97,6 +97,33 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-8" style="margin-bottom: 1rem;">
+                            <div class="media summary-block shadow-sm h-100">
+                                <img src="{{ asset('images/theme/jack.png') }}" class="mr-2" width="200" height="200" alt="icon">
+                                <div class="media-body">
+                                    <h6 class="mb-0 mt-2">Name</h6>
+                                    <p class="total mb-0">Jack Blackborough</p>
+                                    <h6 class="mb-0 mt-2">Born</h6>
+                                    <p class="total mb-0">28th June 2013</p>
+                                    <h6 class="mb-0 mt-2">Birth Weight</h6>
+                                    <p class="total mb-0">7lb 7oz</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-4" style="margin-bottom: 1rem;">
+                            <div class="media summary-block shadow-sm h-100">
+                                <div class="media-body">
+                                    <h6 class="mb-0 mt-2">Total expenses</h6>
+                                    <p class="total mb-0">&pound;40,091.27</p>
+                                    <h6 class="mb-0 mt-2">Number of expenses</h6>
+                                    <p class="total mb-0">1,032</p>
+                                    <h6 class="mb-0 mt-2">Last Expense</h6>
+                                    <p class="total mb-0">Share of shopping, &pound;28.32</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="row mt-4">
                         <div class="col-12">
                             <h4>Total expenses by category</h4>
