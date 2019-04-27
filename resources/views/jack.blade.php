@@ -97,6 +97,33 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row mb-5">
+                        <div class="col-md-4 col-lg-4 col-sm-6 col-12">
+                            <img src="{{ asset('images/theme/jack.png') }}" class="img-fluid rounded mx-auto d-block" alt="icon">
+                        </div>
+                        <div class="col-md-8 col-lg-8 col-sm-6 col-12">
+                            <div class="detail-page-intro">
+                                <div class="row">
+                                    <div class="col-md-6 col-12">
+                                        <h6>Name</h6>
+                                        <p class="data">Jack Blackborough</p>
+                                        <h6>Born</h6>
+                                        <p class="data">28th June 2013 at 05:41</p>
+                                        <h6>Sex & Birth weight</h6>
+                                        <p class="data">Male & 7lb 7oz</p>
+                                    </div>
+                                    <div class="col-md-6 col-12">
+                                        <h6>Total expenses</h6>
+                                        <p class="data">&pound;40,000</p>
+                                        <h6>Number of expenses</h6>
+                                        <p class="data">1,000</p>
+                                        <h6>Largest expenses</h6>
+                                        <p class="data">&pound;1,000</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="col-12 col-sm-12 col-md-6 col-lg-8" style="margin-bottom: 1rem;">
                             <div class="media summary-block shadow-sm h-100">

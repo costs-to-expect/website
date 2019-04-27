@@ -137,6 +137,20 @@ html,body {
                 }
             }
 
+            .detail-page-intro {
+                margin-top: 1rem;
+
+                h6 {
+                    margin-bottom: 0;
+                }
+
+                p.data {
+                    font-size: 1.2rem;
+                    font-weight: $font-weight-bolder;
+                    color: $black;
+                }
+            }
+
             .white-container {
                 background-color: white;
                 border-radius: 0.5rem;
@@ -197,6 +211,15 @@ html,body {
     }
 }
 
+@media (max-width: 992px) {
+    .container-right {
+
+        .detail-page-intro {
+            margin-top: 0 !important;
+        }
+    }
+}
+
 @media (max-width: 768px) {
     .container-right {
         background-image: url("../images/theme/right-sidebar.png");
@@ -214,6 +237,19 @@ html,body {
             .navbar-toggler {
                 border: none;
             }
+        }
+
+        .detail-page-intro {
+            margin-top: 0 !important;
+        }
+    }
+}
+
+@media (max-width: 576px) {
+    .container-right {
+
+        .detail-page-intro {
+            margin-top: 1rem !important;
         }
     }
 }
