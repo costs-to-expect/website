@@ -42,6 +42,9 @@
                             <a class="nav-link active" href="/about">About</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link disabled no-icon" href="">What we count</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="/changelog">Changelog</a>
                         </li>
                     </ul>
@@ -75,6 +78,9 @@
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link active" href="/about">About</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link disabled" href="#">What we count</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="/changelog">Changelog</a>
