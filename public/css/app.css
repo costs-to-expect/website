@@ -9751,8 +9751,13 @@ html, body {
 .container-cte .container-row .container-right .detail-page-intro {
   margin-top: 1rem;
 }
-.container-cte .container-row .container-right .detail-page-intro h6 {
+.container-cte .container-row .container-right .detail-page-intro h5 {
   margin-bottom: 0;
+}
+.container-cte .container-row .container-right .detail-page-intro p.sub-heading {
+  font-size: 0.8rem;
+  margin-bottom: 0;
+  line-height: 1;
 }
 .container-cte .container-row .container-right .detail-page-intro p.data {
   font-size: 1.2rem;

@@ -89,64 +89,43 @@
                                     <img src="{{ asset('images/theme/dashboard.png') }}" width="50" height="50" alt="Screen icon" title="Dashboard" />
                                 </div>
                                 <div class="welcome">
-                                    <small class="text-muted">Welcome to Costs to Expect.com</small>
+                                    <small class="text-muted">First child</small>
                                 </div>
                                 <div class="title">
-                                    <h1>Jack</h1>
+                                    <h1>Jack Blackborough</h1>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="row mb-5">
-                        <div class="col-md-4 col-lg-4 col-sm-6 col-12">
+                        <div class="col-md-3 col-lg-4 col-sm-6 col-12">
                             <img src="{{ asset('images/theme/jack.png') }}" class="img-fluid rounded mx-auto d-block" alt="icon">
                         </div>
-                        <div class="col-md-8 col-lg-8 col-sm-6 col-12">
+                        <div class="col-md-9 col-lg-8 col-sm-6 col-12">
                             <div class="detail-page-intro">
                                 <div class="row">
                                     <div class="col-md-6 col-12">
-                                        <h6>Name</h6>
+                                        <h5>Name</h5>
+                                        <p class="sub-heading text-muted d-none d-md-block">What did we call him?</p>
                                         <p class="data">Jack Blackborough</p>
-                                        <h6>Born</h6>
+                                        <h5>Born</h5>
+                                        <p class="sub-heading text-muted d-none d-md-block">When did he emerge?</p>
                                         <p class="data">28th June 2013 at 05:41</p>
-                                        <h6>Sex & Birth weight</h6>
+                                        <h5>Sex & Birth weight</h5>
+                                        <p class="sub-heading text-muted d-none d-md-block">What are his vital statistics?</p>
                                         <p class="data">Male & 7lb 7oz</p>
                                     </div>
                                     <div class="col-md-6 col-12">
-                                        <h6>Total expenses</h6>
+                                        <h5>Total expenses</h5>
+                                        <p class="sub-heading text-muted d-none d-md-block">How much to raise Jack?</p>
                                         <p class="data">&pound;40,000</p>
-                                        <h6>Number of expenses</h6>
+                                        <h5>Number of expenses</h5>
+                                        <p class="sub-heading text-muted d-none d-md-block">How many purchases?</p>
                                         <p class="data">1,000</p>
-                                        <h6>Largest expenses</h6>
-                                        <p class="data">&pound;1,000</p>
+                                        <h5>Largest expense</h5>
+                                        <p class="sub-heading text-muted d-none d-md-block">The grandest expense?</p>
+                                        <p class="data">&pound;1,000 <small>(Baptism)</small></p>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12 col-sm-12 col-md-6 col-lg-8" style="margin-bottom: 1rem;">
-                            <div class="media summary-block shadow-sm h-100">
-                                <img src="{{ asset('images/theme/jack.png') }}" class="mr-2" width="200" height="200" alt="icon">
-                                <div class="media-body">
-                                    <h6 class="mb-0 mt-2">Name</h6>
-                                    <p class="total mb-0">Jack Blackborough</p>
-                                    <h6 class="mb-0 mt-2">Born</h6>
-                                    <p class="total mb-0">28th June 2013</p>
-                                    <h6 class="mb-0 mt-2">Birth Weight</h6>
-                                    <p class="total mb-0">7lb 7oz</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-sm-12 col-md-6 col-lg-4" style="margin-bottom: 1rem;">
-                            <div class="media summary-block shadow-sm h-100">
-                                <div class="media-body">
-                                    <h6 class="mb-0 mt-2">Total expenses</h6>
-                                    <p class="total mb-0">&pound;40,091.27</p>
-                                    <h6 class="mb-0 mt-2">Number of expenses</h6>
-                                    <p class="total mb-0">1,032</p>
-                                    <h6 class="mb-0 mt-2">Last Expense</h6>
-                                    <p class="total mb-0">Share of shopping, &pound;28.32</p>
                                 </div>
                             </div>
                         </div>

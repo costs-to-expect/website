@@ -140,8 +140,14 @@ html,body {
             .detail-page-intro {
                 margin-top: 1rem;
 
-                h6 {
+                h5 {
                     margin-bottom: 0;
+                }
+
+                p.sub-heading {
+                    font-size: 0.8rem;
+                    margin-bottom: 0;
+                    line-height: 1;
                 }
 
                 p.data {

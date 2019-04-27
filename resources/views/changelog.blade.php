@@ -117,7 +117,7 @@
                             <h3>Added</h3>
 
                             <ul>
-                                <li>Nothing this time.</li>
+                                <li>Initial design for the detail page for Jack.</li>
                             </ul>
 
                             <h3>Changed</h3>
@@ -130,42 +130,12 @@
                                 <li>API requests breaking out of table.</li>
                             </ul>
 
-                            <h3>Fixed</h3>
-
-                            <ul>
-                                <li>Nothing this time.</li>
-                            </ul>
-
-                            <h3>Removed</h3>
-
-                            <ul>
-                                <li>Nothing this time.</li>
-                            </ul>
-
                             <h2>[v1.00.1] - 23rd April 2019</h2>
-
-                            <h3>Added</h3>
-
-                            <ul>
-                                <li>Nothing this time.</li>
-                            </ul>
 
                             <h3>Changed</h3>
 
                             <ul>
                                 <li>Minor content update, added Niall.</li>
-                            </ul>
-
-                            <h3>Fixed</h3>
-
-                            <ul>
-                                <li>Nothing this time.</li>
-                            </ul>
-
-                            <h3>Removed</h3>
-
-                            <ul>
-                                <li>Nothing this time.</li>
                             </ul>
 
                             <h2>[v1.00.0] - 20th April 2019</h2>
@@ -177,24 +147,6 @@
                                 <li>Simple dashboard to show overview of expenses [Sample data].</li>
                                 <li>About page, to provide a little detail on the future service and website.</li>
                                 <li>Changelog, this page, detail every little change.</li>
-                            </ul>
-
-                            <h3>Changed</h3>
-
-                            <ul>
-                                <li>Nothing this time.</li>
-                            </ul>
-
-                            <h3>Fixed</h3>
-
-                            <ul>
-                                <li>Nothing this time.</li>
-                            </ul>
-
-                            <h3>Removed</h3>
-
-                            <ul>
-                                <li>Nothing this time.</li>
                             </ul>
                         </div>
                     </div>
