@@ -8,6 +8,8 @@ $nav-link-disabled-color: #bcbcbc;
 $table-cell-padding: 0.5rem;
 $navbar-light-color: #ffffff;
 
+$brand-purple: #A8369B;
+$brand-grey: #858585;
 
 @import "../../public/node_modules/bootstrap/scss/bootstrap";
 
@@ -57,6 +59,13 @@ html,body {
                     margin-right: -15px;
                     margin-left: -15px;
                     padding-left: 32px;
+                }
+
+                a.nav-link.icon {
+
+                    img {
+                        margin-right: 1rem;
+                    }
                 }
 
                 span.nav-title {
@@ -128,7 +137,27 @@ html,body {
                 }
             }
 
-            .table-white-container {
+            .detail-page-intro {
+                margin-top: 1rem;
+
+                h5 {
+                    margin-bottom: 0;
+                }
+
+                p.sub-heading {
+                    font-size: 0.8rem;
+                    margin-bottom: 0;
+                    line-height: 1;
+                }
+
+                p.data {
+                    font-size: 1.2rem;
+                    font-weight: $font-weight-bolder;
+                    color: $black;
+                }
+            }
+
+            .white-container {
                 background-color: white;
                 border-radius: 0.5rem;
                 border-top: none;
@@ -153,6 +182,13 @@ html,body {
                         color: #645a90;
                         font-weight: bold;
                     }
+                }
+            }
+
+            table.api-requests {
+
+                td {
+                    word-break: break-word;
                 }
             }
 
@@ -181,6 +217,15 @@ html,body {
     }
 }
 
+@media (max-width: 992px) {
+    .container-right {
+
+        .detail-page-intro {
+            margin-top: 0 !important;
+        }
+    }
+}
+
 @media (max-width: 768px) {
     .container-right {
         background-image: url("../images/theme/right-sidebar.png");
@@ -192,11 +237,25 @@ html,body {
             margin-top: 2rem;
         }
 
-        .navbar-light {
+        .navbar {
+            padding: 0.5rem;
 
             .navbar-toggler {
                 border: none;
             }
+        }
+
+        .detail-page-intro {
+            margin-top: 0 !important;
+        }
+    }
+}
+
+@media (max-width: 576px) {
+    .container-right {
+
+        .detail-page-intro {
+            margin-top: 1rem !important;
         }
     }
 }

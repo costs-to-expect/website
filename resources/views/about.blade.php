@@ -22,10 +22,27 @@
                     </div>
                     <ul class="nav flex-column">
                         <li class="nav-item">
+                            <span class="nav-title">The Blackborough Children</span>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link icon" href="/"><img src="{{ asset('images/theme/icon-dashboard.png') }}" width="20" height="20" class="icon" alt="Dashboard" />  Dashboard</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link icon" href="/jack"><img src="{{ asset('images/theme/icon-expenses.png') }}" width="20" height="20" class="icon" alt="Jack" /> Jack</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link icon" href="/niall"><img src="{{ asset('images/theme/icon-expenses.png') }}" width="20" height="20" class="icon" alt="Niall" /> Niall</a>
+                        </li>
+                    </ul>
+                    <ul class="nav flex-column mt-5">
+                        <li class="nav-item">
                             <span class="nav-title">Costs to Expect</span>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" href="/about">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link disabled no-icon" href="">What we count</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/changelog">Changelog</a>
@@ -35,7 +52,7 @@
                 <div class="col-xl-10 col-lg-9 col-md-9 col-sm-12 col-12 container-column container-right d-block">
                     <nav class="navbar navbar-light d-md-none">
                         <a class="navbar-brand" href="/">
-                            <img src="{{ asset('images/theme/logo.png') }}" width="30" height="30" class="d-inline-block align-top" alt="">
+                            <img src="{{ asset('images/theme/logo.png') }}" width="30" height="30" class="d-inline-block align-middle" alt=""><span class="d-none">C</span>osts to Expect.com
                         </a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
                                 aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
@@ -51,16 +68,19 @@
                                     <a class="nav-link" href="/">Dashboard</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link disabled" href="#">Jack</a>
+                                    <a class="nav-link" href="/jack">Jack</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link disabled" href="#">Niall</a>
+                                    <a class="nav-link" href="/niall">Niall</a>
                                 </li>
                                 <li class="nav-item">
                                     <span class="nav-title">Costs to Expect</span>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link active" href="/about">About</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link disabled" href="#">What we count</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="/changelog">Changelog</a>
@@ -72,10 +92,10 @@
                         <div class="col-12">
                             <div class="screen-intro">
                                 <div class="icon">
-                                    <img src="{{ asset('images/theme/logo.png') }}" width="50" height="50" alt="Screen icon" title="Dashboard" />
+                                    <img src="{{ asset('images/theme/info.png') }}" width="50" height="50" alt="Screen icon" title="Dashboard" />
                                 </div>
                                 <div class="welcome">
-                                    <small class="text-muted">Costs to Expect.com</small>
+                                    <small class="text-muted">So, what is Costs to Expect.com</small>
                                 </div>
                                 <div class="title">
                                     <h1>About</h1>
@@ -132,7 +152,7 @@
                             <p class="text-center text-muted footer">
                                 <a href="https://www.costs-to-expect.com">Costs to Expect</a> Copyright &copy; <a href="https://www.deanblackborough.com">Dean Blackborough 2018-2019</a><br />
                                 <a href="https://api.costs-to-expect.com">Costs to Expect API</a> | <a class="disabled" href="/changelog">Changelog</a><br />
-                                <small>v1.00.1 released 23rd April 2019</small>
+                                <small>v1.01.0 released 27th April 2019</small>
                             </p>
                         </div>
                     </div>
