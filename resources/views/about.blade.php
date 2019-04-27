@@ -95,7 +95,7 @@
                                     <img src="{{ asset('images/theme/info.png') }}" width="50" height="50" alt="Screen icon" title="Dashboard" />
                                 </div>
                                 <div class="welcome">
-                                    <small class="text-muted">Costs to Expect.com</small>
+                                    <small class="text-muted">So, what is Costs to Expect.com</small>
                                 </div>
                                 <div class="title">
                                     <h1>About</h1>

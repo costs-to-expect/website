@@ -95,7 +95,7 @@
                                     <img src="{{ asset('images/theme/info.png') }}" width="50" height="50" alt="Screen icon" title="Dashboard" />
                                 </div>
                                 <div class="welcome">
-                                    <small class="text-muted">Costs to Expect.com</small>
+                                    <small class="text-muted">Have there been any updates to the website?</small>
                                 </div>
                                 <div class="title">
                                     <h1>Changelog</h1>
@@ -123,18 +123,18 @@
                             <h3>Added</h3>
 
                             <ul>
-                                <li>Initial design for the detail pages for Jack and Niall.</li>
-                                <li>Disabled menu item for what expenses are counted</li>
+                                <li>The initial design for the detail pages for <code>Jack</code> and <code>Niall</code>.</li>
+                                <li>A <code>disabled</code> menu item to explain what expenses are counted.</li>
                             </ul>
 
                             <h3>Changed</h3>
 
                             <ul>
-                                <li>Minor tweak to the mobile layout, corner image too large.</li>
-                                <li>Some Desktop menu items support icons.</li>
-                                <li>Update to the welcome section on mobile, showing the logo twice.</li>
-                                <li>Blackborough Children menu missing from About and Changelog views.</li>
-                                <li>API requests breaking out of table.</li>
+                                <li>Minor tweak to the mobile layout, the corner background image was too large.</li>
+                                <li>Desktop menu items may support icons.</li>
+                                <li>Update to the welcome section on mobile, I was showing the logo twice.</li>
+                                <li><code>Blackborough Children</code> menu missing from About and Changelog views.</li>
+                                <li>API requests breaking out of the table.</li>
                             </ul>
 
                             <h2>[v1.00.1] - 23rd April 2019</h2>
@@ -142,7 +142,7 @@
                             <h3>Changed</h3>
 
                             <ul>
-                                <li>Minor content update, added Niall.</li>
+                                <li>Minor content update, added <code>Niall</code>.</li>
                             </ul>
 
                             <h2>[v1.00.0] - 20th April 2019</h2>
@@ -150,10 +150,10 @@
                             <h3>Added</h3>
 
                             <ul>
-                                <li>Release the initial design, fully responsive, mobile through to Desktop.</li>
-                                <li>Simple dashboard to show overview of expenses [Sample data].</li>
-                                <li>About page, to provide a little detail on the future service and website.</li>
-                                <li>Changelog, this page, detail every little change.</li>
+                                <li>Released the initial design, fully responsive, Mobile through to Desktop.</li>
+                                <li>Simple dashboard to show an overview of expenses [Sample data].</li>
+                                <li>About page, provides a little detail on the future service and website.</li>
+                                <li>Changelog, this page, detail every change to the website.</li>
                             </ul>
                         </div>
                     </div>
