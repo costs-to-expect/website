@@ -28,10 +28,10 @@
                             <a class="nav-link icon" href="/"><img src="{{ asset('images/theme/icon-dashboard.png') }}" width="20" height="20" class="icon" alt="Dashboard" />  Dashboard</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active icon" href="/jack"><img src="{{ asset('images/theme/icon-expenses-on.png') }}" width="20" height="20" class="icon" alt="Jack" /> Jack</a>
+                            <a class="nav-link icon" href="/jack"><img src="{{ asset('images/theme/icon-expenses.png') }}" width="20" height="20" class="icon" alt="Jack" /> Jack</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link icon" href="/niall"><img src="{{ asset('images/theme/icon-expenses.png') }}" width="20" height="20" class="icon" alt="Niall" /> Niall</a>
+                            <a class="nav-link active icon" href="/niall"><img src="{{ asset('images/theme/icon-expenses-on.png') }}" width="20" height="20" class="icon" alt="Niall" /> Niall</a>
                         </li>
                     </ul>
                     <ul class="nav flex-column mt-5">
@@ -65,10 +65,10 @@
                                     <a class="nav-link" href="/">Dashboard</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link active" href="/jack">Jack</a>
+                                    <a class="nav-link" href="/jack">Jack</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/niall">Niall</a>
+                                    <a class="nav-link active" href="/niall">Niall</a>
                                 </li>
                                 <li class="nav-item">
                                     <span class="nav-title">Costs to Expect</span>
@@ -89,17 +89,17 @@
                                     <img src="{{ asset('images/theme/dashboard.png') }}" width="50" height="50" alt="Screen icon" title="Dashboard" />
                                 </div>
                                 <div class="welcome">
-                                    <small class="text-muted">Our first child</small>
+                                    <small class="text-muted">Our second child</small>
                                 </div>
                                 <div class="title">
-                                    <h1>Jack Blackborough</h1>
+                                    <h1>Niall Blackborough</h1>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col-md-3 col-lg-4 col-sm-6 col-12">
-                            <img src="{{ asset('images/theme/jack.jpg') }}" class="img-fluid rounded mx-auto d-block" alt="icon">
+                            <img src="{{ asset('images/theme/niall.jpg') }}" class="img-fluid rounded mx-auto d-block" alt="icon">
                         </div>
                         <div class="col-md-9 col-lg-8 col-sm-6 col-12">
                             <div class="detail-page-intro">
@@ -107,24 +107,24 @@
                                     <div class="col-md-6 col-12">
                                         <h5>Name</h5>
                                         <p class="sub-heading text-muted d-none d-md-block">What did we call him?</p>
-                                        <p class="data">Jack Blackborough</p>
+                                        <p class="data">Niall Blackborough</p>
                                         <h5>Born</h5>
                                         <p class="sub-heading text-muted d-none d-md-block">When did he emerge?</p>
-                                        <p class="data">28th June 2013 at 05:41</p>
+                                        <p class="data">22nd April 2019 at 17:46</p>
                                         <h5>Sex & Birth weight</h5>
                                         <p class="sub-heading text-muted d-none d-md-block">What are his vital statistics?</p>
-                                        <p class="data">Male & 7lb 7oz</p>
+                                        <p class="data">Male & 7lb 10oz</p>
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <h5>Total expenses</h5>
                                         <p class="sub-heading text-muted d-none d-md-block">How much to raise Jack?</p>
-                                        <p class="data">&pound;40,000</p>
+                                        <p class="data">&pound;673.92</p>
                                         <h5>Number of expenses</h5>
                                         <p class="sub-heading text-muted d-none d-md-block">How many purchases?</p>
-                                        <p class="data">1,000</p>
+                                        <p class="data">25</p>
                                         <h5>Largest expense</h5>
                                         <p class="sub-heading text-muted d-none d-md-block">The grandest expense?</p>
-                                        <p class="data">&pound;1,000 <small>(Baptism)</small></p>
+                                        <p class="data">&pound;409 <small>(Car seat)</small></p>
                                     </div>
                                 </div>
                             </div>
@@ -147,7 +147,7 @@
                                 <div class="media-body">
                                     <h4 class="mt-0">Essential</h4>
                                     <h6 class="mt-0">Expenses that we consider essential in the raising a child</h6>
-                                    <p class="total mb-0">&pound;8,091.27</p>
+                                    <p class="total mb-0">&pound;529.93</p>
                                 </div>
                             </div>
                         </div>
@@ -157,7 +157,7 @@
                                 <div class="media-body">
                                     <h4 class="mt-0">Non-Essential</h4>
                                     <h6 class="mt-0">Optional expenses, expenses that we consider non-essential in raising a child</h6>
-                                    <p class="total mb-0">&pound;31,741.08</p>
+                                    <p class="total mb-0">&pound;143.99</p>
                                 </div>
                             </div>
                         </div>
@@ -167,7 +167,7 @@
                                 <div class="media-body">
                                     <h4 class="mt-0">Hobbies & Interests</h4>
                                     <h6 class="mt-0">Leisure activities</h6>
-                                    <p class="total mb-0">&pound;224.66</p>
+                                    <p class="total mb-0">&pound;0</p>
                                 </div>
                             </div>
                         </div>
@@ -185,7 +185,7 @@
                                 <div class="media-body">
                                     <h4 class="mt-0">February 2019</h4>
                                     <h6 class="mt-0">All expenses for February 2019</h6>
-                                    <p class="total mb-0">&pound;1,121.19</p>
+                                    <p class="total mb-0">&pound;37.60</p>
                                 </div>
                             </div>
                         </div>
@@ -195,7 +195,7 @@
                                 <div class="media-body">
                                     <h4 class="mt-0">March 2019</h4>
                                     <h6 class="mt-0">All expenses for March 2019</h6>
-                                    <p class="total mb-0">&pound;1,121.19</p>
+                                    <p class="total mb-0">&pound;434.44</p>
                                 </div>
                             </div>
                         </div>
@@ -205,7 +205,7 @@
                                 <div class="media-body">
                                     <h4 class="mt-0">April 2019</h4>
                                     <h6 class="mt-0">All expenses for April 2019</h6>
-                                    <p class="total mb-0">&pound;1,121.19</p>
+                                    <p class="total mb-0">&pound;201.88</p>
                                 </div>
                             </div>
                         </div>
@@ -217,7 +217,7 @@
                     </div>
                     <div class="row mt-4">
                         <div class="col-12">
-                            <h4>The 25 most recent expenses for Jack</h4>
+                            <h4>The 25 most recent expenses for Niall</h4>
                         </div>
                     </div>
                     <div class="row">

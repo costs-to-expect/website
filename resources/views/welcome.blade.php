@@ -31,7 +31,7 @@
                             <a class="nav-link icon" href="/jack"><img src="{{ asset('images/theme/icon-expenses.png') }}" width="20" height="20" class="icon" alt="Jack" /> Jack</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link disabled icon" href="#"><img src="{{ asset('images/theme/icon-expenses.png') }}" width="20" height="20" class="icon" alt="Niall" /> Niall</a>
+                            <a class="nav-link icon" href="/niall"><img src="{{ asset('images/theme/icon-expenses.png') }}" width="20" height="20" class="icon" alt="Niall" /> Niall</a>
                         </li>
                     </ul>
                     <ul class="nav flex-column mt-5">
@@ -68,7 +68,7 @@
                                     <a class="nav-link" href="/jack">Jack</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link disabled" href="#">Niall</a>
+                                    <a class="nav-link" href="/niall">Niall</a>
                                 </li>
                                 <li class="nav-item">
                                     <span class="nav-title">Costs to Expect</span>
@@ -107,7 +107,7 @@
                             <div class="media summary-block shadow-sm h-100">
                                 <img src="{{ asset('images/theme/expenses.png') }}" class="mr-2" width="48" height="48" alt="icon">
                                 <div class="media-body">
-                                    <h4 class="mt-0">Jack Blackborough</h4>
+                                    <h4 class="mt-0"><a href="/jack">Jack Blackborough</a></h4>
                                     <h6 class="mt-0">Total expenses <small class="text-muted">From birth, 28th June 2013</small></h6>
                                     <p class="total mb-0">&pound;39,951.29</p>
                                 </div>
@@ -117,7 +117,7 @@
                             <div class="media summary-block shadow-sm h-100">
                                 <img src="{{ asset('images/theme/expenses.png') }}" class="mr-2" width="48" height="48" alt="icon">
                                 <div class="media-body">
-                                    <h4 class="mt-0">Niall Blackborough</h4>
+                                    <h4 class="mt-0"><a href="/niall">Niall Blackborough</a></h4>
                                     <h6 class="mt-0">Total expenses <small class="text-muted">From birth, 22nd April 2019</small></h6>
                                     <p class="total mb-0">&pound;484.42</p>
                                 </div>
