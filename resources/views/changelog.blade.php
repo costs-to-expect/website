@@ -118,6 +118,14 @@
 
                             <hr />
 
+                            <h2>[v1.02.0] - xxth May 2019</h2>
+
+                            <h3>Fixed</h3>
+
+                            <ul>
+                                <li>Typo, Niall's name incorrect on detail page.</li>
+                            </ul>
+
                             <h2>[v1.01.0] - 27th April 2019</h2>
 
                             <h3>Added</h3>

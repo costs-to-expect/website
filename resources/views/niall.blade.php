@@ -123,7 +123,7 @@
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <h5>Total expenses</h5>
-                                        <p class="sub-heading text-muted d-none d-md-block">How much to raise Jack?</p>
+                                        <p class="sub-heading text-muted d-none d-md-block">How much to raise Niall?</p>
                                         <p class="data">&pound;673.92</p>
                                         <h5>Number of expenses</h5>
                                         <p class="sub-heading text-muted d-none d-md-block">How many purchases?</p>
