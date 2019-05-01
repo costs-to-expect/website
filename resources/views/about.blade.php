@@ -42,7 +42,7 @@
                             <a class="nav-link active" href="/about">About</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link disabled no-icon" href="">What we count</a>
+                            <a class="nav-link" href="/what-we-count">What we count?</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/changelog">Changelog</a>
@@ -80,7 +80,7 @@
                                     <a class="nav-link active" href="/about">About</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link disabled" href="#">What we count</a>
+                                    <a class="nav-link" href="/what-we-count">What we count?</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="/changelog">Changelog</a>

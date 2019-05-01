@@ -35,6 +35,10 @@ Route::get('/about', function () {
     return view('about');
 });
 
+Route::get('/what-we-count', function () {
+    return view('what-we-count');
+});
+
 Route::get('/changelog', function () {
     return view('changelog');
 });
