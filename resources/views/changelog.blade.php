@@ -120,6 +120,12 @@
 
                             <h2>[v1.02.0] - xxth May 2019</h2>
 
+                            <h3>Changed</h3>
+
+                            <ul>
+                                <li>The child detail pages now show an expenses summary for the last three years, not three months.</li>
+                            </ul>
+
                             <h3>Fixed</h3>
 
                             <ul>

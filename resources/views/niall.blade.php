@@ -189,9 +189,9 @@
                             <div class="media summary-block shadow-sm h-100">
                                 <img src="{{ asset('images/theme/expenses.png') }}" class="mr-2" width="48" height="48" alt="icon">
                                 <div class="media-body">
-                                    <h4 class="mt-0">February 2019</h4>
-                                    <h6 class="mt-0">All expenses for February 2019</h6>
-                                    <p class="total mb-0">&pound;37.60</p>
+                                    <h4 class="mt-0">2017</h4>
+                                    <h6 class="mt-0">All expenses for 2017</h6>
+                                    <p class="total mb-0">Nill</p>
                                 </div>
                             </div>
                         </div>
@@ -199,9 +199,9 @@
                             <div class="media summary-block shadow-sm h-100">
                                 <img src="{{ asset('images/theme/expenses.png') }}" class="mr-2" width="48" height="48" alt="icon">
                                 <div class="media-body">
-                                    <h4 class="mt-0">March 2019</h4>
-                                    <h6 class="mt-0">All expenses for March 2019</h6>
-                                    <p class="total mb-0">&pound;434.44</p>
+                                    <h4 class="mt-0">2018</h4>
+                                    <h6 class="mt-0">All expenses for 2018</h6>
+                                    <p class="total mb-0">Nill</p>
                                 </div>
                             </div>
                         </div>
@@ -209,9 +209,9 @@
                             <div class="media summary-block shadow-sm h-100">
                                 <img src="{{ asset('images/theme/expenses.png') }}" class="mr-2" width="48" height="48" alt="icon">
                                 <div class="media-body">
-                                    <h4 class="mt-0">April 2019</h4>
-                                    <h6 class="mt-0">All expenses for April 2019</h6>
-                                    <p class="total mb-0">&pound;201.88</p>
+                                    <h4 class="mt-0">2019</h4>
+                                    <h6 class="mt-0">All expenses for 2019</h6>
+                                    <p class="total mb-0">&pound;673.92</p>
                                 </div>
                             </div>
                         </div>
