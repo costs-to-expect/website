@@ -19,8 +19,16 @@ Route::get('/jack', function () {
     return view('jack');
 });
 
+Route::get('/jack/years', function () {
+    return view('jack-years');
+});
+
 Route::get('/niall', function () {
     return view('niall');
+});
+
+Route::get('/niall/years', function () {
+    return view('niall-years');
 });
 
 Route::get('/about', function () {

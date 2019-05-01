@@ -118,7 +118,17 @@
 
                             <hr />
 
+                            <h2>Website is not showing live data yet, in the works!</h2>
+
+                            <hr />
+
                             <h2>[v1.02.0] - xxth May 2019</h2>
+
+                            <h3>Added</h3>
+
+                            <ul>
+                                <li>Initial idea for years summary pages.</li>
+                            </ul>
 
                             <h3>Changed</h3>
 

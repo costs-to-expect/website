@@ -181,7 +181,7 @@
                     </div>
                     <div class="row mt-4">
                         <div class="col-12">
-                            <h4>Expenses for the last three years</h4>
+                            <h4>Expenses for the last three years - <small><a href="/jack/years">View all years</a></small></h4>
                         </div>
                     </div>
                     <div class="row">

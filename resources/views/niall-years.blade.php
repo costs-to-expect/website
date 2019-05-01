@@ -143,45 +143,7 @@
                     </div>
                     <div class="row mt-4">
                         <div class="col-12">
-                            <h4>Total expenses by category</h4>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12 col-sm-6 col-md-6 col-lg-4" style="margin-bottom: 1rem;">
-                            <div class="media summary-block shadow-sm h-100">
-                                <img src="{{ asset('images/theme/expenses.png') }}" class="mr-2" width="48" height="48" alt="icon">
-                                <div class="media-body">
-                                    <h4 class="mt-0">Essential</h4>
-                                    <h6 class="mt-0">Expenses that we consider essential in the raising a child</h6>
-                                    <p class="total mb-0">&pound;529.93</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-sm-6 col-md-6 col-lg-4" style="margin-bottom: 1rem;">
-                            <div class="media summary-block shadow-sm h-100">
-                                <img src="{{ asset('images/theme/expenses.png') }}" class="mr-2" width="48" height="48" alt="icon">
-                                <div class="media-body">
-                                    <h4 class="mt-0">Non-Essential</h4>
-                                    <h6 class="mt-0">Optional expenses, expenses that we consider non-essential in raising a child</h6>
-                                    <p class="total mb-0">&pound;143.99</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-sm-6 col-md-6 col-lg-4" style="margin-bottom: 1rem;">
-                            <div class="media summary-block shadow-sm h-100">
-                                <img src="{{ asset('images/theme/expenses.png') }}" class="mr-2" width="48" height="48" alt="icon">
-                                <div class="media-body">
-                                    <h4 class="mt-0">Hobbies & Interests</h4>
-                                    <h6 class="mt-0">Leisure activities</h6>
-                                    <p class="total mb-0">&pound;0</p>
-                                </div>
-                            </div>
-                        </div>
-                        <hr />
-                    </div>
-                    <div class="row mt-4">
-                        <div class="col-12">
-                            <h4>Expenses for the last three years - <small><a href="/niall/years">View all years</a></small></h4>
+                            <h4>Expenses by year</h4>
                         </div>
                     </div>
                     <div class="row">
@@ -203,14 +165,14 @@
                     </div>
                     <div class="row mt-4">
                         <div class="col-12">
-                            <h4>The 25 most recent expenses for Niall</h4>
+                            <h4>Niall's Expenses for 2019</h4>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-12">
                             <div class="p-3 shadow-sm white-container">
                                 <table class="table table-borderless table-hover">
-                                    <caption>25 most recent expenses</caption>
+                                    <caption>Expenses for 2019</caption>
                                     <thead>
                                     <tr>
                                         <th scope="col">Child</th>
