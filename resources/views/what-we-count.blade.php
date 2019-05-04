@@ -107,7 +107,7 @@
                         <div class="col-12">
                             <p>
                                 This first question you should ask yourself when any source gives you a total,
-                                percentage, increase rate etc. is "how was it reached?". At Costs to Expect we
+                                percentage, increase rate etc. is "how was it reached?" At Costs to Expect we
                                 aim to be as transparent as possible, so, as well as showing all the expenses
                                 that we log for our children, we will tell you what we do and don't count.
                             </>

@@ -135,6 +135,7 @@
 
                             <ul>
                                 <li>The child detail pages now show an expenses summary for the last three years, not three months.</li>
+                                <li>Initial work on making the site dynamic, controllers, layout files etc.</li>
                             </ul>
 
                             <h3>Fixed</h3>

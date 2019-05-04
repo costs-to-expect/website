@@ -32,11 +32,5 @@ Route::get('/niall/years', function () {
 });
 
 Route::get('/about', 'ContentController@about');
-
-Route::get('/what-we-count', function () {
-    return view('what-we-count');
-});
-
-Route::get('/changelog', function () {
-    return view('changelog');
-});
+Route::get('/what-we-count', 'ContentController@whatWeCount');
+Route::get('/changelog', 'ContentController@changelog');

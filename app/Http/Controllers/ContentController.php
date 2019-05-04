@@ -25,4 +25,30 @@ class ContentController extends BaseController
             []
         );
     }
+
+    /**
+     * What we count content page
+     *
+     * @return View
+     */
+    public function whatWeCount(): View
+    {
+        return view(
+            'what-we-count',
+            []
+        );
+    }
+
+    /**
+     * Changelog
+     *
+     * @return View
+     */
+    public function changelog(): View
+    {
+        return view(
+            'changelog',
+            []
+        );
+    }
 }
