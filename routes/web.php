@@ -31,9 +31,7 @@ Route::get('/niall/years', function () {
     return view('niall-years');
 });
 
-Route::get('/about', function () {
-    return view('about');
-});
+Route::get('/about', 'ContentController@about');
 
 Route::get('/what-we-count', function () {
     return view('what-we-count');
