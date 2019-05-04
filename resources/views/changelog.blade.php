@@ -118,7 +118,7 @@
 
                             <hr />
 
-                            <h2>Website is not showing live data yet, in the works!</h2>
+                            <h2>The website is not showing live data, in the works, planned for v1.04.0!</h2>
 
                             <hr />
 
@@ -128,6 +128,7 @@
 
                             <ul>
                                 <li>Initial idea for years summary pages.</li>
+                                <li>What do we count? content page.</li>
                             </ul>
 
                             <h3>Changed</h3>
