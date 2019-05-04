@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Config;
 use Illuminate\View\View;
 use Illuminate\Routing\Controller as BaseController;
 
@@ -22,7 +23,19 @@ class DashboardController extends BaseController
     {
         return view(
             'dashboard',
-            []
+            [
+                'config' => $this->configProperties()
+            ]
         );
+    }
+
+    /**
+     * Return the config properties
+     *
+     * @return array
+     */
+    private function configProperties()
+    {
+        return Config::get('web.app');
     }
 }

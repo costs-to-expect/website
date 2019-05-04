@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Config;
 use Illuminate\View\View;
 use Illuminate\Routing\Controller as BaseController;
 
@@ -22,7 +23,9 @@ class ContentController extends BaseController
     {
         return view(
             'about',
-            []
+            [
+                'config' => $this->configProperties()
+            ]
         );
     }
 
@@ -35,7 +38,9 @@ class ContentController extends BaseController
     {
         return view(
             'what-we-count',
-            []
+            [
+                'config' => $this->configProperties()
+            ]
         );
     }
 
@@ -48,7 +53,19 @@ class ContentController extends BaseController
     {
         return view(
             'changelog',
-            []
+            [
+                'config' => $this->configProperties()
+            ]
         );
+    }
+
+    /**
+     * Return the config properties
+     *
+     * @return array
+     */
+    private function configProperties()
+    {
+        return Config::get('web.app');
     }
 }

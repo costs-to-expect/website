@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Config;
 use Illuminate\View\View;
 use Illuminate\Routing\Controller as BaseController;
 
@@ -22,7 +23,9 @@ class ChildController extends BaseController
     {
         return view(
             'jack',
-            []
+            [
+                'config' => $this->configProperties()
+            ]
         );
     }
 
@@ -35,7 +38,9 @@ class ChildController extends BaseController
     {
         return view(
             'niall',
-            []
+            [
+                'config' => $this->configProperties()
+            ]
         );
     }
 
@@ -48,7 +53,9 @@ class ChildController extends BaseController
     {
         return view(
             'jack-years',
-            []
+            [
+                'config' => $this->configProperties()
+            ]
         );
     }
 
@@ -61,7 +68,19 @@ class ChildController extends BaseController
     {
         return view(
             'niall-years',
-            []
+            [
+                'config' => $this->configProperties()
+            ]
         );
+    }
+
+    /**
+     * Return the config properties
+     *
+     * @return array
+     */
+    private function configProperties()
+    {
+        return Config::get('web.app');
     }
 }
