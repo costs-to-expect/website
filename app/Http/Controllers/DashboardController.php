@@ -24,7 +24,8 @@ class DashboardController extends BaseController
         return view(
             'dashboard',
             [
-                'config' => $this->configProperties()
+                'config' => $this->configProperties(),
+                'menus' => $this->menus()
             ]
         );
     }
@@ -34,8 +35,18 @@ class DashboardController extends BaseController
      *
      * @return array
      */
-    private function configProperties()
+    private function configProperties(): array
     {
         return Config::get('web.app');
+    }
+
+    /**
+     * Return the menus
+     *
+     * @return array
+     */
+    private function menus(): array
+    {
+        return Config::get('web.menus');
     }
 }

@@ -15,13 +15,13 @@ return [
             [
                 'name' => 'Jack',
                 'title' => 'Dashboard for Jack',
-                'icon' => 'icon-dashboard',
+                'icon' => 'icon-expenses',
                 'uri' => '/jack'
             ],
             [
                 'name' => 'Niall',
                 'title' => 'Dashboard for Niall',
-                'icon' => 'icon-dashboard',
+                'icon' => 'icon-expenses',
                 'uri' => '/niall'
             ]
         ]
