@@ -113,6 +113,7 @@
                             <ul>
                                 <li>Initial idea for years summary pages.</li>
                                 <li>What do we count? content page.</li>
+                                <li>Menu view components to generate the site menus.</li>
                             </ul>
 
                             <h3>Changed</h3>
