@@ -24,7 +24,9 @@ class ChildController extends BaseController
         return view(
             'jack',
             [
-                'config' => $this->configProperties()
+                'config' => $this->configProperties(),
+                'menus' => $this->menus(),
+                'active' => '/jack'
             ]
         );
     }
@@ -39,7 +41,9 @@ class ChildController extends BaseController
         return view(
             'niall',
             [
-                'config' => $this->configProperties()
+                'config' => $this->configProperties(),
+                'menus' => $this->menus(),
+                'active' => '/niall'
             ]
         );
     }
@@ -54,7 +58,9 @@ class ChildController extends BaseController
         return view(
             'jack-years',
             [
-                'config' => $this->configProperties()
+                'config' => $this->configProperties(),
+                'menus' => $this->menus(),
+                'active' => '/jack'
             ]
         );
     }
@@ -69,7 +75,9 @@ class ChildController extends BaseController
         return view(
             'niall-years',
             [
-                'config' => $this->configProperties()
+                'config' => $this->configProperties(),
+                'menus' => $this->menus(),
+                'active' => '/niall'
             ]
         );
     }
@@ -82,5 +90,15 @@ class ChildController extends BaseController
     private function configProperties()
     {
         return Config::get('web.app');
+    }
+
+    /**
+     * Return the menus
+     *
+     * @return array
+     */
+    private function menus(): array
+    {
+        return Config::get('web.menus');
     }
 }

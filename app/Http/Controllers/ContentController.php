@@ -24,7 +24,9 @@ class ContentController extends BaseController
         return view(
             'about',
             [
-                'config' => $this->configProperties()
+                'config' => $this->configProperties(),
+                'menus' => $this->menus(),
+                'active' => '/about'
             ]
         );
     }
@@ -39,7 +41,9 @@ class ContentController extends BaseController
         return view(
             'what-we-count',
             [
-                'config' => $this->configProperties()
+                'config' => $this->configProperties(),
+                'menus' => $this->menus(),
+                'active' => '/what-we-count'
             ]
         );
     }
@@ -54,7 +58,9 @@ class ContentController extends BaseController
         return view(
             'changelog',
             [
-                'config' => $this->configProperties()
+                'config' => $this->configProperties(),
+                'menus' => $this->menus(),
+                'active' => '/changelog'
             ]
         );
     }
@@ -67,5 +73,15 @@ class ContentController extends BaseController
     private function configProperties()
     {
         return Config::get('web.app');
+    }
+
+    /**
+     * Return the menus
+     *
+     * @return array
+     */
+    private function menus(): array
+    {
+        return Config::get('web.menus');
     }
 }

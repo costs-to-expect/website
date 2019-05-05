@@ -21,32 +21,24 @@
                         <a href="/"><img src="{{ asset('images/theme/logo-190.png') }}" width="64" height="64" alt="Logo" title="Costs to Expect" /></a>
                     </div>
                     <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <span class="nav-title">The Blackborough Children</span>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link icon" href="/"><img src="{{ asset('images/theme/icon-dashboard.png') }}" width="20" height="20" class="icon" alt="Dashboard" />  Dashboard</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link icon" href="/jack"><img src="{{ asset('images/theme/icon-expenses.png') }}" width="20" height="20" class="icon" alt="Jack" /> Jack</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active icon" href="/niall"><img src="{{ asset('images/theme/icon-expenses-on.png') }}" width="20" height="20" class="icon" alt="Niall" /> Niall</a>
-                        </li>
+                        @include(
+                            'component.site-menu',
+                            [
+                                'title' => $menus['children']['title'],
+                                'active' => $active,
+                                'items' => $menus['children']['items']
+                            ]
+                        )
                     </ul>
                     <ul class="nav flex-column mt-5">
-                        <li class="nav-item">
-                            <span class="nav-title">Costs to Expect</span>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/about">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/what-we-count">What we count?</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link no-icon" href="/changelog">Changelog</a>
-                        </li>
+                        @include(
+                            'component.site-menu',
+                            [
+                                'title' => $menus['site']['title'],
+                                'active' => $active,
+                                'items' => $menus['site']['items']
+                            ]
+                        )
                     </ul>
                 </div>
                 <div class="col-xl-10 col-lg-9 col-md-9 col-sm-12 col-12 container-column container-right d-block">
@@ -61,30 +53,22 @@
 
                         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                                <li class="nav-item">
-                                    <span class="nav-title">Blackborough Children</span>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="/">Dashboard</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="/jack">Jack</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link active" href="/niall">Niall</a>
-                                </li>
-                                <li class="nav-item">
-                                    <span class="nav-title">Costs to Expect</span>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="/about">About</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="/what-we-count">What we count?</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="/changelog">Changelog</a>
-                                </li>
+                                @include(
+                                    'component.site-mobile-menu',
+                                    [
+                                        'title' => $menus['children']['title'],
+                                        'active' => $active,
+                                        'items' => $menus['children']['items']
+                                    ]
+                                )
+                                @include(
+                                    'component.site-mobile-menu',
+                                    [
+                                        'title' => $menus['site']['title'],
+                                        'active' => $active,
+                                        'items' => $menus['site']['items']
+                                    ]
+                                )
                             </ul>
                         </div>
                     </nav>

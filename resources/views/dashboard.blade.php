@@ -25,7 +25,7 @@
                             'component.site-menu',
                             [
                                 'title' => $menus['children']['title'],
-                                'active' => '/',
+                                'active' => $active,
                                 'items' => $menus['children']['items']
                             ]
                         )
@@ -35,7 +35,7 @@
                             'component.site-menu',
                             [
                                 'title' => $menus['site']['title'],
-                                'active' => '/',
+                                'active' => $active,
                                 'items' => $menus['site']['items']
                             ]
                         )
@@ -57,7 +57,7 @@
                                     'component.site-mobile-menu',
                                     [
                                         'title' => $menus['children']['title'],
-                                        'active' => '/',
+                                        'active' => $active,
                                         'items' => $menus['children']['items']
                                     ]
                                 )
@@ -65,7 +65,7 @@
                                     'component.site-mobile-menu',
                                     [
                                         'title' => $menus['site']['title'],
-                                        'active' => '/',
+                                        'active' => $active,
                                         'items' => $menus['site']['items']
                                     ]
                                 )

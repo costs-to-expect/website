@@ -25,7 +25,8 @@ class DashboardController extends BaseController
             'dashboard',
             [
                 'config' => $this->configProperties(),
-                'menus' => $this->menus()
+                'menus' => $this->menus(),
+                'active' => '/'
             ]
         );
     }
