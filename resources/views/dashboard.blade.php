@@ -45,7 +45,7 @@
                             <a class="nav-link" href="/what-we-count">What we count?</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link no-icon" href="/changelog">Changelog</a>
+                            <a class="nav-link" href="/changelog">Changelog</a>
                         </li>
                     </ul>
                 </div>
