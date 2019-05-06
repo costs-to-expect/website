@@ -185,6 +185,38 @@ html,body {
                 }
             }
 
+            .no-radius-top {
+                border-top-left-radius: 0;
+                border-top-right-radius: 0;
+            }
+
+            .table-pagination {
+
+                a.btn-primary {
+                    font-weight: 600;
+                    color: #000000;
+                    border-radius: 1rem;
+                    border: 1px solid #DADADA;
+                    background-color: #F6F5F8;
+                    padding: 0.2rem 1rem;
+
+                    &:hover {
+                        background-color: #DADADA;
+                        border: 1px solid #bebebe;
+                    }
+                }
+
+                a.active {
+                    background-color: #A8369B;
+                    color: #ffffff;
+
+                    &:hover {
+                        background-color: #A8369B;
+                        color: #ffffff;
+                    }
+                }
+            }
+
             table.api-requests {
 
                 td {

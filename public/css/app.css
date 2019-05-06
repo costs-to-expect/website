@@ -9787,6 +9787,30 @@ html, body {
   color: #645a90;
   font-weight: bold;
 }
+.container-cte .container-row .container-right .no-radius-top {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+.container-cte .container-row .container-right .table-pagination a.btn-primary {
+  font-weight: 600;
+  color: #000000;
+  border-radius: 1rem;
+  border: 1px solid #DADADA;
+  background-color: #F6F5F8;
+  padding: 0.2rem 1rem;
+}
+.container-cte .container-row .container-right .table-pagination a.btn-primary:hover {
+  background-color: #DADADA;
+  border: 1px solid #bebebe;
+}
+.container-cte .container-row .container-right .table-pagination a.active {
+  background-color: #A8369B;
+  color: #ffffff;
+}
+.container-cte .container-row .container-right .table-pagination a.active:hover {
+  background-color: #A8369B;
+  color: #ffffff;
+}
 .container-cte .container-row .container-right table.api-requests td {
   word-break: break-word;
 }
