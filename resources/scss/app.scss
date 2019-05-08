@@ -289,6 +289,17 @@ html,body {
         .detail-page-intro {
             margin-top: 1rem !important;
         }
+
+        .table-pagination {
+
+            div.pages {
+                text-align: center;
+            }
+
+            div.per-page {
+                padding-top: 0.5rem;
+            }
+        }
     }
 }
 

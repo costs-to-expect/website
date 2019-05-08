@@ -9859,6 +9859,12 @@ html, body {
   .container-right .detail-page-intro {
     margin-top: 1rem !important;
   }
+  .container-right .table-pagination div.pages {
+    text-align: center;
+  }
+  .container-right .table-pagination div.per-page {
+    padding-top: 0.5rem;
+  }
 }
 
 /*# sourceMappingURL=app.css.map */

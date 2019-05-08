@@ -128,6 +128,9 @@
                     <div class="row mt-4">
                         <div class="col-12">
                             <h4>Total expenses by category</h4>
+
+                            <p>We group expenses into three core categories, these are the totals for each category,
+                                select a category for more detail.</p>
                         </div>
                     </div>
                     <div class="row">
@@ -166,6 +169,8 @@
                     <div class="row mt-4">
                         <div class="col-12">
                             <h4>Expenses for the last three years - <small><a href="/jack/years">View all years</a></small></h4>
+
+                            <p>Total expenses for the last three years, select all years for a complete listing.</p>
                         </div>
                     </div>
                     <div class="row">
@@ -208,6 +213,8 @@
                     <div class="row mt-4">
                         <div class="col-12">
                             <h4>The 25 most recent expenses for Jack</h4>
+
+                            <p>These table below lists the last 25 expenses we have logged for Jack, to see more select a year or view all years.</p>
                         </div>
                     </div>
                     <div class="row">

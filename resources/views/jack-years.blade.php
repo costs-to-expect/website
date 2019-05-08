@@ -128,6 +128,8 @@
                     <div class="row mt-4">
                         <div class="col-12">
                             <h4>Expenses by year</h4>
+
+                            <p>These are the totals for each year, select a year to see all the expenses for the selected year.</p>
                         </div>
                     </div>
                     <div class="row">
@@ -210,10 +212,18 @@
                     <div class="row mt-4">
                         <div class="col-12">
                             <h4>Jack's expenses for 2019</h4>
+
+                            <p>The table below lists all the expenses we logged for Jack in 2019.</p>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-12">
+                            <div class="table-pagination p-3">
+                                <div class="row">
+                                    <div class="pages col-12 col-sm-10 col-xl-11"><a class="btn btn-primary disabled"><</a> <a class="btn btn-primary">1</a> <a class="btn btn-primary active">2</a> <a class="btn btn-primary">3</a> <a class="btn btn-primary">120</a> <a class="btn btn-primary">></a></div>
+                                    <div class="per-page col-12 col-sm-2 col-xl-1"><form class="form-inline"><select class="form-control form-control-sm"><option>100</option></select></form></div>
+                                </div>
+                            </div>
                             <div class="p-3 shadow-sm white-container">
                                 <table class="table table-borderless table-hover">
                                     <caption>Expenses for 2019</caption>
