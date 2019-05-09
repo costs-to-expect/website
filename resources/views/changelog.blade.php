@@ -112,24 +112,24 @@
                             <h3>Added</h3>
 
                             <ul>
-                                <li>Initial idea for years summary pages.</li>
+                                <li>The initial idea for years summary pages.</li>
                                 <li>What do we count? content page.</li>
                                 <li>Menu view components to generate the site menus.</li>
                                 <li>Content after headings to give a small overview of data.</li>
-                                <li>Initial idea for pagination.</li>
+                                <li>The initial idea for pagination.</li>
                             </ul>
 
                             <h3>Changed</h3>
 
                             <ul>
                                 <li>The child detail pages now show an expenses summary for the last three years, not three months.</li>
-                                <li>Initial work on making the site dynamic, controllers, layout files etc.</li>
+                                <li>The initial work on making the site dynamic, controllers, layout files etc.</li>
                             </ul>
 
                             <h3>Fixed</h3>
 
                             <ul>
-                                <li>Typo, Niall's name incorrect on detail page, shown as Jack.</li>
+                                <li>Typo, Niall's name incorrect on the detail page, shown as Jack.</li>
                             </ul>
 
                             <h2>[v1.01.0] - 27th April 2019</h2>
