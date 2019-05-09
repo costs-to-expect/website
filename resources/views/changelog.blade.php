@@ -107,6 +107,20 @@
 
                             <hr />
 
+                            <h2>[v1.03.0] - xxth May 2019</h2>
+
+                            <h3>Added</h3>
+
+                            <ul>
+                                <li></li>
+                            </ul>
+
+                            <h3>Changed</h3>
+
+                            <ul>
+                                <li></li>
+                            </ul>
+
                             <h2>[v1.02.0] - 9th May 2019</h2>
 
                             <h3>Added</h3>
