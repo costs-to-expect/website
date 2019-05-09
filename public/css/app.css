@@ -9670,6 +9670,10 @@ html, body {
   height: 100%;
 }
 
+.form-control {
+  border-radius: 1rem;
+}
+
 .container-cte {
   height: 100%;
 }

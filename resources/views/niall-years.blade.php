@@ -151,7 +151,7 @@
                     </div>
                     <div class="row mt-4">
                         <div class="col-12">
-                            <h4>Niall's Expenses for 2019</h4>
+                            <h4>Niall's Expenses for 2019 - <small class="text-muted">50 results</small></h4>
 
                             <p>The table below lists all the expenses we logged for Niall in 2019.</p>
                         </div>

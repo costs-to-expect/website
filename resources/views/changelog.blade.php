@@ -102,11 +102,12 @@
 
                             <hr />
 
-                            <h2>The website is not showing live data, in the works, planned for v1.04.0!</h2>
+                            <h2>The website is not showing live data, calling the API is in the works,
+                                planned for v1.04.0!</h2>
 
                             <hr />
 
-                            <h2>[v1.02.0] - xxth May 2019</h2>
+                            <h2>[v1.02.0] - 9th May 2019</h2>
 
                             <h3>Added</h3>
 
@@ -114,6 +115,8 @@
                                 <li>Initial idea for years summary pages.</li>
                                 <li>What do we count? content page.</li>
                                 <li>Menu view components to generate the site menus.</li>
+                                <li>Content after headings to give a small overview of data.</li>
+                                <li>Initial idea for pagination.</li>
                             </ul>
 
                             <h3>Changed</h3>
@@ -126,7 +129,7 @@
                             <h3>Fixed</h3>
 
                             <ul>
-                                <li>Typo, Niall's name incorrect on detail page.</li>
+                                <li>Typo, Niall's name incorrect on detail page, shown as Jack.</li>
                             </ul>
 
                             <h2>[v1.01.0] - 27th April 2019</h2>

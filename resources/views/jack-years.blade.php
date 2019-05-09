@@ -211,7 +211,7 @@
                     </div>
                     <div class="row mt-4">
                         <div class="col-12">
-                            <h4>Jack's expenses for 2019</h4>
+                            <h4>Jack's expenses for 2019 - <small class="text-muted">1000 results</small></h4>
 
                             <p>The table below lists all the expenses we logged for Jack in 2019.</p>
                         </div>

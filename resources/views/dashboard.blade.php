@@ -90,6 +90,8 @@
                     <div class="row mt-4">
                         <div class="col-12">
                             <h4>Total expenses to date</h4>
+
+                            <p>Total expenses for each child to date, select a child to see further detail.</p>
                         </div>
                     </div>
                     <div class="row">
@@ -128,6 +130,8 @@
                     <div class="row mt-4">
                         <div class="col-12">
                             <h4>Expenses for current year (2019)</h4>
+
+                            <p>Sum of expenses for the current year, select to see the total for each year.</p>
                         </div>
                     </div>
                     <div class="row">
@@ -135,8 +139,8 @@
                             <div class="media summary-block shadow-sm h-100">
                                 <img src="{{ asset('images/theme/expenses.png') }}" class="mr-2" width="48" height="48" alt="icon">
                                 <div class="media-body">
-                                    <h4 class="mt-0">Jack Blackborough</h4>
-                                    <h6 class="mt-0">2019 <small class="text-muted">Expenses in 2019</small></h6>
+                                    <h4 class="mt-0"><a href="/jack/years">Jack Blackborough</a></h4>
+                                    <h6 class="mt-0">2019 <small class="text-muted">All expenses in 2019</small></h6>
                                     <p class="total mb-0">&pound;1,121.19</p>
                                 </div>
                             </div>
@@ -145,8 +149,8 @@
                             <div class="media summary-block shadow-sm h-100">
                                 <img src="{{ asset('images/theme/expenses.png') }}" class="mr-2" width="48" height="48" alt="icon">
                                 <div class="media-body">
-                                    <h4 class="mt-0">Niall Blackborough</h4>
-                                    <h6 class="mt-0">2019 <small class="text-muted">Expenses in 2019</small></h6>
+                                    <h4 class="mt-0"><a href="/niall/years">Niall Blackborough</a></h4>
+                                    <h6 class="mt-0">2019 <small class="text-muted">All expenses in 2019</small></h6>
                                     <p class="total mb-0">&pound;484.42</p>
                                 </div>
                             </div>
@@ -156,7 +160,7 @@
                                 <img src="{{ asset('images/theme/expenses.png') }}" class="mr-2" width="48" height="48" alt="icon">
                                 <div class="media-body">
                                     <h4 class="mt-0">Blackborough Children</h4>
-                                    <h6 class="mt-0">2019 <small class="text-muted">Total expenses in 2019</small></h6>
+                                    <h6 class="mt-0">2019 <small class="text-muted">All expenses in 2019</small></h6>
                                     <p class="total mb-0">&pound;1,605.61</p>
                                 </div>
                             </div>
@@ -170,6 +174,9 @@
                     <div class="row mt-4">
                         <div class="col-12">
                             <h4>The 25 most recent expenses for both children</h4>
+
+                            <p>These table below lists the last 25 expenses we have logged for both children, to see more,
+                                select a child above.</p>
                         </div>
                     </div>
                     <div class="row">
