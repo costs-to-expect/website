@@ -11,22 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'DashboardController@index');
 
-Route::get('/jack', function () {
-    return view('jack');
-});
+Route::get('/jack', 'ChildController@jack');
+Route::get('/niall', 'ChildController@niall');
+Route::get('/jack/years', 'ChildController@yearsForJack');
+Route::get('/niall/years', 'ChildController@yearsForNiall');
 
-Route::get('/niall', function () {
-    return view('niall');
-});
-
-Route::get('/about', function () {
-    return view('about');
-});
-
-Route::get('/changelog', function () {
-    return view('changelog');
-});
+Route::get('/about', 'ContentController@about');
+Route::get('/what-we-count', 'ContentController@whatWeCount');
+Route::get('/changelog', 'ContentController@changelog');

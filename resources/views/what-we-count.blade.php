@@ -11,7 +11,7 @@
         <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('images/theme/favicon-180.png') }}">
         <meta name="msapplication-TileColor" content="#FFFFFF">
         <meta name="msapplication-TileImage" content="{{ asset('images/theme/favicon-144.png') }}">
-        <title>Changelog: Costs to Expect</title>
+        <title>About: Costs to Expect</title>
     </head>
     <body>
         <div class="container-fluid container-cte">
@@ -75,100 +75,93 @@
                     <div class="row mb-3">
                         <div class="col-12">
                             <div class="screen-intro">
-                                <div class="icon d-none d-md-block">
+                                <div class="icon">
                                     <img src="{{ asset('images/theme/info.png') }}" width="50" height="50" alt="Screen icon" title="Dashboard" />
                                 </div>
                                 <div class="welcome">
-                                    <small class="text-muted">Have there been any updates to the website?</small>
+                                    <small class="text-muted">How do we arrive at the figures?</small>
                                 </div>
                                 <div class="title">
-                                    <h1>Changelog</h1>
+                                    <h1>What we count?</h1>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="row content mt-3">
                         <div class="col-12">
-                            <h2>Releases</h2>
+                            <p>
+                                This first question you should ask yourself when any source gives you a total,
+                                percentage, increase rate etc. is "how was it reached?" At Costs to Expect we
+                                aim to be as transparent as possible, so, as well as showing all the expenses
+                                that we log for our children, we will tell you what we do and don't count.
+                            </>
 
-                            <p>The changelog for the Costs to Expect service, we try not to say
-                                <code>bug fixes and improvements</code>, we may on occasion not fully detail a
-                                change or fix if we don't feel it is necessary, however, we will always try to be as
-                                open as possible.</p>
+                            <h2>What expenses do we count?</h2>
 
-                            <p>The changelog for the Costs to Expect API can be found over on
-                                <a href="https://github.com/costs-to-expect/api/blob/master/CHANGELOG.md">GitHub</a>,
-                                the API changelog details every change, the API is Open Source.</p>
+                            <p>
+                                In short, as much as we feel makes sense; if the expense is a direct result of
+                                the child being born, then it probably gets counted. When it comes to categorising
+                                any expense, if the expense is necessary for the child to survive, grow, gain
+                                knowledge and generally be happy, it goes in the Essential category, and everything
+                                else is either for the Non-Essential or  Hobbies and Interests categories.
+                            </p>
 
-                            <hr />
+                            <h2>What do we exclude?</h2>
 
-                            <h2>The website is not showing live data, calling the API is in the works,
-                                planned for v1.04.0!</h2>
+                            <p>
+                                Any expenses that we would make regardless of the children, expenses where the
+                                decision barely included taking the child into account or expenses that would be
+                                difficult to record reliably.
+                            </p>
 
-                            <hr />
+                            <p>
+                                How about some examples?
+                            </p>
 
-                            <h2>[v1.02.0] - 9th May 2019</h2>
+                            <h3>Mortgage and rent</h3>
 
-                            <h3>Added</h3>
+                            <p>
+                                We live in the house we do because we want/need
+                                the space; it was not a decision we made for the children. You could argue that when
+                                we buy a larger house, we should include the 'additional' cost but in my opinion
+                                that is short-sighted, when the children move out we still have all the value,
+                                nothing was lost.
+                            </p>
 
-                            <ul>
-                                <li>The initial idea for years summary pages.</li>
-                                <li>What do we count? content page.</li>
-                                <li>Menu view components to generate the site menus.</li>
-                                <li>Content after headings to give a small overview of data.</li>
-                                <li>The initial idea for pagination.</li>
-                            </ul>
+                            <h3>Water, Gas, Electric, Internet</h3>
 
-                            <h3>Changed</h3>
+                            <p>
+                                Until my children start excessively using one
+                                of these resources, I'm not interested in logging it. If you are intent on recording
+                                a portion of these expenses, they are predictable historically available for most
+                                regions, so it isn't an issue that they are not within our data.
+                            </p>
 
-                            <ul>
-                                <li>The child detail pages now show an expenses summary for the last three years, not three months.</li>
-                                <li>The initial work on making the site dynamic, controllers, layout files etc.</li>
-                            </ul>
+                            <h3>Fuel</h3>
 
-                            <h3>Fixed</h3>
+                            <p>
+                                If and when I start acting as a taxi service (not something I
+                                am planning becoming part of my role as a Father), I may record expenses if the
+                                journey is purely for the child.
+                            </p>
 
-                            <ul>
-                                <li>Typo, Niall's name incorrect on the detail page, shown as Jack.</li>
-                            </ul>
+                            <h2>Other questions</h2>
 
-                            <h2>[v1.01.0] - 27th April 2019</h2>
+                            <p>I will list the answers to any additional questions here.</p>
 
-                            <h3>Added</h3>
+                            <p>We will update this page as complexities arise, now that we have a second child we
+                                have to think about transfer or ownership and shared expenses.</p>
 
-                            <ul>
-                                <li>The initial design for the detail pages for <code>Jack</code> and <code>Niall</code>.</li>
-                                <li>A <code>disabled</code> menu item to explain what expenses are counted.</li>
-                            </ul>
+                            <h3>Share of shopping?</h3>
 
-                            <h3>Changed</h3>
-
-                            <ul>
-                                <li>Minor tweak to the mobile layout, the corner background image was too large.</li>
-                                <li>Desktop menu items may support icons.</li>
-                                <li>Update to the welcome section on mobile, I was showing the logo twice.</li>
-                                <li><code>Blackborough Children</code> menu missing from About and Changelog views.</li>
-                                <li>API requests breaking out of the table.</li>
-                            </ul>
-
-                            <h2>[v1.00.1] - 23rd April 2019</h2>
-
-                            <h3>Changed</h3>
-
-                            <ul>
-                                <li>Minor content update, added <code>Niall</code>.</li>
-                            </ul>
-
-                            <h2>[v1.00.0] - 20th April 2019</h2>
-
-                            <h3>Added</h3>
-
-                            <ul>
-                                <li>Released the initial design, fully responsive, Mobile through to Desktop.</li>
-                                <li>Simple dashboard to show an overview of expenses [Sample data].</li>
-                                <li>About page, provides a little detail on the future service and website.</li>
-                                <li>Changelog, this page, detail every change to the website.</li>
-                            </ul>
+                            <p>
+                                Periodically, we do a review of our general shopping receipts, and we assign a
+                                percentage to each child, these percentages get bumped when we feel a change is
+                                necessary. You may disagree with the portions, however; they are reviewed, luckily
+                                though, we record the total expense and not just the actualised expense, later the
+                                website will allow you to adjust these to what you feel is appropriate for your
+                                family.
+                            </p>
                         </div>
                     </div>
                     <div class="row mt-5 mb-5">

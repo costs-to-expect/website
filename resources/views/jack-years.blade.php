@@ -127,10 +127,9 @@
                     </div>
                     <div class="row mt-4">
                         <div class="col-12">
-                            <h4>Total expenses by category</h4>
+                            <h4>Expenses by year</h4>
 
-                            <p>We group expenses into three core categories, these are the totals for each category,
-                                select a category for more detail.</p>
+                            <p>These are the totals for each year, select a year to see all the expenses for the selected year.</p>
                         </div>
                     </div>
                     <div class="row">
@@ -138,9 +137,9 @@
                             <div class="media summary-block shadow-sm h-100">
                                 <img src="{{ asset('images/theme/expenses.png') }}" class="mr-2" width="48" height="48" alt="icon">
                                 <div class="media-body">
-                                    <h4 class="mt-0">Essential</h4>
-                                    <h6 class="mt-0">Expenses that we consider essential in the raising a child</h6>
-                                    <p class="total mb-0">&pound;8,091.27</p>
+                                    <h4 class="mt-0">2013</h4>
+                                    <h6 class="mt-0">All expenses for 2013</h6>
+                                    <p class="total mb-0">&pound;3,153.45</p>
                                 </div>
                             </div>
                         </div>
@@ -148,9 +147,9 @@
                             <div class="media summary-block shadow-sm h-100">
                                 <img src="{{ asset('images/theme/expenses.png') }}" class="mr-2" width="48" height="48" alt="icon">
                                 <div class="media-body">
-                                    <h4 class="mt-0">Non-Essential</h4>
-                                    <h6 class="mt-0">Optional expenses, expenses that we consider non-essential in raising a child</h6>
-                                    <p class="total mb-0">&pound;31,741.08</p>
+                                    <h4 class="mt-0">2014</h4>
+                                    <h6 class="mt-0">All expenses for 2014</h6>
+                                    <p class="total mb-0">&pound;5,706.38</p>
                                 </div>
                             </div>
                         </div>
@@ -158,22 +157,22 @@
                             <div class="media summary-block shadow-sm h-100">
                                 <img src="{{ asset('images/theme/expenses.png') }}" class="mr-2" width="48" height="48" alt="icon">
                                 <div class="media-body">
-                                    <h4 class="mt-0">Hobbies & Interests</h4>
-                                    <h6 class="mt-0">Leisure activities</h6>
-                                    <p class="total mb-0">&pound;224.66</p>
+                                    <h4 class="mt-0">2015</h4>
+                                    <h6 class="mt-0">All expenses for 2015</h6>
+                                    <p class="total mb-0">&pound;8,253.82</p>
                                 </div>
                             </div>
                         </div>
-                        <hr />
-                    </div>
-                    <div class="row mt-4">
-                        <div class="col-12">
-                            <h4>Expenses for the last three years - <small><a href="/jack/years">View all years</a></small></h4>
-
-                            <p>Total expenses for the last three years, select all years for a complete listing.</p>
+                        <div class="col-12 col-sm-6 col-md-6 col-lg-4" style="margin-bottom: 1rem;">
+                            <div class="media summary-block shadow-sm h-100">
+                                <img src="{{ asset('images/theme/expenses.png') }}" class="mr-2" width="48" height="48" alt="icon">
+                                <div class="media-body">
+                                    <h4 class="mt-0">2016</h4>
+                                    <h6 class="mt-0">All expenses for 2016</h6>
+                                    <p class="total mb-0">&pound;10,900.24</p>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
                         <div class="col-12 col-sm-6 col-md-6 col-lg-4" style="margin-bottom: 1rem;">
                             <div class="media summary-block shadow-sm h-100">
                                 <img src="{{ asset('images/theme/expenses.png') }}" class="mr-2" width="48" height="48" alt="icon">
@@ -212,16 +211,22 @@
                     </div>
                     <div class="row mt-4">
                         <div class="col-12">
-                            <h4>The 25 most recent expenses for Jack</h4>
+                            <h4>Jack's expenses for 2019 - <small class="text-muted">1000 results</small></h4>
 
-                            <p>The table below lists the last 25 expenses we have logged for Jack, to see more select a year or view all years.</p>
+                            <p>The table below lists all the expenses we logged for Jack in 2019.</p>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-12">
+                            <div class="table-pagination p-3">
+                                <div class="row">
+                                    <div class="pages col-12 col-sm-10 col-xl-11"><a class="btn btn-primary disabled"><</a> <a class="btn btn-primary">1</a> <a class="btn btn-primary active">2</a> <a class="btn btn-primary">3</a> <a class="btn btn-primary">120</a> <a class="btn btn-primary">></a></div>
+                                    <div class="per-page col-12 col-sm-2 col-xl-1"><form class="form-inline"><select class="form-control form-control-sm"><option>100</option></select></form></div>
+                                </div>
+                            </div>
                             <div class="p-3 shadow-sm white-container">
                                 <table class="table table-borderless table-hover">
-                                    <caption>25 most recent expenses</caption>
+                                    <caption>Expenses for 2019</caption>
                                     <thead>
                                     <tr>
                                         <th scope="col">Child</th>
