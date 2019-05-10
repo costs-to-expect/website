@@ -9670,10 +9670,6 @@ html, body {
   height: 100%;
 }
 
-.form-control {
-  border-radius: 1rem;
-}
-
 .container-cte {
   height: 100%;
 }
@@ -9862,12 +9858,6 @@ html, body {
 @media (max-width: 576px) {
   .container-right .detail-page-intro {
     margin-top: 1rem !important;
-  }
-  .container-right .table-pagination div.pages {
-    text-align: center;
-  }
-  .container-right .table-pagination div.per-page {
-    padding-top: 0.5rem;
   }
 }
 

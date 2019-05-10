@@ -118,7 +118,15 @@
                             <h3>Changed</h3>
 
                             <ul>
-                                <li></li>
+                                <li>Opted not to add a border radius to inputs.</li>
+                                <li>Modified pagination layout for mobile, just show next and previous as well as page
+                                    number and move per page control onto the same line.</li>
+                            </ul>
+
+                            <h3>Fixed</h3>
+
+                            <ul>
+                                <li>Minor spelling error in the text above the last 25 expenses on the dashboard.</li>
                             </ul>
 
                             <h2>[v1.02.0] - 9th May 2019</h2>

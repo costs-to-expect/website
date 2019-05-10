@@ -175,7 +175,7 @@
                         <div class="col-12">
                             <h4>The 25 most recent expenses for both children</h4>
 
-                            <p>These table below lists the last 25 expenses we have logged for both children, to see more,
+                            <p>The table below lists the last 25 expenses we have logged for both children, to see more,
                                 select a child above.</p>
                         </div>
                     </div>
