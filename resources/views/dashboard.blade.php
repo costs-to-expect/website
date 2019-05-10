@@ -95,36 +95,39 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-12 col-sm-6 col-md-6 col-lg-4" style="margin-bottom: 1rem;">
-                            <div class="media summary-block shadow-sm h-100">
-                                <img src="{{ asset('images/theme/expenses.png') }}" class="mr-2" width="48" height="48" alt="icon">
-                                <div class="media-body">
-                                    <h4 class="mt-0"><a href="/jack">Jack Blackborough</a></h4>
-                                    <h6 class="mt-0">Total expenses <small class="text-muted">From birth, 28th June 2013</small></h6>
-                                    <p class="total mb-0">&pound;39,951.29</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-sm-6 col-md-6 col-lg-4" style="margin-bottom: 1rem;">
-                            <div class="media summary-block shadow-sm h-100">
-                                <img src="{{ asset('images/theme/expenses.png') }}" class="mr-2" width="48" height="48" alt="icon">
-                                <div class="media-body">
-                                    <h4 class="mt-0"><a href="/niall">Niall Blackborough</a></h4>
-                                    <h6 class="mt-0">Total expenses <small class="text-muted">From birth, 22nd April 2019</small></h6>
-                                    <p class="total mb-0">&pound;484.42</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-sm-6 col-md-6 col-lg-4" style="margin-bottom: 1rem;">
-                            <div class="media summary-block shadow-sm h-100">
-                                <img src="{{ asset('images/theme/expenses.png') }}" class="mr-2" width="48" height="48" alt="icon">
-                                <div class="media-body">
-                                    <h4 class="mt-0">Blackborough Children</h4>
-                                    <h6 class="mt-0">Total expenses <small class="text-muted">Both children</small></h6>
-                                    <p class="total mb-0">&pound;40,435.71</p>
-                                </div>
-                            </div>
-                        </div>
+                        @include(
+                            'component-container.cost-summary-block',
+                            [
+                                'icon' => 'expenses.png',
+                                'uri' => '/jack',
+                                'heading' => 'Jack Blackborough',
+                                'subheading' => 'Total Expenses',
+                                'description' => 'From birth, 28th June 2013',
+                                'value' => '39.952.29'
+                            ]
+                        )
+                        @include(
+                            'component-container.cost-summary-block',
+                            [
+                                'icon' => 'expenses.png',
+                                'uri' => '/niall',
+                                'heading' => 'Niall Blackborough',
+                                'subheading' => 'Total Expenses',
+                                'description' => 'From birth, 22nd April 2019',
+                                'value' => '484.42'
+                            ]
+                        )
+                        @include(
+                            'component-container.cost-summary-block',
+                            [
+                                'icon' => 'expenses.png',
+                                'uri' => null,
+                                'heading' => 'Blackborough Children',
+                                'subheading' => 'Total Expenses',
+                                'description' => 'For both our children',
+                                'value' => '40,435.71'
+                            ]
+                        )
                         <hr />
                     </div>
                     <div class="row mt-4">
@@ -135,36 +138,39 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-12 col-sm-6 col-md-6 col-lg-4" style="margin-bottom: 1rem;">
-                            <div class="media summary-block shadow-sm h-100">
-                                <img src="{{ asset('images/theme/expenses.png') }}" class="mr-2" width="48" height="48" alt="icon">
-                                <div class="media-body">
-                                    <h4 class="mt-0"><a href="/jack/years">Jack Blackborough</a></h4>
-                                    <h6 class="mt-0">2019 <small class="text-muted">All expenses in 2019</small></h6>
-                                    <p class="total mb-0">&pound;1,121.19</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-sm-6 col-md-6 col-lg-4" style="margin-bottom: 1rem;">
-                            <div class="media summary-block shadow-sm h-100">
-                                <img src="{{ asset('images/theme/expenses.png') }}" class="mr-2" width="48" height="48" alt="icon">
-                                <div class="media-body">
-                                    <h4 class="mt-0"><a href="/niall/years">Niall Blackborough</a></h4>
-                                    <h6 class="mt-0">2019 <small class="text-muted">All expenses in 2019</small></h6>
-                                    <p class="total mb-0">&pound;484.42</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-sm-6 col-md-6 col-lg-4" style="margin-bottom: 1rem;">
-                            <div class="media summary-block shadow-sm h-100">
-                                <img src="{{ asset('images/theme/expenses.png') }}" class="mr-2" width="48" height="48" alt="icon">
-                                <div class="media-body">
-                                    <h4 class="mt-0">Blackborough Children</h4>
-                                    <h6 class="mt-0">2019 <small class="text-muted">All expenses in 2019</small></h6>
-                                    <p class="total mb-0">&pound;1,605.61</p>
-                                </div>
-                            </div>
-                        </div>
+                        @include(
+                            'component-container.cost-summary-block',
+                            [
+                                'icon' => 'expenses.png',
+                                'uri' => '/jack/years',
+                                'heading' => 'Jack Blackborough',
+                                'subheading' => '2019',
+                                'description' => 'All expenses in 2019',
+                                'value' => '1,121,19'
+                            ]
+                        )
+                        @include(
+                            'component-container.cost-summary-block',
+                            [
+                                'icon' => 'expenses.png',
+                                'uri' => '/niall/years',
+                                'heading' => 'Niall Blackborough',
+                                'subheading' => '2019',
+                                'description' => 'All expenses in 2019',
+                                'value' => '484.42'
+                            ]
+                        )
+                        @include(
+                            'component-container.cost-summary-block',
+                            [
+                                'icon' => 'expenses.png',
+                                'uri' => null,
+                                'heading' => 'Blackborough Children',
+                                'subheading' => '2019',
+                                'description' => 'All expenses in 2019',
+                                'value' => '1,605.61'
+                            ]
+                        )
                     </div>
                     <div class="row">
                         <div class="col-12">
