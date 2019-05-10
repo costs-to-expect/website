@@ -112,7 +112,8 @@
                             <h3>Added</h3>
 
                             <ul>
-                                <li></li>
+                                <li>Summary block view component.</li>
+                                <li>Summary block container view component.</li>
                             </ul>
 
                             <h3>Changed</h3>
