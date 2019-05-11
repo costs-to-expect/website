@@ -29,6 +29,7 @@
         <ul>
             <li>Summary block view component.</li>
             <li>Summary block container view component.</li>
+            <li>API requests page view component.</li>
         </ul>
 
         <h3>Changed</h3>

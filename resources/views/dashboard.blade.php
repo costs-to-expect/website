@@ -224,67 +224,11 @@
     </div>
 </div>
 
-<div class="row">
-    <div class="col-12">
-        <hr />
-    </div>
-</div>
-<div class="row">
-    <div class="col-12">
-        <h4>API Requests</h4>
-
-        <p>This page was generated using the data returned from the following API requests.</p>
-
-        <div class="p-3 shadow-sm white-container">
-            <table class="table table-borderless table-sm api-requests">
-                <caption>API Requests to https://api.costs-to-expect.com</caption>
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Page section</th>
-                        <th scope="col">API request</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="top">
-                        <td>1</td>
-                        <td>Total for Jack</td>
-                        <td>/v1/summary/resource-types/d185Q15grY/resources/kw8gLq31VB/items</td>
-                    </tr>
-                    <tr class="top">
-                        <td>2</td>
-                        <td>Total for Niall</td>
-                        <td>/v1/summary/resource-types/d185Q15grY/resources/Eq9g6BgJL0/items</td>
-                    </tr>
-                    <tr class="top">
-                        <td>3</td>
-                        <td>Total for Blackborough Children</td>
-                        <td>/v1/summary/resource-types/d185Q15grY/items</td>
-                    </tr>
-                    <tr class="top">
-                        <td>4</td>
-                        <td>2019 Total for Jack</td>
-                        <td>/v1/summary/resource-types/d185Q15grY/resources/kw8gLq31VB/items?years=2019</td>
-                    </tr>
-                    <tr class="top">
-                        <td>5</td>
-                        <td>2019 Total for Niall</td>
-                        <td>/v1/summary/resource-types/d185Q15grY/resources/Eq9g6BgJL0/items?years=2019</td>
-                    </tr>
-                    <tr class="top">
-                        <td>6</td>
-                        <td>2019 Total for Blackborough Children</td>
-                        <td>/v1/summary/resource-types/d185Q15grY/items?year=2019</td>
-                    </tr>
-                    <tr class="top">
-                        <td>7</td>
-                        <td>25 most recent expenses</td>
-                        <td>/v1/resource-types/d185Q15grY/items?limit=25&amp;show-categories=true&show-subcategories=true</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-</div>
+@include(
+    'page-component.api-requests',
+    [
+        'api_requests' => $api_requests
+    ]
+)
 
 @endsection

@@ -37,19 +37,49 @@ class DashboardController extends BaseController
                         'icon' => 'dashboard.png',
                         'title' => 'Costs to Expect.com'
                     ]
-                ]
+                ],
+                'api_requests' => $this->apiRequests()
             ]
         );
     }
 
     /**
-     * Return the config properties
+     * Return the API requests for the dashboard
      *
      * @return array
      */
-    private function configProperties(): array
+    private function apiRequests(): array
     {
-        return Config::get('web.app');
+        return [
+            [
+                'name' => 'Total for Jack',
+                'uri' => '/v1/summary/resource-types/d185Q15grY/resources/kw8gLq31VB/items'
+            ],
+            [
+                'name' => 'Total for Niall',
+                'uri' => '/v1/summary/resource-types/d185Q15grY/resources/Eq9g6BgJL0/items'
+            ],
+            [
+                'name' => 'Total for the Blackborough children',
+                'uri' => '/v1/summary/resource-types/d185Q15grY/items'
+            ],
+            [
+                'name' => '2019 total for Jack',
+                'uri' => '/v1/summary/resource-types/d185Q15grY/resources/kw8gLq31VB/items?years=2019'
+            ],
+            [
+                'name' => '2019 total for Niall',
+                'uri' => '/v1/summary/resource-types/d185Q15grY/resources/Eq9g6BgJL0/items?years=2019'
+            ],
+            [
+                'name' => '2019 total for the Blackborough children',
+                'uri' => '/v1/summary/resource-types/d185Q15grY/items?year=2019'
+            ],
+            [
+                'name' => '25 most recent expenses',
+                'uri' => '/v1/resource-types/d185Q15grY/items?limit=25&show-categories=true&show-subcategories=true'
+            ]
+        ];
     }
 
     /**
