@@ -82,7 +82,7 @@
                                     <small class="text-muted">Our second child</small>
                                 </div>
                                 <div class="title">
-                                    <h1>Niall Blackborough</h1>
+                                    <h1>Niall Blackborough - Total per year</h1>
                                 </div>
                             </div>
                         </div>
