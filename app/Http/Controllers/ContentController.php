@@ -63,7 +63,7 @@ class ContentController extends BaseController
                     'description' => 'How do we arrive at the figures?',
                     'image' => [
                         'icon' => 'info.png',
-                        'title' => 'WHat do we count'
+                        'title' => 'What do we count'
                     ]
                 ]
             ]
@@ -80,21 +80,22 @@ class ContentController extends BaseController
         return view(
             'changelog',
             [
-                'config' => $this->configProperties(),
                 'menus' => $this->menus(),
-                'active' => '/changelog'
+                'active' => '/changelog',
+                'meta' => [
+                    'title' => 'Changelog',
+                    'description' => 'The changelog for Costs to Expect.com, as complete as possible'
+                ],
+                'welcome' => [
+                    'title' => 'Changelog',
+                    'description' => 'Have there been any updates to the website?',
+                    'image' => [
+                        'icon' => 'info.png',
+                        'title' => 'Changelog'
+                    ]
+                ]
             ]
         );
-    }
-
-    /**
-     * Return the config properties
-     *
-     * @return array
-     */
-    private function configProperties()
-    {
-        return Config::get('web.app');
     }
 
     /**
