@@ -95,9 +95,9 @@
                     <div class="row mt-5 mb-5">
                         <div class="col-12">
                             <p class="text-center text-muted footer">
-                                <a href="https://www.costs-to-expect.com">Costs to Expect</a> Copyright &copy; <a href="https://www.deanblackborough.com">{{ $config['copyright'] }}</a><br />
-                                <a href="{{ $config['api-link'] }}">Costs to Expect API</a> | <a href="/changelog">Changelog</a><br />
-                                <small>{{ $config['release'] }} released {{ $config['date'] }}</small>
+                                <a href="https://www.costs-to-expect.com">Costs to Expect</a> Copyright &copy; <a href="https://www.deanblackborough.com">{{ $footer['copyright'] }}</a><br />
+                                <a href="{{ $footer['api-link'] }}">Costs to Expect API</a> | <a href="/changelog">Changelog</a><br />
+                                <small>{{ $footer['release'] }} released {{ $footer['date'] }}</small>
                             </p>
                         </div>
                     </div>

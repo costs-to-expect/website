@@ -24,7 +24,6 @@ class ContentController extends BaseController
         return view(
             'about',
             [
-                'config' => $this->configProperties(),
                 'menus' => $this->menus(),
                 'active' => '/about',
                 'meta' => [
