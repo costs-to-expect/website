@@ -37,6 +37,7 @@
             <li>Opted not to add a border radius to inputs.</li>
             <li>Modified pagination layout for mobile, just show next and previous as well as page
                 number and move per page control onto the same line.</li>
+            <li>The content pages now use a general layout file rather than defining everything in the view.</li>
         </ul>
 
         <h3>Fixed</h3>

@@ -15,7 +15,7 @@ use Illuminate\Routing\Controller as BaseController;
 class DashboardController extends BaseController
 {
     /**
-     * About content page
+     * Site welcome dashboard
      *
      * @return View
      */
@@ -24,9 +24,20 @@ class DashboardController extends BaseController
         return view(
             'dashboard',
             [
-                'config' => $this->configProperties(),
                 'menus' => $this->menus(),
-                'active' => '/'
+                'active' => '/',
+                'meta' => [
+                    'title' => 'Dashboard',
+                    'description' => 'What does it costs to raise a child to adulthood in the UK?'
+                ],
+                'welcome' => [
+                    'title' => 'Dashboard',
+                    'description' => 'Welcome to Costs to Expect.com',
+                    'image' => [
+                        'icon' => 'dashboard.png',
+                        'title' => 'Costs to Expect.com'
+                    ]
+                ]
             ]
         );
     }
