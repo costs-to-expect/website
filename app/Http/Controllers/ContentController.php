@@ -52,9 +52,20 @@ class ContentController extends BaseController
         return view(
             'what-we-count',
             [
-                'config' => $this->configProperties(),
                 'menus' => $this->menus(),
-                'active' => '/what-we-count'
+                'active' => '/what-we-count',
+                'meta' => [
+                    'title' => 'What do we count',
+                    'description' => 'How do we come to the totals? What is and isn\'t include in the expenses.'
+                ],
+                'welcome' => [
+                    'title' => 'What we count?',
+                    'description' => 'How do we arrive at the figures?',
+                    'image' => [
+                        'icon' => 'info.png',
+                        'title' => 'WHat do we count'
+                    ]
+                ]
             ]
         );
     }
