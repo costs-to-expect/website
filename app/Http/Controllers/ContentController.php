@@ -26,7 +26,19 @@ class ContentController extends BaseController
             [
                 'config' => $this->configProperties(),
                 'menus' => $this->menus(),
-                'active' => '/about'
+                'active' => '/about',
+                'meta' => [
+                    'title' => 'About',
+                    'description' => 'What is Costs to Expect.com? Why does it exist and what will the service do?'
+                ],
+                'welcome' => [
+                    'title' => 'About',
+                    'description' => 'So, what is Costs to Expect.com?',
+                    'image' => [
+                        'icon' => 'info.png',
+                        'title' => 'About Costs to Expect.com'
+                    ]
+                ]
             ]
         );
     }
