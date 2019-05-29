@@ -7,7 +7,7 @@
             <a class="btn btn-primary disabled"><</a>
             @endif
             <a class="btn btn-primary active">
-                @if ($prefix !== null){{ $prefix }} @endif
+                @if ($prefix !== null) <span class="d-none d-sm-inline">{{ $prefix }}</span> @endif
                 {{ $offset + 1 }} to
                 @if ($total > ($offset + $limit))
                 {{ $offset + $limit }}
