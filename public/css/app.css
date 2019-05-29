@@ -9670,17 +9670,7 @@ html, body {
   height: 100%;
 }
 
-.container-cte {
-  height: 100%;
-}
-.container-cte .container-row {
-  height: 100%;
-}
-.container-cte .container-row .container-column {
-  height: 100%;
-}
 .container-cte .container-row .container-left {
-  height: 100%;
   background-color: #fff;
   background-image: url("../images/theme/left-sidebar.png");
   background-repeat: no-repeat;
@@ -9706,7 +9696,6 @@ html, body {
   font-weight: bolder;
 }
 .container-cte .container-row .container-right {
-  overflow-y: scroll;
   padding-top: 15px;
 }
 .container-cte .container-row .container-right .screen-intro .icon {
