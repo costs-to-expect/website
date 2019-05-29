@@ -47,6 +47,7 @@
 
         <ul>
             <li>Minor spelling error in the text above the last 25 expenses on the dashboard.</li>
+            <li>Removed the 100% height on elements, causing minor scrolling issues on some mobile devices.</li>
         </ul>
 
         <h2>[v1.02.0] - 9th May 2019</h2>
