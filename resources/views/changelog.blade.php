@@ -22,13 +22,14 @@
 
         <hr />
 
-        <h2>[v1.03.0] - xxth May 2019</h2>
+        <h2>[v1.03.0] - 29th May 2019</h2>
 
         <h3>Added</h3>
 
         <ul>
             <li>Summary block view component.</li>
             <li>Summary block container view component.</li>
+            <li>Pagination view component.</li>
             <li>API requests page view component.</li>
         </ul>
 
@@ -37,8 +38,9 @@
         <ul>
             <li>Opted not to add a border radius to inputs.</li>
             <li>Modified pagination layout for mobile, just show next and previous as well as page
-                number and move per page control onto the same line.</li>
+                number, moved per page control onto the same line.</li>
             <li>The content pages now use a general layout file rather than defining everything in the view.</li>
+            <li>Content updates for text before tables.</li>
         </ul>
 
         <h3>Fixed</h3>
