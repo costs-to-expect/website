@@ -161,6 +161,15 @@
                             @include(
                                 'component.table-pagination',
                                 [
+                                    'prefix' => 'Expenses',
+                                    'offset' => 0,
+                                    'limit' => 10,
+                                    'total_count' => 200,
+                                    'limit_options' => [
+                                        25,
+                                        50,
+                                        100
+                                    ]
                                 ]
                             )
                             <div class="table-pagination p-3">
