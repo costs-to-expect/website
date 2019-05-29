@@ -22,6 +22,14 @@
 
         <hr />
 
+        <h2>[v1.03.1] - 29th May 2019</h2>
+
+        <h3>Fixed</h3>
+
+        <ul>
+            <li>Pagination controls should not show the prefix text on mobile.</li>
+        </ul>
+
         <h2>[v1.03.0] - 29th May 2019</h2>
 
         <h3>Added</h3>
