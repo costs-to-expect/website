@@ -214,7 +214,8 @@
                         <div class="col-12">
                             <h4>The 25 most recent expenses for Jack</h4>
 
-                            <p>The table below lists the last 25 expenses we have logged for Jack, to see more select a year or view all years.</p>
+                            <p>The table below lists the last 25 expenses we have logged for Jack, to see more select any
+                                summary count, category or subcategory.</p>
                         </div>
                     </div>
                     <div class="row">
