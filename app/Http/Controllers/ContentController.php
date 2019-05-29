@@ -24,9 +24,20 @@ class ContentController extends BaseController
         return view(
             'about',
             [
-                'config' => $this->configProperties(),
                 'menus' => $this->menus(),
-                'active' => '/about'
+                'active' => '/about',
+                'meta' => [
+                    'title' => 'About',
+                    'description' => 'What is Costs to Expect.com? Why does it exist and what will the service do?'
+                ],
+                'welcome' => [
+                    'title' => 'About',
+                    'description' => 'So, what is Costs to Expect.com?',
+                    'image' => [
+                        'icon' => 'info.png',
+                        'title' => 'About Costs to Expect.com'
+                    ]
+                ]
             ]
         );
     }
@@ -41,9 +52,20 @@ class ContentController extends BaseController
         return view(
             'what-we-count',
             [
-                'config' => $this->configProperties(),
                 'menus' => $this->menus(),
-                'active' => '/what-we-count'
+                'active' => '/what-we-count',
+                'meta' => [
+                    'title' => 'What do we count',
+                    'description' => 'How do we come to the totals? What is and isn\'t include in the expenses.'
+                ],
+                'welcome' => [
+                    'title' => 'What we count?',
+                    'description' => 'How do we arrive at the figures?',
+                    'image' => [
+                        'icon' => 'info.png',
+                        'title' => 'What do we count'
+                    ]
+                ]
             ]
         );
     }
@@ -58,21 +80,22 @@ class ContentController extends BaseController
         return view(
             'changelog',
             [
-                'config' => $this->configProperties(),
                 'menus' => $this->menus(),
-                'active' => '/changelog'
+                'active' => '/changelog',
+                'meta' => [
+                    'title' => 'Changelog',
+                    'description' => 'The changelog for Costs to Expect.com, as complete as possible'
+                ],
+                'welcome' => [
+                    'title' => 'Changelog',
+                    'description' => 'Have there been any updates to the website?',
+                    'image' => [
+                        'icon' => 'info.png',
+                        'title' => 'Changelog'
+                    ]
+                ]
             ]
         );
-    }
-
-    /**
-     * Return the config properties
-     *
-     * @return array
-     */
-    private function configProperties()
-    {
-        return Config::get('web.app');
     }
 
     /**

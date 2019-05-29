@@ -9670,21 +9670,7 @@ html, body {
   height: 100%;
 }
 
-.form-control {
-  border-radius: 1rem;
-}
-
-.container-cte {
-  height: 100%;
-}
-.container-cte .container-row {
-  height: 100%;
-}
-.container-cte .container-row .container-column {
-  height: 100%;
-}
 .container-cte .container-row .container-left {
-  height: 100%;
   background-color: #fff;
   background-image: url("../images/theme/left-sidebar.png");
   background-repeat: no-repeat;
@@ -9710,7 +9696,6 @@ html, body {
   font-weight: bolder;
 }
 .container-cte .container-row .container-right {
-  overflow-y: scroll;
   padding-top: 15px;
 }
 .container-cte .container-row .container-right .screen-intro .icon {
@@ -9862,12 +9847,6 @@ html, body {
 @media (max-width: 576px) {
   .container-right .detail-page-intro {
     margin-top: 1rem !important;
-  }
-  .container-right .table-pagination div.pages {
-    text-align: center;
-  }
-  .container-right .table-pagination div.per-page {
-    padding-top: 0.5rem;
   }
 }
 
