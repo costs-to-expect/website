@@ -22,6 +22,26 @@
 
         <hr />
 
+        <h2>[v1.03.2] - 31st May 2019</h2>
+
+        <h3>Added</h3>
+
+        <ul>
+            <li>Minor update to layout, added meta tags for social networks.</li>
+        </ul>
+
+        <h3>Changed</h3>
+
+        <ul>
+            <li>Altered the dashboard title.</li>
+        </ul>
+
+        <h3>Fixed</h3>
+
+        <ul>
+            <li>Content update to 'What we count?' page.</li>
+        </ul>
+
         <h2>[v1.03.1] - 29th May 2019</h2>
 
         <h3>Fixed</h3>
