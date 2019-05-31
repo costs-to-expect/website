@@ -22,6 +22,20 @@
 
         <hr />
 
+        <h3>[v1.04.0] - xth June 2019</h3>
+
+        <h3>Changed</h3>
+
+        <ul>
+            <li>Altered the dashboard title.</li>
+        </ul>
+
+        <h3>Fixed</h3>
+
+        <ul>
+            <li>Content update to 'What we count?' page.</li>
+        </ul>
+
         <h2>[v1.03.1] - 29th May 2019</h2>
 
         <h3>Fixed</h3>

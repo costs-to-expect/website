@@ -48,8 +48,8 @@
         <p>
             Until my children start excessively using one
             of these resources, I'm not interested in logging it. If you are intent on recording
-            a portion of these expenses, they are predictable historically available for most
-            regions, so it isn't an issue that they are not within our data.
+            a portion of these expenses, they are predictable and historically available for most
+            regions, we don't consider it to be an issue that they are not within our data.
         </p>
 
         <h3>Fuel</h3>

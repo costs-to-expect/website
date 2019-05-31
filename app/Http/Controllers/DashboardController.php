@@ -28,10 +28,10 @@ class DashboardController extends BaseController
                 'active' => '/',
                 'meta' => [
                     'title' => 'Dashboard',
-                    'description' => 'What does it costs to raise a child to adulthood in the UK?'
+                    'description' => 'What does it cost to raise a child to adulthood in the UK?'
                 ],
                 'welcome' => [
-                    'title' => 'Dashboard',
+                    'title' => 'What does it cost to raise a child in the UK?',
                     'description' => 'Welcome to Costs to Expect.com',
                     'image' => [
                         'icon' => 'dashboard.png',
