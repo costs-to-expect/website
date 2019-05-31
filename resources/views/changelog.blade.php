@@ -22,7 +22,13 @@
 
         <hr />
 
-        <h3>[v1.04.0] - xth June 2019</h3>
+        <h3>[v1.03.1] - 31st May 2019</h3>
+
+        <h3>Added</h3>
+
+        <ul>
+            <li>Minor update to layout, added meta tags for social networks.</li>
+        </ul>
 
         <h3>Changed</h3>
 
