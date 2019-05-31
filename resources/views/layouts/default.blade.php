@@ -22,7 +22,7 @@
         <meta property="og:image" content="{{ asset('images/theme/favicon-192.png') }}" />
         <meta property="og:site_name" content="Costs to Expect" />
         <meta property="og:type" content="object" />
-        <meta property="og:title" content="Costs to Expect: What does it costs to raise a child in the UK?" />
+        <meta property="og:title" content="What does it costs to raise a child in the UK?" />
         <meta property="og:url" content="https://www.costs-to-expect.com" />
         <meta property="og:description" content="Costs to Expect is a service which will allow tracking and forecasting of any expenses, be they the costs to raise a child to the age of 18 or your Business account budget for the next financial year." />
     </head>
