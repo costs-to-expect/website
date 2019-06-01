@@ -15,10 +15,10 @@
         [
             'icon' => 'expenses.png',
             'uri' => '/jack',
-            'heading' => 'Jack Blackborough',
+            'heading' => $children['jack']['name'],
             'subheading' => 'Total Expenses',
-            'description' => 'From birth, 28th June 2013',
-            'value' => '39.952.29'
+            'description' => 'From birth, ' . $children['jack']['date_of_birth'],
+            'value' => $children['jack']['total']
         ]
     )
     @include(
@@ -26,10 +26,10 @@
         [
             'icon' => 'expenses.png',
             'uri' => '/niall',
-            'heading' => 'Niall Blackborough',
+            'heading' => $children['niall']['name'],
             'subheading' => 'Total Expenses',
-            'description' => 'From birth, 22nd April 2019',
-            'value' => '484.42'
+            'description' => 'From birth, ' . $children['niall']['date_of_birth'],
+            'value' => $children['niall']['total']
         ]
     )
     @include(
@@ -40,7 +40,7 @@
             'heading' => 'Blackborough Children',
             'subheading' => 'Total Expenses',
             'description' => 'For both our children',
-            'value' => '40,435.71'
+            'value' => $children['niall']['total'] + $children['jack']['total']
         ]
     )
     <hr />
@@ -61,7 +61,7 @@
             'heading' => 'Jack Blackborough',
             'subheading' => '2019',
             'description' => 'All expenses in 2019',
-            'value' => '1,121,19'
+            'value' => '1121,19'
         ]
     )
     @include(
@@ -83,7 +83,7 @@
             'heading' => 'Blackborough Children',
             'subheading' => '2019',
             'description' => 'All expenses in 2019',
-            'value' => '1,605.61'
+            'value' => '1605.61'
         ]
     )
 </div>

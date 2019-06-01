@@ -49,7 +49,7 @@ class DashboardController extends BaseController
 
         if ($child_totals !== null) {
             $children['jack']['total'] = $child_totals[0]['total'];
-            $children['niall']['total'] = $child_totals[0]['total'];
+            $children['niall']['total'] = $child_totals[1]['total'];
         }
 
         return view(
