@@ -60,7 +60,7 @@ class DashboardController extends BaseController
         $recent_expenses = Api::getInstance()
             ->public()
             ->get('/v1/resource-types/d185Q15grY/items?limit=25&include-categories=true&include-subcategories=true');
-        
+
         return view(
             'dashboard',
             [
@@ -71,7 +71,7 @@ class DashboardController extends BaseController
                     'description' => 'What does it cost to raise a child to adulthood in the UK?'
                 ],
                 'welcome' => [
-                    'title' => 'What does it cost to raise a child in the UK?',
+                    'title' => 'Cost to raise a child?',
                     'description' => 'Welcome to Costs to Expect.com',
                     'image' => [
                         'icon' => 'dashboard.png',
