@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Request\Api;
 use Illuminate\Support\Facades\Config;
 use Illuminate\View\View;
 use Illuminate\Routing\Controller as BaseController;
@@ -21,6 +22,36 @@ class DashboardController extends BaseController
      */
     public function index(): View
     {
+        /**
+         * Each child should a model, sub set of child model
+         *
+         * Need to have a method to get the API id, kw8gLq31VB etc
+         */
+        $children = [
+            'jack' => [
+                'name' => 'Jack Blackborough',
+                'date_of_birth' => '28th June 2013',
+                'total' => 0.00
+            ],
+            'niall' => [
+                'name' => 'Niall Blackborough',
+                'date_of_birth' => '22nd April 2019',
+                'total' => 0.00
+            ]
+        ];
+
+        /**
+         * Need to move this code to model classes
+         */
+        $child_totals = Api::getInstance()
+            ->public()
+            ->get('/v1/summary/resource-types/d185Q15grY/items?resources=true');
+
+        if ($child_totals !== null) {
+            $children['jack']['total'] = $child_totals[0]['total'];
+            $children['niall']['total'] = $child_totals[0]['total'];
+        }
+
         return view(
             'dashboard',
             [
@@ -38,6 +69,7 @@ class DashboardController extends BaseController
                         'title' => 'Costs to Expect.com'
                     ]
                 ],
+                'children' => $children,
                 'api_requests' => $this->apiRequests()
             ]
         );
@@ -52,16 +84,8 @@ class DashboardController extends BaseController
     {
         return [
             [
-                'name' => 'Total for Jack',
-                'uri' => '/v1/summary/resource-types/d185Q15grY/resources/kw8gLq31VB/items'
-            ],
-            [
-                'name' => 'Total for Niall',
-                'uri' => '/v1/summary/resource-types/d185Q15grY/resources/Eq9g6BgJL0/items'
-            ],
-            [
-                'name' => 'Total for the Blackborough children',
-                'uri' => '/v1/summary/resource-types/d185Q15grY/items'
+                'name' => 'Totals for children',
+                'uri' => '/summary/resource-types/d185Q15grY/items?resources=true'
             ],
             [
                 'name' => '2019 total for Jack',
