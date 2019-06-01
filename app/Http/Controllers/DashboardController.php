@@ -47,6 +47,14 @@ class DashboardController extends BaseController
             ->public()
             ->get('/v1/summary/resource-types/d185Q15grY/items?resources=true');
 
+        $jack_current_year = Api::getInstance()
+            ->public()
+            ->get('/v1/summary/resource-types/d185Q15grY/resources/kw8gLq31VB/items?year=' . date('Y'));
+
+        $niall_current_year = Api::getInstance()
+            ->public()
+            ->get('/v1/summary/resource-types/d185Q15grY/resources/Eq9g6BgJL0/items?year=' . date('Y'));
+
         /**
          * To to return a specific response type, or call a model method directly to sort data, optional,
          * could just return json
@@ -80,6 +88,8 @@ class DashboardController extends BaseController
                 ],
                 'children' => $children,
                 'recent_expenses' => $recent_expenses,
+                'jack_current_year' => $jack_current_year,
+                'niall_current_year' => $niall_current_year,
                 'api_requests' => $this->apiRequests()
             ]
         );
@@ -99,11 +109,11 @@ class DashboardController extends BaseController
             ],
             [
                 'name' => 'Current year expenses for Jack',
-                'uri' => '/summary/resource-types/d185Q15grY/resources/kw8gLq31VB/items?years=2019'
+                'uri' => '/summary/resource-types/d185Q15grY/resources/kw8gLq31VB/items?year=2019'
             ],
             [
                 'name' => 'Current year expenses for Niall',
-                'uri' => '/summary/resource-types/d185Q15grY/resources/Eq9g6BgJL0/items?years=2019'
+                'uri' => '/summary/resource-types/d185Q15grY/resources/Eq9g6BgJL0/items?year=2019'
             ],
             [
                 'name' => '25 most recent expenses for both children',

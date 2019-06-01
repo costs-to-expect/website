@@ -59,9 +59,9 @@
             'icon' => 'expenses.png',
             'uri' => '/jack/years',
             'heading' => 'Jack Blackborough',
-            'subheading' => '2019',
-            'description' => 'All expenses in 2019',
-            'value' => '1121,19'
+            'subheading' => date('Y'),
+            'description' => 'All expenses in ' . date('Y'),
+            'value' => $jack_current_year['total']
         ]
     )
     @include(
@@ -70,9 +70,9 @@
             'icon' => 'expenses.png',
             'uri' => '/niall/years',
             'heading' => 'Niall Blackborough',
-            'subheading' => '2019',
-            'description' => 'All expenses in 2019',
-            'value' => '484.42'
+            'subheading' => date('Y'),
+            'description' => 'All expenses in ' . date('Y'),
+            'value' => $niall_current_year['total']
         ]
     )
     @include(
@@ -81,9 +81,9 @@
             'icon' => 'expenses.png',
             'uri' => null,
             'heading' => 'Blackborough Children',
-            'subheading' => '2019',
-            'description' => 'All expenses in 2019',
-            'value' => '1605.61'
+            'subheading' => date('Y'),
+            'description' => 'All expenses in ' . date('Y'),
+            'value' => $jack_current_year['total'] + $niall_current_year['total']
         ]
     )
 </div>
