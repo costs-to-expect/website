@@ -101,4 +101,27 @@ class ChildController extends BaseController
     {
         return Config::get('web.menus');
     }
+
+    /**
+     * Return the API requests for the dashboard
+     *
+     * @return array
+     */
+    private function apiRequestsForJack(): array
+    {
+        return [
+            [
+                'name' => 'Expenses by category',
+                'uri' => '/summary/resource-types/d185Q15grY/resources/kw8gLq31VB/items?categories=true'
+            ],
+            [
+                'name' => 'Expenses by year',
+                'uri' => '/summary/resource-types/d185Q15grY/resources/kw8gLq31VB/items?years=true'
+            ],
+            [
+                'name' => '25 most recent expenses',
+                'uri' => '/resource-types/d185Q15grY/resources/kw8gLq31VB/items?limit=25&include-categories=true&include-subcategories=true'
+            ]
+        ];
+    }
 }
