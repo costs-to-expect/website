@@ -11,7 +11,7 @@
         <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('images/theme/favicon-180.png') }}">
         <meta name="msapplication-TileColor" content="#FFFFFF">
         <meta name="msapplication-TileImage" content="{{ asset('images/theme/favicon-144.png') }}">
-        <title>Dashboard: Costs to Expect</title>
+        <title>Niall: Costs to Expect</title>
     </head>
     <body>
         <div class="container-fluid container-cte">
