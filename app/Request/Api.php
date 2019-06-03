@@ -78,7 +78,9 @@ class Api
 
             if ($response->getStatusCode() === 200) {
                 $content = json_decode($response->getBody(), true);
-                self::$headers = $response->getHeaders();
+                if ($headers = true) {
+                    self::$headers = $response->getHeaders();
+                }
             } else {
                 // Nothing yet
                 return null;

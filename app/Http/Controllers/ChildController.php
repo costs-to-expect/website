@@ -72,7 +72,7 @@ class ChildController extends BaseController
 
         $recent_expenses = Api::getInstance()
             ->public()
-            ->get('/v1/resource-types/d185Q15grY/resources/kw8gLq31VB/items?limit=25&include-categories=true&include-subcategories=true');
+            ->get('/v1/resource-types/d185Q15grY/resources/kw8gLq31VB/items?limit=25&include-categories=true&include-subcategories=true', true);
 
         $recent_expenses_headers = Api::getInstance()->previousRequestHeaders();
 
@@ -81,6 +81,10 @@ class ChildController extends BaseController
             $total_count = $recent_expenses_headers['X-Total-Count'][0];
         }
         $total = $category_totals['98WLap7Bx3']['total'] + $category_totals['RjXM5VJDw6']['total'] + $category_totals['Gwg7zgL316']['total'];
+
+        $largest_expense = Api::getInstance()
+            ->public()
+            ->get('/v1/resource-types/d185Q15grY/resources/kw8gLq31VB/items?sort=actualised_total:desc&limit=1');
 
         return view(
             'jack',
@@ -93,7 +97,8 @@ class ChildController extends BaseController
                 'annual_totals' => $annual_totals,
                 'recent_expenses' => $recent_expenses,
                 'total_count' => $total_count,
-                'total' => $total
+                'total' => $total,
+                'largest_expense' => $largest_expense
             ]
         );
     }
@@ -156,7 +161,7 @@ class ChildController extends BaseController
 
         $recent_expenses = Api::getInstance()
             ->public()
-            ->get('/v1/resource-types/d185Q15grY/resources/Eq9g6BgJL0/items?limit=25&include-categories=true&include-subcategories=true');
+            ->get('/v1/resource-types/d185Q15grY/resources/Eq9g6BgJL0/items?limit=25&include-categories=true&include-subcategories=true', true);
 
         $recent_expenses_headers = Api::getInstance()->previousRequestHeaders();
 
@@ -165,6 +170,10 @@ class ChildController extends BaseController
             $total_count = $recent_expenses_headers['X-Total-Count'][0];
         }
         $total = $category_totals['98WLap7Bx3']['total'] + $category_totals['RjXM5VJDw6']['total'] + $category_totals['Gwg7zgL316']['total'];
+
+        $largest_expense = Api::getInstance()
+            ->public()
+            ->get('/v1/resource-types/d185Q15grY/resources/Eq9g6BgJL0/items?sort=actualised_total:desc&limit=1');
 
         return view(
             'niall',
@@ -177,7 +186,8 @@ class ChildController extends BaseController
                 'annual_totals' => $annual_totals,
                 'recent_expenses' => $recent_expenses,
                 'total_count' => $total_count,
-                'total' => $total
+                'total' => $total,
+                'largest_expense' => $largest_expense
             ]
         );
     }
@@ -255,6 +265,10 @@ class ChildController extends BaseController
             [
                 'name' => '25 most recent expenses',
                 'uri' => '/resource-types/d185Q15grY/resources/kw8gLq31VB/items?limit=25&include-categories=true&include-subcategories=true'
+            ],
+            [
+                'name' => 'Largest expense',
+                'uri' => '/resource-types/d185Q15grY/resources/kw8gLq31VB/items?sort=actualised_total:desc&limit=1'
             ]
         ];
     }
@@ -278,6 +292,10 @@ class ChildController extends BaseController
             [
                 'name' => '25 most recent expenses',
                 'uri' => '/resource-types/d185Q15grY/resources/Eq9g6BgJL0/items?limit=25&include-categories=true&include-subcategories=true'
+            ],
+            [
+                'name' => 'Largest expense',
+                'uri' => '/resource-types/d185Q15grY/resources/Eq9g6BgJL0/items?sort=actualised_total:desc&limit=1'
             ]
         ];
     }

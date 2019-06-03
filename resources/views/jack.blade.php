@@ -114,7 +114,7 @@
                                         <p class="data">{{ $total_count }}</p>
                                         <h5>Largest expense</h5>
                                         <p class="sub-heading text-muted d-none d-md-block">The grandest expense?</p>
-                                        <p class="data">&pound;1,000 <small>(Baptism)</small></p>
+                                        <p class="data">&pound;{{ $largest_expense[0]['actualised_total'] }} <small>({{ $largest_expense[0]['description'] }})</small></p>
                                     </div>
                                 </div>
                             </div>

@@ -112,9 +112,11 @@
                                         <h5>Number of expenses</h5>
                                         <p class="sub-heading text-muted d-none d-md-block">How many purchases?</p>
                                         <p class="data">{{ $total_count }}</p>
+                                        @if ($largest_expense !== null)
                                         <h5>Largest expense</h5>
                                         <p class="sub-heading text-muted d-none d-md-block">The grandest expense?</p>
-                                        <p class="data">&pound;409 <small>(Car seat)</small></p>
+                                        <p class="data">&pound;{{ $largest_expense[0]['actualised_total'] }} <small>({{ $largest_expense[0]['description'] }})</small></p>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
