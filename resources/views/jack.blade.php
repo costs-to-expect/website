@@ -108,10 +108,10 @@
                                     <div class="col-md-6 col-12">
                                         <h5>Total expenses</h5>
                                         <p class="sub-heading text-muted d-none d-md-block">How much to raise Jack?</p>
-                                        <p class="data">&pound;40,000</p>
+                                        <p class="data">&pound;{{ number_format((float) $total, 2) }}</p>
                                         <h5>Number of expenses</h5>
                                         <p class="sub-heading text-muted d-none d-md-block">How many purchases?</p>
-                                        <p class="data">1,000</p>
+                                        <p class="data">{{ $total_count }}</p>
                                         <h5>Largest expense</h5>
                                         <p class="sub-heading text-muted d-none d-md-block">The grandest expense?</p>
                                         <p class="data">&pound;1,000 <small>(Baptism)</small></p>

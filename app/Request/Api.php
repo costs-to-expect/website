@@ -24,6 +24,11 @@ class Api
     private static $instance;
 
     /**
+     * @var array The headers for the request.
+     */
+    private static $headers = null;
+
+    /**
      * Generate a new instance of the helper ot return the existing instance
      *
      * @return Api
@@ -60,10 +65,11 @@ class Api
      * Make a GET request to the API
      *
      * @param string $uri The URI we want to call
+     * @param boolean $headers Store the headers so they can be fetched later
      *
      * @return mixed
      */
-    public static function get(string $uri): ?array
+    public static function get(string $uri, $headers = false): ?array
     {
         $content = null;
 
@@ -72,6 +78,7 @@ class Api
 
             if ($response->getStatusCode() === 200) {
                 $content = json_decode($response->getBody(), true);
+                self::$headers = $response->getHeaders();
             } else {
                 // Nothing yet
                 return null;
@@ -82,5 +89,10 @@ class Api
         }
 
         return $content;
+    }
+
+    public static function previousRequestHeaders(): ?array
+    {
+        return self::$headers;
     }
 }
