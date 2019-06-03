@@ -96,12 +96,69 @@ class ChildController extends BaseController
      */
     public function niall(): View
     {
+        $category_totals = [
+            '98WLap7Bx3' => [
+                'name' => 'Essential',
+                'description' => 'Expenses that we consider essential in the raising a child',
+                'total' => 0.00
+            ],
+            'RjXM5VJDw6' => [
+                'name' => 'Non-Essential',
+                'description' => 'Optional expenses, expenses that we consider non-essential in raising a child',
+                'total' => 0.00
+            ],
+            'Gwg7zgL316' => [
+                'name' => 'Hobbies & Interests',
+                'description' => 'Leisure activities',
+                'total' => 0.00
+            ]
+        ];
+
+
+        $categories = Api::getInstance()
+            ->public()
+            ->get('/v1/summary/resource-types/d185Q15grY/resources/Eq9g6BgJL0/items?categories=true');
+
+        if ($categories !== null) {
+            foreach ($categories as $category) {
+                $category_totals[$category['id']]['total'] = $category['total'];
+            }
+        }
+
+        $annual_totals = [];
+        for ($i = intval(date('Y')) - 2; $i <= intval(date('Y')); $i++) {
+            $annual_totals[$i] = [
+                'year' => $i,
+                'total' => 0.00
+            ];
+        }
+
+        $annual_summary = Api::getInstance()
+            ->public()
+            ->get('/v1/summary/resource-types/d185Q15grY/resources/Eq9g6BgJL0/items?years=true');
+
+        if ($annual_summary !== null) {
+            foreach ($annual_summary as $year) {
+                if (array_key_exists($year['year'], $annual_totals) === true) {
+                    $annual_totals[$year['year']]['total'] = $year['total'];
+                }
+            }
+        }
+
+        $recent_expenses = Api::getInstance()
+            ->public()
+            ->get('/v1/resource-types/d185Q15grY/resources/Eq9g6BgJL0/items?limit=25&include-categories=true&include-subcategories=true');
+
         return view(
             'niall',
             [
                 'config' => $this->configProperties(),
                 'menus' => $this->menus(),
-                'active' => '/niall'
+                'active' => '/niall',
+                'api_requests' => $this->apiRequestsForNiall(),
+                'category_totals' => $category_totals,
+                'annual_totals' => $annual_totals,
+                'recent_expenses' => $recent_expenses
             ]
         );
     }
@@ -161,7 +218,7 @@ class ChildController extends BaseController
     }
 
     /**
-     * Return the API requests for the dashboard
+     * Return the API requests for the detail page for Jack
      *
      * @return array
      */
@@ -179,6 +236,29 @@ class ChildController extends BaseController
             [
                 'name' => '25 most recent expenses',
                 'uri' => '/resource-types/d185Q15grY/resources/kw8gLq31VB/items?limit=25&include-categories=true&include-subcategories=true'
+            ]
+        ];
+    }
+
+    /**
+     * Return the API requests for the detail page for Niall
+     *
+     * @return array
+     */
+    private function apiRequestsForNiall(): array
+    {
+        return [
+            [
+                'name' => 'Expenses by category',
+                'uri' => '/summary/resource-types/d185Q15grY/resources/Eq9g6BgJL0/items?categories=true'
+            ],
+            [
+                'name' => 'Expenses by year',
+                'uri' => '/summary/resource-types/d185Q15grY/resources/Eq9g6BgJL0/items?years=true'
+            ],
+            [
+                'name' => '25 most recent expenses',
+                'uri' => '/resource-types/d185Q15grY/resources/Eq9g6BgJL0/items?limit=25&include-categories=true&include-subcategories=true'
             ]
         ];
     }

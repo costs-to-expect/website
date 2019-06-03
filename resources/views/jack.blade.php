@@ -159,7 +159,7 @@
                         <div class="col-12">
                             <h4>Expenses for the last three years <!-- - <small><a href="/jack/years">View all years</a></small>--></h4>
 
-                            <p>Total expenses for the last three years, select all years for a complete listing.</p>
+                            <p>Total expenses for the last three years<!--, select all years for a complete listing-->.</p>
                         </div>
                     </div>
                     <div class="row">
@@ -198,7 +198,6 @@
                                     <caption>25 most recent expenses</caption>
                                     <thead>
                                         <tr>
-                                            <th scope="col">Child</th>
                                             <th scope="col">Description</th>
                                             <th scope="col">Date</th>
                                             <th scope="col" class="d-none d-md-table-cell">Category</th>
@@ -211,7 +210,6 @@
                                     <tbody>
                                         @foreach ($recent_expenses as $expense)
                                         <tr class="top">
-                                            <td>Jack</td>
                                             <td>{{ $expense['description'] }}</td>
                                             <td><span class="d-none d-md-block">{{ date('j M Y', strtotime($expense['effective_date'])) }}</span><span class="d-table-cell d-sm-block d-md-none">{{ date('d/m/Y', strtotime($expense['effective_date'])) }}</span></td>
                                             <td class="d-none d-md-table-cell"><span class="category">{{ $expense['category']['name'] }}</span></td>
