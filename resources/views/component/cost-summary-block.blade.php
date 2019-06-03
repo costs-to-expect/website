@@ -10,6 +10,6 @@
         <h6 class="mt-0">{{ $subheading }}
             <small class="text-muted">{{ $description }}</small>
         </h6>
-        <p class="total mb-0">&pound;{{ $value }}</p>
+        <p class="total mb-0">&pound;{{ number_format((float) $value, 2) }}</p>
     </div>
 </div>

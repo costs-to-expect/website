@@ -17,10 +17,22 @@
 
         <hr />
 
-        <h2>The website is not showing live data, calling the API is in the works,
-            planned for v1.04.0!</h2>
+        <h2>[v1.04.0] - xxth June 2019</h2>
 
-        <hr />
+        <h3>Added</h3>
+
+        <ul>
+            <li>The dashboard shows live data from the Costs to Expect API.</li>
+            <li>The detail page for Jack shows live data from the Costs to Expect API.</li>
+            <li>The detail page for Niall shows live data from the Costs to Expect API.</li>
+        </ul>
+
+        <h3>Changed</h3>
+
+        <ul>
+            <li>Minor content changes for mobile layout.</li>
+            <li>Disabled the all years pages, I need to do some additional development before bringing them back.</li>
+        </ul>
 
         <h2>[v1.03.2] - 31st May 2019</h2>
 

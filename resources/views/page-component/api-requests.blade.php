@@ -11,7 +11,7 @@
 
         <div class="p-3 shadow-sm white-container">
             <table class="table table-borderless table-sm api-requests">
-                <caption>API Requests to https://api.costs-to-expect.com</caption>
+                <caption>API Requests to https://api.costs-to-expect.com/v1</caption>
                 <thead>
                     <tr>
                         <th scope="col">#</th>

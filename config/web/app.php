@@ -3,8 +3,8 @@
 declare(strict_types=1);
 
 return [
-    'release' => 'v1.03.2',
-    'date' => '31st May 2019',
+    'release' => 'v1.04.0',
+    'date' => '3rd June 2019',
     'copyright' => 'Dean Blackborough 2018 - 2019',
     'api-link' => 'https://api.costs-to-expect.com'
 ];
