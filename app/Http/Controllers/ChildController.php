@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Request\Api;
 use Illuminate\Support\Facades\Config;
 use Illuminate\View\View;
 use Illuminate\Routing\Controller as BaseController;
@@ -21,12 +22,69 @@ class ChildController extends BaseController
      */
     public function jack(): View
     {
+        $category_totals = [
+            '98WLap7Bx3' => [
+                'name' => 'Essential',
+                'description' => 'Expenses that we consider essential in the raising a child',
+                'total' => 0.00
+            ],
+            'RjXM5VJDw6' => [
+                'name' => 'Non-Essential',
+                'description' => 'Optional expenses, expenses that we consider non-essential in raising a child',
+                'total' => 0.00
+            ],
+            'Gwg7zgL316' => [
+                'name' => 'Hobbies & Interests',
+                'description' => 'Leisure activities',
+                'total' => 0.00
+            ]
+        ];
+
+
+        $categories = Api::getInstance()
+            ->public()
+            ->get('/v1/summary/resource-types/d185Q15grY/resources/kw8gLq31VB/items?categories=true');
+
+        if ($categories !== null) {
+            foreach ($categories as $category) {
+                $category_totals[$category['id']]['total'] = $category['total'];
+            }
+        }
+
+        $annual_totals = [];
+        for ($i = intval(date('Y')) - 2; $i <= intval(date('Y')); $i++) {
+            $annual_totals[$i] = [
+                'year' => $i,
+                'total' => 0.00
+            ];
+        }
+
+        $annual_summary = Api::getInstance()
+            ->public()
+            ->get('/v1/summary/resource-types/d185Q15grY/resources/kw8gLq31VB/items?years=true');
+
+        if ($annual_summary !== null) {
+            foreach ($annual_summary as $year) {
+                if (array_key_exists($year['year'], $annual_totals) === true) {
+                    $annual_totals[$year['year']]['total'] = $year['total'];
+                }
+            }
+        }
+
+        $recent_expenses = Api::getInstance()
+            ->public()
+            ->get('/v1/resource-types/d185Q15grY/resources/kw8gLq31VB/items?limit=25&include-categories=true&include-subcategories=true');
+
         return view(
             'jack',
             [
                 'config' => $this->configProperties(),
                 'menus' => $this->menus(),
-                'active' => '/jack'
+                'active' => '/jack',
+                'api_requests' => $this->apiRequestsForJack(),
+                'category_totals' => $category_totals,
+                'annual_totals' => $annual_totals,
+                'recent_expenses' => $recent_expenses
             ]
         );
     }

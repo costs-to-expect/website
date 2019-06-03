@@ -125,6 +125,7 @@
                             <hr />
                         </div>
                     </div>
+                    @if ($category_totals !== null)
                     <div class="row mt-4">
                         <div class="col-12">
                             <h4>Total expenses by category</h4>
@@ -134,38 +135,26 @@
                         </div>
                     </div>
                     <div class="row">
+                        @foreach ($category_totals as $category)
                         <div class="col-12 col-sm-6 col-md-6 col-lg-4" style="margin-bottom: 1rem;">
                             <div class="media summary-block shadow-sm h-100">
                                 <img src="{{ asset('images/theme/expenses.png') }}" class="mr-2" width="48" height="48" alt="icon">
                                 <div class="media-body">
-                                    <h4 class="mt-0">Essential</h4>
-                                    <h6 class="mt-0">Expenses that we consider essential in the raising a child</h6>
-                                    <p class="total mb-0">&pound;8,091.27</p>
+                                    <h4 class="mt-0">{{ $category['name'] }}</h4>
+                                    <h6 class="mt-0">{{ $category['description'] }}</h6>
+                                    <p class="total mb-0">&pound;{{ number_format((float) $category['total'], 2) }}</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12 col-sm-6 col-md-6 col-lg-4" style="margin-bottom: 1rem;">
-                            <div class="media summary-block shadow-sm h-100">
-                                <img src="{{ asset('images/theme/expenses.png') }}" class="mr-2" width="48" height="48" alt="icon">
-                                <div class="media-body">
-                                    <h4 class="mt-0">Non-Essential</h4>
-                                    <h6 class="mt-0">Optional expenses, expenses that we consider non-essential in raising a child</h6>
-                                    <p class="total mb-0">&pound;31,741.08</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-sm-6 col-md-6 col-lg-4" style="margin-bottom: 1rem;">
-                            <div class="media summary-block shadow-sm h-100">
-                                <img src="{{ asset('images/theme/expenses.png') }}" class="mr-2" width="48" height="48" alt="icon">
-                                <div class="media-body">
-                                    <h4 class="mt-0">Hobbies & Interests</h4>
-                                    <h6 class="mt-0">Leisure activities</h6>
-                                    <p class="total mb-0">&pound;224.66</p>
-                                </div>
-                            </div>
-                        </div>
-                        <hr />
+                        @endforeach
                     </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <hr />
+                        </div>
+                    </div>
+                    @endif
+                    @if ($annual_totals !== null)
                     <div class="row mt-4">
                         <div class="col-12">
                             <h4>Expenses for the last three years - <small><a href="/jack/years">View all years</a></small></h4>
@@ -174,42 +163,25 @@
                         </div>
                     </div>
                     <div class="row">
+                        @foreach ($annual_totals as $year)
                         <div class="col-12 col-sm-6 col-md-6 col-lg-4" style="margin-bottom: 1rem;">
                             <div class="media summary-block shadow-sm h-100">
                                 <img src="{{ asset('images/theme/expenses.png') }}" class="mr-2" width="48" height="48" alt="icon">
                                 <div class="media-body">
-                                    <h4 class="mt-0">2017</h4>
-                                    <h6 class="mt-0">All expenses for 2017</h6>
-                                    <p class="total mb-0">&pound;6,803.51</p>
+                                    <h4 class="mt-0">{{ $year['year'] }}</h4>
+                                    <h6 class="mt-0">All expenses for {{ $year['year'] }}</h6>
+                                    <p class="total mb-0">&pound;{{ number_format((float) $year['total'], 2) }}</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12 col-sm-6 col-md-6 col-lg-4" style="margin-bottom: 1rem;">
-                            <div class="media summary-block shadow-sm h-100">
-                                <img src="{{ asset('images/theme/expenses.png') }}" class="mr-2" width="48" height="48" alt="icon">
-                                <div class="media-body">
-                                    <h4 class="mt-0">2018</h4>
-                                    <h6 class="mt-0">All expenses for 2018</h6>
-                                    <p class="total mb-0">&pound;4,012.70</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-sm-6 col-md-6 col-lg-4" style="margin-bottom: 1rem;">
-                            <div class="media summary-block shadow-sm h-100">
-                                <img src="{{ asset('images/theme/expenses.png') }}" class="mr-2" width="48" height="48" alt="icon">
-                                <div class="media-body">
-                                    <h4 class="mt-0">2019</h4>
-                                    <h6 class="mt-0">All expenses for 2019</h6>
-                                    <p class="total mb-0">&pound;1,251.38</p>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                     <div class="row">
                         <div class="col-12">
                             <hr />
                         </div>
                     </div>
+                    @endif
                     <div class="row mt-4">
                         <div class="col-12">
                             <h4>The 25 most recent expenses for Jack</h4>
