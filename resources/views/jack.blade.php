@@ -157,7 +157,7 @@
                     @if ($annual_totals !== null)
                     <div class="row mt-4">
                         <div class="col-12">
-                            <h4>Expenses for the last three years - <small><a href="/jack/years">View all years</a></small></h4>
+                            <h4>Expenses for the last three years <!-- - <small><a href="/jack/years">View all years</a></small>--></h4>
 
                             <p>Total expenses for the last three years, select all years for a complete listing.</p>
                         </div>
@@ -182,6 +182,7 @@
                         </div>
                     </div>
                     @endif
+                    @if ($recent_expenses !== null)
                     <div class="row mt-4">
                         <div class="col-12">
                             <h4>The 25 most recent expenses for Jack</h4>
@@ -196,118 +197,30 @@
                                 <table class="table table-borderless table-hover">
                                     <caption>25 most recent expenses</caption>
                                     <thead>
-                                    <tr>
-                                        <th scope="col">Child</th>
-                                        <th scope="col">Description</th>
-                                        <th scope="col">Date</th>
-                                        <th scope="col" class="d-none d-md-table-cell">Category</th>
-                                        <th scope="col" class="d-none d-md-table-cell">Subcategory</th>
-                                        <th scope="col" class="d-none d-xl-table-cell">Total</th>
-                                        <th scope="col" class="d-none d-xl-table-cell">Allocation</th>
-                                        <th scope="col">Amount</th>
-                                    </tr>
+                                        <tr>
+                                            <th scope="col">Child</th>
+                                            <th scope="col">Description</th>
+                                            <th scope="col">Date</th>
+                                            <th scope="col" class="d-none d-md-table-cell">Category</th>
+                                            <th scope="col" class="d-none d-md-table-cell">Subcategory</th>
+                                            <th scope="col" class="d-none d-xl-table-cell">Total</th>
+                                            <th scope="col" class="d-none d-xl-table-cell">Allocation</th>
+                                            <th scope="col">Amount</th>
+                                        </tr>
                                     </thead>
                                     <tbody>
-                                    <tr class="top">
-                                        <td>Jack</td>
-                                        <td>Easter egg</td>
-                                        <td><span class="d-none d-md-block">9th April 2019</span><span class="d-table-cell d-sm-block d-md-none">9/04/2019</span></td>
-                                        <td class="d-none d-md-table-cell"><span class="category">Non-Essential</span></td>
-                                        <td class="d-none d-md-table-cell"><span class="category">Clothes, Food, Medicine etc.</span></td>
-                                        <td class="d-none d-xl-table-cell">£7.00</td>
-                                        <td class="d-none d-xl-table-cell">100%</td>
-                                        <td><strong>&pound;7.00</strong></td>
-                                    </tr>
-                                    <tr class="top">
-                                        <td>Jack</td>
-                                        <td>Share of shopping</td>
-                                        <td><span class="d-none d-md-block">12th April 2019</span><span class="d-table-cell d-sm-block d-md-none">12/04/2019</span></td>
-                                        <td class="d-none d-md-table-cell"><span class="category">Essential</span></td>
-                                        <td class="d-none d-md-table-cell"><span class="category">Clothes, Food, Medicine etc.</span></td>
-                                        <td class="d-none d-xl-table-cell">£42.52</td>
-                                        <td class="d-none d-xl-table-cell">100%</td>
-                                        <td><strong>&pound;42.52</strong></td>
-                                    </tr>
-                                    <tr class="top">
-                                        <td>Jack</td>
-                                        <td>Share of pizza</td>
-                                        <td><span class="d-none d-md-block">12th April 2019</span><span class="d-table-cell d-sm-block d-md-none">12/04/2019</span></td>
-                                        <td class="d-none d-md-table-cell"><span class="category">Essential</span></td>
-                                        <td class="d-none d-md-table-cell"><span class="category">Clothes, Food, Medicine etc.</span></td>
-                                        <td class="d-none d-xl-table-cell">£7.00</td>
-                                        <td class="d-none d-xl-table-cell">100%</td>
-                                        <td><strong>&pound;7.00</strong></td>
-                                    </tr>
-                                    <tr class="top">
-                                        <td>Niall</td>
-                                        <td>Mattress for Moses basket</td>
-                                        <td><span class="d-none d-md-block">5th April 2019</span><span class="d-table-cell d-sm-block d-md-none">5/04/2019</span></td>
-                                        <td class="d-none d-md-table-cell"><span class="category">Essential</span></td>
-                                        <td class="d-none d-md-table-cell"><span class="category">Furniture</span></td>
-                                        <td class="d-none d-xl-table-cell">£12.38</td>
-                                        <td class="d-none d-xl-table-cell">100%</td>
-                                        <td><strong>&pound;12.38</strong></td>
-                                    </tr>
-                                    <tr class="top">
-                                        <td>...</td>
-                                        <td>...</td>
-                                        <td><span class="d-none d-md-block">...</span><span class="d-table-cell d-sm-block d-md-none">5/04/2019</span></td>
-                                        <td class="d-none d-md-table-cell"><span class="category">...</span></td>
-                                        <td class="d-none d-md-table-cell"><span class="category">...</span></td>
-                                        <td class="d-none d-xl-table-cell">...</td>
-                                        <td class="d-none d-xl-table-cell">...</td>
-                                        <td><strong>...</strong></td>
-                                    </tr>
-                                    <tr class="top">
-                                        <td>Jack</td>
-                                        <td>Easter egg</td>
-                                        <td><span class="d-none d-md-block">9th April 2019</span><span class="d-table-cell d-sm-block d-md-none">9/04/2019</span></td>
-                                        <td class="d-none d-md-table-cell"><span class="category">Non-Essential</span></td>
-                                        <td class="d-none d-md-table-cell"><span class="category">Clothes, Food, Medicine etc.</span></td>
-                                        <td class="d-none d-xl-table-cell">£7.00</td>
-                                        <td class="d-none d-xl-table-cell">100%</td>
-                                        <td><strong>&pound;7.00</strong></td>
-                                    </tr>
-                                    <tr class="top">
-                                        <td>Jack</td>
-                                        <td>Share of shopping</td>
-                                        <td><span class="d-none d-md-block">12th April 2019</span><span class="d-table-cell d-sm-block d-md-none">12/04/2019</span></td>
-                                        <td class="d-none d-md-table-cell"><span class="category">Essential</span></td>
-                                        <td class="d-none d-md-table-cell"><span class="category">Clothes, Food, Medicine etc.</span></td>
-                                        <td class="d-none d-xl-table-cell">£42.52</td>
-                                        <td class="d-none d-xl-table-cell">100%</td>
-                                        <td><strong>&pound;42.52</strong></td>
-                                    </tr>
-                                    <tr class="top">
-                                        <td>Jack</td>
-                                        <td>Share of pizza</td>
-                                        <td><span class="d-none d-md-block">12th April 2019</span><span class="d-table-cell d-sm-block d-md-none">12/04/2019</span></td>
-                                        <td class="d-none d-md-table-cell"><span class="category">Essential</span></td>
-                                        <td class="d-none d-md-table-cell"><span class="category">Clothes, Food, Medicine etc.</span></td>
-                                        <td class="d-none d-xl-table-cell">£7.00</td>
-                                        <td class="d-none d-xl-table-cell">100%</td>
-                                        <td><strong>&pound;7.00</strong></td>
-                                    </tr>
-                                    <tr class="top">
-                                        <td>Niall</td>
-                                        <td>Mattress for Moses basket</td>
-                                        <td><span class="d-none d-md-block">5th April 2019</span><span class="d-table-cell d-sm-block d-md-none">5/04/2019</span></td>
-                                        <td class="d-none d-md-table-cell"><span class="category">Essential</span></td>
-                                        <td class="d-none d-md-table-cell"><span class="category">Furniture</span></td>
-                                        <td class="d-none d-xl-table-cell">£12.38</td>
-                                        <td class="d-none d-xl-table-cell">100%</td>
-                                        <td><strong>&pound;12.38</strong></td>
-                                    </tr>
-                                    <tr class="top">
-                                        <td>...</td>
-                                        <td>...</td>
-                                        <td><span class="d-none d-md-block">...</span><span class="d-table-cell d-sm-block d-md-none">5/04/2019</span></td>
-                                        <td class="d-none d-md-table-cell"><span class="category">...</span></td>
-                                        <td class="d-none d-md-table-cell"><span class="category">...</span></td>
-                                        <td class="d-none d-xl-table-cell">...</td>
-                                        <td class="d-none d-xl-table-cell">...</td>
-                                        <td><strong>...</strong></td>
-                                    </tr>
+                                        @foreach ($recent_expenses as $expense)
+                                        <tr class="top">
+                                            <td>Jack</td>
+                                            <td>{{ $expense['description'] }}</td>
+                                            <td><span class="d-none d-md-block">{{ date('j M Y', strtotime($expense['effective_date'])) }}</span><span class="d-table-cell d-sm-block d-md-none">{{ date('d/m/Y', strtotime($expense['effective_date'])) }}</span></td>
+                                            <td class="d-none d-md-table-cell"><span class="category">{{ $expense['category']['name'] }}</span></td>
+                                            <td class="d-none d-md-table-cell"><span class="category">{{ $expense['subcategory']['name'] }}</span></td>
+                                            <td class="d-none d-xl-table-cell">£{{ $expense['total'] }}</td>
+                                            <td class="d-none d-xl-table-cell">{{ $expense['percentage'] }}%</td>
+                                            <td><strong>&pound;{{ $expense['actualised_total'] }}</strong></td>
+                                        </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -318,63 +231,15 @@
                             <hr />
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <h4>API Requests</h4>
+                    @endif
 
-                            <p>This page was generated using the data returned from the following API requests.</p>
+                    @include(
+                        'page-component.api-requests',
+                        [
+                            'api_requests' => $api_requests
+                        ]
+                    )
 
-                            <div class="p-3 shadow-sm white-container">
-                                <table class="table table-borderless table-sm api-requests">
-                                    <caption>API Requests to https://api.costs-to-expect.com</caption>
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col">Page section</th>
-                                            <th scope="col">API request</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr class="top">
-                                            <td>1</td>
-                                            <td>Total for Jack</td>
-                                            <td>/v1/summary/resource-types/d185Q15grY/resources/kw8gLq31VB/items</td>
-                                        </tr>
-                                        <tr class="top">
-                                            <td>2</td>
-                                            <td>Total for Niall</td>
-                                            <td>/v1/summary/resource-types/d185Q15grY/resources/Eq9g6BgJL0/items</td>
-                                        </tr>
-                                        <tr class="top">
-                                            <td>3</td>
-                                            <td>Total for Blackborough Children</td>
-                                            <td>/v1/summary/resource-types/d185Q15grY/items</td>
-                                        </tr>
-                                        <tr class="top">
-                                            <td>4</td>
-                                            <td>2019 Total for Jack</td>
-                                            <td>/v1/summary/resource-types/d185Q15grY/resources/kw8gLq31VB/items?years=2019</td>
-                                        </tr>
-                                        <tr class="top">
-                                            <td>5</td>
-                                            <td>2019 Total for Niall</td>
-                                            <td>/v1/summary/resource-types/d185Q15grY/resources/Eq9g6BgJL0/items?years=2019</td>
-                                        </tr>
-                                        <tr class="top">
-                                            <td>6</td>
-                                            <td>2019 Total for Blackborough Children</td>
-                                            <td>/v1/summary/resource-types/d185Q15grY/items?year=2019</td>
-                                        </tr>
-                                        <tr class="top">
-                                            <td>7</td>
-                                            <td>25 most recent expenses</td>
-                                            <td>/v1/resource-types/d185Q15grY/items?limit=25&amp;show-categories=true&show-subcategories=true</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
                     <div class="row mt-5 mb-5">
                         <div class="col-12">
                             <p class="text-center text-muted footer">
