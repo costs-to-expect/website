@@ -40,9 +40,6 @@ class DashboardController extends BaseController
             ]
         ];
 
-        /**
-         * Need to move this code to model classes
-         */
         $child_totals = Api::getInstance()
             ->public()
             ->get('/v1/summary/resource-types/d185Q15grY/items?resources=true');

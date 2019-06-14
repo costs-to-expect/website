@@ -45,6 +45,7 @@
     )
     <hr />
 </div>
+@if ($jack_current_year !== null && $niall_current_year !== null)
 <div class="row mt-4">
     <div class="col-12">
         <h4>Expenses for current year (2019)</h4>
@@ -92,6 +93,8 @@
         <hr />
     </div>
 </div>
+@endif
+@if ($recent_expenses !== null)
 <div class="row mt-4">
     <div class="col-12">
         <h4>The 25 most recent expenses for both children</h4>
@@ -135,6 +138,7 @@
         </div>
     </div>
 </div>
+@endif
 
 @include(
     'page-component.api-requests',

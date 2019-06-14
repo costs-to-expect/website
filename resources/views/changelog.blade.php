@@ -17,6 +17,20 @@
 
         <hr />
 
+        <h2>[v1.05.0] - xth June 2019</h2>
+
+        <h3>Added</h3>
+
+        <ul>
+            <li>The Costs to Expect website will check the status of the API, if it is down a message is displayed.</li>
+        </ul>
+
+        <h2>Changed</h2>
+
+        <ul>
+            <li>The dashboard will gracefully handle the API being down.</li>
+        </ul>
+
         <h2>[v1.04.0] - 3rd June 2019</h2>
 
         <h3>Added</h3>

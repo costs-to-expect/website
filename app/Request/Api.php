@@ -24,9 +24,14 @@ class Api
     private static $instance;
 
     /**
-     * @var array The headers for the request.
+     * @var array The headers for the previous request.
      */
     private static $headers = null;
+
+    /**
+     * @var int The response code for the previous request
+     */
+    private static $status_code = null;
 
     /**
      * Generate a new instance of the helper ot return the existing instance
@@ -58,7 +63,7 @@ class Api
             ],
         ]);
 
-        return new static();
+        return self::$instance;
     }
 
     /**
@@ -74,11 +79,13 @@ class Api
         $content = null;
 
         try {
-            $response = self::$client->get($uri);
+            $response = self::$client->get($uri, ['http_errors' => false]);
 
-            if ($response->getStatusCode() === 200) {
+            self::$status_code = $response->getStatusCode();
+
+            if (self::$status_code === 200) {
                 $content = json_decode($response->getBody(), true);
-                if ($headers = true) {
+                if ($headers == true) {
                     self::$headers = $response->getHeaders();
                 }
             } else {
@@ -93,8 +100,23 @@ class Api
         return $content;
     }
 
+    /**
+     * Return the headers array for the previous API request
+     *
+     * @return array|null
+     */
     public static function previousRequestHeaders(): ?array
     {
         return self::$headers;
+    }
+
+    /**
+     * Return the status code for the previous API request
+     *
+     * @return int|null
+     */
+    public static function previousStatusCode(): ?int
+    {
+        return self::$status_code;
     }
 }
