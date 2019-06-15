@@ -4,6 +4,7 @@ namespace App\Request;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
+use Illuminate\Support\Facades\Config;
 
 /**
  * Request helper class for calling the Costs to Expect API
@@ -59,7 +60,7 @@ class Api
             'headers' => [
                 'Accept' => 'application/json',
                 'Content-Type' => 'application/json',
-                'X-Source' => 'website'
+                'X-Source' => Config::get('web.app.api-source')
             ],
         ]);
 
