@@ -25,11 +25,12 @@
             <li>The Costs to Expect website will check the status of the API, if it is down a message is displayed.</li>
         </ul>
 
-        <h2>Changed</h2>
+        <h3>Changed</h3>
 
         <ul>
             <li>The dashboard will gracefully handle the API being down.</li>
             <li>The `source` value displayed in the API access-log now defined in config, we need to change the value for different environments.</li>
+            <li>The website will only call a specific endpoint once per request, models retain state so subsequent calls are free.</li>
         </ul>
 
         <h2>[v1.04.0] - 3rd June 2019</h2>
