@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Request\Api;
 use Illuminate\Support\Facades\Config;
 use Illuminate\View\View;
@@ -22,32 +23,15 @@ class ChildController extends BaseController
      */
     public function jack(): View
     {
-        $category_totals = [
-            '98WLap7Bx3' => [
-                'name' => 'Essential',
-                'description' => 'Expenses that we consider essential in the raising a child',
-                'total' => 0.00
-            ],
-            'RjXM5VJDw6' => [
-                'name' => 'Non-Essential',
-                'description' => 'Optional expenses, expenses that we consider non-essential in raising a child',
-                'total' => 0.00
-            ],
-            'Gwg7zgL316' => [
-                'name' => 'Hobbies & Interests',
-                'description' => 'Leisure activities',
-                'total' => 0.00
-            ]
-        ];
+        $category_model = new Category();
 
-        $categories = Api::getInstance()
-            ->public()
-            ->get('/v1/summary/resource-types/d185Q15grY/resources/kw8gLq31VB/items?categories=true');
-
-        if ($categories !== null) {
-            foreach ($categories as $category) {
-                $category_totals[$category['id']]['total'] = $category['total'];
-            }
+        if ($category_model->categoriesSummaryPopulated() === false) {
+            $api_categories_response = Api::getInstance()
+                ->public()
+                ->get('/v1/summary/resource-types/d185Q15grY/resources/kw8gLq31VB/items?categories=true');
+            $categories_summary = $category_model->categoriesSummary($api_categories_response);
+        } else {
+            $categories_summary = $category_model->categoriesSummary(null);
         }
 
         $annual_totals = [];
@@ -80,7 +64,8 @@ class ChildController extends BaseController
         if ($recent_expenses_headers !== null && array_key_exists('X-Total-Count', $recent_expenses_headers) === true) {
             $total_count = $recent_expenses_headers['X-Total-Count'][0];
         }
-        $total = $category_totals['98WLap7Bx3']['total'] + $category_totals['RjXM5VJDw6']['total'] + $category_totals['Gwg7zgL316']['total'];
+
+        $total = $category_model->totalFromCategorySummary();
 
         $largest_expense = Api::getInstance()
             ->public()
@@ -93,7 +78,7 @@ class ChildController extends BaseController
                 'menus' => $this->menus(),
                 'active' => '/jack',
                 'api_requests' => $this->apiRequestsForJack(),
-                'category_totals' => $category_totals,
+                'categories_summary' => $categories_summary,
                 'annual_totals' => $annual_totals,
                 'recent_expenses' => $recent_expenses,
                 'total_count' => $total_count,

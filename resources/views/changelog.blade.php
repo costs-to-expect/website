@@ -29,6 +29,7 @@
 
         <ul>
             <li>The dashboard will gracefully handle the API being down.</li>
+            <li>The `source` value displayed in the API access-log now defined in config, we need to change the value for different environments.</li>
         </ul>
 
         <h2>[v1.04.0] - 3rd June 2019</h2>
