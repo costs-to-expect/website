@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
+use App\Models\ChildCategory;
 use App\Request\Api;
 use Illuminate\Support\Facades\Config;
 use Illuminate\View\View;
@@ -23,7 +23,7 @@ class ChildController extends BaseController
      */
     public function jack(): View
     {
-        $category_model = new Category();
+        $category_model = new ChildCategory();
 
         if ($category_model->categoriesSummaryPopulated() === false) {
             $api_categories_response = Api::getInstance()

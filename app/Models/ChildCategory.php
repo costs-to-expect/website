@@ -8,28 +8,47 @@ namespace App\Models;
  * @author Dean Blackborough <dean@g3d-development.com>
  * @copyright Dean Blackborough 2019
  */
-class Category
+class ChildCategory
 {
     private $summary = null;
     private $summary_populated = false;
+
+    private $essential_id = '98WLap7Bx3';
+    private $non_essential_id = 'RjXM5VJDw6';
+    private $hobby_interest_id = 'Gwg7zgL316';
+
+    public function essentialId(): string
+    {
+        return $this->essential_id;
+    }
+
+    public function nonEssentialId(): string
+    {
+        return $this->non_essential_id;
+    }
+
+    public function hobbyInterestId(): string
+    {
+        return $this->hobby_interest_id;
+    }
 
     private function setCategoriesSummaryData()
     {
         if ($this->summary === null) {
             $this->summary = [
-            '98WLap7Bx3' => [
-                'name' => 'Essential',
-                'description' => 'Expenses that we consider essential in the raising a child',
+            $this->essential_id => [
+                'name' => trans('web/categories.essential-name'),
+                'description' => trans('web/categories.essential-description'),
                 'total' => 0.00
             ],
-            'RjXM5VJDw6' => [
-                'name' => 'Non-Essential',
-                'description' => 'Optional expenses, expenses that we consider non-essential in raising a child',
+            $this->non_essential_id => [
+                'name' => trans('web/categories.non-essential-name'),
+                'description' => trans('web/categories.non-essential-description'),
                 'total' => 0.00
             ],
-            'Gwg7zgL316' => [
-                'name' => 'Hobbies & Interests',
-                'description' => 'Leisure activities',
+            $this->hobby_interest_id => [
+                'name' => trans('web/categories.hobby-interest-name'),
+                'description' => trans('web/categories.hobby-interest-description'),
                 'total' => 0.00
             ]
         ];
