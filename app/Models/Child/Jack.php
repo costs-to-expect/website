@@ -15,9 +15,16 @@ class Jack extends Child
     public function __construct()
     {
         $this->id = 'kw8gLq31VB';
+
+        $this->uri = '/jack';
+
+        $this->version = 'Our first child';
         $this->name = 'Jack Blackborough';
-        $this->dob = '2018-06-28';
-        $this->sex = 'male';
+        $this->dob = '28th June 2013 05:41';
+        $this->sex = 'Male';
         $this->weight = '3.373kg (7lb 7oz)';
+        $this->short_name = 'Jack';
+        $this->image_uri = 'images/theme/jack.jpg';
+
     }
 }

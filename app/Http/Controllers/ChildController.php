@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Child;
 use App\Models\Child\Jack;
+use App\Models\Child\Niall;
 use App\Models\ChildCategory;
 use App\Request\Api;
 use App\Request\Uri;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 use Illuminate\View\View;
 use Illuminate\Routing\Controller as BaseController;
@@ -18,14 +21,25 @@ use Illuminate\Routing\Controller as BaseController;
  */
 class ChildController extends BaseController
 {
+    private function childModel(string $uri): Child
+    {
+        if ($uri === '/jack') {
+            return new Jack();
+        } else {
+            return new Niall();
+        }
+    }
+
     /**
      * Dashboard for Jack
      *
+     * @param Request $request
+     *
      * @return View
      */
-    public function jack(): View
+    public function child(Request $request): View
     {
-        $child = new Jack();
+        $child = $this->childModel($request->getPathInfo());
 
         $category_model = new ChildCategory();
 
@@ -76,13 +90,15 @@ class ChildController extends BaseController
             ->get('/v1/resource-types/d185Q15grY/resources/kw8gLq31VB/items?sort=actualised_total:desc&limit=1');
 
         return view(
-            'jack',
+            $child->viewName(),
             [
                 'config' => $this->configProperties(),
                 'menus' => $this->menus(),
-                'active' => '/jack',
+                'uri' => $child->uri(),
                 'api_requests' => $this->apiRequestsForJack(),
                 'categories_summary' => $categories_summary,
+                'child_details' => $child->details(),
+
                 'annual_totals' => $annual_totals,
                 'recent_expenses' => $recent_expenses,
                 'total_count' => $total_count,

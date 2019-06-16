@@ -13,7 +13,7 @@
 
 Route::get('/', 'DashboardController@index');
 
-Route::get('/jack', 'ChildController@jack');
+Route::get('/jack', 'ChildController@child');
 Route::get('/niall', 'ChildController@niall');
 Route::get('/jack/years', 'ChildController@yearsForJack');
 Route::get('/niall/years', 'ChildController@yearsForNiall');

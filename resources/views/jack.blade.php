@@ -25,7 +25,7 @@
                             'component.site-menu',
                             [
                                 'title' => $menus['children']['title'],
-                                'active' => $active,
+                                'active' => $uri,
                                 'items' => $menus['children']['items']
                             ]
                         )
@@ -35,7 +35,7 @@
                             'component.site-menu',
                             [
                                 'title' => $menus['site']['title'],
-                                'active' => $active,
+                                'active' => $uri,
                                 'items' => $menus['site']['items']
                             ]
                         )
@@ -57,7 +57,7 @@
                                     'component.site-mobile-menu',
                                     [
                                         'title' => $menus['children']['title'],
-                                        'active' => $active,
+                                        'active' => $uri,
                                         'items' => $menus['children']['items']
                                     ]
                                 )
@@ -65,7 +65,7 @@
                                     'component.site-mobile-menu',
                                     [
                                         'title' => $menus['site']['title'],
-                                        'active' => $active,
+                                        'active' => $uri,
                                         'items' => $menus['site']['items']
                                     ]
                                 )
@@ -79,17 +79,17 @@
                                     <img src="{{ asset('images/theme/dashboard.png') }}" width="50" height="50" alt="Screen icon" title="Dashboard" />
                                 </div>
                                 <div class="welcome">
-                                    <small class="text-muted">Our first child</small>
+                                    <small class="text-muted">{{ $child_details['version'] }}</small>
                                 </div>
                                 <div class="title">
-                                    <h1>Jack Blackborough</h1>
+                                    <h1>{{ $child_details['name'] }}</h1>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col-md-3 col-lg-4 col-sm-6 col-12">
-                            <img src="{{ asset('images/theme/jack.jpg') }}" class="img-fluid rounded mx-auto d-block" alt="icon">
+                            <img src="{{ asset($child_details['image_uri']) }}" class="img-fluid rounded mx-auto d-block" alt="icon">
                         </div>
                         <div class="col-md-9 col-lg-8 col-sm-6 col-12">
                             <div class="detail-page-intro">
@@ -97,24 +97,24 @@
                                     <div class="col-md-6 col-12">
                                         <h5>Name</h5>
                                         <p class="sub-heading text-muted d-none d-md-block">What did we call him?</p>
-                                        <p class="data">Jack Blackborough</p>
+                                        <p class="data">{{ $child_details['name'] }}</p>
                                         <h5>Born</h5>
                                         <p class="sub-heading text-muted d-none d-md-block">When did he emerge?</p>
-                                        <p class="data">28th June 2013 at 05:41</p>
+                                        <p class="data">{{ $child_details['dob'] }}</p>
                                         <h5>Sex & Birth weight</h5>
                                         <p class="sub-heading text-muted d-none d-md-block">What are his vital statistics?</p>
-                                        <p class="data">Male & 7lb 7oz</p>
+                                        <p class="data">{{ $child_details['sex'] }} & {{ $child_details['weight'] }}</p>
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <h5>Total expenses</h5>
-                                        <p class="sub-heading text-muted d-none d-md-block">How much to raise Jack?</p>
+                                        <p class="sub-heading text-muted d-none d-md-block">How much to raise {{ $child_details['short_name'] }}?</p>
                                         <p class="data">&pound;{{ number_format((float) $total, 2) }}</p>
                                         <h5>Number of expenses</h5>
                                         <p class="sub-heading text-muted d-none d-md-block">How many purchases?</p>
                                         <p class="data">{{ $total_count }}</p>
                                         <h5>Largest expense</h5>
                                         <p class="sub-heading text-muted d-none d-md-block">The grandest expense?</p>
-                                        <p class="data">&pound;{{ $largest_expense[0]['actualised_total'] }} <small>({{ $largest_expense[0]['description'] }})</small></p>
+                                        <p class="data">&pound;{{ number_format((float) $largest_expense[0]['actualised_total'], 2) }} <small>({{ $largest_expense[0]['description'] }})</small></p>
                                     </div>
                                 </div>
                             </div>
@@ -185,9 +185,9 @@
                     @if ($recent_expenses !== null)
                     <div class="row mt-4">
                         <div class="col-12">
-                            <h4>The 25 most recent expenses for Jack</h4>
+                            <h4>The 25 most recent expenses for {{ $child_details['short_name'] }}</h4>
 
-                            <p>The table below lists the last 25 expenses we have logged for Jack, to see more select any
+                            <p>The table below lists the last 25 expenses we have logged for {{ $child_details['short_name'] }}, to see more select any
                                 summary count, category or subcategory.</p>
                         </div>
                     </div>
