@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Child\Jack;
 use App\Models\ChildCategory;
 use App\Request\Api;
+use App\Request\Uri;
 use Illuminate\Support\Facades\Config;
 use Illuminate\View\View;
 use Illuminate\Routing\Controller as BaseController;
@@ -31,7 +32,7 @@ class ChildController extends BaseController
         if ($category_model->categoriesSummaryPopulated() === false) {
             $api_categories_response = Api::getInstance()
                 ->public()
-                ->get('/v1/summary/resource-types/d185Q15grY/resources/kw8gLq31VB/items?categories=true');
+                ->get(Uri::summaryChildCategories($child->id()));
             $categories_summary = $category_model->categoriesSummary($api_categories_response);
         } else {
             $categories_summary = $category_model->categoriesSummary(null);
