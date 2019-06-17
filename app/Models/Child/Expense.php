@@ -19,6 +19,10 @@ class Expense
      */
     private $expenses_response = null;
     /**
+     * @var array|null
+     */
+    private $expenses_headers = null;
+    /**
      * @var bool
      */
     private $expenses_populated = false;
@@ -35,10 +39,17 @@ class Expense
         return $this->expenses_populated;
     }
 
-    public function setAnnualSummaryApiResponse(?array $response)
+    public function setRecentExpensesApiResponse(?array $response)
     {
         if ($response !== null) {
             $this->expenses_response = $response;
+        }
+    }
+
+    public function setRecentExpensesApiHeaderResponse(?array $headers)
+    {
+        if ($headers !== null) {
+            $this->expenses_headers = $headers;
         }
     }
 
@@ -56,5 +67,12 @@ class Expense
         return $this->expenses;
     }
 
-
+    public function recentExpensesHeaders()
+    {
+        if ($this->expenses_headers !== null) {
+            return $this->expenses_headers;
+        } else {
+            return [];
+        }
+    }
 }

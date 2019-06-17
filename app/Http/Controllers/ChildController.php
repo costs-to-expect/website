@@ -49,29 +49,23 @@ class ChildController extends BaseController
 
         if ($category_model->categoriesSummaryPopulated() === false) {
             $category_model->setCategoriesSummaryApiResponse(Api::summaryExpensesByCategory($child->id()));
-            $categories_summary = $category_model->categoriesSummary();
-        } else {
-            $categories_summary = $category_model->categoriesSummary();
         }
+
+        $categories_summary = $category_model->categoriesSummary();
 
         if ($annual_model->annualSummaryPopulated() === false) {
             $annual_model->setAnnualSummaryApiResponse(Api::summaryExpensesAnnual($child->id()));
-            $annual_summary = $annual_model->annualSummary();
-        } else {
-            $annual_summary = $annual_model->annualSummary();
         }
 
+        $annual_summary = $annual_model->annualSummary();
+
         if ($expense_model->recentExpensesPopulated() === false) {
-            $expense_model->setAnnualSummaryApiResponse(Api::recentExpenses($child->id()));
+            $expense_model->setRecentExpensesApiResponse(Api::recentExpenses($child->id()));
+            $expense_model->setRecentExpensesApiHeaderResponse(Api::previousRequestHeaders());
         }
 
         $recent_expenses = $expense_model->recentExpenses();
-
-        $recent_expenses = Http::getInstance()
-            ->public()
-            ->get('/v1/resource-types/d185Q15grY/resources/kw8gLq31VB/items?limit=25&include-categories=true&include-subcategories=true', true);
-
-        $recent_expenses_headers = Http::getInstance()->previousRequestHeaders();
+        $recent_expenses_headers = $expense_model->recentExpensesHeaders();
 
         $total_count = 0;
         if ($recent_expenses_headers !== null && array_key_exists('X-Total-Count', $recent_expenses_headers) === true) {
