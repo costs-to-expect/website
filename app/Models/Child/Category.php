@@ -57,9 +57,9 @@ class Category
     }
 
     /**
-     * Check to see if we have previous called the categoriesSummary method within
-     * this request, if we have the data will already be populated and we can return
-     * the data without an API call.
+     * Check to see if we have previously called this method within the request
+     * if we have, the data will already be populated and we can return the
+     * requested data without an expensive API call.
      *
      * @return bool
      */

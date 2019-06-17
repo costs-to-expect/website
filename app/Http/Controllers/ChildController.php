@@ -45,6 +45,7 @@ class ChildController extends BaseController
 
         $category_model = new Category();
         $annual_model = new Annual();
+        $expense_model = new Child\Expense();
 
         if ($category_model->categoriesSummaryPopulated() === false) {
             $category_model->setCategoriesSummaryApiResponse(Api::summaryExpensesByCategory($child->id()));
@@ -59,6 +60,12 @@ class ChildController extends BaseController
         } else {
             $annual_summary = $annual_model->annualSummary();
         }
+
+        if ($expense_model->recentExpensesPopulated() === false) {
+            $expense_model->setAnnualSummaryApiResponse(Api::recentExpenses($child->id()));
+        }
+
+        $recent_expenses = $expense_model->recentExpenses();
 
         $recent_expenses = Http::getInstance()
             ->public()

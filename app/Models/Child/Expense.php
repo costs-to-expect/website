@@ -10,15 +10,50 @@ namespace App\Models\Child;
  */
 class Expense
 {
-    public function recentExpenses(?array $api_data)
-    {
-        $expenses = [];
+    /**
+     * @var array|null
+     */
+    private $expenses = null;
+    /**
+     * @var array|null
+     */
+    private $expenses_response = null;
+    /**
+     * @var bool
+     */
+    private $expenses_populated = false;
 
-        if ($api_data !== null) {
-            $expenses = $api_data;
+    /**
+     * Check to see if we have previously called this method within the request
+     * if we have, the data will already be populated and we can return the
+     * requested data without an expensive API call.
+     *
+     * @return bool
+     */
+    public function recentExpensesPopulated(): bool
+    {
+        return $this->expenses_populated;
+    }
+
+    public function setAnnualSummaryApiResponse(?array $response)
+    {
+        if ($response !== null) {
+            $this->expenses_response = $response;
+        }
+    }
+
+    public function recentExpenses(): array
+    {
+        if ($this->expenses_populated === false) {
+            if ($this->expenses_response !== null) {
+                $this->expenses = $this->expenses_response;
+                $this->expenses_populated = true;
+            } else {
+                $this->expenses = [];
+            }
         }
 
-        return $expenses;
+        return $this->expenses;
     }
 
 

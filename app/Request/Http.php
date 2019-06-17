@@ -116,7 +116,7 @@ class Http
      *
      * @return int|null
      */
-    public static function previousStatusCode(): ?int
+    public static function previousRequestStatusCode(): ?int
     {
         return self::$status_code;
     }

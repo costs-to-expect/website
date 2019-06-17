@@ -39,7 +39,7 @@ class AppServiceProvider extends ServiceProvider
         View()->composer(['layouts.default'], function($view) {
             $view->with(
                 'api_status',
-                (Http::getInstance()->previousStatusCode() === 503 ? false : true)
+                (Http::getInstance()->previousRequestStatusCode() === 503 ? false : true)
             );
         });
     }
