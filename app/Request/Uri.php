@@ -16,9 +16,19 @@ class Uri
      * @param string $child_id
      * @return string
      */
-    public static function summaryChildCategories(string $child_id): string
+    public static function summaryExpensesByCategory(string $child_id): string
     {
         return '/v1/summary/resource-types/' . self::$resource_type .
             '/resources/' . $child_id . '/items?categories=true';
+    }
+
+    /**
+     * @param string $child_id
+     * @return string
+     */
+    public static function summaryExpensesAnnual(string $child_id): string
+    {
+        return '/v1/summary/resource-types/' . self::$resource_type .
+            '/resources/' . $child_id . '/items?years=true';
     }
 }

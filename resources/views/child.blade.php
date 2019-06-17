@@ -154,7 +154,7 @@
                         </div>
                     </div>
                     @endif
-                    @if ($annual_totals !== null)
+                    @if ($annual_summary !== null)
                     <div class="row mt-4">
                         <div class="col-12">
                             <h4>Expenses for the last three years <!-- - <small><a href="/jack/years">View all years</a></small>--></h4>
@@ -163,7 +163,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        @foreach ($annual_totals as $year)
+                        @foreach ($annual_summary as $year)
                         <div class="col-12 col-sm-6 col-md-6 col-lg-4" style="margin-bottom: 1rem;">
                             <div class="media summary-block shadow-sm h-100">
                                 <img src="{{ asset('images/theme/expenses.png') }}" class="mr-2" width="48" height="48" alt="icon">

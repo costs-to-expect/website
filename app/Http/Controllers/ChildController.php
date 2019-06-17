@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Child;
+use App\Models\Child\Annual;
 use App\Models\Child\Jack;
 use App\Models\Child\Niall;
 use App\Models\Child\Category;
@@ -42,34 +43,24 @@ class ChildController extends BaseController
         $child = $this->childModel($request->getPathInfo());
 
         $category_model = new Category();
+        $annual_model = new Annual();
 
         if ($category_model->categoriesSummaryPopulated() === false) {
             $api_categories_response = Api::getInstance()
                 ->public()
-                ->get(Uri::summaryChildCategories($child->id()));
+                ->get(Uri::summaryExpensesByCategory($child->id()));
             $categories_summary = $category_model->categoriesSummary($api_categories_response);
         } else {
             $categories_summary = $category_model->categoriesSummary(null);
         }
 
-        $annual_totals = [];
-        for ($i = intval(date('Y')) - 2; $i <= intval(date('Y')); $i++) {
-            $annual_totals[$i] = [
-                'year' => $i,
-                'total' => 0.00
-            ];
-        }
-
-        $annual_summary = Api::getInstance()
-            ->public()
-            ->get('/v1/summary/resource-types/d185Q15grY/resources/kw8gLq31VB/items?years=true');
-
-        if ($annual_summary !== null) {
-            foreach ($annual_summary as $year) {
-                if (array_key_exists($year['year'], $annual_totals) === true) {
-                    $annual_totals[$year['year']]['total'] = $year['total'];
-                }
-            }
+        if ($annual_model->annualSummaryPopulated() === false) {
+            $api_annual_summary_response = Api::getInstance()
+                ->public()
+                ->get(Uri::summaryExpensesAnnual($child->id()));
+            $annual_summary = $annual_model->annualSummary($api_annual_summary_response);
+        } else {
+            $annual_summary = $annual_model->annualSummary(null);
         }
 
         $recent_expenses = Api::getInstance()
@@ -96,10 +87,12 @@ class ChildController extends BaseController
                 'menus' => $this->menus(),
                 'uri' => $child->uri(),
                 'api_requests' => $this->apiRequestsForJack(),
+
                 'categories_summary' => $categories_summary,
+                'annual_summary' => $annual_summary,
+
                 'child_details' => $child->details(),
 
-                'annual_totals' => $annual_totals,
                 'recent_expenses' => $recent_expenses,
                 'total_count' => $total_count,
                 'total' => $total,
