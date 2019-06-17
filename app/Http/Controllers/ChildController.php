@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Child;
 use App\Models\Child\Jack;
 use App\Models\Child\Niall;
-use App\Models\ChildCategory;
+use App\Models\Child\Category;
 use App\Request\Api;
 use App\Request\Uri;
 use Illuminate\Http\Request;
@@ -41,7 +41,7 @@ class ChildController extends BaseController
     {
         $child = $this->childModel($request->getPathInfo());
 
-        $category_model = new ChildCategory();
+        $category_model = new Category();
 
         if ($category_model->categoriesSummaryPopulated() === false) {
             $api_categories_response = Api::getInstance()
