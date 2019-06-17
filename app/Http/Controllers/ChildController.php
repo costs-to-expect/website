@@ -90,7 +90,7 @@ class ChildController extends BaseController
             ->get('/v1/resource-types/d185Q15grY/resources/kw8gLq31VB/items?sort=actualised_total:desc&limit=1');
 
         return view(
-            $child->viewName(),
+            'child',
             [
                 'config' => $this->configProperties(),
                 'menus' => $this->menus(),

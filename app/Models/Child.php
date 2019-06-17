@@ -44,9 +44,4 @@ abstract class Child
     {
         return $this->uri;
     }
-
-    public function viewName(): string
-    {
-        return strtolower($this->short_name);
-    }
 }

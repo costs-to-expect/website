@@ -102,7 +102,7 @@
                                         <p class="sub-heading text-muted d-none d-md-block">When did he emerge?</p>
                                         <p class="data">{{ $child_details['dob'] }}</p>
                                         <h5>Sex & Birth weight</h5>
-                                        <p class="sub-heading text-muted d-none d-md-block">What are his vital statistics?</p>
+                                        <p class="sub-heading text-muted d-none d-md-block">What were his vital statistics?</p>
                                         <p class="data">{{ $child_details['sex'] }} & {{ $child_details['weight'] }}</p>
                                     </div>
                                     <div class="col-md-6 col-12">
