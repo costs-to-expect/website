@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\Request\Api;
+use App\Request\Http;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
 
@@ -32,14 +32,14 @@ class AppServiceProvider extends ServiceProvider
             );
         });
 
-        Api::getInstance()
+        Http::getInstance()
             ->public()
             ->get('/v1');
 
         View()->composer(['layouts.default'], function($view) {
             $view->with(
                 'api_status',
-                (Api::getInstance()->previousStatusCode() === 503 ? false : true)
+                (Http::getInstance()->previousStatusCode() === 503 ? false : true)
             );
         });
     }

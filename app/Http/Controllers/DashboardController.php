@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Request\Api;
+use App\Request\Http;
 use Illuminate\Support\Facades\Config;
 use Illuminate\View\View;
 use Illuminate\Routing\Controller as BaseController;
@@ -40,15 +40,15 @@ class DashboardController extends BaseController
             ]
         ];
 
-        $child_totals = Api::getInstance()
+        $child_totals = Http::getInstance()
             ->public()
             ->get('/v1/summary/resource-types/d185Q15grY/items?resources=true');
 
-        $jack_current_year = Api::getInstance()
+        $jack_current_year = Http::getInstance()
             ->public()
             ->get('/v1/summary/resource-types/d185Q15grY/resources/kw8gLq31VB/items?year=' . date('Y'));
 
-        $niall_current_year = Api::getInstance()
+        $niall_current_year = Http::getInstance()
             ->public()
             ->get('/v1/summary/resource-types/d185Q15grY/resources/Eq9g6BgJL0/items?year=' . date('Y'));
 
@@ -62,7 +62,7 @@ class DashboardController extends BaseController
             $children['niall']['total'] = $child_totals[1]['total'];
         }
 
-        $recent_expenses = Api::getInstance()
+        $recent_expenses = Http::getInstance()
             ->public()
             ->get('/v1/resource-types/d185Q15grY/items?limit=25&include-categories=true&include-subcategories=true');
 

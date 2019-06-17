@@ -11,6 +11,7 @@ namespace App\Models\Child;
 class Category
 {
     private $summary = null;
+    private $summary_response = null;
     private $summary_populated = false;
 
     private $essential_id = '98WLap7Bx3';
@@ -32,7 +33,7 @@ class Category
         return $this->hobby_interest_id;
     }
 
-    private function setCategoriesSummaryData()
+    private function presetCategoriesSummaryData()
     {
         if ($this->summary === null) {
             $this->summary = [
@@ -67,23 +68,29 @@ class Category
         return $this->summary_populated;
     }
 
+    public function setCategoriesSummaryApiResponse(?array $response)
+    {
+        if ($response !== null) {
+            $this->summary_response = $response;
+        }
+    }
+
     /**
      * Return the child category totals data array
      *
-     * @param array|null $api_data API data we will use to populate the data array
-     *
      * @return array
      */
-    public function categoriesSummary(?array $api_data): array
+    public function categoriesSummary(): array
     {
-        $this->setCategoriesSummaryData();
-
         if ($this->summary_populated === false) {
-            if ($api_data !== null) {
-                $this->summary_populated = true;
-                foreach ($api_data as $category) {
+            $this->presetCategoriesSummaryData();
+
+            if ($this->summary_response !== null) {
+                foreach ($this->summary_response as $category) {
                     $this->summary[$category['id']]['total'] = $category['total'];
                 }
+
+                $this->summary_populated = true;
             }
         }
 

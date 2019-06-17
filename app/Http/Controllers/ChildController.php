@@ -8,6 +8,7 @@ use App\Models\Child\Jack;
 use App\Models\Child\Niall;
 use App\Models\Child\Category;
 use App\Request\Api;
+use App\Request\Http;
 use App\Request\Uri;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
@@ -46,16 +47,14 @@ class ChildController extends BaseController
         $annual_model = new Annual();
 
         if ($category_model->categoriesSummaryPopulated() === false) {
-            $api_categories_response = Api::getInstance()
-                ->public()
-                ->get(Uri::summaryExpensesByCategory($child->id()));
-            $categories_summary = $category_model->categoriesSummary($api_categories_response);
+            $category_model->setCategoriesSummaryApiResponse(Api::summaryExpensesByCategory($child->id()));
+            $categories_summary = $category_model->categoriesSummary();
         } else {
-            $categories_summary = $category_model->categoriesSummary(null);
+            $categories_summary = $category_model->categoriesSummary();
         }
 
         if ($annual_model->annualSummaryPopulated() === false) {
-            $api_annual_summary_response = Api::getInstance()
+            $api_annual_summary_response = Http::getInstance()
                 ->public()
                 ->get(Uri::summaryExpensesAnnual($child->id()));
             $annual_summary = $annual_model->annualSummary($api_annual_summary_response);
@@ -63,11 +62,11 @@ class ChildController extends BaseController
             $annual_summary = $annual_model->annualSummary(null);
         }
 
-        $recent_expenses = Api::getInstance()
+        $recent_expenses = Http::getInstance()
             ->public()
             ->get('/v1/resource-types/d185Q15grY/resources/kw8gLq31VB/items?limit=25&include-categories=true&include-subcategories=true', true);
 
-        $recent_expenses_headers = Api::getInstance()->previousRequestHeaders();
+        $recent_expenses_headers = Http::getInstance()->previousRequestHeaders();
 
         $total_count = 0;
         if ($recent_expenses_headers !== null && array_key_exists('X-Total-Count', $recent_expenses_headers) === true) {
@@ -76,7 +75,7 @@ class ChildController extends BaseController
 
         $total = $category_model->totalFromCategorySummary();
 
-        $largest_expense = Api::getInstance()
+        $largest_expense = Http::getInstance()
             ->public()
             ->get('/v1/resource-types/d185Q15grY/resources/kw8gLq31VB/items?sort=actualised_total:desc&limit=1');
 
@@ -127,7 +126,7 @@ class ChildController extends BaseController
         ];
 
 
-        $categories = Api::getInstance()
+        $categories = Request::getInstance()
             ->public()
             ->get('/v1/summary/resource-types/d185Q15grY/resources/Eq9g6BgJL0/items?categories=true');
 
@@ -145,7 +144,7 @@ class ChildController extends BaseController
             ];
         }
 
-        $annual_summary = Api::getInstance()
+        $annual_summary = Request::getInstance()
             ->public()
             ->get('/v1/summary/resource-types/d185Q15grY/resources/Eq9g6BgJL0/items?years=true');
 
@@ -157,11 +156,11 @@ class ChildController extends BaseController
             }
         }
 
-        $recent_expenses = Api::getInstance()
+        $recent_expenses = Request::getInstance()
             ->public()
             ->get('/v1/resource-types/d185Q15grY/resources/Eq9g6BgJL0/items?limit=25&include-categories=true&include-subcategories=true', true);
 
-        $recent_expenses_headers = Api::getInstance()->previousRequestHeaders();
+        $recent_expenses_headers = Request::getInstance()->previousRequestHeaders();
 
         $total_count = 0;
         if ($recent_expenses_headers !== null && array_key_exists('X-Total-Count', $recent_expenses_headers) === true) {
@@ -169,7 +168,7 @@ class ChildController extends BaseController
         }
         $total = $category_totals['98WLap7Bx3']['total'] + $category_totals['RjXM5VJDw6']['total'] + $category_totals['Gwg7zgL316']['total'];
 
-        $largest_expense = Api::getInstance()
+        $largest_expense = Request::getInstance()
             ->public()
             ->get('/v1/resource-types/d185Q15grY/resources/Eq9g6BgJL0/items?sort=actualised_total:desc&limit=1');
 
