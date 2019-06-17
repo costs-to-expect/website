@@ -65,12 +65,7 @@ class ChildController extends BaseController
         }
 
         $recent_expenses = $expense_model->recentExpenses();
-        $recent_expenses_headers = $expense_model->recentExpensesHeaders();
-
-        $total_count = 0;
-        if ($recent_expenses_headers !== null && array_key_exists('X-Total-Count', $recent_expenses_headers) === true) {
-            $total_count = $recent_expenses_headers['X-Total-Count'][0];
-        }
+        $number_of_expenses = $expense_model->recentExpensesHeader('X-Total-Count');
 
         $total = $category_model->totalFromCategorySummary();
 
@@ -92,8 +87,9 @@ class ChildController extends BaseController
                 'child_details' => $child->details(),
 
                 'recent_expenses' => $recent_expenses,
-                'total_count' => $total_count,
+                'number_of_expenses' => $number_of_expenses,
                 'total' => $total,
+                
                 'largest_expense' => $largest_expense
             ]
         );

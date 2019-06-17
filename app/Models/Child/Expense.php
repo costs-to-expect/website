@@ -75,4 +75,25 @@ class Expense
             return [];
         }
     }
+
+    /**
+     * @param string $header
+     * @return int|null
+     */
+    public function recentExpensesHeader(string $header)
+    {
+        $return = null;
+
+        if ($this->expenses_headers !== null) {
+            switch($header) {
+                case 'X-Total-Count':
+                    if (array_key_exists('X-Total-Count', $this->expenses_headers) === true) {
+                        $return = intval($this->expenses_headers['X-Total-Count'][0]);
+                    }
+                    break;
+            }
+        }
+
+        return $return;
+    }
 }

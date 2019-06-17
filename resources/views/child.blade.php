@@ -111,7 +111,7 @@
                                         <p class="data">&pound;{{ number_format((float) $total, 2) }}</p>
                                         <h5>Number of expenses</h5>
                                         <p class="sub-heading text-muted d-none d-md-block">How many purchases?</p>
-                                        <p class="data">{{ $total_count }}</p>
+                                        <p class="data">{{ $number_of_expenses }}</p>
                                         <h5>Largest expense</h5>
                                         <p class="sub-heading text-muted d-none d-md-block">The grandest expense?</p>
                                         <p class="data">&pound;{{ number_format((float) $largest_expense[0]['actualised_total'], 2) }} <small>({{ $largest_expense[0]['description'] }})</small></p>
