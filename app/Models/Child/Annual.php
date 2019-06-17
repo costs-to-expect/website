@@ -11,6 +11,7 @@ namespace App\Models\Child;
 class Annual
 {
     private $summary = null;
+    private $summary_response = null;
     private $summary_populated = false;
 
     private function setAnnualSummaryData()
@@ -26,9 +27,9 @@ class Annual
     }
 
     /**
-     * Check to see if we have previously called the annualSummary method within
+     * Check to see if we have previous called the annualSummary method within
      * this request, if we have the data will already be populated and we can
-     * return the data without having to make an expensive an API call.
+     * return the data without an expensive API call.
      *
      * @return bool
      */
@@ -37,27 +38,31 @@ class Annual
         return $this->summary_populated;
     }
 
+    public function setAnnualSummaryApiResponse(?array $response)
+    {
+        if ($response !== null) {
+            $this->summary_response = $response;
+        }
+    }
+
     /**
      * Return the annual summary data array
      *
-     * @param array|null $api_data API data we will use to populate the data
-     * array
-     *
      * @return array
      */
-    public function annualSummary(?array $api_data): array
+    public function annualSummary(): array
     {
-        $this->setAnnualSummaryData();
-
         if ($this->summary_populated === false) {
-            if ($api_data !== null) {
-                $this->summary_populated = true;
+            $this->setAnnualSummaryData();
 
-                foreach ($api_data as $year) {
+            if ($this->summary_response !== null) {
+                foreach ($this->summary_response as $year) {
                     if (array_key_exists($year['year'], $this->summary) === true) {
                         $this->summary[$year['year']]['total'] = $year['total'];
                     }
                 }
+
+                $this->summary_populated = true;
             }
         }
 

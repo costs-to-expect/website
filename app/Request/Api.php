@@ -22,4 +22,17 @@ class Api
             return null;
         }
     }
+
+    public static function summaryExpensesAnnual(string $child_id): ?array
+    {
+        $response = Http::getInstance()
+            ->public()
+            ->get(Uri::summaryExpensesAnnual($child_id));
+
+        if ($response !== null) {
+            return $response;
+        } else {
+            return null;
+        }
+    }
 }

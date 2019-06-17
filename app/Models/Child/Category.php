@@ -33,7 +33,7 @@ class Category
         return $this->hobby_interest_id;
     }
 
-    private function presetCategoriesSummaryData()
+    private function setCategoriesSummaryData()
     {
         if ($this->summary === null) {
             $this->summary = [
@@ -83,7 +83,7 @@ class Category
     public function categoriesSummary(): array
     {
         if ($this->summary_populated === false) {
-            $this->presetCategoriesSummaryData();
+            $this->setCategoriesSummaryData();
 
             if ($this->summary_response !== null) {
                 foreach ($this->summary_response as $category) {

@@ -54,12 +54,10 @@ class ChildController extends BaseController
         }
 
         if ($annual_model->annualSummaryPopulated() === false) {
-            $api_annual_summary_response = Http::getInstance()
-                ->public()
-                ->get(Uri::summaryExpensesAnnual($child->id()));
-            $annual_summary = $annual_model->annualSummary($api_annual_summary_response);
+            $annual_model->setAnnualSummaryApiResponse(Api::summaryExpensesAnnual($child->id()));
+            $annual_summary = $annual_model->annualSummary();
         } else {
-            $annual_summary = $annual_model->annualSummary(null);
+            $annual_summary = $annual_model->annualSummary();
         }
 
         $recent_expenses = Http::getInstance()
