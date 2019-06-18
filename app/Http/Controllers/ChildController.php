@@ -104,7 +104,7 @@ class ChildController extends BaseController
                 'config' => $this->configProperties(),
                 'menus' => $this->menus(),
                 'uri' => $child->uri(),
-                'api_requests' => $this->apiRequestsForJack(),
+                'api_requests' => $this->apiRequestsForChild($child->id()),
 
                 'categories_summary' => $categories_summary,
                 'annual_summary' => $annual_summary,
@@ -266,29 +266,39 @@ class ChildController extends BaseController
     }
 
     /**
-     * Return the API requests for the detail page for Jack
+     * Return the API requests for the requested child
+     *
+     * @param string $child_id
      *
      * @return array
      */
-    private function apiRequestsForJack(): array
+    private function apiRequestsForChild(string $child_id): array
     {
         return [
             [
                 'name' => 'Expenses by category',
-                'uri' => '/summary/resource-types/d185Q15grY/resources/kw8gLq31VB/items?categories=true'
+                'uri' => 'v1/summary/resource-types/d185Q15grY/resources/' . $child_id. '/items?categories=true'
             ],
             [
                 'name' => 'Expenses by year',
-                'uri' => '/summary/resource-types/d185Q15grY/resources/kw8gLq31VB/items?years=true'
+                'uri' => 'v1/summary/resource-types/d185Q15grY/resources/' . $child_id. '/items?years=true'
             ],
             [
                 'name' => '25 most recent expenses',
-                'uri' => '/resource-types/d185Q15grY/resources/kw8gLq31VB/items?limit=25&include-categories=true&include-subcategories=true'
+                'uri' => 'v1/resource-types/d185Q15grY/resources/' . $child_id. '/items?limit=25&include-categories=true&include-subcategories=true'
             ],
             [
-                'name' => 'Largest expense',
-                'uri' => '/resource-types/d185Q15grY/resources/kw8gLq31VB/items?sort=actualised_total:desc&limit=1'
-            ]
+                'name' => 'Top Essential expense',
+                'uri' => '/v1/resource-types/d185Q15grY/resources/' . $child_id. '/items?category=98WLap7Bx3&sort=actualised_total:desc&limit=1'
+            ],
+            [
+                'name' => 'Top Non-Essential expense',
+                'uri' => '/v1/resource-types/d185Q15grY/resources/' . $child_id. '/items?category=RjXM5VJDw6&sort=actualised_total:desc&limit=1'
+            ],
+            [
+                'name' => 'Top Hobby and Interests expense',
+                'uri' => '/v1/resource-types/d185Q15grY/resources/' . $child_id. '/items?category=Gwg7zgL316&sort=actualised_total:desc&limit=1'
+            ],
         ];
     }
 
