@@ -10,8 +10,11 @@ namespace App\Request;
  */
 class Api
 {
-
-
+    /**
+     * @param string $child_id
+     *
+     * @return array|null
+     */
     public static function summaryExpensesByCategory(string $child_id): ?array
     {
         $response = Http::getInstance()
@@ -25,6 +28,11 @@ class Api
         }
     }
 
+    /**
+     * @param string $child_id
+     *
+     * @return array|null
+     */
     public static function summaryExpensesAnnual(string $child_id): ?array
     {
         $response = Http::getInstance()
@@ -38,6 +46,11 @@ class Api
         }
     }
 
+    /**
+     * @param string $child_id
+     *
+     * @return array|null
+     */
     public static function recentExpenses(string $child_id): ?array
     {
         $response = Http::getInstance()
@@ -51,6 +64,28 @@ class Api
                 ),
                 true
             );
+
+        if ($response !== null) {
+            return $response;
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * @param string $child_id
+     * @param string $category_id
+     *
+     * @return array|null
+     */
+    public static function largestExpenseInCategory(
+        string $child_id,
+        string $category_id
+    ): ?array
+    {
+        $response = Http::getInstance()
+            ->public()
+            ->get(Uri::largestExpenseInCategory($child_id, $category_id));
 
         if ($response !== null) {
             return $response;

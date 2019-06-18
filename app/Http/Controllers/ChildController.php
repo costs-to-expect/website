@@ -69,9 +69,34 @@ class ChildController extends BaseController
 
         $total = $category_model->totalFromCategorySummary();
 
-        $largest_expense = Http::getInstance()
-            ->public()
-            ->get('/v1/resource-types/d185Q15grY/resources/kw8gLq31VB/items?sort=actualised_total:desc&limit=1');
+        if ($category_model->largestEssentialExpensePopulated() === false) {
+            $category_model->setLargestEssentialExpenseResponse(
+                Api::largestExpenseInCategory(
+                    $child->id(),
+                    $category_model->essentialId()
+                )
+            );
+        }
+        if ($category_model->largestNonEssentialExpensePopulated() === false) {
+            $category_model->setLargestNonEssentialExpenseResponse(
+                Api::largestExpenseInCategory(
+                    $child->id(),
+                    $category_model->nonEssentialId()
+                )
+            );
+        }
+        if ($category_model->largestHobbyInterestExpensePopulated() === false) {
+            $category_model->setLargestHobbyInterestExpenseResponse(
+                Api::largestExpenseInCategory(
+                    $child->id(),
+                    $category_model->hobbyInterestId()
+                )
+            );
+        }
+
+        $largest_essential_expense = $category_model->largestEssentialExpense();
+        $largest_non_essential_expense = $category_model->largestNonEssentialExpense();
+        $largest_hobby_interest_expense = $category_model->largestHobbyInterestExpense();
 
         return view(
             'child',
@@ -90,7 +115,9 @@ class ChildController extends BaseController
                 'number_of_expenses' => $number_of_expenses,
                 'total' => $total,
                 
-                'largest_expense' => $largest_expense
+                'largest_essential_expense' => $largest_essential_expense,
+                'largest_non_essential_expense' => $largest_non_essential_expense,
+                'largest_hobby_interest_expense' => $largest_hobby_interest_expense
             ]
         );
     }

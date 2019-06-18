@@ -60,4 +60,21 @@ class Uri
 
         return $uri;
     }
+
+    /**
+     * @param string $child_id
+     * @param string $category_id
+     *
+     * @return string
+     */
+    public static function largestExpenseInCategory(
+        string $child_id,
+        string $category_id): string
+    {
+        $uri = '/v1/resource-types/' . self::$resource_type . '/resources/' .
+            $child_id . '/items?category='. $category_id .
+            '&sort=actualised_total:desc&limit=1';
+
+        return $uri;
+    }
 }
