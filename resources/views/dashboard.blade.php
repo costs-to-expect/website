@@ -15,10 +15,10 @@
         [
             'icon' => 'expenses.png',
             'uri' => '/jack',
-            'heading' => $children['jack']['name'],
+            'heading' => $jack_total['name'],
             'subheading' => 'Total Expenses',
-            'description' => 'From birth, ' . $children['jack']['date_of_birth'],
-            'value' => $children['jack']['total']
+            'description' => 'From birth, ' . $jack_total['dob'],
+            'value' => $jack_total['total']
         ]
     )
     @include(
@@ -26,10 +26,10 @@
         [
             'icon' => 'expenses.png',
             'uri' => '/niall',
-            'heading' => $children['niall']['name'],
+            'heading' => $niall_total['name'],
             'subheading' => 'Total Expenses',
-            'description' => 'From birth, ' . $children['niall']['date_of_birth'],
-            'value' => $children['niall']['total']
+            'description' => 'From birth, ' . $niall_total['dob'],
+            'value' => $niall_total['total']
         ]
     )
     @include(
@@ -37,10 +37,10 @@
         [
             'icon' => 'expenses.png',
             'uri' => null,
-            'heading' => 'Blackborough Children',
+            'heading' => 'The Blackboroughs',
             'subheading' => 'Total Expenses',
             'description' => 'For both our children',
-            'value' => $children['niall']['total'] + $children['jack']['total']
+            'value' => $jack_total['total'] + $niall_total['total']
         ]
     )
     <hr />
@@ -81,7 +81,7 @@
         [
             'icon' => 'expenses.png',
             'uri' => null,
-            'heading' => 'Blackborough Children',
+            'heading' => 'The Blackboroughs',
             'subheading' => date('Y'),
             'description' => 'All expenses in ' . date('Y'),
             'value' => $jack_current_year['total'] + $niall_current_year['total']

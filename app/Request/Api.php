@@ -15,6 +15,24 @@ class Api
      *
      * @return array|null
      */
+    public static function summaryExpenses(string $child_id): ?array
+    {
+        $response = Http::getInstance()
+            ->public()
+            ->get(Uri::summaryExpenses($child_id));
+
+        if ($response !== null) {
+            return $response;
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * @param string $child_id
+     *
+     * @return array|null
+     */
     public static function summaryExpensesByCategory(string $child_id): ?array
     {
         $response = Http::getInstance()

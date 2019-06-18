@@ -79,6 +79,8 @@ class Http
     {
         $content = null;
 
+        //echo $uri . PHP_EOL;
+
         try {
             $response = self::$client->get($uri, ['http_errors' => false]);
 

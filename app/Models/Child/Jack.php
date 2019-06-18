@@ -25,6 +25,5 @@ class Jack extends Child
         $this->weight = '3.373kg (7lb 7oz)';
         $this->short_name = 'Jack';
         $this->image_uri = 'images/theme/jack.jpg';
-
     }
 }
