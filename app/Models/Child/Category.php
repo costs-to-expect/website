@@ -181,42 +181,42 @@ class Category
         }
     }
 
-    public function largestEssentialExpense(): array
+    public function largestEssentialExpense(): ?array
     {
         if ($this->largest_essential_expense_populated === false) {
-            if ($this->largest_essential_expense_response !== null) {
-                $this->largest_essential_expense = $this->largest_essential_expense_response;
+            if ($this->largest_essential_expense_response !== null && array_key_exists(0, $this->largest_essential_expense_response) === true) {
+                $this->largest_essential_expense = $this->largest_essential_expense_response[0];
                 $this->largest_essential_expense_populated = true;
             } else {
-                $this->largest_essential_expense = [];
+                $this->largest_essential_expense = null;
             }
         }
 
         return $this->largest_essential_expense;
     }
 
-    public function largestNonEssentialExpense(): array
+    public function largestNonEssentialExpense(): ?array
     {
         if ($this->largest_non_essential_expense_populated === false) {
-            if ($this->largest_non_essential_expense_response !== null) {
-                $this->largest_non_essential_expense = $this->largest_non_essential_expense_response;
+            if ($this->largest_non_essential_expense_response !== null && array_key_exists(0, $this->largest_non_essential_expense_response) === true) {
+                $this->largest_non_essential_expense = $this->largest_non_essential_expense_response[0];
                 $this->largest_non_essential_expense_populated = true;
             } else {
-                $this->largest_non_essential_expense = [];
+                $this->largest_non_essential_expense = null;
             }
         }
 
         return $this->largest_non_essential_expense;
     }
 
-    public function largestHobbyInterestExpense(): array
+    public function largestHobbyInterestExpense(): ?array
     {
         if ($this->largest_hobby_interest_expense_populated === false) {
-            if ($this->largest_hobby_interest_expense_response !== null) {
-                $this->largest_hobby_interest_expense = $this->largest_hobby_interest_expense_response;
+            if ($this->largest_hobby_interest_expense_response !== null && array_key_exists(0, $this->largest_hobby_interest_expense_response) === true) {
+                $this->largest_hobby_interest_expense = $this->largest_hobby_interest_expense_response[0];
                 $this->largest_hobby_interest_expense_populated = true;
             } else {
-                $this->largest_hobby_interest_expense = [];
+                $this->largest_hobby_interest_expense = null;
             }
         }
 

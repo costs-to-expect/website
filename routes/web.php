@@ -14,9 +14,7 @@
 Route::get('/', 'DashboardController@index');
 
 Route::get('/jack', 'ChildController@child');
-Route::get('/niall', 'ChildController@niall');
-Route::get('/jack/years', 'ChildController@yearsForJack');
-Route::get('/niall/years', 'ChildController@yearsForNiall');
+Route::get('/niall', 'ChildController@child');
 
 Route::get('/about', 'ContentController@about');
 Route::get('/what-we-count', 'ContentController@whatWeCount');

@@ -104,10 +104,10 @@
                                         <h5>Sex & Birth weight</h5>
                                         <p class="sub-heading text-muted d-none d-md-block">What were his vital statistics?</p>
                                         <p class="data">{{ $child_details['sex'] }} & {{ $child_details['weight'] }}</p>
-                                        @if ($largest_hobby_interest_expense !== null)
-                                            <h5>Top hobby and Interests expense</h5>
+                                        @if ($largest_non_essential_expense !== null)
+                                            <h5>Top Non-Essential expense</h5>
                                             <p class="sub-heading text-muted d-none d-md-block">The grandest expense?</p>
-                                            <p class="data">&pound;{{ number_format((float) $largest_hobby_interest_expense[0]['actualised_total'], 2) }} <small>({{ $largest_hobby_interest_expense[0]['description'] }})</small></p>
+                                            <p class="data">&pound;{{ number_format((float) $largest_non_essential_expense['actualised_total'], 2) }} <small>({{ $largest_non_essential_expense['description'] }})</small></p>
                                         @endif
                                     </div>
                                     <div class="col-md-6 col-12">
@@ -120,12 +120,12 @@
                                         @if ($largest_essential_expense !== null)
                                             <h5>Top Essential expense</h5>
                                             <p class="sub-heading text-muted d-none d-md-block">The grandest expense?</p>
-                                            <p class="data">&pound;{{ number_format((float) $largest_essential_expense[0]['actualised_total'], 2) }} <small>({{ $largest_essential_expense[0]['description'] }})</small></p>
+                                            <p class="data">&pound;{{ number_format((float) $largest_essential_expense['actualised_total'], 2) }} <small>({{ $largest_essential_expense['description'] }})</small></p>
                                         @endif
-                                        @if ($largest_non_essential_expense !== null)
-                                            <h5>Top Non-Essential expense</h5>
+                                        @if ($largest_hobby_interest_expense !== null)
+                                            <h5>Top Hobby and Interests expense</h5>
                                             <p class="sub-heading text-muted d-none d-md-block">The grandest expense?</p>
-                                            <p class="data">&pound;{{ number_format((float) $largest_non_essential_expense[0]['actualised_total'], 2) }} <small>({{ $largest_non_essential_expense[0]['description'] }})</small></p>
+                                            <p class="data">&pound;{{ number_format((float) $largest_hobby_interest_expense['actualised_total'], 2) }} <small>({{ $largest_hobby_interest_expense['description'] }})</small></p>
                                         @endif
                                     </div>
                                 </div>

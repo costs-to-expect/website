@@ -123,129 +123,6 @@ class ChildController extends BaseController
     }
 
     /**
-     * Dashboard for Niall
-     *
-     * @return View
-     */
-    public function niall(): View
-    {
-        $category_totals = [
-            '98WLap7Bx3' => [
-                'name' => 'Essential',
-                'description' => 'Expenses that we consider essential in the raising a child',
-                'total' => 0.00
-            ],
-            'RjXM5VJDw6' => [
-                'name' => 'Non-Essential',
-                'description' => 'Optional expenses, expenses that we consider non-essential in raising a child',
-                'total' => 0.00
-            ],
-            'Gwg7zgL316' => [
-                'name' => 'Hobbies & Interests',
-                'description' => 'Leisure activities',
-                'total' => 0.00
-            ]
-        ];
-
-
-        $categories = Request::getInstance()
-            ->public()
-            ->get('/v1/summary/resource-types/d185Q15grY/resources/Eq9g6BgJL0/items?categories=true');
-
-        if ($categories !== null) {
-            foreach ($categories as $category) {
-                $category_totals[$category['id']]['total'] = $category['total'];
-            }
-        }
-
-        $annual_totals = [];
-        for ($i = intval(date('Y')) - 2; $i <= intval(date('Y')); $i++) {
-            $annual_totals[$i] = [
-                'year' => $i,
-                'total' => 0.00
-            ];
-        }
-
-        $annual_summary = Request::getInstance()
-            ->public()
-            ->get('/v1/summary/resource-types/d185Q15grY/resources/Eq9g6BgJL0/items?years=true');
-
-        if ($annual_summary !== null) {
-            foreach ($annual_summary as $year) {
-                if (array_key_exists($year['year'], $annual_totals) === true) {
-                    $annual_totals[$year['year']]['total'] = $year['total'];
-                }
-            }
-        }
-
-        $recent_expenses = Request::getInstance()
-            ->public()
-            ->get('/v1/resource-types/d185Q15grY/resources/Eq9g6BgJL0/items?limit=25&include-categories=true&include-subcategories=true', true);
-
-        $recent_expenses_headers = Request::getInstance()->previousRequestHeaders();
-
-        $total_count = 0;
-        if ($recent_expenses_headers !== null && array_key_exists('X-Total-Count', $recent_expenses_headers) === true) {
-            $total_count = $recent_expenses_headers['X-Total-Count'][0];
-        }
-        $total = $category_totals['98WLap7Bx3']['total'] + $category_totals['RjXM5VJDw6']['total'] + $category_totals['Gwg7zgL316']['total'];
-
-        $largest_expense = Request::getInstance()
-            ->public()
-            ->get('/v1/resource-types/d185Q15grY/resources/Eq9g6BgJL0/items?sort=actualised_total:desc&limit=1');
-
-        return view(
-            'niall',
-            [
-                'config' => $this->configProperties(),
-                'menus' => $this->menus(),
-                'active' => '/niall',
-                'api_requests' => $this->apiRequestsForNiall(),
-                'category_totals' => $category_totals,
-                'annual_totals' => $annual_totals,
-                'recent_expenses' => $recent_expenses,
-                'total_count' => $total_count,
-                'total' => $total,
-                'largest_expense' => $largest_expense
-            ]
-        );
-    }
-
-    /**
-     * Years dashboard for Jack
-     *
-     * @return View
-     */
-    public function yearsForJack(): View
-    {
-        return view(
-            'jack-years',
-            [
-                'config' => $this->configProperties(),
-                'menus' => $this->menus(),
-                'active' => '/jack'
-            ]
-        );
-    }
-
-    /**
-     * Years dashboard for Niall
-     *
-     * @return View
-     */
-    public function yearsForNiall(): View
-    {
-        return view(
-            'niall-years',
-            [
-                'config' => $this->configProperties(),
-                'menus' => $this->menus(),
-                'active' => '/niall'
-            ]
-        );
-    }
-
-    /**
      * Return the config properties
      *
      * @return array
@@ -289,43 +166,16 @@ class ChildController extends BaseController
             ],
             [
                 'name' => 'Top Essential expense',
-                'uri' => '/v1/resource-types/d185Q15grY/resources/' . $child_id. '/items?category=98WLap7Bx3&sort=actualised_total:desc&limit=1'
+                'uri' => 'v1/resource-types/d185Q15grY/resources/' . $child_id. '/items?category=98WLap7Bx3&sort=actualised_total:desc&limit=1'
             ],
             [
                 'name' => 'Top Non-Essential expense',
-                'uri' => '/v1/resource-types/d185Q15grY/resources/' . $child_id. '/items?category=RjXM5VJDw6&sort=actualised_total:desc&limit=1'
+                'uri' => 'v1/resource-types/d185Q15grY/resources/' . $child_id. '/items?category=RjXM5VJDw6&sort=actualised_total:desc&limit=1'
             ],
             [
                 'name' => 'Top Hobby and Interests expense',
-                'uri' => '/v1/resource-types/d185Q15grY/resources/' . $child_id. '/items?category=Gwg7zgL316&sort=actualised_total:desc&limit=1'
+                'uri' => 'v1/resource-types/d185Q15grY/resources/' . $child_id. '/items?category=Gwg7zgL316&sort=actualised_total:desc&limit=1'
             ],
-        ];
-    }
-
-    /**
-     * Return the API requests for the detail page for Niall
-     *
-     * @return array
-     */
-    private function apiRequestsForNiall(): array
-    {
-        return [
-            [
-                'name' => 'Expenses by category',
-                'uri' => '/summary/resource-types/d185Q15grY/resources/Eq9g6BgJL0/items?categories=true'
-            ],
-            [
-                'name' => 'Expenses by year',
-                'uri' => '/summary/resource-types/d185Q15grY/resources/Eq9g6BgJL0/items?years=true'
-            ],
-            [
-                'name' => '25 most recent expenses',
-                'uri' => '/resource-types/d185Q15grY/resources/Eq9g6BgJL0/items?limit=25&include-categories=true&include-subcategories=true'
-            ],
-            [
-                'name' => 'Largest expense',
-                'uri' => '/resource-types/d185Q15grY/resources/Eq9g6BgJL0/items?sort=actualised_total:desc&limit=1'
-            ]
         ];
     }
 }
