@@ -99,9 +99,21 @@ class ChildController extends BaseController
         return view(
             'child',
             [
-                'config' => $this->configProperties(),
                 'menus' => $this->menus(),
-                'uri' => $child->uri(),
+                'active' => $child->uri(),
+                'meta' => [
+                    'title' => $child->details()['name'],
+                    'description' => 'What does it cost to raise a child to adulthood in the UK?'
+                ],
+                'welcome' => [
+                    'title' => $child->details()['name'],
+                    'description' => $child->details()['version'],
+                    'image' => [
+                        'icon' => 'dashboard.png',
+                        'title' => 'Costs to Expect.com'
+                    ]
+                ],
+
                 'api_requests' => $this->apiRequestsForChild($child->id()),
 
                 'categories_summary' => $categories_summary,
@@ -118,16 +130,6 @@ class ChildController extends BaseController
                 'largest_hobby_interest_expense' => $largest_hobby_interest_expense
             ]
         );
-    }
-
-    /**
-     * Return the config properties
-     *
-     * @return array
-     */
-    private function configProperties()
-    {
-        return Config::get('web.app');
     }
 
     /**

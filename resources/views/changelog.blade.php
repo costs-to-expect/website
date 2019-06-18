@@ -27,7 +27,7 @@
             <li>The website only calls a specific endpoint once per request, models retain state so that subsequent calls are free.</li>
             <li>Split the largest expense value; we now show the top expense per category.</li>
             <li>Minor layout changes to the intro section on the child pages, updates for all screen sizes.</li>
-            <li>Code refactoring.</li>
+            <li>Code refactoring, getting everything in order to enable new feature.</li>
         </ul>
 
         <h2>[v1.04.0] - 3rd June 2019</h2>

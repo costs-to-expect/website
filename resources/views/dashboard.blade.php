@@ -39,7 +39,7 @@
             'uri' => null,
             'heading' => 'The Blackboroughs',
             'subheading' => 'Total Expenses',
-            'description' => 'For both our children',
+            'description' => 'For both our children to date',
             'value' => $jack_total['total'] + $niall_total['total']
         ]
     )
