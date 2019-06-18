@@ -58,22 +58,22 @@
         'component-container.cost-summary-block',
         [
             'icon' => 'expenses.png',
-            'uri' => '/jack/years',
+            'uri' => '/jack',
             'heading' => 'Jack Blackborough',
             'subheading' => date('Y'),
             'description' => 'All expenses in ' . date('Y'),
-            'value' => $jack_current_year['total']
+            'value' => ($jack_current_year !== null ? $jack_current_year : 0.00)
         ]
     )
     @include(
         'component-container.cost-summary-block',
         [
             'icon' => 'expenses.png',
-            'uri' => '/niall/years',
+            'uri' => '/niall',
             'heading' => 'Niall Blackborough',
             'subheading' => date('Y'),
             'description' => 'All expenses in ' . date('Y'),
-            'value' => $niall_current_year['total']
+            'value' => ($niall_current_year !== null ? $niall_current_year : 0.00)
         ]
     )
     @include(
@@ -84,7 +84,7 @@
             'heading' => 'The Blackboroughs',
             'subheading' => date('Y'),
             'description' => 'All expenses in ' . date('Y'),
-            'value' => $jack_current_year['total'] + $niall_current_year['total']
+            'value' => ($jack_current_year !== null ? $jack_current_year : 0.00) + ($niall_current_year !== null ? $niall_current_year : 0.00)
         ]
     )
 </div>

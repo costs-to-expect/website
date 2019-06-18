@@ -26,6 +26,10 @@ abstract class Child
     protected $total_response = null;
     protected $total_populated = false;
 
+    protected $total_current_year = null;
+    protected $total_current_year_response = null;
+    protected $total_current_year_populated = false;
+
     public function details(): array
     {
         return [
@@ -80,7 +84,7 @@ abstract class Child
     }
 
     /**
-     * Return the total for Jack
+     * Return the total for the requested child
      *
      * @return array
      */
@@ -97,5 +101,51 @@ abstract class Child
         }
 
         return $this->total;
+    }
+
+    /**
+     * Check to see if we have previously called the related method within the
+     * request, if we have, the data will already be populated and we can
+     * return the requested data without an expensive API call.
+     *
+     * @return bool
+     */
+    public function totalCurrentYearPopulated(): bool
+    {
+        return $this->total_current_year_populated;
+    }
+
+    public function setTotalCurrentYearApiResponse(?array $response)
+    {
+        if ($response !== null) {
+            $this->total_current_year_response = $response;
+        }
+    }
+
+    protected function setTotalCurrentYearData()
+    {
+        if ($this->total_current_year === null) {
+            $this->total_current_year = 0.00;
+        }
+    }
+
+    /**
+     * Return the total for the requested child and the current year
+     *
+     * @return float|null
+     */
+    public function totalCurrentYear(): ?float
+    {
+        if ($this->total_current_year_populated === false) {
+            $this->setTotalCurrentYearData();
+
+            if ($this->total_current_year_response !== null && array_key_exists('total', $this->total_current_year_response) === true) {
+                $this->total_current_year = (float) $this->total_current_year_response['total'];
+
+                $this->total_current_year_populated = true;
+            }
+        }
+
+        return $this->total_current_year;
     }
 }

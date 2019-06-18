@@ -33,6 +33,24 @@ class Api
      *
      * @return array|null
      */
+    public static function summaryExpensesForCurrentYear(string $child_id): ?array
+    {
+        $response = Http::getInstance()
+            ->public()
+            ->get(Uri::summaryExpensesForCurrentYear($child_id));
+
+        if ($response !== null) {
+            return $response;
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * @param string $child_id
+     *
+     * @return array|null
+     */
     public static function summaryExpensesByCategory(string $child_id): ?array
     {
         $response = Http::getInstance()

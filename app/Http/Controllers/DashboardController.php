@@ -47,13 +47,24 @@ class DashboardController extends BaseController
         $jack_total = $jack_model->total();
         $niall_total = $niall_model->total();
 
-        $jack_current_year = Http::getInstance()
-            ->public()
-            ->get('/v1/summary/resource-types/d185Q15grY/resources/kw8gLq31VB/items?year=' . date('Y'));
+        if ($jack_model->totalCurrentYearPopulated() === false) {
+            $jack_model->setTotalCurrentYearApiResponse(
+                Api::summaryExpensesForCurrentYear(
+                    $jack_model->id()
+                )
+            );
+        }
 
-        $niall_current_year = Http::getInstance()
-            ->public()
-            ->get('/v1/summary/resource-types/d185Q15grY/resources/Eq9g6BgJL0/items?year=' . date('Y'));
+        if ($niall_model->totalCurrentYearPopulated() === false) {
+            $niall_model->setTotalCurrentYearApiResponse(
+                Api::summaryExpensesForCurrentYear(
+                    $niall_model->id()
+                )
+            );
+        }
+
+        $jack_current_year = $jack_model->totalCurrentYear();
+        $niall_current_year = $niall_model->totalCurrentYear();
 
         $recent_expenses = Http::getInstance()
             ->public()
