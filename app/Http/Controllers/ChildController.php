@@ -8,8 +8,6 @@ use App\Models\Child\Jack;
 use App\Models\Child\Niall;
 use App\Models\Child\Category;
 use App\Request\Api;
-use App\Request\Http;
-use App\Request\Uri;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 use Illuminate\View\View;
