@@ -11,12 +11,12 @@
 
         <div class="p-3 shadow-sm white-container">
             <table class="table table-borderless table-sm api-requests">
-                <caption>API Requests to https://api.costs-to-expect.com/v1</caption>
+                <caption>API Requests to <a href="https://api.costs-to-expect.com">https://api.costs-to-expect.com</a>/</caption>
                 <thead>
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Page section</th>
-                        <th scope="col">API request</th>
+                        <th scope="col">Costs to Expect API request</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -24,7 +24,7 @@
                     <tr class="top">
                         <td>{{ ++$k }}</td>
                         <td>{{ $request['name'] }}</td>
-                        <td>{{ $request['uri'] }}</td>
+                        <td><a href="https://api.costs-to-expect.com{{ $request['uri'] }}">{{ $request['uri'] }}</a></td>
                     </tr>
                     @endforeach
                 </tbody>

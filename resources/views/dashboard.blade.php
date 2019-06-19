@@ -15,10 +15,10 @@
         [
             'icon' => 'expenses.png',
             'uri' => '/jack',
-            'heading' => $children['jack']['name'],
+            'heading' => $jack_total['name'],
             'subheading' => 'Total Expenses',
-            'description' => 'From birth, ' . $children['jack']['date_of_birth'],
-            'value' => $children['jack']['total']
+            'description' => 'From birth, ' . $jack_total['dob'],
+            'value' => $jack_total['total']
         ]
     )
     @include(
@@ -26,10 +26,10 @@
         [
             'icon' => 'expenses.png',
             'uri' => '/niall',
-            'heading' => $children['niall']['name'],
+            'heading' => $niall_total['name'],
             'subheading' => 'Total Expenses',
-            'description' => 'From birth, ' . $children['niall']['date_of_birth'],
-            'value' => $children['niall']['total']
+            'description' => 'From birth, ' . $niall_total['dob'],
+            'value' => $niall_total['total']
         ]
     )
     @include(
@@ -37,14 +37,15 @@
         [
             'icon' => 'expenses.png',
             'uri' => null,
-            'heading' => 'Blackborough Children',
+            'heading' => 'The Blackboroughs',
             'subheading' => 'Total Expenses',
-            'description' => 'For both our children',
-            'value' => $children['niall']['total'] + $children['jack']['total']
+            'description' => 'For both our children to date',
+            'value' => $jack_total['total'] + $niall_total['total']
         ]
     )
     <hr />
 </div>
+@if ($jack_current_year !== null && $niall_current_year !== null)
 <div class="row mt-4">
     <div class="col-12">
         <h4>Expenses for current year (2019)</h4>
@@ -57,22 +58,22 @@
         'component-container.cost-summary-block',
         [
             'icon' => 'expenses.png',
-            'uri' => '/jack/years',
+            'uri' => '/jack',
             'heading' => 'Jack Blackborough',
             'subheading' => date('Y'),
             'description' => 'All expenses in ' . date('Y'),
-            'value' => $jack_current_year['total']
+            'value' => ($jack_current_year !== null ? $jack_current_year : 0.00)
         ]
     )
     @include(
         'component-container.cost-summary-block',
         [
             'icon' => 'expenses.png',
-            'uri' => '/niall/years',
+            'uri' => '/niall',
             'heading' => 'Niall Blackborough',
             'subheading' => date('Y'),
             'description' => 'All expenses in ' . date('Y'),
-            'value' => $niall_current_year['total']
+            'value' => ($niall_current_year !== null ? $niall_current_year : 0.00)
         ]
     )
     @include(
@@ -80,10 +81,10 @@
         [
             'icon' => 'expenses.png',
             'uri' => null,
-            'heading' => 'Blackborough Children',
+            'heading' => 'The Blackboroughs',
             'subheading' => date('Y'),
             'description' => 'All expenses in ' . date('Y'),
-            'value' => $jack_current_year['total'] + $niall_current_year['total']
+            'value' => ($jack_current_year !== null ? $jack_current_year : 0.00) + ($niall_current_year !== null ? $niall_current_year : 0.00)
         ]
     )
 </div>
@@ -92,6 +93,8 @@
         <hr />
     </div>
 </div>
+@endif
+@if ($recent_expenses !== null)
 <div class="row mt-4">
     <div class="col-12">
         <h4>The 25 most recent expenses for both children</h4>
@@ -135,6 +138,7 @@
         </div>
     </div>
 </div>
+@endif
 
 @include(
     'page-component.api-requests',

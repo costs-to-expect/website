@@ -2,11 +2,8 @@
 
 namespace App\Request;
 
-use GuzzleHttp\Client;
-use GuzzleHttp\Exception\ClientException;
-
 /**
- * Request helper class for calling the Costs to Expect API
+ * Helper class to make requests to the Costs to Expect API
  *
  * @author Dean Blackborough <dean@g3d-development.com>
  * @copyright Dean Blackborough 2019
@@ -14,87 +11,205 @@ use GuzzleHttp\Exception\ClientException;
 class Api
 {
     /**
-     * @var \GuzzleHttp\Client
+     * @var string
      */
-    private static $client = null;
-
+    private static $uri;
     /**
-     * @var Api
+     * @var array
      */
-    private static $instance;
+    private static $uris;
 
-    /**
-     * @var array The headers for the request.
-     */
-    private static $headers = null;
-
-    /**
-     * Generate a new instance of the helper ot return the existing instance
-     *
-     * @return Api
-     */
-    public static function getInstance()
+    public static function resetCalledURIs()
     {
-        if (!isset(self::$instance)) {
-            self::$instance = new static();
-        }
+        self::$uris = [];
+    }
 
-        return self::$instance;
+    public static function calledURIs()
+    {
+        return self::$uris;
+    }
+
+    public static function setCalledURI($name, $uri)
+    {
+        self::$uris[] = [
+            'name' => $name,
+            'uri' => $uri
+        ];
+    }
+
+    public static function lastUri(): string
+    {
+        return self::$uri;
     }
 
     /**
-     * Set up a public connection to the Costs to Expect API
+     * @param string $child_id
      *
-     * @return Api
+     * @return array|null
      */
-    public static function public(): Api
+    public static function summaryExpenses(string $child_id): ?array
     {
-        self::$client = new Client([
-            'base_uri' => 'https://api.costs-to-expect.com',
-            'headers' => [
-                'Accept' => 'application/json',
-                'Content-Type' => 'application/json',
-                'X-Source' => 'website'
-            ],
-        ]);
+        self::$uri = Uri::summaryExpenses($child_id);
 
-        return new static();
-    }
+        $response = Http::getInstance()
+            ->public()
+            ->get(self::$uri);
 
-    /**
-     * Make a GET request to the API
-     *
-     * @param string $uri The URI we want to call
-     * @param boolean $headers Store the headers so they can be fetched later
-     *
-     * @return mixed
-     */
-    public static function get(string $uri, $headers = false): ?array
-    {
-        $content = null;
-
-        try {
-            $response = self::$client->get($uri);
-
-            if ($response->getStatusCode() === 200) {
-                $content = json_decode($response->getBody(), true);
-                if ($headers = true) {
-                    self::$headers = $response->getHeaders();
-                }
-            } else {
-                // Nothing yet
-                return null;
-            }
-        } catch (ClientException $e) {
-            // Nothing yet
+        if ($response !== null) {
+            return $response;
+        } else {
             return null;
         }
-
-        return $content;
     }
 
+    /**
+     * @param string $child_id
+     *
+     * @return array|null
+     */
+    public static function summaryExpensesForCurrentYear(string $child_id): ?array
+    {
+        self::$uri = Uri::summaryExpensesForCurrentYear($child_id);
+
+        $response = Http::getInstance()
+            ->public()
+            ->get(self::$uri);
+
+        if ($response !== null) {
+            return $response;
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * @param string $child_id
+     *
+     * @return array|null
+     */
+    public static function summaryExpensesByCategory(string $child_id): ?array
+    {
+        self::$uri = Uri::summaryExpensesByCategory($child_id);
+
+        $response = Http::getInstance()
+            ->public()
+            ->get(self::$uri);
+
+        if ($response !== null) {
+            return $response;
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * @param string $child_id
+     *
+     * @return array|null
+     */
+    public static function summaryExpensesAnnual(string $child_id): ?array
+    {
+        self::$uri = Uri::summaryExpensesAnnual($child_id);
+
+        $response = Http::getInstance()
+            ->public()
+            ->get(self::$uri);
+
+        if ($response !== null) {
+            return $response;
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * @return array|null
+     */
+    public static function recentExpensesForBothChildren(): ?array
+    {
+        self::$uri = Uri::recentExpensesForBothChildren(
+            25,
+            true,
+            true
+        );
+
+        $response = Http::getInstance()
+            ->public()
+            ->get(self::$uri, true);
+
+        if ($response !== null) {
+            return $response;
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * @param string $child_id
+     *
+     * @return array|null
+     */
+    public static function recentExpenses(string $child_id): ?array
+    {
+        self::$uri = Uri::recentExpenses(
+            $child_id,
+            25,
+            true,
+            true
+        );
+
+        $response = Http::getInstance()
+            ->public()
+            ->get(self::$uri, true);
+
+        if ($response !== null) {
+            return $response;
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * @param string $child_id
+     * @param string $category_id
+     *
+     * @return array|null
+     */
+    public static function largestExpenseInCategory(
+        string $child_id,
+        string $category_id
+    ): ?array
+    {
+        self::$uri = Uri::largestExpenseInCategory($child_id, $category_id);
+
+        $response = Http::getInstance()
+            ->public()
+            ->get(self::$uri);
+
+        if ($response !== null) {
+            return $response;
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * Return the headers array for the previous API request
+     *
+     * @return array|null
+     */
     public static function previousRequestHeaders(): ?array
     {
-        return self::$headers;
+        return Http::getInstance()->previousRequestHeaders();
+    }
+
+    /**
+     * Return the status code for the previous API request
+     *
+     * @return int|null
+     */
+    public static function previousRequestStatusCode(): ?int
+    {
+        return Http::getInstance()->previousRequestStatusCode();
     }
 }

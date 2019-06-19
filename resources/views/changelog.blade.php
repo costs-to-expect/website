@@ -17,7 +17,27 @@
 
         <hr />
 
-        <h2>[v1.04.0] - xxth June 2019</h2>
+        <h2>[v1.04.1] - 19th June 2019</h2>
+
+        <h3>Changed</h3>
+
+        <ul>
+            <li>The Costs to Expect website checks the status of the Costs to Expect API, if it is down, a message is displayed to explain the lack of data.</li>
+            <li>The website gracefully handles the Costs to Expect API being down.</li>
+            <li>The website only calls a specific endpoint once per request, models retain state so that subsequent calls are free.</li>
+            <li>Split the largest expense value; we now show the top expense per category.</li>
+            <li>Minor layout changes to the intro section on the child pages, updates for all screen sizes.</li>
+            <li>API requests section links to API calls.</li>
+            <li>Code refactoring, getting everything in order to enable new feature.</li>
+        </ul>
+
+        <h3>Fixed</h3>
+
+        <ul>
+            <li>Removed redundant horizontal line on the child detail page.</li>
+        </ul>
+
+        <h2>[v1.04.0] - 3rd June 2019</h2>
 
         <h3>Added</h3>
 

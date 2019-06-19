@@ -101,6 +101,19 @@
                         </div>
                     </div>
 
+                    @if ($api_status === false)
+                    <div class="row mb-3">
+                        <div class="col-12">
+                            <div class="alert alert-warning" role="alert">
+                                The Costs to Expect API is temporarily not available, there is a better than zero chance
+                                that the API is down for maintenance, please try again later.<br />
+                                If the error persists please reach out to us on
+                                <a href="https://twitter.com/coststoexpect">Twitter</a>
+                            </div>
+                        </div>
+                    </div>
+                    @endif
+
                     @yield('content')
 
                     <div class="row mt-5 mb-5">

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Child\Jack;
+use App\Models\Child\Niall;
 use App\Request\Api;
 use Illuminate\Support\Facades\Config;
 use Illuminate\View\View;
@@ -22,52 +24,54 @@ class DashboardController extends BaseController
      */
     public function index(): View
     {
-        /**
-         * Each child should be a model?, sub set of child model
-         *
-         * Need to have a method to get the API id, kw8gLq31VB etc
-         */
-        $children = [
-            'jack' => [
-                'name' => 'Jack Blackborough',
-                'date_of_birth' => '28th June 2013',
-                'total' => 0.00
-            ],
-            'niall' => [
-                'name' => 'Niall Blackborough',
-                'date_of_birth' => '22nd April 2019',
-                'total' => 0.00
-            ]
-        ];
+        Api::resetCalledURIs();
+        $jack_model = new Jack();
+        $niall_model = new Niall();
 
-        /**
-         * Need to move this code to model classes
-         */
-        $child_totals = Api::getInstance()
-            ->public()
-            ->get('/v1/summary/resource-types/d185Q15grY/items?resources=true');
-
-        $jack_current_year = Api::getInstance()
-            ->public()
-            ->get('/v1/summary/resource-types/d185Q15grY/resources/kw8gLq31VB/items?year=' . date('Y'));
-
-        $niall_current_year = Api::getInstance()
-            ->public()
-            ->get('/v1/summary/resource-types/d185Q15grY/resources/Eq9g6BgJL0/items?year=' . date('Y'));
-
-        /**
-         * To to return a specific response type, or call a model method directly to sort data, optional,
-         * could just return json
-         */
-
-        if ($child_totals !== null) {
-            $children['jack']['total'] = $child_totals[0]['total'];
-            $children['niall']['total'] = $child_totals[1]['total'];
+        if ($jack_model->totalPopulated() === false) {
+            $jack_model->setTotalApiResponse(
+                Api::summaryExpenses(
+                    $jack_model->id()
+                )
+            );
+            Api::setCalledURI('Total expenses for ' . $jack_model->details()['name'], Api::lastUri());
         }
 
-        $recent_expenses = Api::getInstance()
-            ->public()
-            ->get('/v1/resource-types/d185Q15grY/items?limit=25&include-categories=true&include-subcategories=true');
+        if ($niall_model->totalPopulated() === false) {
+            $niall_model->setTotalApiResponse(
+                Api::summaryExpenses(
+                    $niall_model->id()
+                )
+            );
+            Api::setCalledURI('Total expenses for ' . $niall_model->details()['name'], Api::lastUri());
+        }
+
+        $jack_total = $jack_model->total();
+        $niall_total = $niall_model->total();
+
+        if ($jack_model->totalCurrentYearPopulated() === false) {
+            $jack_model->setTotalCurrentYearApiResponse(
+                Api::summaryExpensesForCurrentYear(
+                    $jack_model->id()
+                )
+            );
+            Api::setCalledURI('Current year expenses for ' . $jack_model->details()['name'], Api::lastUri());
+        }
+
+        if ($niall_model->totalCurrentYearPopulated() === false) {
+            $niall_model->setTotalCurrentYearApiResponse(
+                Api::summaryExpensesForCurrentYear(
+                    $niall_model->id()
+                )
+            );
+            Api::setCalledURI('Current year expenses for ' . $niall_model->details()['name'], Api::lastUri());
+        }
+
+        $jack_current_year = $jack_model->totalCurrentYear();
+        $niall_current_year = $niall_model->totalCurrentYear();
+
+        $recent_expenses = Api::recentExpensesForBothChildren();
+        Api::setCalledURI('The 25 most recent expenses', Api::lastUri());
 
         return view(
             'dashboard',
@@ -86,11 +90,12 @@ class DashboardController extends BaseController
                         'title' => 'Costs to Expect.com'
                     ]
                 ],
-                'children' => $children,
+                'jack_total' => $jack_total,
+                'niall_total' => $niall_total,
                 'recent_expenses' => $recent_expenses,
                 'jack_current_year' => $jack_current_year,
                 'niall_current_year' => $niall_current_year,
-                'api_requests' => $this->apiRequests()
+                'api_requests' => Api::calledURIs()
             ]
         );
     }
@@ -104,20 +109,24 @@ class DashboardController extends BaseController
     {
         return [
             [
-                'name' => 'Total expenses to date',
-                'uri' => '/summary/resource-types/d185Q15grY/items?resources=true'
+                'name' => 'Total expenses for Jack',
+                'uri' => '/v1/summary/resource-types/d185Q15grY/resources/kw8gLq31VB/items'
+            ],
+            [
+                'name' => 'Total expenses for Niall',
+                'uri' => '/v1/summary/resource-types/d185Q15grY/resources/Eq9g6BgJL0/items'
             ],
             [
                 'name' => 'Current year expenses for Jack',
-                'uri' => '/summary/resource-types/d185Q15grY/resources/kw8gLq31VB/items?year=2019'
+                'uri' => '/v1/summary/resource-types/d185Q15grY/resources/kw8gLq31VB/items?year=2019'
             ],
             [
                 'name' => 'Current year expenses for Niall',
-                'uri' => '/summary/resource-types/d185Q15grY/resources/Eq9g6BgJL0/items?year=2019'
+                'uri' => '/v1/summary/resource-types/d185Q15grY/resources/Eq9g6BgJL0/items?year=2019'
             ],
             [
                 'name' => '25 most recent expenses for both children',
-                'uri' => '/resource-types/d185Q15grY/items?limit=25&include-categories=true&include-subcategories=true'
+                'uri' => '/v1/resource-types/d185Q15grY/items?limit=25&include-categories=true&include-subcategories=true'
             ]
         ];
     }

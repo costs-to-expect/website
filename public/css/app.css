@@ -9823,6 +9823,9 @@ html, body {
   .container-right .detail-page-intro {
     margin-top: 0 !important;
   }
+  .container-right .detail-page-intro p {
+    margin-bottom: 0.5rem;
+  }
 }
 @media (max-width: 768px) {
   .container-right {
@@ -9842,6 +9845,9 @@ html, body {
   }
   .container-right .detail-page-intro {
     margin-top: 0 !important;
+  }
+  .container-right .detail-page-intro p {
+    margin-bottom: 0.3rem;
   }
 }
 @media (max-width: 576px) {
