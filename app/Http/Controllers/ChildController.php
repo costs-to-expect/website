@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Child;
 use App\Models\Child\Annual;
+use App\Models\Child\Expense;
 use App\Models\Child\Jack;
 use App\Models\Child\Niall;
 use App\Models\Child\Category;
@@ -39,20 +40,23 @@ class ChildController extends BaseController
      */
     public function child(Request $request): View
     {
+        Api::resetCalledURIs();
         $child = $this->childModel($request->getPathInfo());
 
         $category_model = new Category();
         $annual_model = new Annual();
-        $expense_model = new Child\Expense();
+        $expense_model = new Expense();
 
         if ($category_model->categoriesSummaryPopulated() === false) {
             $category_model->setCategoriesSummaryApiResponse(Api::summaryExpensesByCategory($child->id()));
+            Api::setCalledURI('Expenses summary by category', Api::lastUri());
         }
 
         $categories_summary = $category_model->categoriesSummary();
 
         if ($annual_model->annualSummaryPopulated() === false) {
             $annual_model->setAnnualSummaryApiResponse(Api::summaryExpensesAnnual($child->id()));
+            Api::setCalledURI('Expenses summary by year', Api::lastUri());
         }
 
         $annual_summary = $annual_model->annualSummary();
@@ -60,6 +64,7 @@ class ChildController extends BaseController
         if ($expense_model->recentExpensesPopulated() === false) {
             $expense_model->setRecentExpensesApiResponse(Api::recentExpenses($child->id()));
             $expense_model->setRecentExpensesApiHeaderResponse(Api::previousRequestHeaders());
+            Api::setCalledURI('The 25 most recent expenses', Api::lastUri());
         }
 
         $recent_expenses = $expense_model->recentExpenses();
@@ -74,6 +79,7 @@ class ChildController extends BaseController
                     $category_model->essentialId()
                 )
             );
+            Api::setCalledURI('The top Essential expense', Api::lastUri());
         }
         if ($category_model->largestNonEssentialExpensePopulated() === false) {
             $category_model->setLargestNonEssentialExpenseResponse(
@@ -82,6 +88,7 @@ class ChildController extends BaseController
                     $category_model->nonEssentialId()
                 )
             );
+            Api::setCalledURI('The top Non-Essential expense', Api::lastUri());
         }
         if ($category_model->largestHobbyInterestExpensePopulated() === false) {
             $category_model->setLargestHobbyInterestExpenseResponse(
@@ -90,6 +97,7 @@ class ChildController extends BaseController
                     $category_model->hobbyInterestId()
                 )
             );
+            Api::setCalledURI('The top Hobbies and Interests expense', Api::lastUri());
         }
 
         $largest_essential_expense = $category_model->largestEssentialExpense();
@@ -114,7 +122,7 @@ class ChildController extends BaseController
                     ]
                 ],
 
-                'api_requests' => $this->apiRequestsForChild($child->id()),
+                'api_requests' => Api::calledURIs(),
 
                 'categories_summary' => $categories_summary,
                 'annual_summary' => $annual_summary,
@@ -140,42 +148,5 @@ class ChildController extends BaseController
     private function menus(): array
     {
         return Config::get('web.menus');
-    }
-
-    /**
-     * Return the API requests for the requested child
-     *
-     * @param string $child_id
-     *
-     * @return array
-     */
-    private function apiRequestsForChild(string $child_id): array
-    {
-        return [
-            [
-                'name' => 'Expenses by category',
-                'uri' => 'v1/summary/resource-types/d185Q15grY/resources/' . $child_id. '/items?categories=true'
-            ],
-            [
-                'name' => 'Expenses by year',
-                'uri' => 'v1/summary/resource-types/d185Q15grY/resources/' . $child_id. '/items?years=true'
-            ],
-            [
-                'name' => '25 most recent expenses',
-                'uri' => 'v1/resource-types/d185Q15grY/resources/' . $child_id. '/items?limit=25&include-categories=true&include-subcategories=true'
-            ],
-            [
-                'name' => 'Top Essential expense',
-                'uri' => 'v1/resource-types/d185Q15grY/resources/' . $child_id. '/items?category=98WLap7Bx3&sort=actualised_total:desc&limit=1'
-            ],
-            [
-                'name' => 'Top Non-Essential expense',
-                'uri' => 'v1/resource-types/d185Q15grY/resources/' . $child_id. '/items?category=RjXM5VJDw6&sort=actualised_total:desc&limit=1'
-            ],
-            [
-                'name' => 'Top Hobby and Interests expense',
-                'uri' => 'v1/resource-types/d185Q15grY/resources/' . $child_id. '/items?category=Gwg7zgL316&sort=actualised_total:desc&limit=1'
-            ],
-        ];
     }
 }

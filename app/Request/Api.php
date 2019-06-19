@@ -11,15 +11,49 @@ namespace App\Request;
 class Api
 {
     /**
+     * @var string
+     */
+    private static $uri;
+    /**
+     * @var array
+     */
+    private static $uris;
+
+    public static function resetCalledURIs()
+    {
+        self::$uris = [];
+    }
+
+    public static function calledURIs()
+    {
+        return self::$uris;
+    }
+
+    public static function setCalledURI($name, $uri)
+    {
+        self::$uris[] = [
+            'name' => $name,
+            'uri' => $uri
+        ];
+    }
+
+    public static function lastUri(): string
+    {
+        return self::$uri;
+    }
+
+    /**
      * @param string $child_id
      *
      * @return array|null
      */
     public static function summaryExpenses(string $child_id): ?array
     {
+        self::$uri = Uri::summaryExpenses($child_id);
+
         $response = Http::getInstance()
             ->public()
-            ->get(Uri::summaryExpenses($child_id));
+            ->get(self::$uri);
 
         if ($response !== null) {
             return $response;
@@ -35,9 +69,11 @@ class Api
      */
     public static function summaryExpensesForCurrentYear(string $child_id): ?array
     {
+        self::$uri = Uri::summaryExpensesForCurrentYear($child_id);
+
         $response = Http::getInstance()
             ->public()
-            ->get(Uri::summaryExpensesForCurrentYear($child_id));
+            ->get(self::$uri);
 
         if ($response !== null) {
             return $response;
@@ -53,9 +89,11 @@ class Api
      */
     public static function summaryExpensesByCategory(string $child_id): ?array
     {
+        self::$uri = Uri::summaryExpensesByCategory($child_id);
+
         $response = Http::getInstance()
             ->public()
-            ->get(Uri::summaryExpensesByCategory($child_id));
+            ->get(self::$uri);
 
         if ($response !== null) {
             return $response;
@@ -71,9 +109,33 @@ class Api
      */
     public static function summaryExpensesAnnual(string $child_id): ?array
     {
+        self::$uri = Uri::summaryExpensesAnnual($child_id);
+
         $response = Http::getInstance()
             ->public()
-            ->get(Uri::summaryExpensesAnnual($child_id));
+            ->get(self::$uri);
+
+        if ($response !== null) {
+            return $response;
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * @return array|null
+     */
+    public static function recentExpensesForBothChildren(): ?array
+    {
+        self::$uri = Uri::recentExpensesForBothChildren(
+            25,
+            true,
+            true
+        );
+
+        $response = Http::getInstance()
+            ->public()
+            ->get(self::$uri, true);
 
         if ($response !== null) {
             return $response;
@@ -89,17 +151,16 @@ class Api
      */
     public static function recentExpenses(string $child_id): ?array
     {
+        self::$uri = Uri::recentExpenses(
+            $child_id,
+            25,
+            true,
+            true
+        );
+
         $response = Http::getInstance()
             ->public()
-            ->get(
-                Uri::recentExpenses(
-                    $child_id,
-                    25,
-                    true,
-                    true
-                ),
-                true
-            );
+            ->get(self::$uri, true);
 
         if ($response !== null) {
             return $response;
@@ -119,9 +180,11 @@ class Api
         string $category_id
     ): ?array
     {
+        self::$uri = Uri::largestExpenseInCategory($child_id, $category_id);
+
         $response = Http::getInstance()
             ->public()
-            ->get(Uri::largestExpenseInCategory($child_id, $category_id));
+            ->get(self::$uri);
 
         if ($response !== null) {
             return $response;

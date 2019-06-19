@@ -17,7 +17,7 @@
 
         <hr />
 
-        <h2>[v1.04.1] - 18th June 2019</h2>
+        <h2>[v1.04.1] - 19th June 2019</h2>
 
         <h3>Changed</h3>
 
@@ -27,7 +27,14 @@
             <li>The website only calls a specific endpoint once per request, models retain state so that subsequent calls are free.</li>
             <li>Split the largest expense value; we now show the top expense per category.</li>
             <li>Minor layout changes to the intro section on the child pages, updates for all screen sizes.</li>
+            <li>API requests section links to API calls.</li>
             <li>Code refactoring, getting everything in order to enable new feature.</li>
+        </ul>
+
+        <h3>Fixed</h3>
+
+        <ul>
+            <li>Removed redundant horizontal line on the child detail page.</li>
         </ul>
 
         <h2>[v1.04.0] - 3rd June 2019</h2>
