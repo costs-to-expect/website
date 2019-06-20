@@ -19,19 +19,19 @@
                     <h5>Sex & Birth weight</h5>
                     <p class="sub-heading text-muted d-none d-md-block">What were his vital statistics?</p>
                     <p class="data">{{ $child_details['sex'] }} & {{ $child_details['weight'] }}</p>
+                    <h5>Total expenses</h5>
+                    <p class="sub-heading text-muted d-none d-md-block">How much to raise {{ $child_details['short_name'] }}?</p>
+                    <p class="data">&pound;{{ number_format((float) $total, 2) }}</p>
+                </div>
+                <div class="col-md-6 col-12">
+                    <h5>Number of expenses</h5>
+                    <p class="sub-heading text-muted d-none d-md-block">How many purchases?</p>
+                    <p class="data">{{ $number_of_expenses }}</p>
                     @if ($largest_non_essential_expense !== null)
                         <h5>Top Non-Essential expense</h5>
                         <p class="sub-heading text-muted d-none d-md-block">The grandest expense?</p>
                         <p class="data">&pound;{{ number_format((float) $largest_non_essential_expense['actualised_total'], 2) }} <small>({{ $largest_non_essential_expense['description'] }})</small></p>
                     @endif
-                </div>
-                <div class="col-md-6 col-12">
-                    <h5>Total expenses</h5>
-                    <p class="sub-heading text-muted d-none d-md-block">How much to raise {{ $child_details['short_name'] }}?</p>
-                    <p class="data">&pound;{{ number_format((float) $total, 2) }}</p>
-                    <h5>Number of expenses</h5>
-                    <p class="sub-heading text-muted d-none d-md-block">How many purchases?</p>
-                    <p class="data">{{ $number_of_expenses }}</p>
                     @if ($largest_essential_expense !== null)
                         <h5>Top Essential expense</h5>
                         <p class="sub-heading text-muted d-none d-md-block">The grandest expense?</p>

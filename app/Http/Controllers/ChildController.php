@@ -24,7 +24,9 @@ class ChildController extends BaseController
 {
     private function childModel(string $uri): Child
     {
-        if ($uri === '/jack') {
+        $bits = explode('/',  $uri);
+
+        if (array_key_exists(1, $bits) && $bits[1] === 'jack') {
             return new Jack();
         } else {
             return new Niall();
