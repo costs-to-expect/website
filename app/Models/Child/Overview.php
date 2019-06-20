@@ -57,16 +57,19 @@ class Overview
             $this->essential_id => [
                 'name' => trans('web/categories.essential-name'),
                 'description' => trans('web/categories.essential-description'),
+                'uri-slug' => trans('web/categories.essential-uri-slug'),
                 'total' => 0.00
             ],
             $this->non_essential_id => [
                 'name' => trans('web/categories.non-essential-name'),
                 'description' => trans('web/categories.non-essential-description'),
+                'uri-slug' => trans('web/categories.non-essential-uri-slug'),
                 'total' => 0.00
             ],
             $this->hobby_interest_id => [
                 'name' => trans('web/categories.hobby-interest-name'),
                 'description' => trans('web/categories.hobby-interest-description'),
+                'uri-slug' => trans('web/categories.hobby-interest-uri-slug'),
                 'total' => 0.00
             ]
         ];

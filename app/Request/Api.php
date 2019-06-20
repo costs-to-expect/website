@@ -87,9 +87,33 @@ class Api
      *
      * @return array|null
      */
-    public static function summaryExpensesByCategory(string $child_id): ?array
+    public static function summaryExpensesGroupByCategory(string $child_id): ?array
     {
-        self::$uri = Uri::summaryExpensesByCategory($child_id);
+        self::$uri = Uri::summaryExpensesGroupByCategory($child_id);
+
+        $response = Http::getInstance()
+            ->public()
+            ->get(self::$uri);
+
+        if ($response !== null) {
+            return $response;
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * @param string $child_id
+     * @param string $category_id
+     *
+     * @return array|null
+     */
+    public static function summaryExpensesGroupBySubcategory(
+        string $child_id,
+        string $category_id
+    ): ?array
+    {
+        self::$uri = Uri::summaryExpensesGroupBySubcategory($child_id, $category_id);
 
         $response = Http::getInstance()
             ->public()

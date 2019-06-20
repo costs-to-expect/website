@@ -62,7 +62,7 @@ class ChildController extends BaseController
     protected function categoriesSummary($child_id)
     {
         if ($this->overview_model->categoriesSummaryPopulated() === false) {
-            $this->overview_model->setCategoriesSummaryApiResponse(Api::summaryExpensesByCategory($child_id));
+            $this->overview_model->setCategoriesSummaryApiResponse(Api::summaryExpensesGroupByCategory($child_id));
             Api::setCalledURI('Expenses summary by category', Api::lastUri());
         }
 
@@ -242,13 +242,25 @@ class ChildController extends BaseController
         $categories_summary = $categories_summary_data['summary'];
         $total = $categories_summary_data['total'];
 
-        $recent_expenses_data = $this->recentExpenses($child->id());
-        $recent_expenses = $recent_expenses_data['expenses'];
-        $number_of_expenses = $recent_expenses_data['total'];
+        if ($category->subcategorySummaryPopulated() === false) {
+            $category->setSubcategorySummaryApiResponse(
+                Api::summaryExpensesGroupBySubcategory(
+                    $child->id(),
+                    $category->id()
+                )
+            );
+            Api::setCalledURI('Expenses summary by subcategory', Api::lastUri());
+        }
+
+        $subcategories_summary = $category->subcategorySummary();
 
         $largest_essential_expense = $this->largestEssentialExpense($child->id());
         $largest_non_essential_expense = $this->largestNonEssentialExpense($child->id());
         $largest_hobby_interest_expense = $this->largestHobbyInterestExpense($child->id());
+
+        $recent_expenses_data = $this->recentExpenses($child->id());
+        $recent_expenses = $recent_expenses_data['expenses'];
+        $number_of_expenses = $recent_expenses_data['total'];
 
         return view(
             'child-category',
@@ -271,10 +283,12 @@ class ChildController extends BaseController
                 'api_requests' => Api::calledURIs(),
 
                 'categories_summary' => $categories_summary,
+                'subcategories_summary' =>$subcategories_summary,
 
                 'child_details' => $child->details(),
 
                 'active_category_id' => $category->id(),
+                'active_category_name' => $category->name(),
 
                 'recent_expenses' => $recent_expenses,
                 'number_of_expenses' => $number_of_expenses,
