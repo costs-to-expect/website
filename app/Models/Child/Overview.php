@@ -8,7 +8,7 @@ namespace App\Models\Child;
  * @author Dean Blackborough <dean@g3d-development.com>
  * @copyright Dean Blackborough 2019
  */
-class Category
+class Overview
 {
     private $summary = null;
     private $summary_response = null;

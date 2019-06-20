@@ -7,7 +7,7 @@ use App\Models\Child\Annual;
 use App\Models\Child\Expense;
 use App\Models\Child\Jack;
 use App\Models\Child\Niall;
-use App\Models\Child\Category;
+use App\Models\Child\Overview;
 use App\Request\Api;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
@@ -45,16 +45,16 @@ class ChildController extends BaseController
         Api::resetCalledURIs();
         $child = $this->childModel($request->getPathInfo());
 
-        $category_model = new Category();
+        $overview_model = new Overview();
         $annual_model = new Annual();
         $expense_model = new Expense();
 
-        if ($category_model->categoriesSummaryPopulated() === false) {
-            $category_model->setCategoriesSummaryApiResponse(Api::summaryExpensesByCategory($child->id()));
+        if ($overview_model->categoriesSummaryPopulated() === false) {
+            $overview_model->setCategoriesSummaryApiResponse(Api::summaryExpensesByCategory($child->id()));
             Api::setCalledURI('Expenses summary by category', Api::lastUri());
         }
 
-        $categories_summary = $category_model->categoriesSummary();
+        $categories_summary = $overview_model->categoriesSummary();
 
         if ($annual_model->annualSummaryPopulated() === false) {
             $annual_model->setAnnualSummaryApiResponse(Api::summaryExpensesAnnual($child->id()));
@@ -72,39 +72,39 @@ class ChildController extends BaseController
         $recent_expenses = $expense_model->recentExpenses();
         $number_of_expenses = $expense_model->recentExpensesHeader('X-Total-Count');
 
-        $total = $category_model->totalFromCategorySummary();
+        $total = $overview_model->totalFromCategorySummary();
 
-        if ($category_model->largestEssentialExpensePopulated() === false) {
-            $category_model->setLargestEssentialExpenseResponse(
+        if ($overview_model->largestEssentialExpensePopulated() === false) {
+            $overview_model->setLargestEssentialExpenseResponse(
                 Api::largestExpenseInCategory(
                     $child->id(),
-                    $category_model->essentialId()
+                    $overview_model->essentialId()
                 )
             );
             Api::setCalledURI('The top Essential expense', Api::lastUri());
         }
-        if ($category_model->largestNonEssentialExpensePopulated() === false) {
-            $category_model->setLargestNonEssentialExpenseResponse(
+        if ($overview_model->largestNonEssentialExpensePopulated() === false) {
+            $overview_model->setLargestNonEssentialExpenseResponse(
                 Api::largestExpenseInCategory(
                     $child->id(),
-                    $category_model->nonEssentialId()
+                    $overview_model->nonEssentialId()
                 )
             );
             Api::setCalledURI('The top Non-Essential expense', Api::lastUri());
         }
-        if ($category_model->largestHobbyInterestExpensePopulated() === false) {
-            $category_model->setLargestHobbyInterestExpenseResponse(
+        if ($overview_model->largestHobbyInterestExpensePopulated() === false) {
+            $overview_model->setLargestHobbyInterestExpenseResponse(
                 Api::largestExpenseInCategory(
                     $child->id(),
-                    $category_model->hobbyInterestId()
+                    $overview_model->hobbyInterestId()
                 )
             );
             Api::setCalledURI('The top Hobbies and Interests expense', Api::lastUri());
         }
 
-        $largest_essential_expense = $category_model->largestEssentialExpense();
-        $largest_non_essential_expense = $category_model->largestNonEssentialExpense();
-        $largest_hobby_interest_expense = $category_model->largestHobbyInterestExpense();
+        $largest_essential_expense = $overview_model->largestEssentialExpense();
+        $largest_non_essential_expense = $overview_model->largestNonEssentialExpense();
+        $largest_hobby_interest_expense = $overview_model->largestHobbyInterestExpense();
 
         return view(
             'child',
@@ -155,16 +155,16 @@ class ChildController extends BaseController
         Api::resetCalledURIs();
         $child = $this->childModel($request->getPathInfo());
 
-        $category_model = new Category();
+        $overview_model = new Overview();
         $annual_model = new Annual();
         $expense_model = new Expense();
 
-        if ($category_model->categoriesSummaryPopulated() === false) {
-            $category_model->setCategoriesSummaryApiResponse(Api::summaryExpensesByCategory($child->id()));
+        if ($overview_model->categoriesSummaryPopulated() === false) {
+            $overview_model->setCategoriesSummaryApiResponse(Api::summaryExpensesByCategory($child->id()));
             Api::setCalledURI('Expenses summary by category', Api::lastUri());
         }
 
-        $categories_summary = $category_model->categoriesSummary();
+        $categories_summary = $overview_model->categoriesSummary();
 
         if ($annual_model->annualSummaryPopulated() === false) {
             $annual_model->setAnnualSummaryApiResponse(Api::summaryExpensesAnnual($child->id()));
@@ -174,39 +174,39 @@ class ChildController extends BaseController
         $recent_expenses = $expense_model->recentExpenses();
         $number_of_expenses = $expense_model->recentExpensesHeader('X-Total-Count');
 
-        $total = $category_model->totalFromCategorySummary();
+        $total = $overview_model->totalFromCategorySummary();
 
-        if ($category_model->largestEssentialExpensePopulated() === false) {
-            $category_model->setLargestEssentialExpenseResponse(
+        if ($overview_model->largestEssentialExpensePopulated() === false) {
+            $overview_model->setLargestEssentialExpenseResponse(
                 Api::largestExpenseInCategory(
                     $child->id(),
-                    $category_model->essentialId()
+                    $overview_model->essentialId()
                 )
             );
             Api::setCalledURI('The top Essential expense', Api::lastUri());
         }
-        if ($category_model->largestNonEssentialExpensePopulated() === false) {
-            $category_model->setLargestNonEssentialExpenseResponse(
+        if ($overview_model->largestNonEssentialExpensePopulated() === false) {
+            $overview_model->setLargestNonEssentialExpenseResponse(
                 Api::largestExpenseInCategory(
                     $child->id(),
-                    $category_model->nonEssentialId()
+                    $overview_model->nonEssentialId()
                 )
             );
             Api::setCalledURI('The top Non-Essential expense', Api::lastUri());
         }
-        if ($category_model->largestHobbyInterestExpensePopulated() === false) {
-            $category_model->setLargestHobbyInterestExpenseResponse(
+        if ($overview_model->largestHobbyInterestExpensePopulated() === false) {
+            $overview_model->setLargestHobbyInterestExpenseResponse(
                 Api::largestExpenseInCategory(
                     $child->id(),
-                    $category_model->hobbyInterestId()
+                    $overview_model->hobbyInterestId()
                 )
             );
             Api::setCalledURI('The top Hobbies and Interests expense', Api::lastUri());
         }
 
-        $largest_essential_expense = $category_model->largestEssentialExpense();
-        $largest_non_essential_expense = $category_model->largestNonEssentialExpense();
-        $largest_hobby_interest_expense = $category_model->largestHobbyInterestExpense();
+        $largest_essential_expense = $overview_model->largestEssentialExpense();
+        $largest_non_essential_expense = $overview_model->largestNonEssentialExpense();
+        $largest_hobby_interest_expense = $overview_model->largestHobbyInterestExpense();
 
         return view(
             'child-category',
