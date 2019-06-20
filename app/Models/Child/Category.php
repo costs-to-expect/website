@@ -14,9 +14,9 @@ class Category
     private $summary_response = null;
     private $summary_populated = false;
 
-    private $essential_id = '98WLap7Bx3';
-    private $non_essential_id = 'RjXM5VJDw6';
-    private $hobby_interest_id = 'Gwg7zgL316';
+    private $essential_id;
+    private $non_essential_id;
+    private $hobby_interest_id;
 
     private $largest_essential_expense = null;
     private $largest_non_essential_expense = null;
@@ -28,6 +28,12 @@ class Category
     private $largest_non_essential_expense_populated = false;
     private $largest_hobby_interest_expense_populated = false;
 
+    public function __construct()
+    {
+        $this->essential_id = trans('web/categories.essential-id');
+        $this->non_essential_id = trans('web/categories.non-essential-id');
+        $this->hobby_interest_id = trans('web/categories.hobby-interest-id');
+    }
 
     public function essentialId(): string
     {
