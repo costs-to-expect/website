@@ -224,11 +224,11 @@ class ChildController extends BaseController
      *
      * @param Request $request
      * @param string $child
-     * @param string $category_name
+     * @param string $category_uri
      *
      * @return View
      */
-    public function category(Request $request, string $child, string $category_name): View
+    public function category(Request $request, string $child, string $category_uri): View
     {
         Api::resetCalledURIs();
 
@@ -236,6 +236,7 @@ class ChildController extends BaseController
         $this->setExpenseModel();
 
         $child = $this->childModel($child);
+        $category = Child\Category::modelByUriSlug($category_uri);
 
         $categories_summary_data = $this->categoriesSummary($child->id());
         $categories_summary = $categories_summary_data['summary'];
