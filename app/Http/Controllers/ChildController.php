@@ -258,9 +258,19 @@ class ChildController extends BaseController
         $largest_non_essential_expense = $this->largestNonEssentialExpense($child->id());
         $largest_hobby_interest_expense = $this->largestHobbyInterestExpense($child->id());
 
-        $recent_expenses_data = $this->recentExpenses($child->id());
-        $recent_expenses = $recent_expenses_data['expenses'];
-        $number_of_expenses = $recent_expenses_data['total'];
+        if ($this->expense_model->recentExpensesPopulated() === false) {
+            $this->expense_model->setRecentExpensesApiResponse(
+                Api::recentExpensesByCategory(
+                    $child->id(),
+                    $category->id()
+                )
+            );
+            $this->expense_model->setRecentExpensesApiHeaderResponse(Api::previousRequestHeaders());
+            Api::setCalledURI('The 25 most recent expenses', Api::lastUri());
+        }
+
+        $recent_expenses = $this->expense_model->recentExpenses();
+        $number_of_expenses = $this->expense_model->recentExpensesHeader('X-Total-Count');
 
         return view(
             'child-category',

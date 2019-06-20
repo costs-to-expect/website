@@ -199,6 +199,36 @@ class Api
      *
      * @return array|null
      */
+    public static function recentExpensesByCategory(
+        string $child_id,
+        string $category_id
+    ): ?array
+    {
+        self::$uri = Uri::recentExpensesByCategory(
+            $child_id,
+            $category_id,
+            25,
+            true,
+            true
+        );
+
+        $response = Http::getInstance()
+            ->public()
+            ->get(self::$uri, true);
+
+        if ($response !== null) {
+            return $response;
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * @param string $child_id
+     * @param string $category_id
+     *
+     * @return array|null
+     */
     public static function largestExpenseInCategory(
         string $child_id,
         string $category_id
