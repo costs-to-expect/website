@@ -131,6 +131,10 @@ html,body {
                 }
             }
 
+            .summary-block.active {
+                border: 1px solid $brand-purple;
+            }
+
             .detail-page-intro {
                 margin-top: 1rem;
 

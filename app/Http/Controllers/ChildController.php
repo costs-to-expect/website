@@ -274,6 +274,8 @@ class ChildController extends BaseController
 
                 'child_details' => $child->details(),
 
+                'active_category_id' => $category->id(),
+
                 'recent_expenses' => $recent_expenses,
                 'number_of_expenses' => $number_of_expenses,
                 'total' => $total,

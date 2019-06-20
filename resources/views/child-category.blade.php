@@ -62,9 +62,9 @@
     </div>
 </div>
 <div class="row">
-    @foreach ($categories_summary as $category)
+    @foreach ($categories_summary as $category_id => $category)
     <div class="col-12 col-sm-6 col-md-6 col-lg-4" style="margin-bottom: 1rem;">
-        <div class="media summary-block shadow-sm h-100">
+        <div class="media summary-block shadow-sm h-100 @if($category_id === $active_category_id) active @endif">
             <img src="{{ asset('images/theme/expenses.png') }}" class="mr-2" width="48" height="48" alt="icon">
             <div class="media-body">
                 <h4 class="mt-0">{{ $category['name'] }}</h4>
