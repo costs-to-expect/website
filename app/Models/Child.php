@@ -152,9 +152,7 @@ abstract class Child
                 )
             );
             Api::setCalledURI('Current year expenses for ' . $this->name, Api::lastUri());
-        }
 
-        if ($this->total_current_year_populated === false) {
             $this->setTotalCurrentYearData();
 
             if (

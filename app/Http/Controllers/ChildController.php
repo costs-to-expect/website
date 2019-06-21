@@ -59,19 +59,6 @@ class ChildController extends BaseController
         $this->expense_model = new Expense();
     }
 
-    protected function categoriesSummary($child_id)
-    {
-        if ($this->overview_model->categoriesSummaryPopulated() === false) {
-            $this->overview_model->setCategoriesSummaryApiResponse(Api::summaryExpensesGroupByCategory($child_id));
-            Api::setCalledURI('Expenses summary by category', Api::lastUri());
-        }
-
-        return [
-            'summary' => $this->overview_model->categoriesSummary(),
-            'total' => $this->overview_model->totalFromCategorySummary()
-        ];
-    }
-
     protected function annualSummary($child_id)
     {
         if ($this->annual_model->annualSummaryPopulated() === false) {
@@ -97,51 +84,6 @@ class ChildController extends BaseController
             ];
     }
 
-    protected function largestEssentialExpense($child_id)
-    {
-        if ($this->overview_model->largestEssentialExpensePopulated() === false) {
-            $this->overview_model->setLargestEssentialExpenseResponse(
-                Api::largestExpenseInCategory(
-                    $child_id,
-                    $this->overview_model->essentialId()
-                )
-            );
-            Api::setCalledURI('The top Essential expense', Api::lastUri());
-        }
-
-        return $this->overview_model->largestEssentialExpense();
-    }
-
-    protected function largestNonEssentialExpense($child_id)
-    {
-        if ($this->overview_model->largestNonEssentialExpensePopulated() === false) {
-            $this->overview_model->setLargestNonEssentialExpenseResponse(
-                Api::largestExpenseInCategory(
-                    $child_id,
-                    $this->overview_model->nonEssentialId()
-                )
-            );
-            Api::setCalledURI('The top Non-Essential expense', Api::lastUri());
-        }
-
-        return $this->overview_model->largestNonEssentialExpense();
-    }
-
-    protected function largestHobbyInterestExpense($child_id)
-    {
-        if ($this->overview_model->largestHobbyInterestExpensePopulated() === false) {
-            $this->overview_model->setLargestHobbyInterestExpenseResponse(
-                Api::largestExpenseInCategory(
-                    $child_id,
-                    $this->overview_model->hobbyInterestId()
-                )
-            );
-            Api::setCalledURI('The top Hobbies and Interests expense', Api::lastUri());
-        }
-
-        return $this->overview_model->largestHobbyInterestExpense();
-    }
-
     public function jack()
     {
         return $this->child('jack');
@@ -163,13 +105,15 @@ class ChildController extends BaseController
     {
         Api::resetCalledURIs();
 
+        $overview = new Overview();
+
         $this->setOverviewModel();
         $this->setAnnualModel();
         $this->setExpenseModel();
 
         $child = $this->childModel($child);
 
-        $categories_summary_data = $this->categoriesSummary($child->id());
+        $categories_summary_data = $overview->categoriesSummary($child->id());
         $categories_summary = $categories_summary_data['summary'];
         $total = $categories_summary_data['total'];
 
@@ -179,9 +123,9 @@ class ChildController extends BaseController
         $recent_expenses = $recent_expenses_data['expenses'];
         $number_of_expenses = $recent_expenses_data['total'];
 
-        $largest_essential_expense = $this->largestEssentialExpense($child->id());
-        $largest_non_essential_expense = $this->largestNonEssentialExpense($child->id());
-        $largest_hobby_interest_expense = $this->largestHobbyInterestExpense($child->id());
+        $largest_essential_expense = $overview->largestEssentialExpense($child->id());
+        $largest_non_essential_expense = $overview->largestNonEssentialExpense($child->id());
+        $largest_hobby_interest_expense = $overview->largestHobbyInterestExpense($child->id());
 
         return view(
             'child',
@@ -254,9 +198,9 @@ class ChildController extends BaseController
 
         $subcategories_summary = $category_model->subcategorySummary();
 
-        $largest_essential_expense = $this->largestEssentialExpense($child->id());
-        $largest_non_essential_expense = $this->largestNonEssentialExpense($child->id());
-        $largest_hobby_interest_expense = $this->largestHobbyInterestExpense($child->id());
+        $largest_essential_expense = $this->overview_model->largestEssentialExpense($child->id());
+        $largest_non_essential_expense = $this->overview_model->largestNonEssentialExpense($child->id());
+        $largest_hobby_interest_expense = $this->overview_model->largestHobbyInterestExpense($child->id());
 
         if ($this->expense_model->recentExpensesPopulated() === false) {
             $this->expense_model->setRecentExpensesApiResponse(

@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace App\Models\Child;
 
+use App\Request\Api;
+
 /**
  * @package App\Models
  * @author Dean Blackborough <dean@g3d-development.com>
@@ -83,54 +85,16 @@ class Overview
      *
      * @return bool
      */
-    public function categoriesSummaryPopulated(): bool
+    protected function categoriesSummaryPopulated(): bool
     {
         return $this->summary_populated;
     }
 
-    public function setCategoriesSummaryApiResponse(?array $response)
+    protected function setCategoriesSummaryApiResponse(?array $response)
     {
         if ($response !== null) {
             $this->summary_response = $response;
         }
-    }
-
-    /**
-     * Return the child category totals data array
-     *
-     * @return array
-     */
-    public function categoriesSummary(): array
-    {
-        if ($this->summary_populated === false) {
-            $this->setCategoriesSummaryData();
-
-            if ($this->summary_response !== null) {
-                foreach ($this->summary_response as $category) {
-                    $this->summary[$category['id']]['total'] = $category['total'];
-                }
-
-                $this->summary_populated = true;
-            }
-        }
-
-        return $this->summary;
-    }
-
-    /**
-     * Return the total cost based on the category summary values
-     *
-     * @return float
-     */
-    public function totalFromCategorySummary(): float
-    {
-        $total = 0.00;
-
-        if ($this->summary_populated === true) {
-            $total = $this->summary['98WLap7Bx3']['total'] + $this->summary['RjXM5VJDw6']['total'] + $this->summary['Gwg7zgL316']['total'];
-        }
-
-        return $total;
     }
 
     /**
@@ -140,7 +104,7 @@ class Overview
      *
      * @return bool
      */
-    public function largestEssentialExpensePopulated(): bool
+    protected function largestEssentialExpensePopulated(): bool
     {
         return $this->largest_essential_expense_populated;
     }
@@ -152,7 +116,7 @@ class Overview
      *
      * @return bool
      */
-    public function largestNonEssentialExpensePopulated(): bool
+    protected function largestNonEssentialExpensePopulated(): bool
     {
         return $this->largest_non_essential_expense_populated;
     }
@@ -164,36 +128,47 @@ class Overview
      *
      * @return bool
      */
-    public function largestHobbyInterestExpensePopulated(): bool
+    protected function largestHobbyInterestExpensePopulated(): bool
     {
         return $this->largest_hobby_interest_expense_populated;
     }
 
-    public function setLargestEssentialExpenseResponse(?array $response)
+    protected function setLargestEssentialExpenseResponse(?array $response)
     {
         if ($response !== null) {
             $this->largest_essential_expense_response = $response;
         }
     }
 
-    public function setLargestNonEssentialExpenseResponse(?array $response)
+    protected function setLargestNonEssentialExpenseResponse(?array $response)
     {
         if ($response !== null) {
             $this->largest_non_essential_expense_response = $response;
         }
     }
 
-    public function setLargestHobbyInterestExpenseResponse(?array $response)
+    protected function setLargestHobbyInterestExpenseResponse(?array $response)
     {
         if ($response !== null) {
             $this->largest_hobby_interest_expense_response = $response;
         }
     }
 
-    public function largestEssentialExpense(): ?array
+    public function largestEssentialExpense($child_id): ?array
     {
-        if ($this->largest_essential_expense_populated === false) {
-            if ($this->largest_essential_expense_response !== null && array_key_exists(0, $this->largest_essential_expense_response) === true) {
+        if ($this->largestEssentialExpensePopulated() === false) {
+            $this->setLargestEssentialExpenseResponse(
+                Api::largestExpenseInCategory(
+                    $child_id,
+                    $this->essentialId()
+                )
+            );
+            Api::setCalledURI('The top Essential expense', Api::lastUri());
+
+            if (
+                $this->largest_essential_expense_response !== null &&
+                array_key_exists(0, $this->largest_essential_expense_response) === true
+            ) {
                 $this->largest_essential_expense = $this->largest_essential_expense_response[0];
                 $this->largest_essential_expense_populated = true;
             } else {
@@ -204,10 +179,21 @@ class Overview
         return $this->largest_essential_expense;
     }
 
-    public function largestNonEssentialExpense(): ?array
+    public function largestNonEssentialExpense($child_id): ?array
     {
-        if ($this->largest_non_essential_expense_populated === false) {
-            if ($this->largest_non_essential_expense_response !== null && array_key_exists(0, $this->largest_non_essential_expense_response) === true) {
+        if ($this->largestNonEssentialExpensePopulated() === false) {
+            $this->setLargestNonEssentialExpenseResponse(
+                Api::largestExpenseInCategory(
+                    $child_id,
+                    $this->nonEssentialId()
+                )
+            );
+            Api::setCalledURI('The top Non-Essential expense', Api::lastUri());
+
+            if (
+                $this->largest_non_essential_expense_response !== null &&
+                array_key_exists(0, $this->largest_non_essential_expense_response) === true
+            ) {
                 $this->largest_non_essential_expense = $this->largest_non_essential_expense_response[0];
                 $this->largest_non_essential_expense_populated = true;
             } else {
@@ -218,10 +204,21 @@ class Overview
         return $this->largest_non_essential_expense;
     }
 
-    public function largestHobbyInterestExpense(): ?array
+    public function largestHobbyInterestExpense($child_id): ?array
     {
-        if ($this->largest_hobby_interest_expense_populated === false) {
-            if ($this->largest_hobby_interest_expense_response !== null && array_key_exists(0, $this->largest_hobby_interest_expense_response) === true) {
+        if ($this->largestHobbyInterestExpensePopulated() === false) {
+            $this->setLargestHobbyInterestExpenseResponse(
+                Api::largestExpenseInCategory(
+                    $child_id,
+                    $this->hobbyInterestId()
+                )
+            );
+            Api::setCalledURI('The top Hobbies and Interests expense', Api::lastUri());
+
+            if (
+                $this->largest_hobby_interest_expense_response !== null &&
+                array_key_exists(0, $this->largest_hobby_interest_expense_response) === true
+            ) {
                 $this->largest_hobby_interest_expense = $this->largest_hobby_interest_expense_response[0];
                 $this->largest_hobby_interest_expense_populated = true;
             } else {
@@ -230,5 +227,38 @@ class Overview
         }
 
         return $this->largest_hobby_interest_expense;
+    }
+
+    public function categoriesSummary($child_id): array
+    {
+        $total = 0.00;
+
+        if ($this->categoriesSummaryPopulated() === false) {
+            $this->setCategoriesSummaryApiResponse(
+                Api::summaryExpensesGroupByCategory($child_id)
+            );
+            Api::setCalledURI('Expenses summary by category', Api::lastUri());
+
+            $this->setCategoriesSummaryData();
+
+            if ($this->summary_response !== null) {
+                foreach ($this->summary_response as $category) {
+                    $this->summary[$category['id']]['total'] = $category['total'];
+                }
+
+                $this->summary_populated = true;
+            }
+        }
+
+        if ($this->summary_populated === true) {
+            $total = $this->summary['98WLap7Bx3']['total'] +
+                $this->summary['RjXM5VJDw6']['total'] +
+                $this->summary['Gwg7zgL316']['total'];
+        }
+
+        return [
+            'summary' => $this->summary,
+            'total' => $total
+        ];
     }
 }
