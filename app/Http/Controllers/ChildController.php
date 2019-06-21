@@ -236,23 +236,23 @@ class ChildController extends BaseController
         $this->setExpenseModel();
 
         $child = $this->childModel($child);
-        $category = Child\Category::modelByUriSlug($category_uri);
+        $category_model = Child\Category::modelByUriSlug($category_uri);
 
         $categories_summary_data = $this->categoriesSummary($child->id());
         $categories_summary = $categories_summary_data['summary'];
         $total = $categories_summary_data['total'];
 
-        if ($category->subcategorySummaryPopulated() === false) {
-            $category->setSubcategorySummaryApiResponse(
+        if ($category_model->subcategorySummaryPopulated() === false) {
+            $category_model->setSubcategorySummaryApiResponse(
                 Api::summaryExpensesGroupBySubcategory(
                     $child->id(),
-                    $category->id()
+                    $category_model->id()
                 )
             );
             Api::setCalledURI('Expenses summary by subcategory', Api::lastUri());
         }
 
-        $subcategories_summary = $category->subcategorySummary();
+        $subcategories_summary = $category_model->subcategorySummary();
 
         $largest_essential_expense = $this->largestEssentialExpense($child->id());
         $largest_non_essential_expense = $this->largestNonEssentialExpense($child->id());
@@ -262,11 +262,11 @@ class ChildController extends BaseController
             $this->expense_model->setRecentExpensesApiResponse(
                 Api::recentExpensesByCategory(
                     $child->id(),
-                    $category->id()
+                    $category_model->id()
                 )
             );
             $this->expense_model->setRecentExpensesApiHeaderResponse(Api::previousRequestHeaders());
-            Api::setCalledURI('The 25 most recent ' . $category->name() . ' expenses', Api::lastUri());
+            Api::setCalledURI('The 25 most recent ' . $category_model->name() . ' expenses', Api::lastUri());
         }
 
         $recent_expenses = $this->expense_model->recentExpenses();
@@ -297,8 +297,123 @@ class ChildController extends BaseController
 
                 'child_details' => $child->details(),
 
-                'active_category_id' => $category->id(),
-                'active_category_name' => $category->name(),
+                'active_category_id' => $category_model->id(),
+                'active_category_name' => $category_model->name(),
+                'active_category_uri_slug' => $category_model->uriSlug(),
+
+                'recent_expenses' => $recent_expenses,
+                'number_of_expenses' => $number_of_expenses,
+                'total' => $total,
+
+                'largest_essential_expense' => $largest_essential_expense,
+                'largest_non_essential_expense' => $largest_non_essential_expense,
+                'largest_hobby_interest_expense' => $largest_hobby_interest_expense
+            ]
+        );
+    }
+
+    /**
+     * Subcategories overview page for each child
+     *
+     * @param Request $request
+     * @param string $child
+     * @param string $category_uri
+     * @param string $subcategory_id
+     *
+     * @return View
+     */
+    public function subcategory(Request $request, string $child, string $category_uri, string $subcategory_id): View
+    {
+        Api::resetCalledURIs();
+
+        $this->setOverviewModel();
+        $this->setExpenseModel();
+
+        $child = $this->childModel($child);
+        $category_model = Child\Category::modelByUriSlug($category_uri);
+        $subcategory_model = new Child\Subcategory();
+
+        $categories_summary_data = $this->categoriesSummary($child->id());
+        $categories_summary = $categories_summary_data['summary'];
+        $total = $categories_summary_data['total'];
+
+        if ($category_model->subcategorySummaryPopulated() === false) {
+            $category_model->setSubcategorySummaryApiResponse(
+                Api::summaryExpensesGroupBySubcategory(
+                    $child->id(),
+                    $category_model->id()
+                )
+            );
+            Api::setCalledURI('Expenses summary by subcategory', Api::lastUri());
+        }
+
+        $subcategories_summary = $category_model->subcategorySummary();
+
+        if ($subcategory_model->subcategoryPopulated() === false) {
+            $subcategory_model->setSubcategoryApiResponse(
+                Api::subcategory(
+                    $category_model->id(),
+                    $subcategory_id
+                )
+            );
+            Api::setCalledURI('Subcategory details', Api::lastUri());
+        }
+
+        $subcategory = $subcategory_model->subcategory();
+
+        if ($subcategory === null) {
+            redirect('/');
+        }
+
+        $largest_essential_expense = $this->largestEssentialExpense($child->id());
+        $largest_non_essential_expense = $this->largestNonEssentialExpense($child->id());
+        $largest_hobby_interest_expense = $this->largestHobbyInterestExpense($child->id());
+
+        if ($this->expense_model->recentExpensesPopulated() === false) {
+            $this->expense_model->setRecentExpensesApiResponse(
+                Api::recentExpensesByCategory(
+                    $child->id(),
+                    $category_model->id()
+                )
+            );
+            $this->expense_model->setRecentExpensesApiHeaderResponse(Api::previousRequestHeaders());
+            Api::setCalledURI('The 25 most recent ' . $category_model->name() . ' expenses', Api::lastUri());
+        }
+
+        $recent_expenses = $this->expense_model->recentExpenses();
+        $number_of_expenses = $this->expense_model->recentExpensesHeader('X-Total-Count');
+
+        return view(
+            'child-subcategory',
+            [
+                'menus' => $this->menus(),
+                'active' => $child->uri(),
+                'meta' => [
+                    'title' => $child->details()['name'],
+                    'description' => 'What does it cost to raise a child to adulthood in the UK?'
+                ],
+                'welcome' => [
+                    'title' => $child->details()['name'],
+                    'description' => $child->details()['version'],
+                    'image' => [
+                        'icon' => 'dashboard.png',
+                        'title' => 'Costs to Expect.com'
+                    ]
+                ],
+
+                'api_requests' => Api::calledURIs(),
+
+                'categories_summary' => $categories_summary,
+                'subcategories_summary' =>$subcategories_summary,
+
+                'child_details' => $child->details(),
+
+                'active_category_id' => $category_model->id(),
+                'active_category_name' => $category_model->name(),
+                'active_category_uri_slug' => $category_model->uriSlug(),
+
+                'active_subcategory_id' => $subcategory_id,
+                'active_subcategory_name' => $subcategory['name'],
 
                 'recent_expenses' => $recent_expenses,
                 'number_of_expenses' => $number_of_expenses,

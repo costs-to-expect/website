@@ -170,4 +170,16 @@ class Uri
 
         return $uri;
     }
+
+    /**
+     * @param string $category_id
+     * @param string $subcategory_id
+     *
+     * @return string
+     */
+    public static function subcategory(string $category_id, string $subcategory_id): string
+    {
+        return '/v1/categories/' . $category_id . '/subcategories/' .
+            $subcategory_id;
+    }
 }

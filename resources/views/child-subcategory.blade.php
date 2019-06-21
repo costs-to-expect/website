@@ -96,7 +96,7 @@
     @if (count($subcategories_summary) > 0)
         @foreach ($subcategories_summary as $subcategory)
         <div class="col-12 col-sm-6 col-md-6 col-lg-4" style="margin-bottom: 1rem;">
-            <div class="media summary-block shadow-sm h-100">
+            <div class="media summary-block shadow-sm h-100 @if($subcategory['id'] === $active_subcategory_id) active @endif">
                 <img src="{{ asset('images/theme/expenses.png') }}" class="mr-2" width="48" height="48" alt="icon">
                 <div class="media-body">
                     <h4 class="mt-0"><a href="{{ $active . '/expenses/category/' . $active_category_uri_slug . '/subcategory/' . $subcategory['id'] }}">{{ $subcategory['name'] }}</a></h4>
@@ -125,7 +125,7 @@
 @if ($recent_expenses !== null)
 <div class="row mt-4">
     <div class="col-12">
-        <h4>The 25 most recent {{ $active_category_name }} expenses for
+        <h4>The 25 most recent {{ $active_category_name . '/' . $active_subcategory_name }} expenses for
             {{ $child_details['short_name'] }}</h4>
 
         <p>The table below lists the last 25 expenses we have logged for

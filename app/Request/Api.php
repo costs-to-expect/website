@@ -248,6 +248,27 @@ class Api
     }
 
     /**
+     * @param string $category_id
+     * @param string $subcategory_id
+     *
+     * @return array|null
+     */
+    public static function subcategory(string $category_id, string $subcategory_id): ?array
+    {
+        self::$uri = Uri::subcategory($category_id, $subcategory_id);
+
+        $response = Http::getInstance()
+            ->public()
+            ->get(self::$uri);
+
+        if ($response !== null) {
+            return $response;
+        } else {
+            return null;
+        }
+    }
+
+    /**
      * Return the headers array for the previous API request
      *
      * @return array|null
