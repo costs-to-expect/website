@@ -69,21 +69,6 @@ class ChildController extends BaseController
         return $this->annual_model->annualSummary();
     }
 
-    protected function recentExpenses($child_id)
-    {
-        if ($this->expense_model->recentExpensesPopulated() === false) {
-            $this->expense_model->setRecentExpensesApiResponse(Api::recentExpenses($child_id));
-            $this->expense_model->setRecentExpensesApiHeaderResponse(Api::previousRequestHeaders());
-            Api::setCalledURI('The 25 most recent expenses', Api::lastUri());
-        }
-
-        return
-            [
-                'expenses' => $this->expense_model->recentExpenses(),
-                'total' => $this->expense_model->recentExpensesHeader('X-Total-Count')
-            ];
-    }
-
     public function jack()
     {
         return $this->child('jack');
@@ -106,11 +91,10 @@ class ChildController extends BaseController
         Api::resetCalledURIs();
 
         $overview = new Overview();
+        $expense = new Expense();
+        $child = $this->childModel($child);
 
         $this->setAnnualModel();
-        $this->setExpenseModel();
-
-        $child = $this->childModel($child);
 
         $categories_summary_data = $overview->categoriesSummary($child->id());
         $categories_summary = $categories_summary_data['summary'];
@@ -118,13 +102,13 @@ class ChildController extends BaseController
 
         $annual_summary = $this->annualSummary($child->id());
 
-        $recent_expenses_data = $this->recentExpenses($child->id());
-        $recent_expenses = $recent_expenses_data['expenses'];
-        $number_of_expenses = $recent_expenses_data['total'];
-
         $largest_essential_expense = $overview->largestEssentialExpense($child->id());
         $largest_non_essential_expense = $overview->largestNonEssentialExpense($child->id());
         $largest_hobby_interest_expense = $overview->largestHobbyInterestExpense($child->id());
+
+        $recent_expenses_data = $expense->recentExpenses($child->id());
+        $recent_expenses = $recent_expenses_data['expenses'];
+        $number_of_expenses = $recent_expenses_data['total'];
 
         return view(
             'child',
@@ -176,6 +160,7 @@ class ChildController extends BaseController
         Api::resetCalledURIs();
 
         $overview = new Overview();
+        $expense = new Expense();
 
         $this->setExpenseModel();
 
@@ -202,19 +187,9 @@ class ChildController extends BaseController
         $largest_non_essential_expense = $overview->largestNonEssentialExpense($child->id());
         $largest_hobby_interest_expense = $overview->largestHobbyInterestExpense($child->id());
 
-        if ($this->expense_model->recentExpensesPopulated() === false) {
-            $this->expense_model->setRecentExpensesApiResponse(
-                Api::recentExpensesByCategory(
-                    $child->id(),
-                    $category_model->id()
-                )
-            );
-            $this->expense_model->setRecentExpensesApiHeaderResponse(Api::previousRequestHeaders());
-            Api::setCalledURI('The 25 most recent ' . $category_model->name() . ' expenses', Api::lastUri());
-        }
-
-        $recent_expenses = $this->expense_model->recentExpenses();
-        $number_of_expenses = $this->expense_model->recentExpensesHeader('X-Total-Count');
+        $recent_expenses_data = $expense->recentExpensesByCategory($child->id(), $category_model->id());
+        $recent_expenses = $recent_expenses_data['expenses'];
+        $number_of_expenses = $recent_expenses_data['total'];
 
         return view(
             'child-category',
@@ -271,6 +246,7 @@ class ChildController extends BaseController
         Api::resetCalledURIs();
 
         $overview = new Overview();
+        $expense = new Expense();
 
         $this->setExpenseModel();
 
@@ -314,20 +290,13 @@ class ChildController extends BaseController
         $largest_non_essential_expense = $overview->largestNonEssentialExpense($child->id());
         $largest_hobby_interest_expense = $overview->largestHobbyInterestExpense($child->id());
 
-        if ($this->expense_model->recentExpensesPopulated() === false) {
-            $this->expense_model->setRecentExpensesApiResponse(
-                Api::recentExpensesBySubcategory(
-                    $child->id(),
-                    $category_model->id(),
-                    $subcategory_id
-                )
-            );
-            $this->expense_model->setRecentExpensesApiHeaderResponse(Api::previousRequestHeaders());
-            Api::setCalledURI('The 25 most recent ' . $category_model->name() . ' expenses', Api::lastUri());
-        }
-
-        $recent_expenses = $this->expense_model->recentExpenses();
-        $number_of_expenses = $this->expense_model->recentExpensesHeader('X-Total-Count');
+        $recent_expenses_data = $expense->recentExpensesBySubcategory(
+            $child->id(),
+            $category_model->id(),
+            $subcategory_id
+        );
+        $recent_expenses = $recent_expenses_data['expenses'];
+        $number_of_expenses = $recent_expenses_data['total'];
 
         return view(
             'child-subcategory',
