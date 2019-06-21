@@ -25,50 +25,32 @@ class DashboardController extends BaseController
     public function index(): View
     {
         Api::resetCalledURIs();
-        $jack_model = new Jack();
-        $niall_model = new Niall();
+        $jack = new Jack();
+        $niall = new Niall();
 
-        if ($jack_model->totalPopulated() === false) {
-            $jack_model->setTotalApiResponse(
-                Api::summaryExpenses(
-                    $jack_model->id()
-                )
-            );
-            Api::setCalledURI('Total expenses for ' . $jack_model->details()['name'], Api::lastUri());
-        }
+        $jack_total = $jack->total();
+        $niall_total = $niall->total();
 
-        if ($niall_model->totalPopulated() === false) {
-            $niall_model->setTotalApiResponse(
-                Api::summaryExpenses(
-                    $niall_model->id()
-                )
-            );
-            Api::setCalledURI('Total expenses for ' . $niall_model->details()['name'], Api::lastUri());
-        }
-
-        $jack_total = $jack_model->total();
-        $niall_total = $niall_model->total();
-
-        if ($jack_model->totalCurrentYearPopulated() === false) {
-            $jack_model->setTotalCurrentYearApiResponse(
+        if ($jack->totalCurrentYearPopulated() === false) {
+            $jack->setTotalCurrentYearApiResponse(
                 Api::summaryExpensesForCurrentYear(
-                    $jack_model->id()
+                    $jack->id()
                 )
             );
-            Api::setCalledURI('Current year expenses for ' . $jack_model->details()['name'], Api::lastUri());
+            Api::setCalledURI('Current year expenses for ' . $jack->details()['name'], Api::lastUri());
         }
 
-        if ($niall_model->totalCurrentYearPopulated() === false) {
-            $niall_model->setTotalCurrentYearApiResponse(
+        if ($niall->totalCurrentYearPopulated() === false) {
+            $niall->setTotalCurrentYearApiResponse(
                 Api::summaryExpensesForCurrentYear(
-                    $niall_model->id()
+                    $niall->id()
                 )
             );
-            Api::setCalledURI('Current year expenses for ' . $niall_model->details()['name'], Api::lastUri());
+            Api::setCalledURI('Current year expenses for ' . $niall->details()['name'], Api::lastUri());
         }
 
-        $jack_current_year = $jack_model->totalCurrentYear();
-        $niall_current_year = $niall_model->totalCurrentYear();
+        $jack_current_year = $jack->totalCurrentYear();
+        $niall_current_year = $niall->totalCurrentYear();
 
         $recent_expenses = Api::recentExpensesForBothChildren();
         Api::setCalledURI('The 25 most recent expenses', Api::lastUri());

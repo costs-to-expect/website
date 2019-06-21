@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use App\Request\Api;
+
 /**
  * @package App\Models
  * @author Dean Blackborough <dean@g3d-development.com>
@@ -60,12 +62,12 @@ abstract class Child
      *
      * @return bool
      */
-    public function totalPopulated(): bool
+    protected function totalPopulated(): bool
     {
         return $this->total_populated;
     }
 
-    public function setTotalApiResponse(?array $response)
+    protected function setTotalApiResponse(?array $response)
     {
         if ($response !== null) {
             $this->total_response = $response;
@@ -83,17 +85,24 @@ abstract class Child
         }
     }
 
-    /**
-     * Return the total for the requested child
-     *
-     * @return array
-     */
     public function total(): array
     {
+        if ($this->totalPopulated() === false) {
+            $this->setTotalApiResponse(
+                Api::summaryExpenses(
+                    $this->id
+                )
+            );
+            Api::setCalledURI('Total expenses for ' . $this->name, Api::lastUri());
+        }
+
         if ($this->total_populated === false) {
             $this->setTotalData();
 
-            if ($this->total_response !== null && array_key_exists('total', $this->total_response) === true) {
+            if (
+                $this->total_response !== null &&
+                array_key_exists('total', $this->total_response
+            ) === true) {
                 $this->total['total'] = $this->total_response['total'];
 
                 $this->total_populated = true;
