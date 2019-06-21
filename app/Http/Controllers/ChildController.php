@@ -107,7 +107,6 @@ class ChildController extends BaseController
 
         $overview = new Overview();
 
-        $this->setOverviewModel();
         $this->setAnnualModel();
         $this->setExpenseModel();
 
@@ -176,13 +175,14 @@ class ChildController extends BaseController
     {
         Api::resetCalledURIs();
 
-        $this->setOverviewModel();
+        $overview = new Overview();
+
         $this->setExpenseModel();
 
         $child = $this->childModel($child);
         $category_model = Child\Category::modelByUriSlug($category_uri);
 
-        $categories_summary_data = $this->categoriesSummary($child->id());
+        $categories_summary_data = $overview->categoriesSummary($child->id());
         $categories_summary = $categories_summary_data['summary'];
         $total = $categories_summary_data['total'];
 
@@ -198,9 +198,9 @@ class ChildController extends BaseController
 
         $subcategories_summary = $category_model->subcategorySummary();
 
-        $largest_essential_expense = $this->overview_model->largestEssentialExpense($child->id());
-        $largest_non_essential_expense = $this->overview_model->largestNonEssentialExpense($child->id());
-        $largest_hobby_interest_expense = $this->overview_model->largestHobbyInterestExpense($child->id());
+        $largest_essential_expense = $overview->largestEssentialExpense($child->id());
+        $largest_non_essential_expense = $overview->largestNonEssentialExpense($child->id());
+        $largest_hobby_interest_expense = $overview->largestHobbyInterestExpense($child->id());
 
         if ($this->expense_model->recentExpensesPopulated() === false) {
             $this->expense_model->setRecentExpensesApiResponse(
@@ -270,14 +270,15 @@ class ChildController extends BaseController
     {
         Api::resetCalledURIs();
 
-        $this->setOverviewModel();
+        $overview = new Overview();
+
         $this->setExpenseModel();
 
         $child = $this->childModel($child);
         $category_model = Child\Category::modelByUriSlug($category_uri);
         $subcategory_model = new Child\Subcategory();
 
-        $categories_summary_data = $this->categoriesSummary($child->id());
+        $categories_summary_data = $overview->categoriesSummary($child->id());
         $categories_summary = $categories_summary_data['summary'];
         $total = $categories_summary_data['total'];
 
@@ -309,9 +310,9 @@ class ChildController extends BaseController
             redirect('/');
         }
 
-        $largest_essential_expense = $this->largestEssentialExpense($child->id());
-        $largest_non_essential_expense = $this->largestNonEssentialExpense($child->id());
-        $largest_hobby_interest_expense = $this->largestHobbyInterestExpense($child->id());
+        $largest_essential_expense = $overview->largestEssentialExpense($child->id());
+        $largest_non_essential_expense = $overview->largestNonEssentialExpense($child->id());
+        $largest_hobby_interest_expense = $overview->largestHobbyInterestExpense($child->id());
 
         if ($this->expense_model->recentExpensesPopulated() === false) {
             $this->expense_model->setRecentExpensesApiResponse(
