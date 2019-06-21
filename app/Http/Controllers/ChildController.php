@@ -266,7 +266,7 @@ class ChildController extends BaseController
                 )
             );
             $this->expense_model->setRecentExpensesApiHeaderResponse(Api::previousRequestHeaders());
-            Api::setCalledURI('The 25 most recent expenses', Api::lastUri());
+            Api::setCalledURI('The 25 most recent ' . $category->name() . ' expenses', Api::lastUri());
         }
 
         $recent_expenses = $this->expense_model->recentExpenses();

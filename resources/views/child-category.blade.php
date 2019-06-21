@@ -125,8 +125,8 @@
 @if ($recent_expenses !== null)
 <div class="row mt-4">
     <div class="col-12">
-        <h4>The 25 most recent expenses for {{ $child_details['short_name'] }} in
-            the {{ $active_category_name }} category</h4>
+        <h4>The 25 most recent {{ $active_category_name }} expenses for
+            {{ $child_details['short_name'] }}</h4>
 
         <p>The table below lists the last 25 expenses we have logged for
             {{ $child_details['short_name'] }} in the {{ $active_category_name }} category,
@@ -135,6 +135,7 @@
 </div>
 <div class="row">
     <div class="col-12">
+        @if (count($recent_expenses) > 0)
         <div class="p-3 shadow-sm white-container">
             <table class="table table-borderless table-hover">
                 <caption>25 most recent expenses</caption>
@@ -164,6 +165,12 @@
                 </tbody>
             </table>
         </div>
+        @else
+        <div class="alert alert-info" role="alert">
+            There are no listed expenses for {{ $child_details['short_name'] }} in
+                the {{ $active_category_name }} category.
+        </div>
+        @endif
     </div>
 </div>
 @endif
