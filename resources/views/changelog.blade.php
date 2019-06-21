@@ -22,7 +22,8 @@
         <h3>Added</h3>
 
         <ul>
-            <li>Category summary page for each child that displays the subcategory summary.</li>
+            <li>Category summary page for each child.</li>
+            <li>Subcategory summary page for each child.</li>
         </ul>
 
         <h3>Changed</h3>

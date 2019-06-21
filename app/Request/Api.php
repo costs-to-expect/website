@@ -226,6 +226,39 @@ class Api
     /**
      * @param string $child_id
      * @param string $category_id
+     * @param string $subcategory_id
+     *
+     * @return array|null
+     */
+    public static function recentExpensesBySubcategory(
+        string $child_id,
+        string $category_id,
+        string $subcategory_id
+    ): ?array
+    {
+        self::$uri = Uri::recentExpensesBySubcategory(
+            $child_id,
+            $category_id,
+            $subcategory_id,
+            25,
+            true,
+            true
+        );
+
+        $response = Http::getInstance()
+            ->public()
+            ->get(self::$uri, true);
+
+        if ($response !== null) {
+            return $response;
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * @param string $child_id
+     * @param string $category_id
      *
      * @return array|null
      */

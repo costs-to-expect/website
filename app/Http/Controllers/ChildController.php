@@ -371,9 +371,10 @@ class ChildController extends BaseController
 
         if ($this->expense_model->recentExpensesPopulated() === false) {
             $this->expense_model->setRecentExpensesApiResponse(
-                Api::recentExpensesByCategory(
+                Api::recentExpensesBySubcategory(
                     $child->id(),
-                    $category_model->id()
+                    $category_model->id(),
+                    $subcategory_id
                 )
             );
             $this->expense_model->setRecentExpensesApiHeaderResponse(Api::previousRequestHeaders());
