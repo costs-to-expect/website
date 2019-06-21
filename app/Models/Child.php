@@ -119,12 +119,12 @@ abstract class Child
      *
      * @return bool
      */
-    public function totalCurrentYearPopulated(): bool
+    protected function totalCurrentYearPopulated(): bool
     {
         return $this->total_current_year_populated;
     }
 
-    public function setTotalCurrentYearApiResponse(?array $response)
+    protected function setTotalCurrentYearApiResponse(?array $response)
     {
         if ($response !== null) {
             $this->total_current_year_response = $response;
@@ -145,10 +145,22 @@ abstract class Child
      */
     public function totalCurrentYear(): ?float
     {
+        if ($this->totalCurrentYearPopulated() === false) {
+            $this->setTotalCurrentYearApiResponse(
+                Api::summaryExpensesForCurrentYear(
+                    $this->id()
+                )
+            );
+            Api::setCalledURI('Current year expenses for ' . $this->name, Api::lastUri());
+        }
+
         if ($this->total_current_year_populated === false) {
             $this->setTotalCurrentYearData();
 
-            if ($this->total_current_year_response !== null && array_key_exists('total', $this->total_current_year_response) === true) {
+            if (
+                $this->total_current_year_response !== null &&
+                array_key_exists('total', $this->total_current_year_response
+            ) === true) {
                 $this->total_current_year = (float) $this->total_current_year_response['total'];
 
                 $this->total_current_year_populated = true;

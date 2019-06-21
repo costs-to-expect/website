@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace App\Models\Child;
 
+use App\Request\Api;
+
 /**
  * @package App\Models
  * @author Dean Blackborough <dean@g3d-development.com>
@@ -26,6 +28,14 @@ class Expense
      * @var bool
      */
     private $expenses_populated = false;
+
+    public function recentExpensesForBothChildren(): ?array
+    {
+        $expenses = Api::recentExpensesForBothChildren();
+        Api::setCalledURI('The 25 most recent expenses', Api::lastUri());
+
+        return $expenses;
+    }
 
     /**
      * Check to see if we have previously called this method within the request

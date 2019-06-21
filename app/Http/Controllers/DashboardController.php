@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Child\Expense;
 use App\Models\Child\Jack;
 use App\Models\Child\Niall;
 use App\Request\Api;
@@ -27,33 +28,15 @@ class DashboardController extends BaseController
         Api::resetCalledURIs();
         $jack = new Jack();
         $niall = new Niall();
+        $expenses = new Expense();
 
         $jack_total = $jack->total();
         $niall_total = $niall->total();
 
-        if ($jack->totalCurrentYearPopulated() === false) {
-            $jack->setTotalCurrentYearApiResponse(
-                Api::summaryExpensesForCurrentYear(
-                    $jack->id()
-                )
-            );
-            Api::setCalledURI('Current year expenses for ' . $jack->details()['name'], Api::lastUri());
-        }
-
-        if ($niall->totalCurrentYearPopulated() === false) {
-            $niall->setTotalCurrentYearApiResponse(
-                Api::summaryExpensesForCurrentYear(
-                    $niall->id()
-                )
-            );
-            Api::setCalledURI('Current year expenses for ' . $niall->details()['name'], Api::lastUri());
-        }
-
         $jack_current_year = $jack->totalCurrentYear();
         $niall_current_year = $niall->totalCurrentYear();
 
-        $recent_expenses = Api::recentExpensesForBothChildren();
-        Api::setCalledURI('The 25 most recent expenses', Api::lastUri());
+        $recent_expenses = $expenses->recentExpensesForBothChildren();
 
         return view(
             'dashboard',
@@ -80,37 +63,6 @@ class DashboardController extends BaseController
                 'api_requests' => Api::calledURIs()
             ]
         );
-    }
-
-    /**
-     * Return the API requests for the dashboard
-     *
-     * @return array
-     */
-    private function apiRequests(): array
-    {
-        return [
-            [
-                'name' => 'Total expenses for Jack',
-                'uri' => '/v1/summary/resource-types/d185Q15grY/resources/kw8gLq31VB/items'
-            ],
-            [
-                'name' => 'Total expenses for Niall',
-                'uri' => '/v1/summary/resource-types/d185Q15grY/resources/Eq9g6BgJL0/items'
-            ],
-            [
-                'name' => 'Current year expenses for Jack',
-                'uri' => '/v1/summary/resource-types/d185Q15grY/resources/kw8gLq31VB/items?year=2019'
-            ],
-            [
-                'name' => 'Current year expenses for Niall',
-                'uri' => '/v1/summary/resource-types/d185Q15grY/resources/Eq9g6BgJL0/items?year=2019'
-            ],
-            [
-                'name' => '25 most recent expenses for both children',
-                'uri' => '/v1/resource-types/d185Q15grY/items?limit=25&include-categories=true&include-subcategories=true'
-            ]
-        ];
     }
 
     /**
