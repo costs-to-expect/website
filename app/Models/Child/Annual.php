@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace App\Models\Child;
 
+use App\Request\Api;
+
 /**
  * @package App\Models
  * @author Dean Blackborough <dean@g3d-development.com>
@@ -11,58 +13,52 @@ namespace App\Models\Child;
 class Annual
 {
     private $summary = null;
-    private $summary_response = null;
     private $summary_populated = false;
 
-    private function setAnnualSummaryData()
-    {
-        if ($this->summary === null) {
-            for ($i = intval(date('Y')) - 2; $i <= intval(date('Y')); $i++) {
-                $this->summary[$i] = [
-                    'year' => $i,
-                    'total' => 0.00
-                ];
-            }
-        }
-    }
-
-    /**
-     * Check to see if we have previously called this method within the request
-     * if we have, the data will already be populated and we can return the
-     * requested data without an expensive API call.
+     /**
+     * Fetch the annual expenses summary for a child
      *
-     * @return bool
-     */
-    public function annualSummaryPopulated(): bool
-    {
-        return $this->summary_populated;
-    }
-
-    public function setAnnualSummaryApiResponse(?array $response)
-    {
-        if ($response !== null) {
-            $this->summary_response = $response;
-        }
-    }
-
-    /**
-     * Return the annual summary data array
+     * Subsequent calls of this method will not execute an expense API call if
+     * called within the same request
      *
-     * @return array
+     * @param string $child_id
+     * @param boolean $partial Return a partial summary, just the last three years
+     *
+     * @return array|null
      */
-    public function annualSummary(): array
+    public function annualSummary(string $child_id, bool $partial = true): array
     {
         if ($this->summary_populated === false) {
-            $this->setAnnualSummaryData();
 
-            if ($this->summary_response !== null) {
-                foreach ($this->summary_response as $year) {
-                    if (array_key_exists($year['year'], $this->summary) === true) {
-                        $this->summary[$year['year']]['total'] = $year['total'];
-                    }
+            $response = Api::summaryExpensesAnnual($child_id);
+            Api::setCalledURI('Expenses summary by year', Api::lastUri());
+
+            if ($partial === true) {
+                for ($i = intval(date('Y')) - 2; $i <= intval(date('Y')); $i++) {
+                    $this->summary[$i] = [
+                        'year' => $i,
+                        'total' => 0.00
+                    ];
                 }
 
-                $this->summary_populated = true;
+                if ($response !== null) {
+                    foreach ($response as $year) {
+                        if (array_key_exists($year['year'], $this->summary) === true) {
+                            $this->summary[$year['year']]['total'] = (float) $year['total'];
+                        }
+                    }
+                }
+            } else {
+                if ($response !== null) {
+                    foreach ($response as $year) {
+                        $this->summary[$year['year']] = [
+                            'year' => $year['year'],
+                            'total' => (float) $year['total']
+                        ];
+                    }
+                } else {
+                    $this->summary = [];
+                }
             }
         }
 

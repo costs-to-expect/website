@@ -26,17 +26,17 @@ class DashboardController extends BaseController
     public function index(): View
     {
         Api::resetCalledURIs();
-        $jack = new Jack();
-        $niall = new Niall();
-        $expenses = new Expense();
+        $jack_model = new Jack();
+        $niall_model = new Niall();
+        $expense_model = new Expense();
 
-        $jack_total = $jack->total();
-        $niall_total = $niall->total();
+        $jack_total = $jack_model->total();
+        $niall_total = $niall_model->total();
 
-        $jack_current_year = $jack->totalCurrentYear();
-        $niall_current_year = $niall->totalCurrentYear();
+        $jack_current_year = $jack_model->totalCurrentYear();
+        $niall_current_year = $niall_model->totalCurrentYear();
 
-        $recent_expenses = $expenses->recentExpensesForBothChildren();
+        $recent_expenses = $expense_model->recentExpensesForBothChildren();
 
         return view(
             'dashboard',

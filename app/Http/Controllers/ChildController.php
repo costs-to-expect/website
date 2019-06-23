@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Child;
 use App\Models\Child\Annual;
+use App\Models\Child\Category;
 use App\Models\Child\Expense;
 use App\Models\Child\Jack;
 use App\Models\Child\Niall;
 use App\Models\Child\Overview;
+use App\Models\Child\Subcategory;
 use App\Request\Api;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
@@ -23,18 +25,12 @@ use Illuminate\Routing\Controller as BaseController;
 class ChildController extends BaseController
 {
     /**
-     * @var Overview
+     * Instantiate the correct child model
+     *
+     * @param string $name
+     *
+     * @return Child
      */
-    private $overview_model;
-    /**
-     * @var Annual
-     */
-    private $annual_model;
-    /**
-     * @var Expense
-     */
-    private $expense_model;
-
     private function childModel(string $name): Child
     {
         if ($name === 'niall') {
@@ -42,31 +38,6 @@ class ChildController extends BaseController
         } else {
             return new Jack();
         }
-    }
-
-    protected function setOverviewModel()
-    {
-        $this->overview_model = new Overview();
-    }
-
-    protected function setAnnualModel()
-    {
-        $this->annual_model = new Annual();
-    }
-
-    protected function setExpenseModel()
-    {
-        $this->expense_model = new Expense();
-    }
-
-    protected function annualSummary($child_id)
-    {
-        if ($this->annual_model->annualSummaryPopulated() === false) {
-            $this->annual_model->setAnnualSummaryApiResponse(Api::summaryExpensesAnnual($child_id));
-            Api::setCalledURI('Expenses summary by year', Api::lastUri());
-        }
-
-        return $this->annual_model->annualSummary();
     }
 
     public function jack()
@@ -90,23 +61,23 @@ class ChildController extends BaseController
     {
         Api::resetCalledURIs();
 
-        $overview = new Overview();
-        $expense = new Expense();
+        $overview_model = new Overview();
+        $expense_model = new Expense();
+        $annual_model = new Annual();
+
         $child = $this->childModel($child);
 
-        $this->setAnnualModel();
-
-        $categories_summary_data = $overview->categoriesSummary($child->id());
+        $categories_summary_data = $overview_model->categoriesSummary($child->id());
         $categories_summary = $categories_summary_data['summary'];
         $total = $categories_summary_data['total'];
 
-        $annual_summary = $this->annualSummary($child->id());
+        $annual_summary = $annual_model->annualSummary($child->id());
 
-        $largest_essential_expense = $overview->largestEssentialExpense($child->id());
-        $largest_non_essential_expense = $overview->largestNonEssentialExpense($child->id());
-        $largest_hobby_interest_expense = $overview->largestHobbyInterestExpense($child->id());
+        $largest_essential_expense = $overview_model->largestEssentialExpense($child->id());
+        $largest_non_essential_expense = $overview_model->largestNonEssentialExpense($child->id());
+        $largest_hobby_interest_expense = $overview_model->largestHobbyInterestExpense($child->id());
 
-        $recent_expenses_data = $expense->recentExpenses($child->id());
+        $recent_expenses_data = $expense_model->recentExpenses($child->id());
         $recent_expenses = $recent_expenses_data['expenses'];
         $number_of_expenses = $recent_expenses_data['total'];
 
@@ -159,25 +130,23 @@ class ChildController extends BaseController
     {
         Api::resetCalledURIs();
 
-        $overview = new Overview();
-        $expense = new Expense();
+        $overview_model = new Overview();
+        $expense_model = new Expense();
 
-        $this->setExpenseModel();
+        $child_model = $this->childModel($child);
+        $category_model = Category::modelByUriSlug($category_uri);
 
-        $child = $this->childModel($child);
-        $category_model = Child\Category::modelByUriSlug($category_uri);
-
-        $categories_summary_data = $overview->categoriesSummary($child->id());
+        $categories_summary_data = $overview_model->categoriesSummary($child_model->id());
         $categories_summary = $categories_summary_data['summary'];
         $total = $categories_summary_data['total'];
 
-        $subcategories_summary = $category_model->subcategorySummary($child->id(), $category_model->id());
+        $subcategories_summary = $category_model->subcategorySummary($child_model->id(), $category_model->id());
 
-        $largest_essential_expense = $overview->largestEssentialExpense($child->id());
-        $largest_non_essential_expense = $overview->largestNonEssentialExpense($child->id());
-        $largest_hobby_interest_expense = $overview->largestHobbyInterestExpense($child->id());
+        $largest_essential_expense = $overview_model->largestEssentialExpense($child_model->id());
+        $largest_non_essential_expense = $overview_model->largestNonEssentialExpense($child_model->id());
+        $largest_hobby_interest_expense = $overview_model->largestHobbyInterestExpense($child_model->id());
 
-        $recent_expenses_data = $expense->recentExpensesByCategory($child->id(), $category_model->id());
+        $recent_expenses_data = $expense_model->recentExpensesByCategory($child_model->id(), $category_model->id());
         $recent_expenses = $recent_expenses_data['expenses'];
         $number_of_expenses = $recent_expenses_data['total'];
 
@@ -185,13 +154,13 @@ class ChildController extends BaseController
             'child-category',
             [
                 'menus' => $this->menus(),
-                'active' => $child->uri(),
+                'active' => $child_model->uri(),
                 'meta' => [
-                    'title' => $child->details()['name'],
+                    'title' => $child_model->details()['name'],
                     'description' => 'What does it cost to raise a child to adulthood in the UK?'
                 ],
                 'welcome' => [
-                    'title' => $child->details()['name'] . ': ' . $category_model->name() . ' expenses' ,
+                    'title' => $child_model->details()['name'] . ': ' . $category_model->name() . ' expenses' ,
                     'description' => 'Overview of all the ' . $category_model->name() . ' expenses',
                     'image' => [
                         'icon' => 'dashboard.png',
@@ -204,7 +173,7 @@ class ChildController extends BaseController
                 'categories_summary' => $categories_summary,
                 'subcategories_summary' =>$subcategories_summary,
 
-                'child_details' => $child->details(),
+                'child_details' => $child_model->details(),
 
                 'active_category_id' => $category_model->id(),
                 'active_category_name' => $category_model->name(),
@@ -235,32 +204,29 @@ class ChildController extends BaseController
     {
         Api::resetCalledURIs();
 
-        $overview = new Overview();
-        $expense = new Expense();
+        $overview_model = new Overview();
+        $expense_model = new Expense();
+        $child_model = $this->childModel($child);
+        $category_model = Category::modelByUriSlug($category_uri);
+        $subcategory_model = new Subcategory();
 
-        $this->setExpenseModel();
-
-        $child = $this->childModel($child);
-        $category_model = Child\Category::modelByUriSlug($category_uri);
-        $subcategory_model = new Child\Subcategory();
-
-        $categories_summary_data = $overview->categoriesSummary($child->id());
+        $categories_summary_data = $overview_model->categoriesSummary($child_model->id());
         $categories_summary = $categories_summary_data['summary'];
         $total = $categories_summary_data['total'];
 
-        $subcategories_summary = $category_model->subcategorySummary($child->id(), $category_model->id());
+        $subcategories_summary = $category_model->subcategorySummary($child_model->id(), $category_model->id());
 
         $subcategory = $subcategory_model->subcategory($category_model->id(), $subcategory_id);
         if ($subcategory === null) {
             redirect('/');
         }
 
-        $largest_essential_expense = $overview->largestEssentialExpense($child->id());
-        $largest_non_essential_expense = $overview->largestNonEssentialExpense($child->id());
-        $largest_hobby_interest_expense = $overview->largestHobbyInterestExpense($child->id());
+        $largest_essential_expense = $overview_model->largestEssentialExpense($child_model->id());
+        $largest_non_essential_expense = $overview_model->largestNonEssentialExpense($child_model->id());
+        $largest_hobby_interest_expense = $overview_model->largestHobbyInterestExpense($child_model->id());
 
-        $recent_expenses_data = $expense->recentExpensesBySubcategory(
-            $child->id(),
+        $recent_expenses_data = $expense_model->recentExpensesBySubcategory(
+            $child_model->id(),
             $category_model->id(),
             $subcategory_id
         );
@@ -271,13 +237,13 @@ class ChildController extends BaseController
             'child-subcategory',
             [
                 'menus' => $this->menus(),
-                'active' => $child->uri(),
+                'active' => $child_model->uri(),
                 'meta' => [
-                    'title' => $child->details()['name'],
+                    'title' => $child_model->details()['name'],
                     'description' => 'What does it cost to raise a child to adulthood in the UK?'
                 ],
                 'welcome' => [
-                    'title' => $child->details()['name'] . ': ' .
+                    'title' => $child_model->details()['name'] . ': ' .
                         $category_model->name() . '/' . $subcategory['name'] . ' expenses' ,
                     'description' => 'Overview of all the ' .
                         $category_model->name() . '/' . $subcategory['name'] . ' expenses',
@@ -292,7 +258,7 @@ class ChildController extends BaseController
                 'categories_summary' => $categories_summary,
                 'subcategories_summary' =>$subcategories_summary,
 
-                'child_details' => $child->details(),
+                'child_details' => $child_model->details(),
 
                 'active_category_id' => $category_model->id(),
                 'active_category_name' => $category_model->name(),
