@@ -298,6 +298,7 @@ class ChildController extends BaseController
         $child_model = $this->childModel($child);
 
         $annual_summary = $annual_model->annualSummary($child_model->id(), false);
+        $monthly_summary = $annual_model->monthlySummary($child_model->id(), (int) $year);
 
         $largest_essential_expense = $overview_model->largestEssentialExpense($child_model->id());
         $largest_non_essential_expense = $overview_model->largestNonEssentialExpense($child_model->id());
@@ -324,6 +325,7 @@ class ChildController extends BaseController
                 'api_requests' => Api::calledURIs(),
 
                 'annual_summary' => $annual_summary,
+                'monthly_summary' => $monthly_summary,
 
                 'child_details' => $child_model->details(),
 

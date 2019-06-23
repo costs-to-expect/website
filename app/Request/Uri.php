@@ -69,6 +69,18 @@ class Uri
     }
 
     /**
+     * @param string $child_id
+     * @param integer $year
+     *
+     * @return string
+     */
+    public static function summaryExpensesMonthly(string $child_id, int $year): string
+    {
+        return '/v1/summary/resource-types/' . self::$resource_type .
+            '/resources/' . $child_id . '/items?year=' . $year . '&months=true';
+    }
+
+    /**
      * @param integer $limit
      * @param boolean $include_categories
      * @param boolean $include_subcategories

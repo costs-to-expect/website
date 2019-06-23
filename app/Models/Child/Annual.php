@@ -15,6 +15,9 @@ class Annual
     private $summary = null;
     private $summary_populated = false;
 
+    private $monthly_summary = null;
+    private $monthly_summary_populated = false;
+
      /**
      * Fetch the annual expenses summary for a child
      *
@@ -64,5 +67,33 @@ class Annual
         }
 
         return $this->summary;
+    }
+
+    /**
+     * Fetch the monthly expenses summary for a child
+     *
+     * Subsequent calls of this method will not execute an expense API call if
+     * called within the same request
+     *
+     * @param string $child_id
+     * @param integer $year
+     *
+     * @return array|null
+     */
+    public function monthlySummary(string $child_id, int $year): array
+    {
+        if ($this->monthly_summary_populated === false) {
+            $response = Api::summaryExpensesMonthly($child_id, $year);
+            Api::setCalledURI('Expenses summary by month for ' . $year, Api::lastUri());
+
+            if ($response !== null) {
+                $this->monthly_summary = $response;
+                $this->monthly_summary_populated = true;
+            } else {
+                $this->monthly_summary = [];
+            }
+        }
+
+        return $this->monthly_summary;
     }
 }

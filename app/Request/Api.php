@@ -147,6 +147,27 @@ class Api
     }
 
     /**
+     * @param string $child_id
+     * @param integer $year
+     *
+     * @return array|null
+     */
+    public static function summaryExpensesMonthly(string $child_id, int $year): ?array
+    {
+        self::$uri = Uri::summaryExpensesMonthly($child_id, $year);
+
+        $response = Http::getInstance()
+            ->public()
+            ->get(self::$uri);
+
+        if ($response !== null) {
+            return $response;
+        } else {
+            return null;
+        }
+    }
+
+    /**
      * @return array|null
      */
     public static function recentExpensesForBothChildren(): ?array
