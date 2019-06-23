@@ -21,13 +21,12 @@ class Overview
     private $hobby_interest_id;
 
     private $largest_essential_expense = null;
-    private $largest_non_essential_expense = null;
-    private $largest_hobby_interest_expense = null;
-    private $largest_essential_expense_response = null;
-    private $largest_non_essential_expense_response = null;
-    private $largest_hobby_interest_expense_response = null;
     private $largest_essential_expense_populated = false;
+
+    private $largest_non_essential_expense = null;
     private $largest_non_essential_expense_populated = false;
+
+    private $largest_hobby_interest_expense = null;
     private $largest_hobby_interest_expense_populated = false;
 
     public function __construct()
@@ -98,78 +97,25 @@ class Overview
     }
 
     /**
-     * Check to see if we have previously called the related method within the
-     * request if we have, the data will already be populated and we can return
-     * the requested data without an expensive API call.
+     * Fetch the largest essential expense for the requested child.
      *
-     * @return bool
-     */
-    protected function largestEssentialExpensePopulated(): bool
-    {
-        return $this->largest_essential_expense_populated;
-    }
-
-    /**
-     * Check to see if we have previously called the related method within the
-     * request if we have, the data will already be populated and we can return
-     * the requested data without an expensive API call.
+     * Subsequent calls of this method will not execute an expense API call if
+     * called within the same request
      *
-     * @return bool
+     * @param $child_id
+     * @return array|null
      */
-    protected function largestNonEssentialExpensePopulated(): bool
-    {
-        return $this->largest_non_essential_expense_populated;
-    }
-
-    /**
-     * Check to see if we have previously called the related method within the
-     * request if we have, the data will already be populated and we can return
-     * the requested data without an expensive API call.
-     *
-     * @return bool
-     */
-    protected function largestHobbyInterestExpensePopulated(): bool
-    {
-        return $this->largest_hobby_interest_expense_populated;
-    }
-
-    protected function setLargestEssentialExpenseResponse(?array $response)
-    {
-        if ($response !== null) {
-            $this->largest_essential_expense_response = $response;
-        }
-    }
-
-    protected function setLargestNonEssentialExpenseResponse(?array $response)
-    {
-        if ($response !== null) {
-            $this->largest_non_essential_expense_response = $response;
-        }
-    }
-
-    protected function setLargestHobbyInterestExpenseResponse(?array $response)
-    {
-        if ($response !== null) {
-            $this->largest_hobby_interest_expense_response = $response;
-        }
-    }
-
     public function largestEssentialExpense($child_id): ?array
     {
-        if ($this->largestEssentialExpensePopulated() === false) {
-            $this->setLargestEssentialExpenseResponse(
-                Api::largestExpenseInCategory(
-                    $child_id,
-                    $this->essentialId()
-                )
+        if ($this->largest_essential_expense_populated === false) {
+            $response = Api::largestExpenseInCategory(
+                $child_id,
+                $this->essentialId()
             );
             Api::setCalledURI('The top Essential expense', Api::lastUri());
 
-            if (
-                $this->largest_essential_expense_response !== null &&
-                array_key_exists(0, $this->largest_essential_expense_response) === true
-            ) {
-                $this->largest_essential_expense = $this->largest_essential_expense_response[0];
+            if ($response !== null && array_key_exists(0, $response) === true) {
+                $this->largest_essential_expense = $response[0];
                 $this->largest_essential_expense_populated = true;
             } else {
                 $this->largest_essential_expense = null;
@@ -179,22 +125,26 @@ class Overview
         return $this->largest_essential_expense;
     }
 
+    /**
+     * Fetch the largest non-essential expense for the requested child.
+     *
+     * Subsequent calls of this method will not execute an expense API call if
+     * called within the same request
+     *
+     * @param $child_id
+     * @return array|null
+     */
     public function largestNonEssentialExpense($child_id): ?array
     {
-        if ($this->largestNonEssentialExpensePopulated() === false) {
-            $this->setLargestNonEssentialExpenseResponse(
-                Api::largestExpenseInCategory(
-                    $child_id,
-                    $this->nonEssentialId()
-                )
+        if ($this->largest_non_essential_expense_populated === false) {
+            $response = Api::largestExpenseInCategory(
+                $child_id,
+                $this->nonEssentialId()
             );
             Api::setCalledURI('The top Non-Essential expense', Api::lastUri());
 
-            if (
-                $this->largest_non_essential_expense_response !== null &&
-                array_key_exists(0, $this->largest_non_essential_expense_response) === true
-            ) {
-                $this->largest_non_essential_expense = $this->largest_non_essential_expense_response[0];
+            if ($response !== null && array_key_exists(0, $response) === true) {
+                $this->largest_non_essential_expense = $response[0];
                 $this->largest_non_essential_expense_populated = true;
             } else {
                 $this->largest_non_essential_expense = null;
@@ -204,22 +154,26 @@ class Overview
         return $this->largest_non_essential_expense;
     }
 
+    /**
+     * Fetch the largest hobby and interests expense for the requested child.
+     *
+     * Subsequent calls of this method will not execute an expense API call if
+     * called within the same request
+     *
+     * @param $child_id
+     * @return array|null
+     */
     public function largestHobbyInterestExpense($child_id): ?array
     {
-        if ($this->largestHobbyInterestExpensePopulated() === false) {
-            $this->setLargestHobbyInterestExpenseResponse(
-                Api::largestExpenseInCategory(
-                    $child_id,
-                    $this->hobbyInterestId()
-                )
+        if ($this->largest_hobby_interest_expense_populated === false) {
+            $response = Api::largestExpenseInCategory(
+                $child_id,
+                $this->hobbyInterestId()
             );
-            Api::setCalledURI('The top Hobbies and Interests expense', Api::lastUri());
+            Api::setCalledURI('The top Hobby and Interests expense', Api::lastUri());
 
-            if (
-                $this->largest_hobby_interest_expense_response !== null &&
-                array_key_exists(0, $this->largest_hobby_interest_expense_response) === true
-            ) {
-                $this->largest_hobby_interest_expense = $this->largest_hobby_interest_expense_response[0];
+            if ($response !== null && array_key_exists(0, $response) === true) {
+                $this->largest_hobby_interest_expense = $response[0];
                 $this->largest_hobby_interest_expense_populated = true;
             } else {
                 $this->largest_hobby_interest_expense = null;
