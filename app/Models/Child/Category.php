@@ -6,6 +6,7 @@ namespace App\Models\Child;
 use App\Models\Child\Category\Essential;
 use App\Models\Child\Category\HobbyInterest;
 use App\Models\Child\Category\NonEssential;
+use App\Request\Api;
 
 /**
  * @package App\Models\Child
@@ -20,7 +21,6 @@ abstract class Category
     protected $uri_slug;
 
     protected $subcategory_summary = null;
-    protected $subcategory_summary_response = null;
     protected $subcategory_summary_populated = false;
 
     public function id(): string
@@ -71,38 +71,30 @@ abstract class Category
     }
 
     /**
-     * Check to see if we have previously called the related method within the
-     * request, if we have, the data will already be populated and we can
-     * return the requested data without an expensive API call.
+     * Fetch the subcategory summary for the requested child and category for the requested subcategory
      *
-     * @return bool
-     */
-    public function subcategorySummaryPopulated(): bool
-    {
-        return $this->subcategory_summary_populated;
-    }
-
-    public function setSubcategorySummaryApiResponse(?array $response)
-    {
-        if ($response !== null) {
-            $this->subcategory_summary_response = $response;
-        }
-    }
-
-    /**
-     * Return the subcategory summary for a child
+     * Subsequent calls of this method will not execute an expense API call if
+     * called within the same request
      *
-     * @return array
+     * @param string $child_id
+     * @param string $category_id
+     *
+     * @return array|null
      */
-    public function subcategorySummary(): array
+    public function subcategorySummary(string $child_id, string $category_id): array
     {
         if ($this->subcategory_summary_populated === false) {
-            $this->subcategory_summary = [];
+            $response = Api::summaryExpensesGroupBySubcategory(
+                $child_id,
+                $category_id
+            );
+            Api::setCalledURI('Expenses summary by subcategory', Api::lastUri());
 
-            if ($this->subcategory_summary_response !== null) {
-                $this->subcategory_summary = $this->subcategory_summary_response;
-
+            if ($response !== null) {
+                $this->subcategory_summary = $response;
                 $this->subcategory_summary_populated = true;
+            } else {
+                $this->subcategory_summary = [];
             }
         }
 

@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace App\Models\Child;
 
+use App\Request\Api;
+
 /**
  * @package App\Models\Child
  * @author Dean Blackborough <dean@g3d-development.com>
@@ -11,40 +13,32 @@ namespace App\Models\Child;
 class Subcategory
 {
     protected $subcategory = null;
-    protected $subcategory_response = null;
     protected $subcategory_populated = false;
 
     /**
-     * Check to see if we have previously called the related method within the
-     * request, if we have, the data will already be populated and we can
-     * return the requested data without an expensive API call.
+     * Fetch the details for the requested subcategory
      *
-     * @return bool
-     */
-    public function subcategoryPopulated(): bool
-    {
-        return $this->subcategory_populated;
-    }
-
-    public function setSubcategoryApiResponse(?array $response)
-    {
-        if ($response !== null) {
-            $this->subcategory_response = $response;
-        }
-    }
-
-    /**
-     * Return the subcategory details
+     * Subsequent calls of this method will not execute an expense API call if
+     * called within the same request
+     *
+     * @param string $category_id
+     * @param string $subcategory_id
      *
      * @return array|null
      */
-    public function subcategory(): ?array
+    public function subcategory(string $category_id, string $subcategory_id): ?array
     {
         if ($this->subcategory_populated === false) {
-            if ($this->subcategory_response !== null) {
-                $this->subcategory = $this->subcategory_response;
-
+            $response = Api::subcategory(
+                $category_id,
+                $subcategory_id
+            );
+            Api::setCalledURI('Subcategory details', Api::lastUri());
+            if ($response !== null) {
+                $this->subcategory = $response;
                 $this->subcategory_populated = true;
+            } else {
+                $this->subcategory = null;
             }
         }
 

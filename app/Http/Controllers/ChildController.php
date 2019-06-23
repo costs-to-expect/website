@@ -171,17 +171,7 @@ class ChildController extends BaseController
         $categories_summary = $categories_summary_data['summary'];
         $total = $categories_summary_data['total'];
 
-        if ($category_model->subcategorySummaryPopulated() === false) {
-            $category_model->setSubcategorySummaryApiResponse(
-                Api::summaryExpensesGroupBySubcategory(
-                    $child->id(),
-                    $category_model->id()
-                )
-            );
-            Api::setCalledURI('Expenses summary by subcategory', Api::lastUri());
-        }
-
-        $subcategories_summary = $category_model->subcategorySummary();
+        $subcategories_summary = $category_model->subcategorySummary($child->id(), $category_model->id());
 
         $largest_essential_expense = $overview->largestEssentialExpense($child->id());
         $largest_non_essential_expense = $overview->largestNonEssentialExpense($child->id());
@@ -258,30 +248,9 @@ class ChildController extends BaseController
         $categories_summary = $categories_summary_data['summary'];
         $total = $categories_summary_data['total'];
 
-        if ($category_model->subcategorySummaryPopulated() === false) {
-            $category_model->setSubcategorySummaryApiResponse(
-                Api::summaryExpensesGroupBySubcategory(
-                    $child->id(),
-                    $category_model->id()
-                )
-            );
-            Api::setCalledURI('Expenses summary by subcategory', Api::lastUri());
-        }
+        $subcategories_summary = $category_model->subcategorySummary($child->id(), $category_model->id());
 
-        $subcategories_summary = $category_model->subcategorySummary();
-
-        if ($subcategory_model->subcategoryPopulated() === false) {
-            $subcategory_model->setSubcategoryApiResponse(
-                Api::subcategory(
-                    $category_model->id(),
-                    $subcategory_id
-                )
-            );
-            Api::setCalledURI('Subcategory details', Api::lastUri());
-        }
-
-        $subcategory = $subcategory_model->subcategory();
-
+        $subcategory = $subcategory_model->subcategory($category_model->id(), $subcategory_id);
         if ($subcategory === null) {
             redirect('/');
         }
