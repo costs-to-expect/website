@@ -302,7 +302,7 @@ class ChildController extends BaseController
         $largest_essential_expense = $overview_model->largestEssentialExpense($child_model->id());
         $largest_non_essential_expense = $overview_model->largestNonEssentialExpense($child_model->id());
         $largest_hobby_interest_expense = $overview_model->largestHobbyInterestExpense($child_model->id());
-        
+
         return view(
             'child-year',
             [
@@ -326,6 +326,8 @@ class ChildController extends BaseController
                 'annual_summary' => $annual_summary,
 
                 'child_details' => $child_model->details(),
+
+                'active_year' => $year,
 
                 'recent_expenses' => [],
                 'number_of_expenses' => 0,

@@ -84,9 +84,10 @@
 @if ($annual_summary !== null)
 <div class="row mt-4">
     <div class="col-12">
-        <h4>Expenses for the last three years <!-- - <small><a href="/jack/years">View all years</a></small>--></h4>
+        <h4>Expenses for the last three years</h4>
 
-        <p>Total expenses for the last three years<!--, select all years for a complete listing-->.</p>
+        <p>Total expenses for the last three years, select a year for additional detail including
+            the ability to view all years.</p>
     </div>
 </div>
 <div class="row">
@@ -95,8 +96,8 @@
         <div class="media summary-block shadow-sm h-100">
             <img src="{{ asset('images/theme/expenses.png') }}" class="mr-2" width="48" height="48" alt="icon">
             <div class="media-body">
-                <h4 class="mt-0">{{ $year['year'] }}</h4>
-                <h6 class="mt-0">All expenses for {{ $year['year'] }}</h6>
+                <h4 class="mt-0"><a href="/jack/expenses/year/@if($year['total'] !== 0.00){{ $year['year'] }}@else{{ date('Y') }}@endif">{{ $year['year'] }}</a></h4>
+                <h6 class="mt-0">All the expenses for {{ $child_details['short_name'] }} in {{ $year['year'] }}</h6>
                 <p class="total mb-0">&pound;{{ number_format((float) $year['total'], 2) }}</p>
             </div>
         </div>

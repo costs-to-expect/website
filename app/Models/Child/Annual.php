@@ -34,7 +34,7 @@ class Annual
             Api::setCalledURI('Expenses summary by year', Api::lastUri());
 
             if ($partial === true) {
-                for ($i = intval(date('Y')) - 2; $i <= intval(date('Y')); $i++) {
+                for ($i = intval(date('Y')); $i > intval(date('Y')) - 3; $i--) {
                     $this->summary[$i] = [
                         'year' => $i,
                         'total' => 0.00
@@ -56,6 +56,7 @@ class Annual
                             'total' => (float) $year['total']
                         ];
                     }
+                    $this->summary = array_reverse($this->summary);
                 } else {
                     $this->summary = [];
                 }
