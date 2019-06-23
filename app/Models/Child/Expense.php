@@ -125,7 +125,44 @@ class Expense
         if ($this->expenses_populated === false) {
             $response = Api::recentExpensesByYear($child_id, $year);
             $headers = Api::previousRequestHeaders();
-            Api::setCalledURI('The 25 most recent expenses for category', Api::lastUri());
+            Api::setCalledURI('The 25 most recent expenses for ' . $year, Api::lastUri());
+
+            if ($response !== null) {
+                $this->expenses = $response;
+                $this->expenses_headers = $headers;
+                $this->expenses_populated = true;
+            }
+        }
+
+        $total = $this->header($this->expenses_headers, 'X-Total-Count');
+        if ($total === null) {
+            $total = 0;
+        }
+
+        return [
+            'expenses' => $this->expenses,
+            'total' => $total
+        ];
+    }
+
+    /**
+     * Fetch the recent expenses for the requested child in the requested month
+     *
+     * Subsequent calls of this method will not execute an expense API call if
+     * called within the same request
+     *
+     * @param string $child_id
+     * @param integer $year
+     * @param integer $month
+     *
+     * @return array|null
+     */
+    public function recentExpensesByMonth(string $child_id, int $year, int $month): array
+    {
+        if ($this->expenses_populated === false) {
+            $response = Api::recentExpensesByMonth($child_id, $year, $month);
+            $headers = Api::previousRequestHeaders();
+            Api::setCalledURI('The 25 most recent expenses for ' . date('F', mktime(0, 0, 0, $month, 5)) . ' ' . $year, Api::lastUri());
 
             if ($response !== null) {
                 $this->expenses = $response;

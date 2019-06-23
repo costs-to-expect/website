@@ -350,6 +350,83 @@ class ChildController extends BaseController
     }
 
     /**
+     * Month overview page for each child
+     *
+     * @param Request $request
+     * @param string $child
+     * @param string $year
+     * @param string $month
+     *
+     * @return View
+     */
+    public function month(Request $request, string $child, string $year, string $month): View
+    {
+        Api::resetCalledURIs();
+
+        $overview_model = new Overview();
+        $expense_model = new Expense();
+        $annual_model = new Annual();
+
+        $child_model = $this->childModel($child);
+
+        $annual_summary = $annual_model->annualSummary($child_model->id(), false);
+        $monthly_summary = $annual_model->monthlySummary($child_model->id(), (int) $year);
+
+        $largest_essential_expense = $overview_model->largestEssentialExpense($child_model->id());
+        $largest_non_essential_expense = $overview_model->largestNonEssentialExpense($child_model->id());
+        $largest_hobby_interest_expense = $overview_model->largestHobbyInterestExpense($child_model->id());
+
+        $recent_expenses_data = $expense_model->recentExpensesByMonth(
+            $child_model->id(),
+            (int) $year,
+            (int) $month
+        );
+        $recent_expenses = $recent_expenses_data['expenses'];
+        $number_of_expenses = $recent_expenses_data['total'];
+
+        $active_month_name = date('F', mktime(0, 0, 0, $month, 5));
+
+        return view(
+            'child-month',
+            [
+                'menus' => $this->menus(),
+                'active' => $child_model->uri(),
+                'meta' => [
+                    'title' => $child_model->details()['name'],
+                    'description' => 'What does it cost to raise a child to adulthood in the UK?'
+                ],
+                'welcome' => [
+                    'title' => $child_model->details()['name'] . ': ' . $active_month_name . ' ' . $year . ' expenses' ,
+                    'description' => 'Overview of all the ' . $active_month_name . ' ' . $year . ' expenses',
+                    'image' => [
+                        'icon' => 'dashboard.png',
+                        'title' => 'Costs to Expect.com'
+                    ]
+                ],
+
+                'api_requests' => Api::calledURIs(),
+
+                'annual_summary' => $annual_summary,
+                'monthly_summary' => $monthly_summary,
+
+                'child_details' => $child_model->details(),
+
+                'active_year' => $year,
+                'active_month' => $month,
+                'active_month_name' => $active_month_name,
+
+                'recent_expenses' => $recent_expenses,
+                'number_of_expenses' => $number_of_expenses,
+                'total' => $child_model->total()['total'],
+
+                'largest_essential_expense' => $largest_essential_expense,
+                'largest_non_essential_expense' => $largest_non_essential_expense,
+                'largest_hobby_interest_expense' => $largest_hobby_interest_expense
+            ]
+        );
+    }
+
+    /**
      * Return the menus
      *
      * @return array

@@ -22,9 +22,10 @@
         <h3>Added</h3>
 
         <ul>
-            <li>Category summary page for each child.</li>
-            <li>Subcategory summary page for each child.</li>
+            <li>A category summary page for each child.</li>
+            <li>A subcategory summary page for each child.</li>
             <li>An annual summary page each child.</li>
+            <li>A monthly summary page each child.</li>
         </ul>
 
         <h3>Changed</h3>

@@ -276,6 +276,39 @@ class Api
 
     /**
      * @param string $child_id
+     * @param integer $year
+     * @param integer $month
+     *
+     * @return array|null
+     */
+    public static function recentExpensesByMonth(
+        string $child_id,
+        int $year,
+        int $month
+    ): ?array
+    {
+        self::$uri = Uri::recentExpensesByMonth(
+            $child_id,
+            $year,
+            $month,
+            25,
+            true,
+            true
+        );
+
+        $response = Http::getInstance()
+            ->public()
+            ->get(self::$uri, true);
+
+        if ($response !== null) {
+            return $response;
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * @param string $child_id
      * @param string $category_id
      * @param string $subcategory_id
      *
