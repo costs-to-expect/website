@@ -10,6 +10,7 @@ $navbar-light-color: #ffffff;
 
 $brand-purple: #A8369B;
 $brand-grey: #858585;
+$brand-grey-highlight: #dddcdf;
 
 @import "../../public/node_modules/bootstrap/scss/bootstrap";
 
@@ -130,6 +131,10 @@ html,body {
                 }
             }
 
+            .summary-block.active {
+                border: 1px solid $brand-purple;
+            }
+
             .detail-page-intro {
                 margin-top: 1rem;
 
@@ -200,11 +205,11 @@ html,body {
                 }
 
                 a.active {
-                    background-color: #A8369B;
+                    background-color: $brand-purple;
                     color: #ffffff;
 
                     &:hover {
-                        background-color: #A8369B;
+                        background-color: $brand-purple;
                         color: #ffffff;
                     }
                 }
@@ -220,7 +225,7 @@ html,body {
             p.footer {
 
                 a {
-                    color: #A8369B;
+                    color: $brand-purple;
                 }
             }
 

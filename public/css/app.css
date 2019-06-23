@@ -9737,6 +9737,9 @@ html, body {
   font-weight: bolder;
   color: #000;
 }
+.container-cte .container-row .container-right .summary-block.active {
+  border: 1px solid #A8369B;
+}
 .container-cte .container-row .container-right .detail-page-intro {
   margin-top: 1rem;
 }

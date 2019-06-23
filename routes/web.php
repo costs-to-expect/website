@@ -13,8 +13,13 @@
 
 Route::get('/', 'DashboardController@index');
 
-Route::get('/jack', 'ChildController@child');
-Route::get('/niall', 'ChildController@child');
+Route::get('/jack', 'ChildController@jack');
+Route::get('/niall', 'ChildController@niall');
+
+Route::get('/{child}/expenses/category/{category_uri}', 'ChildController@category');
+Route::get('/{child}/expenses/category/{category_uri}/subcategory/{subcategory_id}', 'ChildController@subcategory');
+Route::get('/{child}/expenses/year/{year}', 'ChildController@year');
+Route::get('/{child}/expenses/year/{year}/month/{month}', 'ChildController@month');
 
 Route::get('/about', 'ContentController@about');
 Route::get('/what-we-count', 'ContentController@whatWeCount');

@@ -24,8 +24,8 @@
                     <p class="data">&pound;{{ number_format((float) $total, 2) }}</p>
                 </div>
                 <div class="col-md-6 col-12">
-                    <h5>Number of expenses</h5>
-                    <p class="sub-heading text-muted d-none d-md-block">How many purchases have we made?</p>
+                    <h5>Number of expenses in {{ $active_month_name . ' '  . $active_year }}</h5>
+                    <p class="sub-heading text-muted d-none d-md-block">How many purchases did we make in the month?</p>
                     <p class="data">{{ $number_of_expenses }}</p>
                     @if ($largest_essential_expense !== null)
                         <h5>Top Essential expense</h5>
@@ -52,51 +52,21 @@
         <hr />
     </div>
 </div>
-@if ($categories_summary !== null)
-<div class="row mt-4">
-    <div class="col-12">
-        <h4>Total expenses by category</h4>
-
-        <p>We group expenses into three core categories, these are the totals for each category,
-            select a category for more detail.</p>
-    </div>
-</div>
-<div class="row">
-    @foreach ($categories_summary as $category)
-    <div class="col-12 col-sm-6 col-md-6 col-lg-4" style="margin-bottom: 1rem;">
-        <div class="media summary-block shadow-sm h-100">
-            <img src="{{ asset('images/theme/expenses.png') }}" class="mr-2" width="48" height="48" alt="icon">
-            <div class="media-body">
-                <h4 class="mt-0"><a href="{{ $active . '/expenses/category/' . $category['uri-slug'] }}">{{ $category['name'] }}</a></h4>
-                <h6 class="mt-0">{{ $category['description'] }}</h6>
-                <p class="total mb-0">&pound;{{ number_format((float) $category['total'], 2) }}</p>
-            </div>
-        </div>
-    </div>
-    @endforeach
-</div>
-<div class="row">
-    <div class="col-12">
-        <hr />
-    </div>
-</div>
-@endif
 @if ($annual_summary !== null)
 <div class="row mt-4">
     <div class="col-12">
-        <h4>Expenses for the last three years</h4>
+        <h4>Total expenses by year</h4>
 
-        <p>Total expenses for the last three years, select a year for additional detail including
-            the ability to view all years.</p>
+        <p>Total expenses grouped by year for each year of {{ $child_details['short_name'] }}'s life.</p>
     </div>
 </div>
 <div class="row">
     @foreach ($annual_summary as $year)
     <div class="col-12 col-sm-6 col-md-6 col-lg-4" style="margin-bottom: 1rem;">
-        <div class="media summary-block shadow-sm h-100">
+        <div class="media summary-block shadow-sm h-100 @if($active_year == $year['year']) active @endif">
             <img src="{{ asset('images/theme/expenses.png') }}" class="mr-2" width="48" height="48" alt="icon">
             <div class="media-body">
-                <h4 class="mt-0"><a href="/jack/expenses/year/@if($year['total'] !== 0.00){{ $year['year'] }}@else{{ date('Y') }}@endif">{{ $year['year'] }}</a></h4>
+                <h4 class="mt-0"><a href="/jack/expenses/year/{{ $year['year'] }}">{{ $year['year'] }}</a></h4>
                 <h6 class="mt-0">All the expenses for {{ $child_details['short_name'] }} in {{ $year['year'] }}</h6>
                 <p class="total mb-0">&pound;{{ number_format((float) $year['total'], 2) }}</p>
             </div>
@@ -110,13 +80,44 @@
     </div>
 </div>
 @endif
+
+@if ($monthly_summary !== null)
+<div class="row mt-4">
+    <div class="col-12">
+        <h4>Total expenses by month for {{ $active_year }}</h4>
+
+        <p>Total expenses grouped by month for {{ $active_year }} of {{ $child_details['short_name'] }}'s life.</p>
+    </div>
+</div>
+<div class="row">
+    @foreach ($monthly_summary as $month)
+    <div class="col-12 col-sm-6 col-md-6 col-lg-4" style="margin-bottom: 1rem;">
+        <div class="media summary-block shadow-sm h-100 @if($active_month == $month['id']) active @endif">
+            <img src="{{ asset('images/theme/expenses.png') }}" class="mr-2" width="48" height="48" alt="icon">
+            <div class="media-body">
+                <h4 class="mt-0"><a href="/jack/expenses/year/{{ $active_year }}/month/{{ $month['id'] }}">{{ $month['month'] }}</a></h4>
+                <h6 class="mt-0">All the expenses for {{ $child_details['short_name'] }}
+                    in {{ $month['month'] . ' ' . $active_year }}</h6>
+                <p class="total mb-0">&pound;{{ number_format((float) $month['total'], 2) }}</p>
+            </div>
+        </div>
+    </div>
+    @endforeach
+</div>
+<div class="row">
+    <div class="col-12">
+        <hr />
+    </div>
+</div>
+@endif
+
 @if ($recent_expenses !== null)
 <div class="row mt-4">
     <div class="col-12">
-        <h4>The 25 most recent expenses for {{ $child_details['short_name'] }}</h4>
+        <h4>The 25 most recent expenses for {{ $child_details['short_name'] }} in {{ $active_month_name . ' ' . $active_year }}</h4>
 
-        <p>The table below lists the last 25 expenses we have logged for {{ $child_details['short_name'] }}, to see more select any
-            summary count, category or subcategory.</p>
+        <p>The table below lists the last 25 expenses we have logged for {{ $child_details['short_name'] }} in {{ $active_year }},
+            to see more select any summary count, year or month.</p>
     </div>
 </div>
 <div class="row">

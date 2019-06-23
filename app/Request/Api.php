@@ -87,9 +87,33 @@ class Api
      *
      * @return array|null
      */
-    public static function summaryExpensesByCategory(string $child_id): ?array
+    public static function summaryExpensesGroupByCategory(string $child_id): ?array
     {
-        self::$uri = Uri::summaryExpensesByCategory($child_id);
+        self::$uri = Uri::summaryExpensesGroupByCategory($child_id);
+
+        $response = Http::getInstance()
+            ->public()
+            ->get(self::$uri);
+
+        if ($response !== null) {
+            return $response;
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * @param string $child_id
+     * @param string $category_id
+     *
+     * @return array|null
+     */
+    public static function summaryExpensesGroupBySubcategory(
+        string $child_id,
+        string $category_id
+    ): ?array
+    {
+        self::$uri = Uri::summaryExpensesGroupBySubcategory($child_id, $category_id);
 
         $response = Http::getInstance()
             ->public()
@@ -110,6 +134,27 @@ class Api
     public static function summaryExpensesAnnual(string $child_id): ?array
     {
         self::$uri = Uri::summaryExpensesAnnual($child_id);
+
+        $response = Http::getInstance()
+            ->public()
+            ->get(self::$uri);
+
+        if ($response !== null) {
+            return $response;
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * @param string $child_id
+     * @param integer $year
+     *
+     * @return array|null
+     */
+    public static function summaryExpensesMonthly(string $child_id, int $year): ?array
+    {
+        self::$uri = Uri::summaryExpensesMonthly($child_id, $year);
 
         $response = Http::getInstance()
             ->public()
@@ -175,12 +220,159 @@ class Api
      *
      * @return array|null
      */
+    public static function recentExpensesByCategory(
+        string $child_id,
+        string $category_id
+    ): ?array
+    {
+        self::$uri = Uri::recentExpensesByCategory(
+            $child_id,
+            $category_id,
+            25,
+            true,
+            true
+        );
+
+        $response = Http::getInstance()
+            ->public()
+            ->get(self::$uri, true);
+
+        if ($response !== null) {
+            return $response;
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * @param string $child_id
+     * @param integer $year
+     *
+     * @return array|null
+     */
+    public static function recentExpensesByYear(
+        string $child_id,
+        int $year
+    ): ?array
+    {
+        self::$uri = Uri::recentExpensesByYear(
+            $child_id,
+            $year,
+            25,
+            true,
+            true
+        );
+
+        $response = Http::getInstance()
+            ->public()
+            ->get(self::$uri, true);
+
+        if ($response !== null) {
+            return $response;
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * @param string $child_id
+     * @param integer $year
+     * @param integer $month
+     *
+     * @return array|null
+     */
+    public static function recentExpensesByMonth(
+        string $child_id,
+        int $year,
+        int $month
+    ): ?array
+    {
+        self::$uri = Uri::recentExpensesByMonth(
+            $child_id,
+            $year,
+            $month,
+            25,
+            true,
+            true
+        );
+
+        $response = Http::getInstance()
+            ->public()
+            ->get(self::$uri, true);
+
+        if ($response !== null) {
+            return $response;
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * @param string $child_id
+     * @param string $category_id
+     * @param string $subcategory_id
+     *
+     * @return array|null
+     */
+    public static function recentExpensesBySubcategory(
+        string $child_id,
+        string $category_id,
+        string $subcategory_id
+    ): ?array
+    {
+        self::$uri = Uri::recentExpensesBySubcategory(
+            $child_id,
+            $category_id,
+            $subcategory_id,
+            25,
+            true,
+            true
+        );
+
+        $response = Http::getInstance()
+            ->public()
+            ->get(self::$uri, true);
+
+        if ($response !== null) {
+            return $response;
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * @param string $child_id
+     * @param string $category_id
+     *
+     * @return array|null
+     */
     public static function largestExpenseInCategory(
         string $child_id,
         string $category_id
     ): ?array
     {
         self::$uri = Uri::largestExpenseInCategory($child_id, $category_id);
+
+        $response = Http::getInstance()
+            ->public()
+            ->get(self::$uri);
+
+        if ($response !== null) {
+            return $response;
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * @param string $category_id
+     * @param string $subcategory_id
+     *
+     * @return array|null
+     */
+    public static function subcategory(string $category_id, string $subcategory_id): ?array
+    {
+        self::$uri = Uri::subcategory($category_id, $subcategory_id);
 
         $response = Http::getInstance()
             ->public()

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Child\Expense;
 use App\Models\Child\Jack;
 use App\Models\Child\Niall;
 use App\Request\Api;
@@ -27,51 +28,15 @@ class DashboardController extends BaseController
         Api::resetCalledURIs();
         $jack_model = new Jack();
         $niall_model = new Niall();
-
-        if ($jack_model->totalPopulated() === false) {
-            $jack_model->setTotalApiResponse(
-                Api::summaryExpenses(
-                    $jack_model->id()
-                )
-            );
-            Api::setCalledURI('Total expenses for ' . $jack_model->details()['name'], Api::lastUri());
-        }
-
-        if ($niall_model->totalPopulated() === false) {
-            $niall_model->setTotalApiResponse(
-                Api::summaryExpenses(
-                    $niall_model->id()
-                )
-            );
-            Api::setCalledURI('Total expenses for ' . $niall_model->details()['name'], Api::lastUri());
-        }
+        $expense_model = new Expense();
 
         $jack_total = $jack_model->total();
         $niall_total = $niall_model->total();
 
-        if ($jack_model->totalCurrentYearPopulated() === false) {
-            $jack_model->setTotalCurrentYearApiResponse(
-                Api::summaryExpensesForCurrentYear(
-                    $jack_model->id()
-                )
-            );
-            Api::setCalledURI('Current year expenses for ' . $jack_model->details()['name'], Api::lastUri());
-        }
-
-        if ($niall_model->totalCurrentYearPopulated() === false) {
-            $niall_model->setTotalCurrentYearApiResponse(
-                Api::summaryExpensesForCurrentYear(
-                    $niall_model->id()
-                )
-            );
-            Api::setCalledURI('Current year expenses for ' . $niall_model->details()['name'], Api::lastUri());
-        }
-
         $jack_current_year = $jack_model->totalCurrentYear();
         $niall_current_year = $niall_model->totalCurrentYear();
 
-        $recent_expenses = Api::recentExpensesForBothChildren();
-        Api::setCalledURI('The 25 most recent expenses', Api::lastUri());
+        $recent_expenses = $expense_model->recentExpensesForBothChildren();
 
         return view(
             'dashboard',
@@ -98,37 +63,6 @@ class DashboardController extends BaseController
                 'api_requests' => Api::calledURIs()
             ]
         );
-    }
-
-    /**
-     * Return the API requests for the dashboard
-     *
-     * @return array
-     */
-    private function apiRequests(): array
-    {
-        return [
-            [
-                'name' => 'Total expenses for Jack',
-                'uri' => '/v1/summary/resource-types/d185Q15grY/resources/kw8gLq31VB/items'
-            ],
-            [
-                'name' => 'Total expenses for Niall',
-                'uri' => '/v1/summary/resource-types/d185Q15grY/resources/Eq9g6BgJL0/items'
-            ],
-            [
-                'name' => 'Current year expenses for Jack',
-                'uri' => '/v1/summary/resource-types/d185Q15grY/resources/kw8gLq31VB/items?year=2019'
-            ],
-            [
-                'name' => 'Current year expenses for Niall',
-                'uri' => '/v1/summary/resource-types/d185Q15grY/resources/Eq9g6BgJL0/items?year=2019'
-            ],
-            [
-                'name' => '25 most recent expenses for both children',
-                'uri' => '/v1/resource-types/d185Q15grY/items?limit=25&include-categories=true&include-subcategories=true'
-            ]
-        ];
     }
 
     /**

@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use App\Request\Api;
+
 /**
  * @package App\Models
  * @author Dean Blackborough <dean@g3d-development.com>
@@ -23,11 +25,9 @@ abstract class Child
     protected $image_uri;
 
     protected $total = null;
-    protected $total_response = null;
     protected $total_populated = false;
 
     protected $total_current_year = null;
-    protected $total_current_year_response = null;
     protected $total_current_year_populated = false;
 
     public function details(): array
@@ -53,50 +53,24 @@ abstract class Child
         return $this->uri;
     }
 
-    /**
-     * Check to see if we have previously called the related method within the
-     * request, if we have, the data will already be populated and we can
-     * return the requested data without an expensive API call.
-     *
-     * @return bool
-     */
-    public function totalPopulated(): bool
+    public function total(): array
     {
-        return $this->total_populated;
-    }
+        if ($this->total_populated === false) {
+            $response = Api::summaryExpenses($this->id);
+            Api::setCalledURI('Total expenses for ' . $this->name, Api::lastUri());
 
-    public function setTotalApiResponse(?array $response)
-    {
-        if ($response !== null) {
-            $this->total_response = $response;
-        }
-    }
-
-    protected function setTotalData()
-    {
-        if ($this->total === null) {
             $this->total = [
                 'name' => $this->name,
                 'dob' => $this->dob,
                 'total' => 0.00
             ];
-        }
-    }
 
-    /**
-     * Return the total for the requested child
-     *
-     * @return array
-     */
-    public function total(): array
-    {
-        if ($this->total_populated === false) {
-            $this->setTotalData();
-
-            if ($this->total_response !== null && array_key_exists('total', $this->total_response) === true) {
-                $this->total['total'] = $this->total_response['total'];
-
-                $this->total_populated = true;
+            if ($response !== null) {
+                if (
+                    $response !== null && array_key_exists('total', $response) === true) {
+                    $this->total['total'] = $response['total'];
+                    $this->total_populated = true;
+                }
             }
         }
 
@@ -104,44 +78,23 @@ abstract class Child
     }
 
     /**
-     * Check to see if we have previously called the related method within the
-     * request, if we have, the data will already be populated and we can
-     * return the requested data without an expensive API call.
+     * Fetch the subcategory summary for the requested child and category for the requested subcategory
      *
-     * @return bool
-     */
-    public function totalCurrentYearPopulated(): bool
-    {
-        return $this->total_current_year_populated;
-    }
-
-    public function setTotalCurrentYearApiResponse(?array $response)
-    {
-        if ($response !== null) {
-            $this->total_current_year_response = $response;
-        }
-    }
-
-    protected function setTotalCurrentYearData()
-    {
-        if ($this->total_current_year === null) {
-            $this->total_current_year = 0.00;
-        }
-    }
-
-    /**
-     * Return the total for the requested child and the current year
+     * Subsequent calls of this method will not execute an expense API call if
+     * called within the same request
      *
-     * @return float|null
+     * @return float
      */
-    public function totalCurrentYear(): ?float
+    public function totalCurrentYear(): float
     {
         if ($this->total_current_year_populated === false) {
-            $this->setTotalCurrentYearData();
+            $response = Api::summaryExpensesForCurrentYear($this->id);
+            Api::setCalledURI('Current year expenses for ' . $this->short_name, Api::lastUri());
 
-            if ($this->total_current_year_response !== null && array_key_exists('total', $this->total_current_year_response) === true) {
-                $this->total_current_year = (float) $this->total_current_year_response['total'];
+            $this->total_current_year = 0.00;
 
+            if ($response !== null && array_key_exists('total', $response) === true) {
+                $this->total_current_year = (float) $response['total'];
                 $this->total_current_year_populated = true;
             }
         }
