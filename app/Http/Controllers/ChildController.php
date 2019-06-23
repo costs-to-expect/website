@@ -304,6 +304,13 @@ class ChildController extends BaseController
         $largest_non_essential_expense = $overview_model->largestNonEssentialExpense($child_model->id());
         $largest_hobby_interest_expense = $overview_model->largestHobbyInterestExpense($child_model->id());
 
+        $recent_expenses_data = $expense_model->recentExpensesByYear(
+            $child_model->id(),
+            (int) $year
+        );
+        $recent_expenses = $recent_expenses_data['expenses'];
+        $number_of_expenses = $recent_expenses_data['total'];
+
         return view(
             'child-year',
             [
@@ -314,8 +321,8 @@ class ChildController extends BaseController
                     'description' => 'What does it cost to raise a child to adulthood in the UK?'
                 ],
                 'welcome' => [
-                    'title' => $child_model->details()['name'] . ': [year] expenses' ,
-                    'description' => 'Overview of all the [year] expenses',
+                    'title' => $child_model->details()['name'] . ': ' . $year . ' expenses' ,
+                    'description' => 'Overview of all the ' . $year . ' expenses',
                     'image' => [
                         'icon' => 'dashboard.png',
                         'title' => 'Costs to Expect.com'
@@ -331,8 +338,8 @@ class ChildController extends BaseController
 
                 'active_year' => $year,
 
-                'recent_expenses' => [],
-                'number_of_expenses' => 0,
+                'recent_expenses' => $recent_expenses,
+                'number_of_expenses' => $number_of_expenses,
                 'total' => $child_model->total()['total'],
 
                 'largest_essential_expense' => $largest_essential_expense,

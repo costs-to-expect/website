@@ -110,6 +110,42 @@ class Expense
     }
 
     /**
+     * Fetch the recent expenses for the requested child in the requested year
+     *
+     * Subsequent calls of this method will not execute an expense API call if
+     * called within the same request
+     *
+     * @param string $child_id
+     * @param integer $year
+     *
+     * @return array|null
+     */
+    public function recentExpensesByYear(string $child_id, int $year): array
+    {
+        if ($this->expenses_populated === false) {
+            $response = Api::recentExpensesByYear($child_id, $year);
+            $headers = Api::previousRequestHeaders();
+            Api::setCalledURI('The 25 most recent expenses for category', Api::lastUri());
+
+            if ($response !== null) {
+                $this->expenses = $response;
+                $this->expenses_headers = $headers;
+                $this->expenses_populated = true;
+            }
+        }
+
+        $total = $this->header($this->expenses_headers, 'X-Total-Count');
+        if ($total === null) {
+            $total = 0;
+        }
+
+        return [
+            'expenses' => $this->expenses,
+            'total' => $total
+        ];
+    }
+
+    /**
      * Fetch the recent expenses for the requested child in the requested
      * subcategory
      *

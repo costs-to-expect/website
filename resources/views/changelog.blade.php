@@ -24,6 +24,7 @@
         <ul>
             <li>Category summary page for each child.</li>
             <li>Subcategory summary page for each child.</li>
+            <li>An annual summary page each child.</li>
         </ul>
 
         <h3>Changed</h3>
@@ -31,6 +32,7 @@
         <ul>
             <li>Layout change to the child detail section; the order of values is not correct on mobile size screens.</li>
             <li>Meta details added to the changelog.</li>
+            <li>Changed the order of the years in the last three years summary.</li>
         </ul>
 
         <hr />
