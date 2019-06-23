@@ -24,8 +24,8 @@
                     <p class="data">&pound;{{ number_format((float) $total, 2) }}</p>
                 </div>
                 <div class="col-md-6 col-12">
-                    <h5>Number of expenses</h5>
-                    <p class="sub-heading text-muted d-none d-md-block">How many purchases?</p>
+                    <h5>Number of expenses in category</h5>
+                    <p class="sub-heading text-muted d-none d-md-block">How many {{ $active_category_name }} purchases have we made?</p>
                     <p class="data">{{ $number_of_expenses }}</p>
                     @if ($largest_non_essential_expense !== null)
                         <h5>Top Non-Essential expense</h5>

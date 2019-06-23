@@ -15,20 +15,21 @@ class Expense
     /**
      * @var array|null
      */
-    private $expenses = null;
+    private $expenses = [];
     /**
      * @var array|null
      */
-    private $expenses_response = null;
-    /**
-     * @var array|null
-     */
-    private $expenses_headers = null;
+    private $expenses_headers = [];
     /**
      * @var bool
      */
     private $expenses_populated = false;
 
+    /**
+     * Fetch the recent expenses for both children
+     *
+     * @return array|null
+     */
     public function recentExpensesForBothChildren(): ?array
     {
         $expenses = Api::recentExpensesForBothChildren();
@@ -37,127 +38,134 @@ class Expense
         return $expenses;
     }
 
+    /**
+     * Fetch the recent expenses for the requested child
+     *
+     * Subsequent calls of this method will not execute an expense API call if
+     * called within the same request
+     *
+     * @param string $child_id
+     *
+     * @return array|null
+     */
     public function recentExpenses(string $child_id): array
     {
-        if ($this->recentExpensesPopulated() === false) {
-            $this->setRecentExpensesApiResponse(Api::recentExpenses($child_id));
-            $this->setRecentExpensesApiHeaderResponse(Api::previousRequestHeaders());
+        if ($this->expenses_populated === false) {
+            $response = Api::recentExpenses($child_id);
+            $headers = Api::previousRequestHeaders();
             Api::setCalledURI('The 25 most recent expenses', Api::lastUri());
 
-            if ($this->expenses_response !== null) {
-                $this->expenses = $this->expenses_response;
+            if ($response !== null) {
+                $this->expenses = $response;
+                $this->expenses_headers = $headers;
                 $this->expenses_populated = true;
-            } else {
-                $this->expenses = [];
             }
+        }
+
+        $total = $this->header($this->expenses_headers, 'X-Total-Count');
+        if ($total === null) {
+            $total = 0;
         }
 
         return [
             'expenses' => $this->expenses,
-            'total' => $this->recentExpensesHeader('X-Total-Count')
+            'total' => $total
         ];
     }
 
+    /**
+     * Fetch the recent expenses for the requested child in the requested category
+     *
+     * Subsequent calls of this method will not execute an expense API call if
+     * called within the same request
+     *
+     * @param string $child_id
+     * @param string $category_id
+     *
+     * @return array|null
+     */
     public function recentExpensesByCategory(string $child_id, string $category_id): array
     {
-        if ($this->recentExpensesPopulated() === false) {
-            $this->setRecentExpensesApiResponse(Api::recentExpensesByCategory($child_id, $category_id));
-            $this->setRecentExpensesApiHeaderResponse(Api::previousRequestHeaders());
-            Api::setCalledURI('The 25 most recent expenses', Api::lastUri());
+        if ($this->expenses_populated === false) {
+            $response = Api::recentExpensesByCategory($child_id, $category_id);
+            $headers = Api::previousRequestHeaders();
+            Api::setCalledURI('The 25 most recent expenses for category', Api::lastUri());
 
-            if ($this->expenses_response !== null) {
-                $this->expenses = $this->expenses_response;
+            if ($response !== null) {
+                $this->expenses = $response;
+                $this->expenses_headers = $headers;
                 $this->expenses_populated = true;
-            } else {
-                $this->expenses = [];
             }
+        }
+
+        $total = $this->header($this->expenses_headers, 'X-Total-Count');
+        if ($total === null) {
+            $total = 0;
         }
 
         return [
             'expenses' => $this->expenses,
-            'total' => $this->recentExpensesHeader('X-Total-Count')
+            'total' => $total
         ];
     }
 
+    /**
+     * Fetch the recent expenses for the requested child in the requested
+     * subcategory
+     *
+     * Subsequent calls of this method will not execute an expense API call if
+     * called within the same request
+     *
+     * @param string $child_id
+     * @param string $category_id
+     * @param string $subcategory_id
+     *
+     * @return array|null
+     */
     public function recentExpensesBySubcategory(
         string $child_id,
         string $category_id,
         string $subcategory_id
     ): array
     {
-        if ($this->recentExpensesPopulated() === false) {
-            $this->setRecentExpensesApiResponse(
-                Api::recentExpensesBySubcategory(
-                    $child_id,
-                    $category_id,
-                    $subcategory_id
-                )
-            );
-            $this->setRecentExpensesApiHeaderResponse(Api::previousRequestHeaders());
-            Api::setCalledURI('The 25 most recent expenses', Api::lastUri());
+        if ($this->expenses_populated === false) {
+            $response = Api::recentExpensesBySubcategory($child_id, $category_id, $subcategory_id);
+            $headers = Api::previousRequestHeaders();
+            Api::setCalledURI('The 25 most recent expenses for subcategory', Api::lastUri());
 
-            if ($this->expenses_response !== null) {
-                $this->expenses = $this->expenses_response;
+            if ($response !== null) {
+                $this->expenses = $response;
+                $this->expenses_headers = $headers;
                 $this->expenses_populated = true;
-            } else {
-                $this->expenses = [];
             }
+        }
+
+        $total = $this->header($this->expenses_headers, 'X-Total-Count');
+        if ($total === null) {
+            $total = 0;
         }
 
         return [
             'expenses' => $this->expenses,
-            'total' => $this->recentExpensesHeader('X-Total-Count')
+            'total' => $total
         ];
     }
 
     /**
-     * Check to see if we have previously called this method within the request
-     * if we have, the data will already be populated and we can return the
-     * requested data without an expensive API call.
+     * @param array $headers
+     * @param string key
      *
-     * @return bool
-     */
-    protected function recentExpensesPopulated(): bool
-    {
-        return $this->expenses_populated;
-    }
-
-    protected function setRecentExpensesApiResponse(?array $response)
-    {
-        if ($response !== null) {
-            $this->expenses_response = $response;
-        }
-    }
-
-    protected function setRecentExpensesApiHeaderResponse(?array $headers)
-    {
-        if ($headers !== null) {
-            $this->expenses_headers = $headers;
-        }
-    }
-
-    protected function recentExpensesHeaders()
-    {
-        if ($this->expenses_headers !== null) {
-            return $this->expenses_headers;
-        } else {
-            return [];
-        }
-    }
-
-    /**
-     * @param string $header
      * @return int|null
      */
-    protected function recentExpensesHeader(string $header)
+    protected function header(array $headers, string $key)
     {
         $return = null;
 
-        if ($this->expenses_headers !== null) {
-            switch($header) {
+        if ($headers !== null) {
+            switch($key) {
                 case 'X-Total-Count':
-                    if (array_key_exists('X-Total-Count', $this->expenses_headers) === true) {
-                        $return = intval($this->expenses_headers['X-Total-Count'][0]);
+                    if (array_key_exists('X-Total-Count', $headers) === true) {
+                        $return = intval($headers['X-Total-Count'][0]);
                     }
                     break;
             }

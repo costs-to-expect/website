@@ -201,8 +201,8 @@ class ChildController extends BaseController
                     'description' => 'What does it cost to raise a child to adulthood in the UK?'
                 ],
                 'welcome' => [
-                    'title' => $child->details()['name'],
-                    'description' => $child->details()['version'],
+                    'title' => $child->details()['name'] . ': ' . $category_model->name() . ' expenses' ,
+                    'description' => 'Overview of all the ' . $category_model->name() . ' expenses',
                     'image' => [
                         'icon' => 'dashboard.png',
                         'title' => 'Costs to Expect.com'
@@ -308,8 +308,10 @@ class ChildController extends BaseController
                     'description' => 'What does it cost to raise a child to adulthood in the UK?'
                 ],
                 'welcome' => [
-                    'title' => $child->details()['name'],
-                    'description' => $child->details()['version'],
+                    'title' => $child->details()['name'] . ': ' .
+                        $category_model->name() . '/' . $subcategory['name'] . ' expenses' ,
+                    'description' => 'Overview of all the ' .
+                        $category_model->name() . '/' . $subcategory['name'] . ' expenses',
                     'image' => [
                         'icon' => 'dashboard.png',
                         'title' => 'Costs to Expect.com'

@@ -25,7 +25,7 @@
                 </div>
                 <div class="col-md-6 col-12">
                     <h5>Number of expenses</h5>
-                    <p class="sub-heading text-muted d-none d-md-block">How many purchases?</p>
+                    <p class="sub-heading text-muted d-none d-md-block">How many purchases have we made?</p>
                     <p class="data">{{ $number_of_expenses }}</p>
                     @if ($largest_essential_expense !== null)
                         <h5>Top Essential expense</h5>

@@ -13,7 +13,6 @@ use App\Request\Api;
 class Overview
 {
     private $summary = null;
-    private $summary_response = null;
     private $summary_populated = false;
 
     private $essential_id;
@@ -78,31 +77,13 @@ class Overview
     }
 
     /**
-     * Check to see if we have previously called this method within the request
-     * if we have, the data will already be populated and we can return the
-     * requested data without an expensive API call.
-     *
-     * @return bool
-     */
-    protected function categoriesSummaryPopulated(): bool
-    {
-        return $this->summary_populated;
-    }
-
-    protected function setCategoriesSummaryApiResponse(?array $response)
-    {
-        if ($response !== null) {
-            $this->summary_response = $response;
-        }
-    }
-
-    /**
      * Fetch the largest essential expense for the requested child.
      *
      * Subsequent calls of this method will not execute an expense API call if
      * called within the same request
      *
-     * @param $child_id
+     * @param string $child_id
+     *
      * @return array|null
      */
     public function largestEssentialExpense($child_id): ?array
@@ -131,7 +112,8 @@ class Overview
      * Subsequent calls of this method will not execute an expense API call if
      * called within the same request
      *
-     * @param $child_id
+     * @param string $child_id
+     *
      * @return array|null
      */
     public function largestNonEssentialExpense($child_id): ?array
@@ -160,7 +142,8 @@ class Overview
      * Subsequent calls of this method will not execute an expense API call if
      * called within the same request
      *
-     * @param $child_id
+     * @param string $child_id
+     *
      * @return array|null
      */
     public function largestHobbyInterestExpense($child_id): ?array
@@ -183,31 +166,38 @@ class Overview
         return $this->largest_hobby_interest_expense;
     }
 
+    /**
+     * Fetch the categories expenses summary for the requested child.
+     *
+     * Subsequent calls of this method will not execute an expense API call if
+     * called within the same request
+     *
+     * @param string $child_id
+     *
+     * @return array|null
+     */
     public function categoriesSummary($child_id): array
     {
         $total = 0.00;
 
-        if ($this->categoriesSummaryPopulated() === false) {
-            $this->setCategoriesSummaryApiResponse(
-                Api::summaryExpensesGroupByCategory($child_id)
-            );
+        if ($this->summary_populated === false) {
+            $response = Api::summaryExpensesGroupByCategory($child_id);
             Api::setCalledURI('Expenses summary by category', Api::lastUri());
+            if ($response !== null) {
+                $this->setCategoriesSummaryData();
 
-            $this->setCategoriesSummaryData();
-
-            if ($this->summary_response !== null) {
-                foreach ($this->summary_response as $category) {
+                foreach ($response as $category) {
                     $this->summary[$category['id']]['total'] = $category['total'];
                 }
 
-                $this->summary_populated = true;
-            }
-        }
+                $total = $this->summary['98WLap7Bx3']['total'] +
+                    $this->summary['RjXM5VJDw6']['total'] +
+                    $this->summary['Gwg7zgL316']['total'];
 
-        if ($this->summary_populated === true) {
-            $total = $this->summary['98WLap7Bx3']['total'] +
-                $this->summary['RjXM5VJDw6']['total'] +
-                $this->summary['Gwg7zgL316']['total'];
+                $this->summary_populated = true;
+            } else {
+                $this->summary = [];
+            }
         }
 
         return [
