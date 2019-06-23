@@ -65,19 +65,19 @@ class ChildController extends BaseController
         $expense_model = new Expense();
         $annual_model = new Annual();
 
-        $child = $this->childModel($child);
+        $child_model = $this->childModel($child);
 
-        $categories_summary_data = $overview_model->categoriesSummary($child->id());
+        $categories_summary_data = $overview_model->categoriesSummary($child_model->id());
         $categories_summary = $categories_summary_data['summary'];
         $total = $categories_summary_data['total'];
 
-        $annual_summary = $annual_model->annualSummary($child->id());
+        $annual_summary = $annual_model->annualSummary($child_model->id());
 
-        $largest_essential_expense = $overview_model->largestEssentialExpense($child->id());
-        $largest_non_essential_expense = $overview_model->largestNonEssentialExpense($child->id());
-        $largest_hobby_interest_expense = $overview_model->largestHobbyInterestExpense($child->id());
+        $largest_essential_expense = $overview_model->largestEssentialExpense($child_model->id());
+        $largest_non_essential_expense = $overview_model->largestNonEssentialExpense($child_model->id());
+        $largest_hobby_interest_expense = $overview_model->largestHobbyInterestExpense($child_model->id());
 
-        $recent_expenses_data = $expense_model->recentExpenses($child->id());
+        $recent_expenses_data = $expense_model->recentExpenses($child_model->id());
         $recent_expenses = $recent_expenses_data['expenses'];
         $number_of_expenses = $recent_expenses_data['total'];
 
@@ -85,14 +85,14 @@ class ChildController extends BaseController
             'child',
             [
                 'menus' => $this->menus(),
-                'active' => $child->uri(),
+                'active' => $child_model->uri(),
                 'meta' => [
-                    'title' => $child->details()['name'],
+                    'title' => $child_model->details()['name'],
                     'description' => 'What does it cost to raise a child to adulthood in the UK?'
                 ],
                 'welcome' => [
-                    'title' => $child->details()['name'],
-                    'description' => $child->details()['version'],
+                    'title' => $child_model->details()['name'],
+                    'description' => $child_model->details()['version'],
                     'image' => [
                         'icon' => 'dashboard.png',
                         'title' => 'Costs to Expect.com'
@@ -104,7 +104,7 @@ class ChildController extends BaseController
                 'categories_summary' => $categories_summary,
                 'annual_summary' => $annual_summary,
 
-                'child_details' => $child->details(),
+                'child_details' => $child_model->details(),
 
                 'recent_expenses' => $recent_expenses,
                 'number_of_expenses' => $number_of_expenses,
@@ -270,6 +270,66 @@ class ChildController extends BaseController
                 'recent_expenses' => $recent_expenses,
                 'number_of_expenses' => $number_of_expenses,
                 'total' => $total,
+
+                'largest_essential_expense' => $largest_essential_expense,
+                'largest_non_essential_expense' => $largest_non_essential_expense,
+                'largest_hobby_interest_expense' => $largest_hobby_interest_expense
+            ]
+        );
+    }
+
+    /**
+     * Year overview page for each child
+     *
+     * @param Request $request
+     * @param string $child
+     * @param string $year
+     *
+     * @return View
+     */
+    public function year(Request $request, string $child, string $year): View
+    {
+        Api::resetCalledURIs();
+
+        $overview_model = new Overview();
+        $expense_model = new Expense();
+        $annual_model = new Annual();
+
+        $child_model = $this->childModel($child);
+
+        $annual_summary = $annual_model->annualSummary($child_model->id(), false);
+
+        $largest_essential_expense = $overview_model->largestEssentialExpense($child_model->id());
+        $largest_non_essential_expense = $overview_model->largestNonEssentialExpense($child_model->id());
+        $largest_hobby_interest_expense = $overview_model->largestHobbyInterestExpense($child_model->id());
+        
+        return view(
+            'child-year',
+            [
+                'menus' => $this->menus(),
+                'active' => $child_model->uri(),
+                'meta' => [
+                    'title' => $child_model->details()['name'],
+                    'description' => 'What does it cost to raise a child to adulthood in the UK?'
+                ],
+                'welcome' => [
+                    'title' => $child_model->details()['name'] . ': [year] expenses' ,
+                    'description' => 'Overview of all the [year] expenses',
+                    'image' => [
+                        'icon' => 'dashboard.png',
+                        'title' => 'Costs to Expect.com'
+                    ]
+                ],
+
+                'api_requests' => Api::calledURIs(),
+
+                'annual_summary' => $annual_summary,
+
+                'child_details' => $child_model->details(),
+
+                'recent_expenses' => [],
+                'number_of_expenses' => 0,
+                'total' => $child_model->total()['total'],
 
                 'largest_essential_expense' => $largest_essential_expense,
                 'largest_non_essential_expense' => $largest_non_essential_expense,
