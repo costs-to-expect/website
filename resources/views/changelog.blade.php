@@ -17,6 +17,29 @@
 
         <hr />
 
+        <h2>[v1.06.0] - xxth July 2019</h2>
+
+        <h3>Added</h3>
+
+        <ul>
+            <li>A <code>head()</code> method added to the API request helper.</li>
+        </ul>
+
+        <h3>Changed</h3>
+
+        <ul>
+            <li>Added the API request method to the API requests table.</li>
+            <li>We have updated the descriptive name of each API request.</li>
+            <li>Minor layout change to the API requests table for phone and tablet sized screens.</li>
+        </ul>
+
+        <hr />
+        <p class="small text-muted text-right">
+            <strong>Files changed:</strong> xx -
+            <strong>Lines added:</strong> xxx -
+            <strong>Lines removed:</strong> xxx
+        </p>
+
         <h2>[v1.05.0] - 24th June 2019</h2>
 
         <h3>Added</h3>
