@@ -33,7 +33,7 @@ class Expense
     public function recentExpensesForBothChildren(): ?array
     {
         $expenses = Api::recentExpensesForBothChildren();
-        Api::setCalledURI('The 25 most recent expenses', Api::lastUri());
+        Api::setCalledURI('25 most recent expenses', Api::lastUri());
 
         return $expenses;
     }
@@ -53,7 +53,7 @@ class Expense
         if ($this->expenses_populated === false) {
             $response = Api::recentExpenses($child_id);
             $headers = Api::previousRequestHeaders();
-            Api::setCalledURI('The 25 most recent expenses', Api::lastUri());
+            Api::setCalledURI('25 most recent expenses', Api::lastUri());
 
             if ($response !== null) {
                 $this->expenses = $response;
@@ -89,7 +89,7 @@ class Expense
         if ($this->expenses_populated === false) {
             $response = Api::recentExpensesByCategory($child_id, $category_id);
             $headers = Api::previousRequestHeaders();
-            Api::setCalledURI('The 25 most recent expenses for category', Api::lastUri());
+            Api::setCalledURI('25 most recent expenses for category', Api::lastUri());
 
             if ($response !== null) {
                 $this->expenses = $response;
@@ -125,7 +125,7 @@ class Expense
         if ($this->expenses_populated === false) {
             $response = Api::recentExpensesByYear($child_id, $year);
             $headers = Api::previousRequestHeaders();
-            Api::setCalledURI('The 25 most recent expenses for ' . $year, Api::lastUri());
+            Api::setCalledURI('25 most recent expenses for ' . $year, Api::lastUri());
 
             if ($response !== null) {
                 $this->expenses = $response;
@@ -162,7 +162,7 @@ class Expense
         if ($this->expenses_populated === false) {
             $response = Api::recentExpensesByMonth($child_id, $year, $month);
             $headers = Api::previousRequestHeaders();
-            Api::setCalledURI('The 25 most recent expenses for ' . date('F', mktime(0, 0, 0, $month, 5)) . ' ' . $year, Api::lastUri());
+            Api::setCalledURI('25 most recent expenses for ' . date('F', mktime(0, 0, 0, $month, 5)) . ' ' . $year, Api::lastUri());
 
             if ($response !== null) {
                 $this->expenses = $response;
@@ -204,7 +204,7 @@ class Expense
         if ($this->expenses_populated === false) {
             $response = Api::recentExpensesBySubcategory($child_id, $category_id, $subcategory_id);
             $headers = Api::previousRequestHeaders();
-            Api::setCalledURI('The 25 most recent expenses for subcategory', Api::lastUri());
+            Api::setCalledURI('25 most recent expenses for subcategory', Api::lastUri());
 
             if ($response !== null) {
                 $this->expenses = $response;

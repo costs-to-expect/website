@@ -118,6 +118,70 @@ class ChildController extends BaseController
     }
 
     /**
+     * Filterable and searchable expenses view for each child
+     *
+     * @param Request $request
+     * @param string $child
+     *
+     * @return View
+     */
+    public function expenses(Request $request, string $child): View
+    {
+        Api::resetCalledURIs();
+
+        $overview_model = new Overview();
+        $expense_model = new Expense();
+
+        $child_model = $this->childModel($child);
+
+        $total = $child_model->total();
+        $total_number_of_expenses = $child_model->totalNumberOfExpenses();
+
+        $largest_essential_expense = $overview_model->largestEssentialExpense($child_model->id());
+        $largest_non_essential_expense = $overview_model->largestNonEssentialExpense($child_model->id());
+        $largest_hobby_interest_expense = $overview_model->largestHobbyInterestExpense($child_model->id());
+
+        $number_of_expenses = 0;
+
+        /*$recent_expenses_data = $expense_model->recentExpensesByCategory($child_model->id(), $category_model->id());
+        $recent_expenses = $recent_expenses_data['expenses'];
+        $number_of_expenses = $recent_expenses_data['total'];*/
+
+        return view(
+            'child-expenses',
+            [
+                'menus' => $this->menus(),
+                'active' => $child_model->uri(),
+                'meta' => [
+                    'title' => $child_model->details()['name'],
+                    'description' => 'What does it cost to raise a child to adulthood in the UK?'
+                ],
+                'welcome' => [
+                    'title' => $child_model->details()['name'] . ': All expenses' ,
+                    'description' => 'Overview of all expenses',
+                    'image' => [
+                        'icon' => 'dashboard.png',
+                        'title' => 'Costs to Expect.com'
+                    ]
+                ],
+
+                'api_requests' => Api::calledURIs(),
+
+                'child_details' => $child_model->details(),
+
+                'total' => $total['total'],
+
+                'expenses' => null,
+                'number_of_expenses' => $total_number_of_expenses,
+
+                'largest_essential_expense' => $largest_essential_expense,
+                'largest_non_essential_expense' => $largest_non_essential_expense,
+                'largest_hobby_interest_expense' => $largest_hobby_interest_expense
+            ]
+        );
+    }
+
+    /**
      * Categories overview page for each child
      *
      * @param Request $request

@@ -79,8 +79,6 @@ class Http
     {
         $content = null;
 
-        //echo $uri . PHP_EOL;
-
         try {
             $response = self::$client->get($uri, ['http_errors' => false]);
 
@@ -101,6 +99,36 @@ class Http
         }
 
         return $content;
+    }
+
+    /**
+     * Make a HEAD request to the API
+     *
+     * @param string $uri The URI we want to call
+     *
+     * @return mixed
+     */
+    public static function head(string $uri): ?array
+    {
+        $headers = [];
+
+        try {
+            $response = self::$client->head($uri, ['http_errors' => false]);
+
+            self::$status_code = $response->getStatusCode();
+
+            if (self::$status_code === 200) {
+                $headers = $response->getHeaders();
+            } else {
+                // Nothing yet
+                return null;
+            }
+        } catch (ClientException $e) {
+            // Nothing yet
+            return null;
+        }
+
+        return $headers;
     }
 
     /**

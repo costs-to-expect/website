@@ -30,6 +30,9 @@ abstract class Child
     protected $total_current_year = null;
     protected $total_current_year_populated = false;
 
+    protected $expenses_headers_populated = false;
+    protected $expenses_headers = null;
+
     public function details(): array
     {
         return [
@@ -65,16 +68,43 @@ abstract class Child
                 'total' => 0.00
             ];
 
-            if ($response !== null) {
-                if (
-                    $response !== null && array_key_exists('total', $response) === true) {
+            if ($response !== null && array_key_exists('total', $response) === true) {
                     $this->total['total'] = $response['total'];
                     $this->total_populated = true;
-                }
             }
         }
 
         return $this->total;
+    }
+
+    public function totalNumberOfExpenses(): int
+    {
+        if ($this->expenses_headers_populated === false) {
+            $this->expensesHeaders();
+        }
+
+        if (array_key_exists('X-Total-Count', $this->expenses_headers) === true) {
+            return (int) $this->expenses_headers['X-Total-Count'][0];
+        } else {
+            return 0;
+        }
+    }
+
+    protected function expensesHeaders(): array
+    {
+        if ($this->expenses_headers_populated === false) {
+            $response = Api::expensesHead($this->id);
+            Api::setCalledURI('All expenses for ' . $this->name, Api::lastUri(), 'HEAD');
+
+            $this->expenses_headers = [];
+
+            if ($response !== null) {
+                $this->expenses_headers = $response;
+                $this->expenses_headers_populated = true;
+            }
+        }
+
+        return $this->expenses_headers;
     }
 
     /**

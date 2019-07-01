@@ -286,6 +286,12 @@ html,body {
                 margin-bottom: 0.3rem;
             }
         }
+
+        table.api-requests {
+            td {
+                font-size: 0.8rem;
+            }
+        }
     }
 }
 
@@ -294,6 +300,12 @@ html,body {
 
         .detail-page-intro {
             margin-top: 1rem !important;
+        }
+
+        table.api-requests {
+            td {
+                font-size: 0.7rem;
+            }
         }
     }
 }

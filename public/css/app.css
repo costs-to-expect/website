@@ -9852,10 +9852,16 @@ html, body {
   .container-right .detail-page-intro p {
     margin-bottom: 0.3rem;
   }
+  .container-right table.api-requests td {
+    font-size: 0.8rem;
+  }
 }
 @media (max-width: 576px) {
   .container-right .detail-page-intro {
     margin-top: 1rem !important;
+  }
+  .container-right table.api-requests td {
+    font-size: 0.7rem;
   }
 }
 

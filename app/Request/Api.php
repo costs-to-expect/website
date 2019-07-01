@@ -29,17 +29,40 @@ class Api
         return self::$uris;
     }
 
-    public static function setCalledURI($name, $uri)
+    public static function setCalledURI($name, $uri, $method = 'GET')
     {
         self::$uris[] = [
             'name' => $name,
-            'uri' => $uri
+            'uri' => $uri,
+            'method' => $method
         ];
     }
 
     public static function lastUri(): string
     {
         return self::$uri;
+    }
+
+    /**
+     * HEAD request to the expenses endpoint
+     *
+     * @param string $child_id
+     *
+     * @return array|null
+     */
+    public static function expensesHead(string $child_id): ?array
+    {
+        self::$uri = Uri::expenses($child_id, 1);
+
+        $response = Http::getInstance()
+            ->public()
+            ->head(self::$uri);
+
+        if ($response !== null) {
+            return $response;
+        } else {
+            return null;
+        }
     }
 
     /**

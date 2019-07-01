@@ -93,7 +93,7 @@ class Overview
                 $child_id,
                 $this->essentialId()
             );
-            Api::setCalledURI('The top Essential expense', Api::lastUri());
+            Api::setCalledURI('Top Essential expense', Api::lastUri());
 
             if ($response !== null && array_key_exists(0, $response) === true) {
                 $this->largest_essential_expense = $response[0];
@@ -123,7 +123,7 @@ class Overview
                 $child_id,
                 $this->nonEssentialId()
             );
-            Api::setCalledURI('The top Non-Essential expense', Api::lastUri());
+            Api::setCalledURI('Top Non-Essential expense', Api::lastUri());
 
             if ($response !== null && array_key_exists(0, $response) === true) {
                 $this->largest_non_essential_expense = $response[0];
@@ -153,7 +153,7 @@ class Overview
                 $child_id,
                 $this->hobbyInterestId()
             );
-            Api::setCalledURI('The top Hobby and Interests expense', Api::lastUri());
+            Api::setCalledURI('Top Hobby and Interests expense', Api::lastUri());
 
             if ($response !== null && array_key_exists(0, $response) === true) {
                 $this->largest_hobby_interest_expense = $response[0];
