@@ -60,7 +60,7 @@ abstract class Child
     {
         if ($this->total_populated === false) {
             $response = Api::summaryExpenses($this->id);
-            Api::setCalledURI('Total expenses for ' . $this->name, Api::lastUri());
+            Api::setCalledURI('Total expenses for ' . $this->short_name, Api::lastUri());
 
             $this->total = [
                 'name' => $this->name,
@@ -94,7 +94,7 @@ abstract class Child
     {
         if ($this->expenses_headers_populated === false) {
             $response = Api::expensesHead($this->id);
-            Api::setCalledURI('All expenses for ' . $this->name, Api::lastUri(), 'HEAD');
+            Api::setCalledURI('All expenses for ' . $this->short_name, Api::lastUri(), 'HEAD');
 
             $this->expenses_headers = [];
 

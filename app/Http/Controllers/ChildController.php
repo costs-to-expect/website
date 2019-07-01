@@ -141,11 +141,9 @@ class ChildController extends BaseController
         $largest_non_essential_expense = $overview_model->largestNonEssentialExpense($child_model->id());
         $largest_hobby_interest_expense = $overview_model->largestHobbyInterestExpense($child_model->id());
 
-        $number_of_expenses = 0;
-
-        /*$recent_expenses_data = $expense_model->recentExpensesByCategory($child_model->id(), $category_model->id());
-        $recent_expenses = $recent_expenses_data['expenses'];
-        $number_of_expenses = $recent_expenses_data['total'];*/
+        $expenses_data = $expense_model->expenses($child_model->id());
+        $expenses = $expenses_data['expenses'];
+        $number_of_expenses = $expenses_data['total'];
 
         return view(
             'child-expenses',
@@ -168,11 +166,11 @@ class ChildController extends BaseController
                 'api_requests' => Api::calledURIs(),
 
                 'child_details' => $child_model->details(),
+                'number_of_expenses' => $total_number_of_expenses,
 
                 'total' => $total['total'],
 
-                'expenses' => null,
-                'number_of_expenses' => $total_number_of_expenses,
+                'expenses' => $expenses,
 
                 'largest_essential_expense' => $largest_essential_expense,
                 'largest_non_essential_expense' => $largest_non_essential_expense,

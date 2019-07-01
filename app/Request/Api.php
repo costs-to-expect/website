@@ -217,6 +217,31 @@ class Api
      *
      * @return array|null
      */
+    public static function expenses(string $child_id): ?array
+    {
+        self::$uri = Uri::expenses(
+            $child_id,
+            25,
+            true,
+            true
+        );
+
+        $response = Http::getInstance()
+            ->public()
+            ->get(self::$uri, true);
+
+        if ($response !== null) {
+            return $response;
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * @param string $child_id
+     *
+     * @return array|null
+     */
     public static function recentExpenses(string $child_id): ?array
     {
         self::$uri = Uri::recentExpenses(
