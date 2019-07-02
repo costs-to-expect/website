@@ -64,7 +64,7 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-12">
+    <div class="col-12" id="expenses-data">
         @if (count($expenses) > 0)
 
         <form class="filter-options">
@@ -97,7 +97,7 @@
                 <div class="col-6 col-md-3 col-lg-2 col-xl-2 mb-2">
                     <select class="form-control" disabled>
                         <option value="" selected="selected">Month</option>
-                        <option value="1" selected="selected">January</option>
+                        <!--<option value="1" selected="selected">January</option>
                         <option value="3" selected="selected">February</option>
                         <option value="3" selected="selected">March</option>
                         <option value="4" selected="selected">April</option>
@@ -108,7 +108,7 @@
                         <option value="9" selected="selected">September</option>
                         <option value="10" selected="selected">October</option>
                         <option value="11" selected="selected">November</option>
-                        <option value="12" selected="selected">December</option>
+                        <option value="12" selected="selected">December</option>-->
                     </select>
                 </div>
                 <div class="col-9 col-md-6 col-lg-3 col-xl-2 mb-2">
@@ -134,13 +134,17 @@
             'component.table-pagination',
             [
                 'prefix' => 'Expenses',
-                'offset' => 0,
-                'total' => 100,
-                'limit' => 25,
+                'offset' => $pagination['offset'],
+                'total' => $pagination['total'],
+                'limit' => $pagination['limit'],
                 'limit_options' => [
                     25,
                     50,
                     100
+                ],
+                'uri' => [
+                    'base' => $pagination['uri']['base'],
+                    'parameters' => $pagination['uri']['parameters']
                 ]
             ]
         )
@@ -174,21 +178,6 @@
                 </tbody>
             </table>
         </div>
-
-        @include(
-            'component.table-pagination',
-            [
-                'prefix' => 'Expenses',
-                'offset' => 0,
-                'total' => 100,
-                'limit' => 25,
-                'limit_options' => [
-                    25,
-                    50,
-                    100
-                ]
-            ]
-        )
 
         @else
         <div class="alert alert-info" role="alert">

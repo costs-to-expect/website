@@ -39,16 +39,18 @@ class Expense
     private $expenses_populated = false;
 
     /**
-     * Fetch all expenses, filterable and searchable
+     * Fetch all expenses for a data table
      *
      * @param string $child_id
+     * @param integer $offset
+     * @param integer $limit
      *
-     * @return array|null
+     * @return array|null Returned array had four indexes, expenses, total, limit and offset
      */
-    public function expenses(string $child_id): ?array
+    public function expenses(string $child_id, $offset, $limit): ?array
     {
         if ($this->expenses_populated === false) {
-            $response = Api::expenses($child_id);
+            $response = Api::expenses($child_id, $offset, $limit);
             $headers = Api::previousRequestHeaders();
             Api::setCalledURI('All expenses', Api::lastUri());
 
@@ -60,13 +62,26 @@ class Expense
         }
 
         $total = $this->header($this->expenses_headers, 'X-Total-Count');
+        $offset = $this->header($this->expenses_headers, 'X-Offset');
+        $limit = $this->header($this->expenses_headers, 'X-Limit');
+
         if ($total === null) {
             $total = 0;
         }
 
+        if ($offset === null) {
+            $offset = 0;
+        }
+
+        if ($limit === null) {
+            $limit = 0;
+        }
+
         return [
             'expenses' => $this->expenses,
-            'total' => $total
+            'total' => $total,
+            'limit' => $limit,
+            'offset' => $offset
         ];
     }
 
@@ -282,10 +297,16 @@ class Expense
         if ($headers !== null) {
             switch($key) {
                 case 'X-Total-Count':
-                    if (array_key_exists('X-Total-Count', $headers) === true) {
-                        $return = intval($headers['X-Total-Count'][0]);
+                case 'X-Limit':
+                case 'X-Offset':
+                    if (array_key_exists($key, $headers) === true) {
+                        $return = intval($headers[$key][0]);
                     }
                     break;
+                default:
+                    $return = 'NOT-SET';
+                    break;
+
             }
         }
 

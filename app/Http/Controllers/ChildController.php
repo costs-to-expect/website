@@ -132,6 +132,9 @@ class ChildController extends BaseController
         $overview_model = new Overview();
         $expense_model = new Expense();
 
+        $offset = (int) request()->get('offset', 0);
+        $limit = (int) request()->get('limit', 25);
+
         $child_model = $this->childModel($child);
 
         $total = $child_model->total();
@@ -141,8 +144,7 @@ class ChildController extends BaseController
         $largest_non_essential_expense = $overview_model->largestNonEssentialExpense($child_model->id());
         $largest_hobby_interest_expense = $overview_model->largestHobbyInterestExpense($child_model->id());
 
-        $expenses_data = $expense_model->expenses($child_model->id());
-        $expenses = $expenses_data['expenses'];
+        $expenses_data = $expense_model->expenses($child_model->id(), $offset, $limit);
 
         return view(
             'child-expenses',
@@ -169,7 +171,17 @@ class ChildController extends BaseController
 
                 'total' => $total['total'],
 
-                'expenses' => $expenses,
+                'expenses' => $expenses_data['expenses'],
+
+                'pagination' => [
+                    'uri' => [
+                        'base' => $child_model->uri() . '/expenses',
+                        'parameters' => []
+                    ],
+                    'total' => $expenses_data['total'],
+                    'offset' => $expenses_data['offset'],
+                    'limit' => $expenses_data['limit']
+                ],
 
                 'largest_essential_expense' => $largest_essential_expense,
                 'largest_non_essential_expense' => $largest_non_essential_expense,

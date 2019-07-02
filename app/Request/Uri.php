@@ -108,6 +108,7 @@ class Uri
 
     /**
      * @param string $child_id
+     * @param integer $offset
      * @param integer $limit
      * @param boolean $include_categories
      * @param boolean $include_subcategories
@@ -116,13 +117,14 @@ class Uri
      */
     public static function expenses(
         string $child_id,
+        int $offset = 0,
         int $limit = 25,
         bool $include_categories = false,
         bool $include_subcategories = false
     ): string
     {
         $uri = '/v1/resource-types/' . self::$resource_type . '/resources/' .
-            $child_id . '/items?limit=' . $limit;
+            $child_id . '/items?offset=' . $offset . '&limit=' . $limit;
 
         if ($include_categories === true) {
             $uri .= '&include-categories=true';
