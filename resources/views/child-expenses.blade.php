@@ -67,7 +67,7 @@
     <div class="col-12">
         @if (count($expenses) > 0)
 
-        <form>
+        <form class="filter-options">
             <div class="form-row">
                 <div class="col-6 col-md-4 col-lg-4 col-xl-2 mb-2">
                     <select class="form-control">
@@ -122,7 +122,7 @@
 
         <hr />
 
-        <p>
+        <p class="assigned-filters">
             <button type="button" class="btn btn-primary mb-1">
                 Category <span class="badge badge-light">X</span>
             </button>

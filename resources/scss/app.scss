@@ -188,15 +188,13 @@ html,body {
                 border-top-right-radius: 0;
             }
 
-            .table-pagination {
+            div.table-pagination {
 
                 a.btn-primary {
-                    font-weight: 600;
                     color: #000000;
                     border-radius: 1rem;
                     border: 1px solid #DADADA;
                     background-color: #F6F5F8;
-                    padding: 0.2rem 1rem;
 
                     &:hover {
                         background-color: #DADADA;
@@ -212,6 +210,15 @@ html,body {
                         background-color: $brand-purple;
                         color: #ffffff;
                     }
+                }
+            }
+
+            form.filter-options {
+
+                button {
+                    background-color: $brand-purple;
+                    border-color: $brand-purple;
+                    border-radius: 1rem;
                 }
             }
 
