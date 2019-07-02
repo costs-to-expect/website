@@ -27,15 +27,15 @@
                     <h5>Number of expenses</h5>
                     <p class="sub-heading text-muted d-none d-md-block">How many purchases have we made?</p>
                     <p class="data">{{ $number_of_expenses }}</p>
-                    @if ($largest_non_essential_expense !== null)
-                        <h5>Top Non-Essential expense</h5>
-                        <p class="sub-heading text-muted d-none d-md-block">The grandest expense?</p>
-                        <p class="data">&pound;{{ number_format((float) $largest_non_essential_expense['actualised_total'], 2) }} <small>({{ $largest_non_essential_expense['description'] }})</small></p>
-                    @endif
                     @if ($largest_essential_expense !== null)
                         <h5>Top Essential expense</h5>
                         <p class="sub-heading text-muted d-none d-md-block">The grandest expense?</p>
                         <p class="data">&pound;{{ number_format((float) $largest_essential_expense['actualised_total'], 2) }} <small>({{ $largest_essential_expense['description'] }})</small></p>
+                    @endif
+                    @if ($largest_non_essential_expense !== null)
+                        <h5>Top Non-Essential expense</h5>
+                        <p class="sub-heading text-muted d-none d-md-block">The grandest expense?</p>
+                        <p class="data">&pound;{{ number_format((float) $largest_non_essential_expense['actualised_total'], 2) }} <small>({{ $largest_non_essential_expense['description'] }})</small></p>
                     @endif
                     @if ($largest_hobby_interest_expense !== null)
                         <h5>Top Hobby and Interests expense</h5>
@@ -85,30 +85,30 @@
                 <div class="col-6 col-md-2 col-lg-2 col-xl-2 mb-2">
                     <select class="form-control">
                         <option value="" selected="selected">Year</option>
-                        <option value="" selected="selected">2019</option>
-                        <option value="" selected="selected">2018</option>
-                        <option value="" selected="selected">2017</option>
-                        <option value="" selected="selected">2016</option>
-                        <option value="" selected="selected">2015</option>
-                        <option value="" selected="selected">2014</option>
-                        <option value="" selected="selected">2013</option>
+                        <option value="2019" selected="selected">2019</option>
+                        <option value="2018" selected="selected">2018</option>
+                        <option value="2017" selected="selected">2017</option>
+                        <option value="2016" selected="selected">2016</option>
+                        <option value="2015" selected="selected">2015</option>
+                        <option value="2014" selected="selected">2014</option>
+                        <option value="2013" selected="selected">2013</option>
                     </select>
                 </div>
                 <div class="col-6 col-md-3 col-lg-2 col-xl-2 mb-2">
                     <select class="form-control" disabled>
                         <option value="" selected="selected">Month</option>
-                        <option value="" selected="selected">January</option>
-                        <option value="" selected="selected">February</option>
-                        <option value="" selected="selected">March</option>
-                        <option value="" selected="selected">April</option>
-                        <option value="" selected="selected">May</option>
-                        <option value="" selected="selected">June</option>
-                        <option value="" selected="selected">July</option>
-                        <option value="" selected="selected">August</option>
-                        <option value="" selected="selected">September</option>
-                        <option value="" selected="selected">October</option>
-                        <option value="" selected="selected">November</option>
-                        <option value="" selected="selected">December</option>
+                        <option value="1" selected="selected">January</option>
+                        <option value="3" selected="selected">February</option>
+                        <option value="3" selected="selected">March</option>
+                        <option value="4" selected="selected">April</option>
+                        <option value="5" selected="selected">May</option>
+                        <option value="6" selected="selected">June</option>
+                        <option value="7" selected="selected">July</option>
+                        <option value="8" selected="selected">August</option>
+                        <option value="9" selected="selected">September</option>
+                        <option value="10" selected="selected">October</option>
+                        <option value="11" selected="selected">November</option>
+                        <option value="12" selected="selected">December</option>
                     </select>
                 </div>
                 <div class="col-9 col-md-6 col-lg-3 col-xl-2 mb-2">
@@ -120,25 +120,13 @@
             </div>
         </form>
 
-        <hr />
-
-        <p class="assigned-filters">
-            <button type="button" class="btn btn-primary mb-1">
-                Category <span class="badge badge-light">X</span>
-            </button>
-            <button type="button" class="btn btn-primary mb-1">
-                Subcategory <span class="badge badge-light">&times;</span>
-            </button>
-            <button type="button" class="btn btn-primary mb-1">
-                Year <span class="badge badge-light">&times;</span>
-            </button>
-            <button type="button" class="btn btn-primary mb-1">
-                Month <span class="badge badge-light">&times;</span>
-            </button>
-            <button type="button" class="btn btn-primary mb-1">
-                Search: "term" <span class="badge badge-light">&times;</span>
-            </button>
-        </p>
+        <div class="p-1 assigned-filters">
+            <div class="assigned-filter"><a href="">Category <span class="badge badge-light">&times;</span></a></div>
+            <div class="assigned-filter"><a href="">Subcategory <span class="badge badge-light">&times;</span></a></div>
+            <div class="assigned-filter"><a href="">Year <span class="badge badge-light">&times;</span></a></div>
+            <div class="assigned-filter"><a href="">Month <span class="badge badge-light">&times;</span></a></div>
+            <div class="assigned-filter"><a href="">Search: "term" <span class="badge badge-light">&times;</span></a></div>
+        </div>
 
         <hr />
 

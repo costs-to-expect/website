@@ -143,7 +143,6 @@ class ChildController extends BaseController
 
         $expenses_data = $expense_model->expenses($child_model->id());
         $expenses = $expenses_data['expenses'];
-        $number_of_expenses = $expenses_data['total'];
 
         return view(
             'child-expenses',
@@ -156,7 +155,7 @@ class ChildController extends BaseController
                 ],
                 'welcome' => [
                     'title' => $child_model->details()['name'] . ': All expenses' ,
-                    'description' => 'Overview of all expenses',
+                    'description' => 'All expenses for ' . $child_model->details()['name'],
                     'image' => [
                         'icon' => 'dashboard.png',
                         'title' => 'Costs to Expect.com'

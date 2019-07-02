@@ -222,6 +222,27 @@ html,body {
                 }
             }
 
+            div.assigned-filters {
+
+                div.assigned-filter {
+                    display: inline-block;
+                    background-color: #645a90;
+                    color: #f5f5f8;
+                    border-radius: 0.3rem;
+                    padding: 0.3rem 0.5rem;
+                    margin: 0 0.2rem 0.2rem 0;
+
+                    a {
+                        color: #f5f5f8;
+                        text-decoration: none;
+                    }
+
+                    span.badge {
+                        margin-left: 0.5rem;
+                    }
+                }
+            }
+
             table.api-requests {
 
                 td {
