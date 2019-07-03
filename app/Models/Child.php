@@ -42,7 +42,8 @@ abstract class Child
             'sex' => $this->sex,
             'weight' => $this->weight,
             'short_name' => $this->short_name,
-            'image_uri' => $this->image_uri
+            'image_uri' => $this->image_uri,
+            'uri' => $this->uri,
         ];
     }
 
