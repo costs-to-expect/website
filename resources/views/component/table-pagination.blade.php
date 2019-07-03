@@ -23,7 +23,7 @@
         </div>
         <div class="per-page col-5 col-sm-2 col-xl-1">
             <form class="form-inline">
-                <select class="form-control form-control-sm">
+                <select class="form-control form-control-sm per-page" data-uri="{{ $uri['base'] }}">
                     @foreach ($limit_options as $option)
                     <option value="{{ $option }}" @if ($option === $limit) selected="selected" @endif>{{ $option }}</option>
                     @endforeach

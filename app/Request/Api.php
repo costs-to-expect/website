@@ -52,7 +52,7 @@ class Api
      */
     public static function expensesHead(string $child_id): ?array
     {
-        self::$uri = Uri::expenses($child_id, 1);
+        self::$uri = Uri::expenses($child_id, 0, 1);
 
         $response = Http::getInstance()
             ->public()

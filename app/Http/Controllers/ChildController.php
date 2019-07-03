@@ -133,7 +133,7 @@ class ChildController extends BaseController
         $expense_model = new Expense();
 
         $offset = (int) request()->get('offset', 0);
-        $limit = (int) request()->get('limit', 25);
+        $limit = (int) request()->get('limit', 50);
 
         $child_model = $this->childModel($child);
 

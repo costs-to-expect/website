@@ -138,9 +138,9 @@
                 'total' => $pagination['total'],
                 'limit' => $pagination['limit'],
                 'limit_options' => [
-                    25,
                     50,
-                    100
+                    100,
+                    250
                 ],
                 'uri' => [
                     'base' => $pagination['uri']['base'],
