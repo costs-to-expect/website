@@ -43,9 +43,9 @@
 
         <hr />
         <p class="small text-muted text-right">
-            <strong>Files changed:</strong> 26 -
-            <strong>Lines added:</strong> 1,096 -
-            <strong>Lines removed:</strong> 97
+            <strong>Files changed:</strong> 27 -
+            <strong>Lines added:</strong> 1,106 -
+            <strong>Lines removed:</strong> 101
         </p>
 
         <h2>[v1.05.0] - 24th June 2019</h2>
