@@ -26,7 +26,7 @@
                 <div class="col-md-6 col-12">
                     <h5>Number of expenses</h5>
                     <p class="sub-heading text-muted d-none d-md-block">How many purchases have we made?</p>
-                    <p class="data">{{ $number_of_expenses }}</p>
+                    <p class="data">{{ $number_of_expenses }} <small><a href="{{ $child_details['uri'] }}/expenses">(View all)</a></small></p>
                     @if ($largest_essential_expense !== null)
                         <h5>Top Essential expense</h5>
                         <p class="sub-heading text-muted d-none d-md-block">The grandest expense?</p>
@@ -67,19 +67,22 @@
     <div class="col-12" id="expenses-data">
         @if (count($expenses) > 0)
 
-        <form class="filter-options">
+        <form method="post" action="{{ $child_details['uri'] . '/expenses' }}" class="filter-options">
             <div class="form-row">
                 <div class="col-6 col-md-4 col-lg-4 col-xl-2 mb-2">
-                    <select class="form-control">
-                        <option value="" selected="selected">Category</option>
-                        <option value="">Essentials</option>
-                        <option value="">Non-Essentials</option>
-                        <option value="">Hobbies & Interests</option>
+                    <select name="category" class="form-control">
+                        <option value="" @if($filters['category']['set'] === null)selected="selected"@endif>Category</option>
+                        @foreach ($filters['category']['values'] as $category)
+                            <option value="{{ $category['id'] }}" @if($filters['category']['set'] === $category['id'])selected="selected"@endif>{{ $category['name'] }}</option>
+                        @endforeach
                     </select>
                 </div>
                 <div class="col-6 col-md-3 col-lg-4 col-xl-3 mb-2">
-                    <select class="form-control" disabled>
-                        <option value="" selected="selected">Subcategory</option>
+                    <select name="subcategory" class="form-control" @if(count($filters['subcategory']['values']) === 0)disabled="disabled"@endif>
+                        <option value="" @if($filters['subcategory']['set'] === null)selected="selected"@endif>Subcategory</option>
+                        @foreach ($filters['subcategory']['values'] as $subcategory)
+                            <option value="{{ $subcategory['id'] }}" @if($filters['subcategory']['set'] === $subcategory['id'])selected="selected"@endif>{{ $subcategory['name'] }}</option>
+                        @endforeach
                     </select>
                 </div>
                 <div class="col-6 col-md-2 col-lg-2 col-xl-2 mb-2">
@@ -117,8 +120,9 @@
                 <div class="col-3 col-md-6 col-lg-9 col-xl-1 mb-2">
                     <input type="hidden" name="offset" value="{{ $pagination['offset'] }}" />
                     <input type="hidden" name="limit" value="{{ $pagination['limit'] }}" />
-                    <input type="hidden" name="uri" value="{{ $pagination['uri']['base'] }}" />
+                    <input type="hidden" name="child" value="{{ $child_details['uri'] }}" />
                     <button type="submit" class="btn btn-primary">Filter</button>
+                    {{ csrf_field() }}
                 </div>
             </div>
         </form>

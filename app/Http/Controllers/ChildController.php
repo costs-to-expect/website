@@ -119,7 +119,21 @@ class ChildController extends BaseController
 
     public function setExpensesFilter(Request $request, string $child)
     {
+        $params = request()->all();
 
+        $get_params = [
+            'child' => ltrim($params['child'], '/')
+        ];
+
+        if (array_key_exists('category', $params) === true && strlen(trim($params['category'])) === 10) {
+            $get_params['category'] = trim($params['category']);
+        }
+
+        if (array_key_exists('subcategory', $params) === true && strlen(trim($params['subcategory'])) === 10) {
+            $get_params['subcategory'] = trim($params['subcategory']);
+        }
+
+        return redirect()->action('ChildController@expenses', $get_params);
     }
 
     /**
@@ -136,13 +150,20 @@ class ChildController extends BaseController
 
         $overview_model = new Overview();
         $expense_model = new Expense();
+        $category_model = new Category();
 
         $offset = (int) request()->get('offset', 0);
         $limit = (int) request()->get('limit', 50);
-        $category = request()->get('category');
-        $subcategory = request()->get('subcategory');
+        $category_id = request()->get('category');
+        $subcategory_id = request()->get('subcategory');
         $year = request()->get('year');
         $month = request()->get('month');
+
+        $subcategories = [];
+        if ($category_id !== null) {
+            $selected_category_model = Category::modelById($category_id);
+            $subcategories = $selected_category_model->subcategories($category_id);
+        }
 
         $child_model = $this->childModel($child);
 
@@ -181,6 +202,25 @@ class ChildController extends BaseController
                 'total' => $total['total'],
 
                 'expenses' => $expenses_data['expenses'],
+
+                'filters' => [
+                    'category' => [
+                        'values' => $category_model->allCategories(),
+                        'set' => $category_id
+                    ],
+                    'subcategory' => [
+                        'values' => $subcategories,
+                        'set' => $subcategory_id
+                    ],
+                    'year' => [
+                        'values' => [],
+                        'set' => $year
+                    ],
+                    'month' => [
+                        'values' => [],
+                        'set' => $month
+                    ]
+                ],
 
                 'pagination' => [
                     'uri' => [

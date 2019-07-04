@@ -323,4 +323,14 @@ class Uri
         return '/v1/categories/' . $category_id . '/subcategories/' .
             $subcategory_id;
     }
+
+    /**
+     * @param string $category_id
+     *
+     * @return string
+     */
+    public static function subcategories(string $category_id): string
+    {
+        return '/v1/categories/' . $category_id . '/subcategories/';
+    }
 }

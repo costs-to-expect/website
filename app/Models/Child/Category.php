@@ -13,7 +13,7 @@ use App\Request\Api;
  * @author Dean Blackborough <dean@g3d-development.com>
  * @copyright Dean Blackborough 2019
  */
-abstract class Category
+class Category
 {
     protected $id;
     protected $name;
@@ -22,6 +22,9 @@ abstract class Category
 
     protected $subcategory_summary = null;
     protected $subcategory_summary_populated = false;
+
+    protected $subcategories = null;
+    protected $subcategories_populated = false;
 
     public function id(): string
     {
@@ -71,6 +74,33 @@ abstract class Category
     }
 
     /**
+     * Return the relevant model by the id
+     *
+     * @param string $uri
+     *
+     * @return Category
+     */
+    public static function modelById(string $uri): Category
+    {
+        switch($uri)
+        {
+            case trans('web/categories.non-essential-id'):
+                $model = new NonEssential();
+                break;
+
+            case trans('web/categories.hobby-interest-id'):
+                $model = new HobbyInterest();
+                break;
+
+            default:
+                $model = new Essential();
+                break;
+        }
+
+        return $model;
+    }
+
+    /**
      * Fetch the subcategory summary for the requested child and category for the requested subcategory
      *
      * Subsequent calls of this method will not execute an expense API call if
@@ -99,5 +129,55 @@ abstract class Category
         }
 
         return $this->subcategory_summary;
+    }
+
+    /**
+     * Fetch the subcategories for the requested category
+     *
+     * Subsequent calls of this method will not execute an expensive API call if
+     * called within the same request
+     *
+     * @param string $category_id
+     *
+     * @return array
+     */
+    public function subcategories(string $category_id): array
+    {
+        if ($this->subcategory_summary_populated === false) {
+            $response = Api::subcategories($category_id);
+            Api::setCalledURI('Subcategories listing', Api::lastUri());
+
+            if ($response !== null) {
+                $this->subcategory_summary = $response;
+                $this->subcategory_summary_populated = true;
+            } else {
+                $this->subcategory_summary = [];
+            }
+        }
+
+        return $this->subcategory_summary;
+    }
+
+    /**
+     * Return the base category ids, useful for select menus
+     *
+     * @return array
+     */
+    public function allCategories()
+    {
+        return [
+            [
+                'id' => trans('web/categories.essential-id'),
+                'name' => trans('web/categories.essential-name')
+            ],
+            [
+                'id' => trans('web/categories.non-essential-id'),
+                'name' => trans('web/categories.non-essential-name')
+            ],
+            [
+                'id' => trans('web/categories.hobby-interest-id'),
+                'name' => trans('web/categories.hobby-interest-name')
+            ]
+        ];
     }
 }
