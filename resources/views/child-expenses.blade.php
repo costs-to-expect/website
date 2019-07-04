@@ -65,7 +65,6 @@
 </div>
 <div class="row">
     <div class="col-12" id="expenses-data">
-        @if (count($expenses) > 0)
         <form method="post" action="{{ $child_details['uri'] . '/expenses' }}" class="filter-options">
             <div class="form-row">
                 <div class="col-6 col-md-4 col-lg-4 col-xl-2 mb-2">
@@ -114,8 +113,12 @@
         </form>
 
         <div class="p-1 assigned-filters">
-            <div class="assigned-filter"><a href="">Category <span class="badge badge-light">&times;</span></a></div>
-            <div class="assigned-filter"><a href="">Subcategory <span class="badge badge-light">&times;</span></a></div>
+            @if ($filters['category']['set'] !== null)
+                <div class="assigned-filter"><a href="">{{ $filters['category']['values'][$filters['category']['set']]['name'] }}<span class="badge badge-light">&times;</span></a></div>
+            @endif
+            @if ($filters['subcategory']['set'] !== null)
+                <div class="assigned-filter"><a href="">{{ $filters['subcategory']['values'][$filters['subcategory']['set']]['name'] }}<span class="badge badge-light">&times;</span></a></div>
+            @endif
             @if ($filters['year']['set'] !== null)
                 <div class="assigned-filter"><a href="">{{ $filters['year']['set'] }}<span class="badge badge-light">&times;</span></a></div>
             @endif
@@ -125,7 +128,7 @@
             <!--<div class="assigned-filter"><a href="">Search: "term" <span class="badge badge-light">&times;</span></a></div>-->
         </div>
 
-        <hr />
+        @if (count($expenses) > 0)
 
         @include(
             'component.table-pagination',
@@ -178,7 +181,7 @@
 
         @else
         <div class="alert alert-info" role="alert">
-            There are no listed expenses for {{ $child_details['short_name'] }}.
+            There are no listed expenses for {{ $child_details['short_name'] }} with the set filters.
         </div>
         @endif
     </div>

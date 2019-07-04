@@ -143,19 +143,21 @@ class Category
      */
     public function subcategories(string $category_id): array
     {
-        if ($this->subcategory_summary_populated === false) {
+        if ($this->subcategories_populated === false) {
             $response = Api::subcategories($category_id);
             Api::setCalledURI('Subcategories listing', Api::lastUri());
 
             if ($response !== null) {
-                $this->subcategory_summary = $response;
-                $this->subcategory_summary_populated = true;
+                foreach ($response as $subcategory) {
+                    $this->subcategories[$subcategory['id']] = $subcategory;
+                }
+                $this->subcategories_populated = true;
             } else {
-                $this->subcategory_summary = [];
+                $this->subcategories = [];
             }
         }
 
-        return $this->subcategory_summary;
+        return $this->subcategories;
     }
 
     /**
@@ -166,15 +168,15 @@ class Category
     public function allCategories()
     {
         return [
-            [
+            trans('web/categories.essential-id') => [
                 'id' => trans('web/categories.essential-id'),
                 'name' => trans('web/categories.essential-name')
             ],
-            [
+            trans('web/categories.non-essential-id') => [
                 'id' => trans('web/categories.non-essential-id'),
                 'name' => trans('web/categories.non-essential-name')
             ],
-            [
+            trans('web/categories.hobby-interest-id') => [
                 'id' => trans('web/categories.hobby-interest-id'),
                 'name' => trans('web/categories.hobby-interest-name')
             ]
