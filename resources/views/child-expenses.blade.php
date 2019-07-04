@@ -66,7 +66,6 @@
 <div class="row">
     <div class="col-12" id="expenses-data">
         @if (count($expenses) > 0)
-
         <form method="post" action="{{ $child_details['uri'] . '/expenses' }}" class="filter-options">
             <div class="form-row">
                 <div class="col-6 col-md-4 col-lg-4 col-xl-2 mb-2">
@@ -86,36 +85,23 @@
                     </select>
                 </div>
                 <div class="col-6 col-md-2 col-lg-2 col-xl-2 mb-2">
-                    <select class="form-control">
-                        <option value="" selected="selected">Year</option>
-                        <option value="2019">2019</option>
-                        <option value="2018">2018</option>
-                        <option value="2017">2017</option>
-                        <option value="2016">2016</option>
-                        <option value="2015">2015</option>
-                        <option value="2014">2014</option>
-                        <option value="2013">2013</option>
+                    <select name="year" class="form-control">
+                        <option value="" @if($filters['year']['set'] === null)selected="selected"@endif>Year</option>
+                        @foreach ($filters['year']['values'] as $year)
+                            <option value="{{ $year }}" @if($filters['year']['set'] == $year)selected="selected"@endif>{{ $year }}</option>
+                        @endforeach
                     </select>
                 </div>
                 <div class="col-6 col-md-3 col-lg-2 col-xl-2 mb-2">
-                    <select class="form-control" disabled>
-                        <option value="" selected="selected">Month</option>
-                        <!--<option value="1" selected="selected">January</option>
-                        <option value="3" selected="selected">February</option>
-                        <option value="3" selected="selected">March</option>
-                        <option value="4" selected="selected">April</option>
-                        <option value="5" selected="selected">May</option>
-                        <option value="6" selected="selected">June</option>
-                        <option value="7" selected="selected">July</option>
-                        <option value="8" selected="selected">August</option>
-                        <option value="9" selected="selected">September</option>
-                        <option value="10" selected="selected">October</option>
-                        <option value="11" selected="selected">November</option>
-                        <option value="12" selected="selected">December</option>-->
+                    <select name="month" class="form-control">
+                        <option value="" @if($filters['month']['set'] === null)selected="selected"@endif>Month</option>
+                        @foreach ($filters['month']['values'] as $month)
+                            <option value="{{ $month['id'] }}" @if($filters['month']['set'] == $month['id'])selected="selected"@endif>{{ $month['name'] }}</option>
+                        @endforeach
                     </select>
                 </div>
                 <div class="col-9 col-md-6 col-lg-3 col-xl-2 mb-2">
-                    <input type="text" class="form-control" placeholder="Search... " />
+                    <input type="text" class="form-control" placeholder="Search... " disabled="disabled" />
                 </div>
                 <div class="col-3 col-md-6 col-lg-9 col-xl-1 mb-2">
                     <input type="hidden" name="offset" value="{{ $pagination['offset'] }}" />
@@ -132,7 +118,7 @@
             <div class="assigned-filter"><a href="">Subcategory <span class="badge badge-light">&times;</span></a></div>
             <div class="assigned-filter"><a href="">Year <span class="badge badge-light">&times;</span></a></div>
             <div class="assigned-filter"><a href="">Month <span class="badge badge-light">&times;</span></a></div>
-            <div class="assigned-filter"><a href="">Search: "term" <span class="badge badge-light">&times;</span></a></div>
+            <!--<div class="assigned-filter"><a href="">Search: "term" <span class="badge badge-light">&times;</span></a></div>-->
         </div>
 
         <hr />

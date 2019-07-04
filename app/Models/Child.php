@@ -23,6 +23,7 @@ abstract class Child
     protected $weight;
     protected $short_name;
     protected $image_uri;
+    protected $first_year;
 
     protected $total = null;
     protected $total_populated = false;
@@ -131,5 +132,22 @@ abstract class Child
         }
 
         return $this->total_current_year;
+    }
+
+    /**
+     * Return the years data for each child, first year to now, this is useful for
+     * select menus
+     *
+     * @return array
+     */
+    public function years(): array
+    {
+        $years = [];
+
+        for ($i = intval(date('Y')); $i >= $this->first_year; $i--) {
+            $years[] = $i;
+        }
+
+        return $years;
     }
 }

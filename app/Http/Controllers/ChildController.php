@@ -133,6 +133,14 @@ class ChildController extends BaseController
             $get_params['subcategory'] = trim($params['subcategory']);
         }
 
+        if (array_key_exists('year', $params) === true && intval($params['year']) !== 0) {
+            $get_params['year'] = intval($params['year']);
+        }
+
+        if (array_key_exists('month', $params) === true && intval($params['month']) !== 0) {
+            $get_params['month'] = intval($params['month']);
+        }
+
         return redirect()->action('ChildController@expenses', $get_params);
     }
 
@@ -152,6 +160,8 @@ class ChildController extends BaseController
         $expense_model = new Expense();
         $category_model = new Category();
 
+        $child_model = $this->childModel($child);
+
         $offset = (int) request()->get('offset', 0);
         $limit = (int) request()->get('limit', 50);
         $category_id = request()->get('category');
@@ -165,7 +175,8 @@ class ChildController extends BaseController
             $subcategories = $selected_category_model->subcategories($category_id);
         }
 
-        $child_model = $this->childModel($child);
+        $years = $child_model->years();
+        $months = $overview_model->months();
 
         $total = $child_model->total();
         $total_number_of_expenses = $child_model->totalNumberOfExpenses();
@@ -213,11 +224,11 @@ class ChildController extends BaseController
                         'set' => $subcategory_id
                     ],
                     'year' => [
-                        'values' => [],
+                        'values' => $years,
                         'set' => $year
                     ],
                     'month' => [
-                        'values' => [],
+                        'values' => $months,
                         'set' => $month
                     ]
                 ],
