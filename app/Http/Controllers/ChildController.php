@@ -195,6 +195,80 @@ class ChildController extends BaseController
             (int) $month
         );
 
+        $base_uri = $uri = $child_model->uri() . '/expenses?limit=' . $limit . '&offset=' . $offset;
+        $assigned_filter_uris = [
+            'category' => null,
+            'subcategory' => null,
+            'year' => null,
+            'month' => null,
+        ];
+        if ($category_id !== null) {
+            $params = [];
+            if ($year !== null) {
+                $params['year'] = $year;
+            }
+            if ($month !== null) {
+                $params['month'] = $month;
+            }
+
+            $uri = $base_uri;
+            foreach ($params as $param => $value) {
+                $uri .= '&' . $param . '=' . $value;
+            }
+            $assigned_filter_uris['category'] = $uri;
+        }
+        if ($subcategory_id !== null) {
+            $params = [];
+            if ($category_id !== null) {
+                $params['category'] = $category_id;
+            }
+            if ($year !== null) {
+                $params['year'] = $year;
+            }
+            if ($month !== null) {
+                $params['month'] = $month;
+            }
+
+            $uri = $base_uri;
+            foreach ($params as $param => $value) {
+                $uri .= '&' . $param . '=' . $value;
+            }
+            $assigned_filter_uris['subcategory'] = $uri;
+        }
+        if ($year !== null) {
+            $params = [];
+            if ($category_id !== null) {
+                $params['category'] = $category_id;
+            }
+            if ($subcategory_id !== null) {
+                $params['subcategory'] = $subcategory_id;
+            }
+
+            $uri = $base_uri;
+            foreach ($params as $param => $value) {
+                $uri .= '&' . $param . '=' . $value;
+            }
+            $assigned_filter_uris['year'] = $uri;
+        }
+        if ($month !== null) {
+            $params = [];
+            if ($category_id !== null) {
+                $params['category'] = $category_id;
+            }
+            if ($subcategory_id !== null) {
+                $params['subcategory'] = $subcategory_id;
+            }
+            if ($year !== null) {
+                $params['year'] = $year;
+            }
+
+            $uri = $base_uri;
+            foreach ($params as $param => $value) {
+                $uri .= '&' . $param . '=' . $value;
+            }
+            $assigned_filter_uris['month'] = $uri;
+        }
+
         return view(
             'child-expenses',
             [
@@ -240,6 +314,8 @@ class ChildController extends BaseController
                         'set' => $month
                     ]
                 ],
+
+                'assigned_filter_uris' => $assigned_filter_uris,
 
                 'pagination' => [
                     'uri' => [

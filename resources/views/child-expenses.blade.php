@@ -114,16 +114,16 @@
 
         <div class="p-1 assigned-filters">
             @if ($filters['category']['set'] !== null)
-                <div class="assigned-filter"><a href="">{{ $filters['category']['values'][$filters['category']['set']]['name'] }}<span class="badge badge-light">&times;</span></a></div>
+                <div class="assigned-filter"><a href="{{ $assigned_filter_uris['category'] }}">{{ $filters['category']['values'][$filters['category']['set']]['name'] }}<span class="badge badge-light">&times;</span></a></div>
             @endif
             @if ($filters['subcategory']['set'] !== null)
-                <div class="assigned-filter"><a href="">{{ $filters['subcategory']['values'][$filters['subcategory']['set']]['name'] }}<span class="badge badge-light">&times;</span></a></div>
+                <div class="assigned-filter"><a href="{{ $assigned_filter_uris['subcategory'] }}">{{ $filters['subcategory']['values'][$filters['subcategory']['set']]['name'] }}<span class="badge badge-light">&times;</span></a></div>
             @endif
             @if ($filters['year']['set'] !== null)
-                <div class="assigned-filter"><a href="">{{ $filters['year']['set'] }}<span class="badge badge-light">&times;</span></a></div>
+                <div class="assigned-filter"><a href="{{ $assigned_filter_uris['year'] }}">{{ $filters['year']['set'] }}<span class="badge badge-light">&times;</span></a></div>
             @endif
             @if ($filters['month']['set'] !== null)
-                <div class="assigned-filter"><a href="">{{ $filters['month']['values'][$filters['month']['set']]['name'] }}<span class="badge badge-light">&times;</span></a></div>
+                <div class="assigned-filter"><a href="{{ $assigned_filter_uris['month'] }}">{{ $filters['month']['values'][$filters['month']['set']]['name'] }}<span class="badge badge-light">&times;</span></a></div>
             @endif
             <!--<div class="assigned-filter"><a href="">Search: "term" <span class="badge badge-light">&times;</span></a></div>-->
         </div>
