@@ -185,6 +185,27 @@ class ChildController extends BaseController
         $largest_non_essential_expense = $overview_model->largestNonEssentialExpense($child_model->id());
         $largest_hobby_interest_expense = $overview_model->largestHobbyInterestExpense($child_model->id());
 
+        $filter_parameters = [];
+        if ($category_id !== null) {
+            $filter_parameters['category'] = $category_id;
+
+            if ($subcategory_id !== null) {
+                $filter_parameters['subcategory'] = $subcategory_id;
+            }
+        }
+        if ($year !== null) {
+            $filter_parameters['year'] = $year;
+
+            if ($month !== null) {
+                $filter_parameters['month'] = $month;
+            }
+        }
+
+        $filter_parameters_string = '';
+        foreach ($filter_parameters as $parameter => $value) {
+            $filter_parameters_string .= '&' . $parameter . '=' . $value;
+        }
+
         $expenses_data = $expense_model->expenses(
             $child_model->id(),
             $offset,
@@ -320,7 +341,7 @@ class ChildController extends BaseController
                 'pagination' => [
                     'uri' => [
                         'base' => $child_model->uri() . '/expenses',
-                        'parameters' => []
+                        'parameters' => $filter_parameters_string
                     ],
                     'total' => $expenses_data['total'],
                     'offset' => $expenses_data['offset'],

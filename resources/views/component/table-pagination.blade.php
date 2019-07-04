@@ -18,7 +18,7 @@
                 {{ $total }}
             </a>
             @if ($total > ($offset + $limit))
-            <a href="{{ $uri['base'] }}?offset={{ $offset + $limit }}&limit={{ $limit }}#expenses-data" class="btn btn-primary">></a>
+            <a href="{{ $uri['base'] }}?offset={{ $offset + $limit }}&limit={{ $limit }}{{ $uri['parameters'] }}#expenses-data" class="btn btn-primary">></a>
             @else
             <a class="btn btn-primary disabled">></a>
             @endif
