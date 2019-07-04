@@ -209,51 +209,51 @@ class Overview
     public function months(): array
     {
         return [
-            [
+            1 => [
                 'id' => 1,
                 'name' => 'January'
             ],
-            [
+            2 => [
                 'id' => 2,
                 'name' => 'February'
             ],
-            [
+            3 => [
                 'id' => 3,
                 'name' => 'March'
             ],
-            [
+            4 => [
                 'id' => 4,
                 'name' => 'April'
             ],
-            [
+            5 => [
                 'id' => 5,
                 'name' => 'May'
             ],
-            [
+            6 => [
                 'id' => 6,
                 'name' => 'June'
             ],
-            [
+            7 => [
                 'id' => 7,
                 'name' => 'July'
             ],
-            [
+            8 => [
                 'id' => 8,
                 'name' => 'August'
             ],
-            [
+            9 => [
                 'id' => 9,
                 'name' => 'September'
             ],
-            [
+            10 => [
                 'id' => 10,
                 'name' => 'October'
             ],
-            [
+            11 => [
                 'id' => 11,
                 'name' => 'November'
             ],
-            [
+            12 => [
                 'id' => 12,
                 'name' => 'December'
             ]

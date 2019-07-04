@@ -116,8 +116,12 @@
         <div class="p-1 assigned-filters">
             <div class="assigned-filter"><a href="">Category <span class="badge badge-light">&times;</span></a></div>
             <div class="assigned-filter"><a href="">Subcategory <span class="badge badge-light">&times;</span></a></div>
-            <div class="assigned-filter"><a href="">Year <span class="badge badge-light">&times;</span></a></div>
-            <div class="assigned-filter"><a href="">Month <span class="badge badge-light">&times;</span></a></div>
+            @if ($filters['year']['set'] !== null)
+                <div class="assigned-filter"><a href="">{{ $filters['year']['set'] }}<span class="badge badge-light">&times;</span></a></div>
+            @endif
+            @if ($filters['month']['set'] !== null)
+                <div class="assigned-filter"><a href="">{{ $filters['month']['values'][$filters['month']['set']]['name'] }}<span class="badge badge-light">&times;</span></a></div>
+            @endif
             <!--<div class="assigned-filter"><a href="">Search: "term" <span class="badge badge-light">&times;</span></a></div>-->
         </div>
 
