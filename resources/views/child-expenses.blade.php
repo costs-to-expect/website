@@ -69,7 +69,7 @@
         <form method="post" action="{{ $child_details['uri'] . '/expenses' }}" class="filter-options">
             <div class="form-row">
                 <div class="col-6 col-md-4 col-lg-4 col-xl-2 mb-2">
-                    <select name="category" class="form-control">
+                    <select name="category" id="category-expense-filter" class="form-control">
                         <option value="" @if($filters['category']['set'] === null)selected="selected"@endif>Category</option>
                         @foreach ($filters['category']['values'] as $category)
                             <option value="{{ $category['id'] }}" @if($filters['category']['set'] === $category['id'])selected="selected"@endif>{{ $category['name'] }}</option>
@@ -77,7 +77,7 @@
                     </select>
                 </div>
                 <div class="col-6 col-md-3 col-lg-4 col-xl-3 mb-2">
-                    <select name="subcategory" class="form-control" @if(count($filters['subcategory']['values']) === 0)disabled="disabled"@endif>
+                    <select name="subcategory" id="subcategory-expense-filter" class="form-control" @if(count($filters['subcategory']['values']) === 0)disabled="disabled"@endif>
                         <option value="" @if($filters['subcategory']['set'] === null)selected="selected"@endif>Subcategory</option>
                         @foreach ($filters['subcategory']['values'] as $subcategory)
                             <option value="{{ $subcategory['id'] }}" @if($filters['subcategory']['set'] === $subcategory['id'])selected="selected"@endif>{{ $subcategory['name'] }}</option>
