@@ -58,7 +58,7 @@
         'component-container.cost-summary-block',
         [
             'icon' => 'expenses.png',
-            'uri' => '/jack',
+            'uri' => '/jack/expenses/year/' . date('Y'),
             'heading' => 'Jack Blackborough',
             'subheading' => date('Y'),
             'description' => 'All expenses in ' . date('Y'),
@@ -69,7 +69,7 @@
         'component-container.cost-summary-block',
         [
             'icon' => 'expenses.png',
-            'uri' => '/niall',
+            'uri' => '/niall/expenses/year/' . date('Y'),
             'heading' => 'Niall Blackborough',
             'subheading' => date('Y'),
             'description' => 'All expenses in ' . date('Y'),

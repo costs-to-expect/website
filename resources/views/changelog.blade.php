@@ -17,7 +17,7 @@
 
         <hr />
 
-        <h2>[v1.06.0] - xxth July 2019</h2>
+        <h2>[v1.06.0] - 5th July 2019</h2>
 
         <h3>Added</h3>
 
@@ -35,11 +35,17 @@
             <li>We have updated all the tables, now include links to the new expenses page.</li>
         </ul>
 
+        <h3>Fixed</h3>
+
+        <ul>
+            <li>The current year links on the dashboard go to the relevant child year page.</li>
+        </ul>
+
         <hr />
         <p class="small text-muted text-right">
-            <strong>Files changed:</strong> xx -
-            <strong>Lines added:</strong> xxx -
-            <strong>Lines removed:</strong> xxx
+            <strong>Files changed:</strong> 26 -
+            <strong>Lines added:</strong> 1,096 -
+            <strong>Lines removed:</strong> 97
         </p>
 
         <h2>[v1.05.0] - 24th June 2019</h2>
