@@ -72,9 +72,9 @@
                 <div class="col-6 col-md-4 col-lg-4 col-xl-2 mb-2">
                     <select class="form-control">
                         <option value="" selected="selected">Category</option>
-                        <option value="" selected="selected">Essentials</option>
-                        <option value="" selected="selected">Non-Essentials</option>
-                        <option value="" selected="selected">Hobbies & Interests</option>
+                        <option value="">Essentials</option>
+                        <option value="">Non-Essentials</option>
+                        <option value="">Hobbies & Interests</option>
                     </select>
                 </div>
                 <div class="col-6 col-md-3 col-lg-4 col-xl-3 mb-2">
@@ -85,13 +85,13 @@
                 <div class="col-6 col-md-2 col-lg-2 col-xl-2 mb-2">
                     <select class="form-control">
                         <option value="" selected="selected">Year</option>
-                        <option value="2019" selected="selected">2019</option>
-                        <option value="2018" selected="selected">2018</option>
-                        <option value="2017" selected="selected">2017</option>
-                        <option value="2016" selected="selected">2016</option>
-                        <option value="2015" selected="selected">2015</option>
-                        <option value="2014" selected="selected">2014</option>
-                        <option value="2013" selected="selected">2013</option>
+                        <option value="2019">2019</option>
+                        <option value="2018">2018</option>
+                        <option value="2017">2017</option>
+                        <option value="2016">2016</option>
+                        <option value="2015">2015</option>
+                        <option value="2014">2014</option>
+                        <option value="2013">2013</option>
                     </select>
                 </div>
                 <div class="col-6 col-md-3 col-lg-2 col-xl-2 mb-2">
@@ -115,6 +115,9 @@
                     <input type="text" class="form-control" placeholder="Search... " />
                 </div>
                 <div class="col-3 col-md-6 col-lg-9 col-xl-1 mb-2">
+                    <input type="hidden" name="offset" value="{{ $pagination['offset'] }}" />
+                    <input type="hidden" name="limit" value="{{ $pagination['limit'] }}" />
+                    <input type="hidden" name="uri" value="{{ $pagination['uri']['base'] }}" />
                     <button type="submit" class="btn btn-primary">Filter</button>
                 </div>
             </div>

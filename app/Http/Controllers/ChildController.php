@@ -117,6 +117,11 @@ class ChildController extends BaseController
         );
     }
 
+    public function setExpensesFilter(Request $request, string $child)
+    {
+
+    }
+
     /**
      * Filterable and searchable expenses view for each child
      *
@@ -134,6 +139,10 @@ class ChildController extends BaseController
 
         $offset = (int) request()->get('offset', 0);
         $limit = (int) request()->get('limit', 50);
+        $category = request()->get('category');
+        $subcategory = request()->get('subcategory');
+        $year = request()->get('year');
+        $month = request()->get('month');
 
         $child_model = $this->childModel($child);
 
