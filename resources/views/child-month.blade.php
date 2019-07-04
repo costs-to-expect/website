@@ -114,7 +114,8 @@
 @if ($recent_expenses !== null)
 <div class="row mt-4">
     <div class="col-12">
-        <h4>The 25 most recent expenses for {{ $child_details['short_name'] }} in {{ $active_month_name . ' ' . $active_year }}</h4>
+        <h4>The 25 most recent expenses for {{ $child_details['short_name'] }} in
+            {{ $active_month_name . ' ' . $active_year }} <small> - <a href="{{ $child_details['uri'] . '/expenses' }}">(View all)</a></small></h4>
 
         <p>The table below lists the last 25 expenses we have logged for {{ $child_details['short_name'] }} in {{ $active_year }},
             to see more select any summary count, year or month.</p>
@@ -141,8 +142,8 @@
                     <tr class="top">
                         <td>{{ $expense['description'] }}</td>
                         <td><span class="d-none d-md-block">{{ date('j M Y', strtotime($expense['effective_date'])) }}</span><span class="d-table-cell d-sm-block d-md-none">{{ date('d/m/Y', strtotime($expense['effective_date'])) }}</span></td>
-                        <td class="d-none d-md-table-cell"><span class="category">{{ $expense['category']['name'] }}</span></td>
-                        <td class="d-none d-md-table-cell"><span class="category">{{ $expense['subcategory']['name'] }}</span></td>
+                        <td class="d-none d-md-table-cell"><span class="category"><a href="{{ $child_details['uri'] . '/expenses?category=' . $expense['category']['id'] }}">{{ $expense['category']['name'] }}</a></span></td>
+                        <td class="d-none d-md-table-cell"><span class="category"><a href="{{ $child_details['uri'] . '/expenses?category=' . $expense['category']['id'] . '&subcategory=' . $expense['subcategory']['id'] }}">{{ $expense['subcategory']['name'] }}</a></span></td>
                         <td class="d-none d-xl-table-cell">£{{ $expense['total'] }}</td>
                         <td class="d-none d-xl-table-cell">{{ $expense['percentage'] }}%</td>
                         <td><strong>&pound;{{ $expense['actualised_total'] }}</strong></td>

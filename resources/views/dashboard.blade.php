@@ -126,8 +126,8 @@
                         <td><a href="/{{ strtolower($expense['resource']['name']) }}">{{ $expense['resource']['name'] }}</a></td>
                         <td>{{ $expense['description'] }}</td>
                         <td><span class="d-none d-md-block">{{ date('j M Y', strtotime($expense['effective_date'])) }}</span><span class="d-table-cell d-sm-block d-md-none">{{ date('d/m/Y', strtotime($expense['effective_date'])) }}</span></td>
-                        <td class="d-none d-md-table-cell"><span class="category">{{ $expense['category']['name'] }}</span></td>
-                        <td class="d-none d-md-table-cell"><span class="category">{{ $expense['subcategory']['name'] }}</span></td>
+                        <td class="d-none d-md-table-cell"><span class="category"><a href="{{ strtolower($expense['resource']['name']) . '/expenses?category=' . $expense['category']['id'] }}">{{ $expense['category']['name'] }}</a></span></td>
+                        <td class="d-none d-md-table-cell"><span class="category"><a href="{{ strtolower($expense['resource']['name']) . '/expenses?category=' . $expense['category']['id'] . '&subcategory=' . $expense['subcategory']['id'] }}">{{ $expense['subcategory']['name'] }}</a></span></td>
                         <td class="d-none d-xl-table-cell">£{{ $expense['total'] }}</td>
                         <td class="d-none d-xl-table-cell">{{ $expense['percentage'] }}%</td>
                         <td><strong>&pound;{{ $expense['actualised_total'] }}</strong></td>
