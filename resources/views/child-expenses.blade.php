@@ -144,7 +144,7 @@
 
         <div class="p-3 shadow-sm white-container">
             <table class="table table-borderless table-hover">
-                <caption>25 most recent expenses</caption>
+                <caption>All expenses for {{ $child_details['name'] }}</caption>
                 <thead>
                     <tr>
                         <th scope="col">Description</th>
