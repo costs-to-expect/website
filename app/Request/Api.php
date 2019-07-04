@@ -216,15 +216,31 @@ class Api
      * @param string $child_id
      * @param integer $offset
      * @param integer $limit
+     * @param string|null $category
+     * @param string|null $subcategory
+     * @param integer|null $year
+     * @param integer|null $month
      *
      * @return array|null
      */
-    public static function expenses(string $child_id, int $offset, int $limit): ?array
+    public static function expenses(
+        string $child_id,
+        int $offset,
+        int $limit,
+        string $category = null,
+        string $subcategory = null,
+        int $year = null,
+        int $month = null
+    ): ?array
     {
         self::$uri = Uri::expenses(
             $child_id,
             $offset,
             $limit,
+            $category,
+            $subcategory,
+            $year,
+            $month,
             true,
             true
         );

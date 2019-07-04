@@ -110,6 +110,10 @@ class Uri
      * @param string $child_id
      * @param integer $offset
      * @param integer $limit
+     * @param string|null $category
+     * @param string|null $subcategory
+     * @param integer|null $year
+     * @param integer|null $month
      * @param boolean $include_categories
      * @param boolean $include_subcategories
      *
@@ -119,12 +123,32 @@ class Uri
         string $child_id,
         int $offset = 0,
         int $limit = 25,
+        string $category = null,
+        string $subcategory = null,
+        int $year = null,
+        int $month = null,
         bool $include_categories = false,
         bool $include_subcategories = false
     ): string
     {
         $uri = '/v1/resource-types/' . self::$resource_type . '/resources/' .
             $child_id . '/items?offset=' . $offset . '&limit=' . $limit;
+
+        if ($category !== null) {
+            $uri .= '&category=' . $category;
+
+            if ($subcategory !== null) {
+                $uri .= '&subcategory=' . $subcategory;
+            }
+        }
+
+        if ($year !== null) {
+            $uri .= '&year=' . $year;
+
+            if ($month !== null) {
+                $uri .= '&month=' . $month;
+            }
+        }
 
         if ($include_categories === true) {
             $uri .= '&include-categories=true';

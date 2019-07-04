@@ -44,13 +44,33 @@ class Expense
      * @param string $child_id
      * @param integer $offset
      * @param integer $limit
+     * @param string|null $category
+     * @param string|null $subcategory
+     * @param integer|null $year
+     * @param integer|null $month
      *
      * @return array|null Returned array had four indexes, expenses, total, limit and offset
      */
-    public function expenses(string $child_id, $offset, $limit): ?array
+    public function expenses(
+        string $child_id,
+        $offset,
+        $limit,
+        $category = null,
+        $subcategory = null,
+        $year = null,
+        $month = null
+    ): ?array
     {
         if ($this->expenses_populated === false) {
-            $response = Api::expenses($child_id, $offset, $limit);
+            $response = Api::expenses(
+                $child_id,
+                $offset,
+                $limit,
+                $category,
+                $subcategory,
+                $year,
+                $month
+            );
             $headers = Api::previousRequestHeaders();
             Api::setCalledURI('All expenses', Api::lastUri());
 

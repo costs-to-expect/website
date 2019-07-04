@@ -14,6 +14,8 @@
                 @else
                 {{ $total }}
                 @endif
+                of
+                {{ $total }}
             </a>
             @if ($total > ($offset + $limit))
             <a href="{{ $uri['base'] }}?offset={{ $offset + $limit }}&limit={{ $limit }}#expenses-data" class="btn btn-primary">></a>

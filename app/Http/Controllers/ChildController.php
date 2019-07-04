@@ -185,7 +185,15 @@ class ChildController extends BaseController
         $largest_non_essential_expense = $overview_model->largestNonEssentialExpense($child_model->id());
         $largest_hobby_interest_expense = $overview_model->largestHobbyInterestExpense($child_model->id());
 
-        $expenses_data = $expense_model->expenses($child_model->id(), $offset, $limit);
+        $expenses_data = $expense_model->expenses(
+            $child_model->id(),
+            $offset,
+            $limit,
+            $category_id,
+            $subcategory_id,
+            (int) $year,
+            (int) $month
+        );
 
         return view(
             'child-expenses',
