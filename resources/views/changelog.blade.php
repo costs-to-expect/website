@@ -17,6 +17,37 @@
 
         <hr />
 
+        <h2>[v1.06.0] - 5th July 2019</h2>
+
+        <h3>Added</h3>
+
+        <ul>
+            <li>An expenses page to allow viewing and filtering of all the expenses assigned to a child.</li>
+            <li>A <code>head()</code> method added to the API request helper.</li>
+        </ul>
+
+        <h3>Changed</h3>
+
+        <ul>
+            <li>Added the API request method to the API requests table.</li>
+            <li>We have updated the descriptive name of each API request.</li>
+            <li>Minor layout change to the API requests table for phone and tablet sized screens.</li>
+            <li>We have updated all the tables, now include links to the new expenses page.</li>
+        </ul>
+
+        <h3>Fixed</h3>
+
+        <ul>
+            <li>The current year links on the dashboard go to the relevant child year page.</li>
+        </ul>
+
+        <hr />
+        <p class="small text-muted text-right">
+            <strong>Files changed:</strong> 27 -
+            <strong>Lines added:</strong> 1,106 -
+            <strong>Lines removed:</strong> 101
+        </p>
+
         <h2>[v1.05.0] - 24th June 2019</h2>
 
         <h3>Added</h3>

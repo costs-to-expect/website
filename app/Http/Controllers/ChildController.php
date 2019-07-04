@@ -117,6 +117,245 @@ class ChildController extends BaseController
         );
     }
 
+    public function setExpensesFilter(Request $request, string $child)
+    {
+        $params = request()->all();
+
+        $get_params = [
+            'child' => ltrim($params['child'], '/')
+        ];
+
+        if (array_key_exists('category', $params) === true && strlen(trim($params['category'])) === 10) {
+            $get_params['category'] = trim($params['category']);
+        }
+
+        if (array_key_exists('subcategory', $params) === true && strlen(trim($params['subcategory'])) === 10) {
+            $get_params['subcategory'] = trim($params['subcategory']);
+        }
+
+        if (array_key_exists('year', $params) === true && intval($params['year']) !== 0) {
+            $get_params['year'] = intval($params['year']);
+        }
+
+        if (array_key_exists('month', $params) === true && intval($params['month']) !== 0) {
+            $get_params['month'] = intval($params['month']);
+        }
+
+        return redirect()->action('ChildController@expenses', $get_params);
+    }
+
+    /**
+     * Filterable and searchable expenses view for each child
+     *
+     * @param Request $request
+     * @param string $child
+     *
+     * @return View
+     */
+    public function expenses(Request $request, string $child): View
+    {
+        Api::resetCalledURIs();
+
+        $overview_model = new Overview();
+        $expense_model = new Expense();
+        $category_model = new Category();
+
+        $child_model = $this->childModel($child);
+
+        $offset = (int) request()->get('offset', 0);
+        $limit = (int) request()->get('limit', 50);
+        $category_id = request()->get('category');
+        $subcategory_id = request()->get('subcategory');
+        $year = request()->get('year');
+        $month = request()->get('month');
+
+        $subcategories = [];
+        if ($category_id !== null) {
+            $selected_category_model = Category::modelById($category_id);
+            $subcategories = $selected_category_model->subcategories($category_id);
+        }
+
+        $years = $child_model->years();
+        $months = $overview_model->months();
+
+        $total = $child_model->total();
+        $total_number_of_expenses = $child_model->totalNumberOfExpenses();
+
+        $largest_essential_expense = $overview_model->largestEssentialExpense($child_model->id());
+        $largest_non_essential_expense = $overview_model->largestNonEssentialExpense($child_model->id());
+        $largest_hobby_interest_expense = $overview_model->largestHobbyInterestExpense($child_model->id());
+
+        $filter_parameters = [];
+        if ($category_id !== null) {
+            $filter_parameters['category'] = $category_id;
+
+            if ($subcategory_id !== null) {
+                $filter_parameters['subcategory'] = $subcategory_id;
+            }
+        }
+        if ($year !== null) {
+            $filter_parameters['year'] = $year;
+
+            if ($month !== null) {
+                $filter_parameters['month'] = $month;
+            }
+        }
+
+        $filter_parameters_string = '';
+        foreach ($filter_parameters as $parameter => $value) {
+            $filter_parameters_string .= '&' . $parameter . '=' . $value;
+        }
+
+        $expenses_data = $expense_model->expenses(
+            $child_model->id(),
+            $offset,
+            $limit,
+            $category_id,
+            $subcategory_id,
+            (int) $year,
+            (int) $month
+        );
+
+        $base_uri = $uri = $child_model->uri() . '/expenses?limit=' . $limit . '&offset=' . $offset;
+        $named_anchor = '#expenses-data';
+        $assigned_filter_uris = [
+            'category' => null,
+            'subcategory' => null,
+            'year' => null,
+            'month' => null,
+        ];
+        if ($category_id !== null) {
+            $params = [];
+            if ($year !== null) {
+                $params['year'] = $year;
+            }
+            if ($month !== null) {
+                $params['month'] = $month;
+            }
+
+            $uri = $base_uri;
+            foreach ($params as $param => $value) {
+                $uri .= '&' . $param . '=' . $value;
+            }
+            $assigned_filter_uris['category'] = $uri . $named_anchor;
+        }
+        if ($subcategory_id !== null) {
+            $params = [];
+            if ($category_id !== null) {
+                $params['category'] = $category_id;
+            }
+            if ($year !== null) {
+                $params['year'] = $year;
+            }
+            if ($month !== null) {
+                $params['month'] = $month;
+            }
+
+            $uri = $base_uri;
+            foreach ($params as $param => $value) {
+                $uri .= '&' . $param . '=' . $value;
+            }
+            $assigned_filter_uris['subcategory'] = $uri . $named_anchor;
+        }
+        if ($year !== null) {
+            $params = [];
+            if ($category_id !== null) {
+                $params['category'] = $category_id;
+            }
+            if ($subcategory_id !== null) {
+                $params['subcategory'] = $subcategory_id;
+            }
+
+            $uri = $base_uri;
+            foreach ($params as $param => $value) {
+                $uri .= '&' . $param . '=' . $value;
+            }
+            $assigned_filter_uris['year'] = $uri . $named_anchor;
+        }
+        if ($month !== null) {
+            $params = [];
+            if ($category_id !== null) {
+                $params['category'] = $category_id;
+            }
+            if ($subcategory_id !== null) {
+                $params['subcategory'] = $subcategory_id;
+            }
+            if ($year !== null) {
+                $params['year'] = $year;
+            }
+
+            $uri = $base_uri;
+            foreach ($params as $param => $value) {
+                $uri .= '&' . $param . '=' . $value;
+            }
+            $assigned_filter_uris['month'] = $uri . $named_anchor;
+        }
+
+        return view(
+            'child-expenses',
+            [
+                'menus' => $this->menus(),
+                'active' => $child_model->uri(),
+                'meta' => [
+                    'title' => $child_model->details()['name'],
+                    'description' => 'What does it cost to raise a child to adulthood in the UK?'
+                ],
+                'welcome' => [
+                    'title' => $child_model->details()['name'] . ': All expenses' ,
+                    'description' => 'All expenses for ' . $child_model->details()['name'],
+                    'image' => [
+                        'icon' => 'dashboard.png',
+                        'title' => 'Costs to Expect.com'
+                    ]
+                ],
+
+                'api_requests' => Api::calledURIs(),
+
+                'child_details' => $child_model->details(),
+                'number_of_expenses' => $total_number_of_expenses,
+
+                'total' => $total['total'],
+
+                'expenses' => $expenses_data['expenses'],
+
+                'filters' => [
+                    'category' => [
+                        'values' => $category_model->allCategories(),
+                        'set' => $category_id
+                    ],
+                    'subcategory' => [
+                        'values' => $subcategories,
+                        'set' => $subcategory_id
+                    ],
+                    'year' => [
+                        'values' => $years,
+                        'set' => $year
+                    ],
+                    'month' => [
+                        'values' => $months,
+                        'set' => $month
+                    ]
+                ],
+
+                'assigned_filter_uris' => $assigned_filter_uris,
+
+                'pagination' => [
+                    'uri' => [
+                        'base' => $child_model->uri() . '/expenses',
+                        'parameters' => $filter_parameters_string
+                    ],
+                    'total' => $expenses_data['total'],
+                    'offset' => $expenses_data['offset'],
+                    'limit' => $expenses_data['limit']
+                ],
+
+                'largest_essential_expense' => $largest_essential_expense,
+                'largest_non_essential_expense' => $largest_non_essential_expense,
+                'largest_hobby_interest_expense' => $largest_hobby_interest_expense
+            ]
+        );
+    }
+
     /**
      * Categories overview page for each child
      *

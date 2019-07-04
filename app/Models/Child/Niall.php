@@ -25,5 +25,7 @@ class Niall extends Child
         $this->weight = '3.458kg (7lb 10oz)';
         $this->short_name = 'Niall';
         $this->image_uri = 'images/theme/niall.jpg';
+
+        $this->first_year = 2019;
     }
 }

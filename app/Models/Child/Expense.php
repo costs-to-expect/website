@@ -15,6 +15,19 @@ class Expense
     /**
      * @var array|null
      */
+    private $recent_expenses = [];
+    /**
+     * @var array|null
+     */
+    private $recent_expenses_headers = [];
+    /**
+     * @var bool
+     */
+    private $recent_expenses_populated = false;
+
+    /**
+     * @var array|null
+     */
     private $expenses = [];
     /**
      * @var array|null
@@ -26,6 +39,73 @@ class Expense
     private $expenses_populated = false;
 
     /**
+     * Fetch all expenses for a data table
+     *
+     * @param string $child_id
+     * @param integer $offset
+     * @param integer $limit
+     * @param string|null $category
+     * @param string|null $subcategory
+     * @param integer|null $year
+     * @param integer|null $month
+     *
+     * @return array|null Returned array had four indexes, expenses, total, limit and offset
+     */
+    public function expenses(
+        string $child_id,
+        $offset,
+        $limit,
+        $category = null,
+        $subcategory = null,
+        $year = null,
+        $month = null
+    ): ?array
+    {
+        if ($this->expenses_populated === false) {
+            $response = Api::expenses(
+                $child_id,
+                $offset,
+                $limit,
+                $category,
+                $subcategory,
+                $year,
+                $month
+            );
+            $headers = Api::previousRequestHeaders();
+            Api::setCalledURI('All expenses', Api::lastUri());
+
+            if ($response !== null) {
+                $this->expenses = $response;
+                $this->expenses_headers = $headers;
+                $this->expenses_populated = true;
+            }
+        }
+
+        $total = $this->header($this->expenses_headers, 'X-Total-Count');
+        $offset = $this->header($this->expenses_headers, 'X-Offset');
+        $limit = $this->header($this->expenses_headers, 'X-Limit');
+
+        if ($total === null) {
+            $total = 0;
+        }
+
+        if ($offset === null) {
+            $offset = 0;
+        }
+
+        if ($limit === null) {
+            $limit = 0;
+        }
+
+        return [
+            'expenses' => $this->expenses,
+            'total' => $total,
+            'limit' => $limit,
+            'offset' => $offset
+        ];
+    }
+
+    /**
      * Fetch the recent expenses for both children
      *
      * @return array|null
@@ -33,7 +113,7 @@ class Expense
     public function recentExpensesForBothChildren(): ?array
     {
         $expenses = Api::recentExpensesForBothChildren();
-        Api::setCalledURI('The 25 most recent expenses', Api::lastUri());
+        Api::setCalledURI('25 most recent expenses', Api::lastUri());
 
         return $expenses;
     }
@@ -50,25 +130,25 @@ class Expense
      */
     public function recentExpenses(string $child_id): array
     {
-        if ($this->expenses_populated === false) {
+        if ($this->recent_expenses_populated === false) {
             $response = Api::recentExpenses($child_id);
             $headers = Api::previousRequestHeaders();
-            Api::setCalledURI('The 25 most recent expenses', Api::lastUri());
+            Api::setCalledURI('25 most recent expenses', Api::lastUri());
 
             if ($response !== null) {
-                $this->expenses = $response;
-                $this->expenses_headers = $headers;
-                $this->expenses_populated = true;
+                $this->recent_expenses = $response;
+                $this->recent_expenses_headers = $headers;
+                $this->recent_expenses_populated = true;
             }
         }
 
-        $total = $this->header($this->expenses_headers, 'X-Total-Count');
+        $total = $this->header($this->recent_expenses_headers, 'X-Total-Count');
         if ($total === null) {
             $total = 0;
         }
 
         return [
-            'expenses' => $this->expenses,
+            'expenses' => $this->recent_expenses,
             'total' => $total
         ];
     }
@@ -86,25 +166,25 @@ class Expense
      */
     public function recentExpensesByCategory(string $child_id, string $category_id): array
     {
-        if ($this->expenses_populated === false) {
+        if ($this->recent_expenses_populated === false) {
             $response = Api::recentExpensesByCategory($child_id, $category_id);
             $headers = Api::previousRequestHeaders();
-            Api::setCalledURI('The 25 most recent expenses for category', Api::lastUri());
+            Api::setCalledURI('25 most recent expenses for category', Api::lastUri());
 
             if ($response !== null) {
-                $this->expenses = $response;
-                $this->expenses_headers = $headers;
-                $this->expenses_populated = true;
+                $this->recent_expenses = $response;
+                $this->recent_expenses_headers = $headers;
+                $this->recent_expenses_populated = true;
             }
         }
 
-        $total = $this->header($this->expenses_headers, 'X-Total-Count');
+        $total = $this->header($this->recent_expenses_headers, 'X-Total-Count');
         if ($total === null) {
             $total = 0;
         }
 
         return [
-            'expenses' => $this->expenses,
+            'expenses' => $this->recent_expenses,
             'total' => $total
         ];
     }
@@ -122,25 +202,25 @@ class Expense
      */
     public function recentExpensesByYear(string $child_id, int $year): array
     {
-        if ($this->expenses_populated === false) {
+        if ($this->recent_expenses_populated === false) {
             $response = Api::recentExpensesByYear($child_id, $year);
             $headers = Api::previousRequestHeaders();
-            Api::setCalledURI('The 25 most recent expenses for ' . $year, Api::lastUri());
+            Api::setCalledURI('25 most recent expenses for ' . $year, Api::lastUri());
 
             if ($response !== null) {
-                $this->expenses = $response;
-                $this->expenses_headers = $headers;
-                $this->expenses_populated = true;
+                $this->recent_expenses = $response;
+                $this->recent_expenses_headers = $headers;
+                $this->recent_expenses_populated = true;
             }
         }
 
-        $total = $this->header($this->expenses_headers, 'X-Total-Count');
+        $total = $this->header($this->recent_expenses_headers, 'X-Total-Count');
         if ($total === null) {
             $total = 0;
         }
 
         return [
-            'expenses' => $this->expenses,
+            'expenses' => $this->recent_expenses,
             'total' => $total
         ];
     }
@@ -159,25 +239,25 @@ class Expense
      */
     public function recentExpensesByMonth(string $child_id, int $year, int $month): array
     {
-        if ($this->expenses_populated === false) {
+        if ($this->recent_expenses_populated === false) {
             $response = Api::recentExpensesByMonth($child_id, $year, $month);
             $headers = Api::previousRequestHeaders();
-            Api::setCalledURI('The 25 most recent expenses for ' . date('F', mktime(0, 0, 0, $month, 5)) . ' ' . $year, Api::lastUri());
+            Api::setCalledURI('25 most recent expenses for ' . date('F', mktime(0, 0, 0, $month, 5)) . ' ' . $year, Api::lastUri());
 
             if ($response !== null) {
-                $this->expenses = $response;
-                $this->expenses_headers = $headers;
-                $this->expenses_populated = true;
+                $this->recent_expenses = $response;
+                $this->recent_expenses_headers = $headers;
+                $this->recent_expenses_populated = true;
             }
         }
 
-        $total = $this->header($this->expenses_headers, 'X-Total-Count');
+        $total = $this->header($this->recent_expenses_headers, 'X-Total-Count');
         if ($total === null) {
             $total = 0;
         }
 
         return [
-            'expenses' => $this->expenses,
+            'expenses' => $this->recent_expenses,
             'total' => $total
         ];
     }
@@ -201,25 +281,25 @@ class Expense
         string $subcategory_id
     ): array
     {
-        if ($this->expenses_populated === false) {
+        if ($this->recent_expenses_populated === false) {
             $response = Api::recentExpensesBySubcategory($child_id, $category_id, $subcategory_id);
             $headers = Api::previousRequestHeaders();
-            Api::setCalledURI('The 25 most recent expenses for subcategory', Api::lastUri());
+            Api::setCalledURI('25 most recent expenses for subcategory', Api::lastUri());
 
             if ($response !== null) {
-                $this->expenses = $response;
-                $this->expenses_headers = $headers;
-                $this->expenses_populated = true;
+                $this->recent_expenses = $response;
+                $this->recent_expenses_headers = $headers;
+                $this->recent_expenses_populated = true;
             }
         }
 
-        $total = $this->header($this->expenses_headers, 'X-Total-Count');
+        $total = $this->header($this->recent_expenses_headers, 'X-Total-Count');
         if ($total === null) {
             $total = 0;
         }
 
         return [
-            'expenses' => $this->expenses,
+            'expenses' => $this->recent_expenses,
             'total' => $total
         ];
     }
@@ -237,10 +317,16 @@ class Expense
         if ($headers !== null) {
             switch($key) {
                 case 'X-Total-Count':
-                    if (array_key_exists('X-Total-Count', $headers) === true) {
-                        $return = intval($headers['X-Total-Count'][0]);
+                case 'X-Limit':
+                case 'X-Offset':
+                    if (array_key_exists($key, $headers) === true) {
+                        $return = intval($headers[$key][0]);
                     }
                     break;
+                default:
+                    $return = 'NOT-SET';
+                    break;
+
             }
         }
 

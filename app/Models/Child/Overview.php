@@ -93,7 +93,7 @@ class Overview
                 $child_id,
                 $this->essentialId()
             );
-            Api::setCalledURI('The top Essential expense', Api::lastUri());
+            Api::setCalledURI('Top Essential expense', Api::lastUri());
 
             if ($response !== null && array_key_exists(0, $response) === true) {
                 $this->largest_essential_expense = $response[0];
@@ -123,7 +123,7 @@ class Overview
                 $child_id,
                 $this->nonEssentialId()
             );
-            Api::setCalledURI('The top Non-Essential expense', Api::lastUri());
+            Api::setCalledURI('Top Non-Essential expense', Api::lastUri());
 
             if ($response !== null && array_key_exists(0, $response) === true) {
                 $this->largest_non_essential_expense = $response[0];
@@ -153,7 +153,7 @@ class Overview
                 $child_id,
                 $this->hobbyInterestId()
             );
-            Api::setCalledURI('The top Hobby and Interests expense', Api::lastUri());
+            Api::setCalledURI('Top Hobby and Interests expense', Api::lastUri());
 
             if ($response !== null && array_key_exists(0, $response) === true) {
                 $this->largest_hobby_interest_expense = $response[0];
@@ -203,6 +203,60 @@ class Overview
         return [
             'summary' => $this->summary,
             'total' => $total
+        ];
+    }
+
+    public function months(): array
+    {
+        return [
+            1 => [
+                'id' => 1,
+                'name' => 'January'
+            ],
+            2 => [
+                'id' => 2,
+                'name' => 'February'
+            ],
+            3 => [
+                'id' => 3,
+                'name' => 'March'
+            ],
+            4 => [
+                'id' => 4,
+                'name' => 'April'
+            ],
+            5 => [
+                'id' => 5,
+                'name' => 'May'
+            ],
+            6 => [
+                'id' => 6,
+                'name' => 'June'
+            ],
+            7 => [
+                'id' => 7,
+                'name' => 'July'
+            ],
+            8 => [
+                'id' => 8,
+                'name' => 'August'
+            ],
+            9 => [
+                'id' => 9,
+                'name' => 'September'
+            ],
+            10 => [
+                'id' => 10,
+                'name' => 'October'
+            ],
+            11 => [
+                'id' => 11,
+                'name' => 'November'
+            ],
+            12 => [
+                'id' => 12,
+                'name' => 'December'
+            ]
         ];
     }
 }

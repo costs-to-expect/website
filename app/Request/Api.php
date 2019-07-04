@@ -29,17 +29,40 @@ class Api
         return self::$uris;
     }
 
-    public static function setCalledURI($name, $uri)
+    public static function setCalledURI($name, $uri, $method = 'GET')
     {
         self::$uris[] = [
             'name' => $name,
-            'uri' => $uri
+            'uri' => $uri,
+            'method' => $method
         ];
     }
 
     public static function lastUri(): string
     {
         return self::$uri;
+    }
+
+    /**
+     * HEAD request to the expenses endpoint
+     *
+     * @param string $child_id
+     *
+     * @return array|null
+     */
+    public static function expensesHead(string $child_id): ?array
+    {
+        self::$uri = Uri::expenses($child_id, 0, 1);
+
+        $response = Http::getInstance()
+            ->public()
+            ->head(self::$uri);
+
+        if ($response !== null) {
+            return $response;
+        } else {
+            return null;
+        }
     }
 
     /**
@@ -174,6 +197,50 @@ class Api
     {
         self::$uri = Uri::recentExpensesForBothChildren(
             25,
+            true,
+            true
+        );
+
+        $response = Http::getInstance()
+            ->public()
+            ->get(self::$uri, true);
+
+        if ($response !== null) {
+            return $response;
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * @param string $child_id
+     * @param integer $offset
+     * @param integer $limit
+     * @param string|null $category
+     * @param string|null $subcategory
+     * @param integer|null $year
+     * @param integer|null $month
+     *
+     * @return array|null
+     */
+    public static function expenses(
+        string $child_id,
+        int $offset,
+        int $limit,
+        string $category = null,
+        string $subcategory = null,
+        int $year = null,
+        int $month = null
+    ): ?array
+    {
+        self::$uri = Uri::expenses(
+            $child_id,
+            $offset,
+            $limit,
+            $category,
+            $subcategory,
+            $year,
+            $month,
             true,
             true
         );
@@ -373,6 +440,26 @@ class Api
     public static function subcategory(string $category_id, string $subcategory_id): ?array
     {
         self::$uri = Uri::subcategory($category_id, $subcategory_id);
+
+        $response = Http::getInstance()
+            ->public()
+            ->get(self::$uri);
+
+        if ($response !== null) {
+            return $response;
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * @param string $category_id
+     *
+     * @return array|null
+     */
+    public static function subcategories(string $category_id): ?array
+    {
+        self::$uri = Uri::subcategories($category_id);
 
         $response = Http::getInstance()
             ->public()

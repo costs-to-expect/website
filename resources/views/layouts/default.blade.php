@@ -131,5 +131,6 @@
         <script src="{{ asset('node_modules/jquery/dist/jquery.js') }}" defer></script>
         <script src="{{ asset('node_modules/popper.js/dist/umd/popper.js') }}" defer></script>
         <script src="{{ asset('node_modules/bootstrap/dist/js/bootstrap.js') }}" defer></script>
+        <script src="{{ asset('js/app.js') }}" defer></script>
     </body>
 </html>

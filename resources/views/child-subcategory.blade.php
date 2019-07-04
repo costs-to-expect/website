@@ -27,15 +27,15 @@
                     <h5>Number of expenses in subcategory</h5>
                     <p class="sub-heading text-muted d-none d-md-block">How many {{ $active_subcategory_name }} purchases have we made?</p>
                     <p class="data">{{ $number_of_expenses }}</p>
-                    @if ($largest_non_essential_expense !== null)
-                        <h5>Top Non-Essential expense</h5>
-                        <p class="sub-heading text-muted d-none d-md-block">The grandest expense?</p>
-                        <p class="data">&pound;{{ number_format((float) $largest_non_essential_expense['actualised_total'], 2) }} <small>({{ $largest_non_essential_expense['description'] }})</small></p>
-                    @endif
                     @if ($largest_essential_expense !== null)
                         <h5>Top Essential expense</h5>
                         <p class="sub-heading text-muted d-none d-md-block">The grandest expense?</p>
                         <p class="data">&pound;{{ number_format((float) $largest_essential_expense['actualised_total'], 2) }} <small>({{ $largest_essential_expense['description'] }})</small></p>
+                    @endif
+                    @if ($largest_non_essential_expense !== null)
+                        <h5>Top Non-Essential expense</h5>
+                        <p class="sub-heading text-muted d-none d-md-block">The grandest expense?</p>
+                        <p class="data">&pound;{{ number_format((float) $largest_non_essential_expense['actualised_total'], 2) }} <small>({{ $largest_non_essential_expense['description'] }})</small></p>
                     @endif
                     @if ($largest_hobby_interest_expense !== null)
                         <h5>Top Hobby and Interests expense</h5>
@@ -126,7 +126,7 @@
 <div class="row mt-4">
     <div class="col-12">
         <h4>The 25 most recent {{ $active_category_name . '/' . $active_subcategory_name }} expenses for
-            {{ $child_details['short_name'] }}</h4>
+            {{ $child_details['short_name'] }} <small> - <a href="{{ $child_details['uri'] . '/expenses' }}">(View all)</a></small></h4>
 
         <p>The table below lists the last 25 expenses we have logged for
             {{ $child_details['short_name'] }} in the {{ $active_category_name }} category,
@@ -155,8 +155,8 @@
                     <tr class="top">
                         <td>{{ $expense['description'] }}</td>
                         <td><span class="d-none d-md-block">{{ date('j M Y', strtotime($expense['effective_date'])) }}</span><span class="d-table-cell d-sm-block d-md-none">{{ date('d/m/Y', strtotime($expense['effective_date'])) }}</span></td>
-                        <td class="d-none d-md-table-cell"><span class="category">{{ $expense['category']['name'] }}</span></td>
-                        <td class="d-none d-md-table-cell"><span class="category">{{ $expense['subcategory']['name'] }}</span></td>
+                        <td class="d-none d-md-table-cell"><span class="category"><a href="{{ $child_details['uri'] . '/expenses?category=' . $expense['category']['id'] }}">{{ $expense['category']['name'] }}</a></span></td>
+                        <td class="d-none d-md-table-cell"><span class="category"><a href="{{ $child_details['uri'] . '/expenses?category=' . $expense['category']['id'] . '&subcategory=' . $expense['subcategory']['id'] }}">{{ $expense['subcategory']['name'] }}</a></span></td>
                         <td class="d-none d-xl-table-cell">£{{ $expense['total'] }}</td>
                         <td class="d-none d-xl-table-cell">{{ $expense['percentage'] }}%</td>
                         <td><strong>&pound;{{ $expense['actualised_total'] }}</strong></td>

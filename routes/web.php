@@ -20,6 +20,8 @@ Route::get('/{child}/expenses/category/{category_uri}', 'ChildController@categor
 Route::get('/{child}/expenses/category/{category_uri}/subcategory/{subcategory_id}', 'ChildController@subcategory');
 Route::get('/{child}/expenses/year/{year}', 'ChildController@year');
 Route::get('/{child}/expenses/year/{year}/month/{month}', 'ChildController@month');
+Route::get('/{child}/expenses', 'ChildController@expenses');
+Route::post('/{child}/expenses', 'ChildController@setExpensesFilter');
 
 Route::get('/about', 'ContentController@about');
 Route::get('/what-we-count', 'ContentController@whatWeCount');

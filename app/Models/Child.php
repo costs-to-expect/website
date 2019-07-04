@@ -23,12 +23,16 @@ abstract class Child
     protected $weight;
     protected $short_name;
     protected $image_uri;
+    protected $first_year;
 
     protected $total = null;
     protected $total_populated = false;
 
     protected $total_current_year = null;
     protected $total_current_year_populated = false;
+
+    protected $expenses_headers_populated = false;
+    protected $expenses_headers = null;
 
     public function details(): array
     {
@@ -39,7 +43,8 @@ abstract class Child
             'sex' => $this->sex,
             'weight' => $this->weight,
             'short_name' => $this->short_name,
-            'image_uri' => $this->image_uri
+            'image_uri' => $this->image_uri,
+            'uri' => $this->uri,
         ];
     }
 
@@ -57,7 +62,7 @@ abstract class Child
     {
         if ($this->total_populated === false) {
             $response = Api::summaryExpenses($this->id);
-            Api::setCalledURI('Total expenses for ' . $this->name, Api::lastUri());
+            Api::setCalledURI('Total expenses for ' . $this->short_name, Api::lastUri());
 
             $this->total = [
                 'name' => $this->name,
@@ -65,16 +70,43 @@ abstract class Child
                 'total' => 0.00
             ];
 
-            if ($response !== null) {
-                if (
-                    $response !== null && array_key_exists('total', $response) === true) {
+            if ($response !== null && array_key_exists('total', $response) === true) {
                     $this->total['total'] = $response['total'];
                     $this->total_populated = true;
-                }
             }
         }
 
         return $this->total;
+    }
+
+    public function totalNumberOfExpenses(): int
+    {
+        if ($this->expenses_headers_populated === false) {
+            $this->expensesHeaders();
+        }
+
+        if (array_key_exists('X-Total-Count', $this->expenses_headers) === true) {
+            return (int) $this->expenses_headers['X-Total-Count'][0];
+        } else {
+            return 0;
+        }
+    }
+
+    protected function expensesHeaders(): array
+    {
+        if ($this->expenses_headers_populated === false) {
+            $response = Api::expensesHead($this->id);
+            Api::setCalledURI('All expenses for ' . $this->short_name, Api::lastUri(), 'HEAD');
+
+            $this->expenses_headers = [];
+
+            if ($response !== null) {
+                $this->expenses_headers = $response;
+                $this->expenses_headers_populated = true;
+            }
+        }
+
+        return $this->expenses_headers;
     }
 
     /**
@@ -100,5 +132,22 @@ abstract class Child
         }
 
         return $this->total_current_year;
+    }
+
+    /**
+     * Return the years data for each child, first year to now, this is useful for
+     * select menus
+     *
+     * @return array
+     */
+    public function years(): array
+    {
+        $years = [];
+
+        for ($i = intval(date('Y')); $i >= $this->first_year; $i--) {
+            $years[] = $i;
+        }
+
+        return $years;
     }
 }
