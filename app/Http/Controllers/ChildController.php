@@ -217,6 +217,7 @@ class ChildController extends BaseController
         );
 
         $base_uri = $uri = $child_model->uri() . '/expenses?limit=' . $limit . '&offset=' . $offset;
+        $named_anchor = '#expenses-data';
         $assigned_filter_uris = [
             'category' => null,
             'subcategory' => null,
@@ -236,7 +237,7 @@ class ChildController extends BaseController
             foreach ($params as $param => $value) {
                 $uri .= '&' . $param . '=' . $value;
             }
-            $assigned_filter_uris['category'] = $uri;
+            $assigned_filter_uris['category'] = $uri . $named_anchor;
         }
         if ($subcategory_id !== null) {
             $params = [];
@@ -254,7 +255,7 @@ class ChildController extends BaseController
             foreach ($params as $param => $value) {
                 $uri .= '&' . $param . '=' . $value;
             }
-            $assigned_filter_uris['subcategory'] = $uri;
+            $assigned_filter_uris['subcategory'] = $uri . $named_anchor;
         }
         if ($year !== null) {
             $params = [];
@@ -269,7 +270,7 @@ class ChildController extends BaseController
             foreach ($params as $param => $value) {
                 $uri .= '&' . $param . '=' . $value;
             }
-            $assigned_filter_uris['year'] = $uri;
+            $assigned_filter_uris['year'] = $uri . $named_anchor;
         }
         if ($month !== null) {
             $params = [];
@@ -287,7 +288,7 @@ class ChildController extends BaseController
             foreach ($params as $param => $value) {
                 $uri .= '&' . $param . '=' . $value;
             }
-            $assigned_filter_uris['month'] = $uri;
+            $assigned_filter_uris['month'] = $uri . $named_anchor;
         }
 
         return view(
