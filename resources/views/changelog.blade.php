@@ -17,6 +17,22 @@
 
         <hr />
 
+        <h2>[v1.06.1] - xxth July 2019</h2>
+
+        <h3>Fixed</h3>
+
+        <ul>
+            <li>Filtering the form now jumps you down to the expenses data table rather than the top of the page.</li>
+            <li>Filtering the form does not respect the selected limit value.</li>
+        </ul>
+
+        <hr />
+        <p class="small text-muted text-right">
+            <strong>Files changed:</strong> xx -
+            <strong>Lines added:</strong> xxx -
+            <strong>Lines removed:</strong> xxx
+        </p>
+
         <h2>[v1.06.0] - 5th July 2019</h2>
 
         <h3>Added</h3>
