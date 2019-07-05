@@ -55,16 +55,15 @@
 
 @if ($expenses !== null)
 <div class="row mt-4">
-    <div class="col-12">
+    <div class="col-12" id="expenses-table">
         <h4>All expenses for {{ $child_details['short_name'] }}</h4>
 
         <p>The table below lists all the expenses assigned to {{ $child_details['short_name'] }},
-            filter the table using the options below or by clicking on a category or subcategory in the
-            table.</p>
+            filter and search the data using the options below.</p>
     </div>
 </div>
 <div class="row">
-    <div class="col-12" id="expenses-data">
+    <div class="col-12">
         <form method="post" action="{{ $child_details['uri'] . '/expenses' }}" class="filter-options">
             <div class="form-row">
                 <div class="col-6 col-md-4 col-lg-4 col-xl-2 mb-2">

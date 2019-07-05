@@ -121,27 +121,28 @@ class ChildController extends BaseController
     {
         $params = request()->all();
 
-        $get_params = [
-            'child' => ltrim($params['child'], '/')
-        ];
+        $filter_params = [];
 
         if (array_key_exists('category', $params) === true && strlen(trim($params['category'])) === 10) {
-            $get_params['category'] = trim($params['category']);
+            $filter_params['category'] = trim($params['category']);
         }
-
         if (array_key_exists('subcategory', $params) === true && strlen(trim($params['subcategory'])) === 10) {
-            $get_params['subcategory'] = trim($params['subcategory']);
+            $filter_params['subcategory'] = trim($params['subcategory']);
         }
-
         if (array_key_exists('year', $params) === true && intval($params['year']) !== 0) {
-            $get_params['year'] = intval($params['year']);
+            $filter_params['year'] = intval($params['year']);
         }
-
         if (array_key_exists('month', $params) === true && intval($params['month']) !== 0) {
-            $get_params['month'] = intval($params['month']);
+            $filter_params['month'] = intval($params['month']);
         }
 
-        return redirect()->action('ChildController@expenses', $get_params);
+        $url = $params['child'] . '/expenses?offset=' . $params['offset'] . '&limit=' . $params['limit'];
+        foreach ($filter_params as $param => $value) {
+            $url .= '&' . $param . '=' . $value;
+        }
+        $url .= '#expenses-table';
+
+        return redirect()->to($url, 303);
     }
 
     /**
@@ -217,7 +218,7 @@ class ChildController extends BaseController
         );
 
         $base_uri = $uri = $child_model->uri() . '/expenses?limit=' . $limit . '&offset=' . $offset;
-        $named_anchor = '#expenses-data';
+        $named_anchor = '#expenses-table';
         $assigned_filter_uris = [
             'category' => null,
             'subcategory' => null,
