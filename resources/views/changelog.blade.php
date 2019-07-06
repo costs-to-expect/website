@@ -24,6 +24,8 @@
         <ul>
             <li>The URLs for the category details pages have changed, now referenced by category id, not the name; we may
                 need to change the names in the future.</li>
+            <li>Link colour darkened.</li>
+            <li>The number of expenses count is now always the total, not for the section.</li>
             <li>The site now runs on PHP 7.3.</li>
         </ul>
 
