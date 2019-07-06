@@ -24,9 +24,9 @@
                     <p class="data">&pound;{{ number_format((float) $total, 2) }}</p>
                 </div>
                 <div class="col-md-6 col-12">
-                    <h5>Number of expenses in category</h5>
-                    <p class="sub-heading text-muted d-none d-md-block">How many {{ $active_category_name }} purchases have we made?</p>
-                    <p class="data">{{ $number_of_expenses }}</p>
+                    <h5>Number of expenses</h5>
+                    <p class="sub-heading text-muted d-none d-md-block">How many purchases have we made?</p>
+                    <p class="data">{{ $total_number_of_expenses }} <small><a href="{{ $child_details['uri'] }}/expenses">(View all)</a></small></p>
                     @if ($largest_essential_expense !== null)
                         <h5>Top Essential expense</h5>
                         <p class="sub-heading text-muted d-none d-md-block">The grandest expense?</p>
@@ -67,7 +67,7 @@
         <div class="media summary-block shadow-sm h-100 @if($category_id === $active_category_id) active @endif">
             <img src="{{ asset('images/theme/expenses.png') }}" class="mr-2" width="48" height="48" alt="icon">
             <div class="media-body">
-                <h4 class="mt-0"><a href="{{ $active . '/expenses/category/' . $category['uri-slug'] }}">{{ $category['name'] }}</a></h4>
+                <h4 class="mt-0"><a href="{{ $active . '/expenses/category/' . $category['id'] }}">{{ $category['name'] }}</a></h4>
                 <h6 class="mt-0">{{ $category['description'] }}</h6>
                 <p class="total mb-0">&pound;{{ number_format((float) $category['total'], 2) }}</p>
             </div>
@@ -99,7 +99,7 @@
             <div class="media summary-block shadow-sm h-100">
                 <img src="{{ asset('images/theme/expenses.png') }}" class="mr-2" width="48" height="48" alt="icon">
                 <div class="media-body">
-                    <h4 class="mt-0"><a href="{{ $active . '/expenses/category/' . $active_category_uri_slug . '/subcategory/' . $subcategory['id'] }}">{{ $subcategory['name'] }}</a></h4>
+                    <h4 class="mt-0"><a href="{{ $active . '/expenses/category/' . $active_category_id . '/subcategory/' . $subcategory['id'] }}">{{ $subcategory['name'] }}</a></h4>
                     <h6 class="mt-0">{{ $subcategory['description'] }}</h6>
                     <p class="total mb-0">&pound;{{ number_format((float) $subcategory['total'], 2) }}</p>
                 </div>
@@ -126,7 +126,7 @@
 <div class="row mt-4">
     <div class="col-12">
         <h4>The 25 most recent {{ $active_category_name }} expenses for
-            {{ $child_details['short_name'] }} <small> - <a href="{{ $child_details['uri'] . '/expenses' }}">(View all)</a></small></h4>
+            {{ $child_details['short_name'] }} <small> - <a href="{{ $child_details['uri'] . '/expenses?category=' . $active_category_id }}">(View all {{ $active_category_name }} expenses)</a></small></h4>
 
         <p>The table below lists the last 25 expenses we have logged for
             {{ $child_details['short_name'] }} in the {{ $active_category_name }} category,

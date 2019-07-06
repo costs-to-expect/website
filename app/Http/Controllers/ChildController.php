@@ -69,7 +69,9 @@ class ChildController extends BaseController
 
         $categories_summary_data = $overview_model->categoriesSummary($child_model->id());
         $categories_summary = $categories_summary_data['summary'];
-        $total = $categories_summary_data['total'];
+
+        $total = $child_model->total();
+        $total_number_of_expenses = $child_model->totalNumberOfExpenses();
 
         $annual_summary = $annual_model->annualSummary($child_model->id());
 
@@ -108,7 +110,9 @@ class ChildController extends BaseController
 
                 'recent_expenses' => $recent_expenses,
                 'number_of_expenses' => $number_of_expenses,
+
                 'total' => $total,
+                'total_number_of_expenses' => $total_number_of_expenses,
                 
                 'largest_essential_expense' => $largest_essential_expense,
                 'largest_non_essential_expense' => $largest_non_essential_expense,
@@ -121,27 +125,28 @@ class ChildController extends BaseController
     {
         $params = request()->all();
 
-        $get_params = [
-            'child' => ltrim($params['child'], '/')
-        ];
+        $filter_params = [];
 
         if (array_key_exists('category', $params) === true && strlen(trim($params['category'])) === 10) {
-            $get_params['category'] = trim($params['category']);
+            $filter_params['category'] = trim($params['category']);
         }
-
         if (array_key_exists('subcategory', $params) === true && strlen(trim($params['subcategory'])) === 10) {
-            $get_params['subcategory'] = trim($params['subcategory']);
+            $filter_params['subcategory'] = trim($params['subcategory']);
         }
-
         if (array_key_exists('year', $params) === true && intval($params['year']) !== 0) {
-            $get_params['year'] = intval($params['year']);
+            $filter_params['year'] = intval($params['year']);
         }
-
         if (array_key_exists('month', $params) === true && intval($params['month']) !== 0) {
-            $get_params['month'] = intval($params['month']);
+            $filter_params['month'] = intval($params['month']);
         }
 
-        return redirect()->action('ChildController@expenses', $get_params);
+        $url = $params['child'] . '/expenses?offset=' . $params['offset'] . '&limit=' . $params['limit'];
+        foreach ($filter_params as $param => $value) {
+            $url .= '&' . $param . '=' . $value;
+        }
+        $url .= '#expenses-table';
+
+        return redirect()->to($url, 303);
     }
 
     /**
@@ -217,7 +222,7 @@ class ChildController extends BaseController
         );
 
         $base_uri = $uri = $child_model->uri() . '/expenses?limit=' . $limit . '&offset=' . $offset;
-        $named_anchor = '#expenses-data';
+        $named_anchor = '#expenses-table';
         $assigned_filter_uris = [
             'category' => null,
             'subcategory' => null,
@@ -312,9 +317,9 @@ class ChildController extends BaseController
                 'api_requests' => Api::calledURIs(),
 
                 'child_details' => $child_model->details(),
-                'number_of_expenses' => $total_number_of_expenses,
 
                 'total' => $total['total'],
+                'total_number_of_expenses' => $total_number_of_expenses,
 
                 'expenses' => $expenses_data['expenses'],
 
@@ -373,11 +378,13 @@ class ChildController extends BaseController
         $expense_model = new Expense();
 
         $child_model = $this->childModel($child);
-        $category_model = Category::modelByUriSlug($category_uri);
+        $category_model = Category::modelById($category_uri);
 
         $categories_summary_data = $overview_model->categoriesSummary($child_model->id());
         $categories_summary = $categories_summary_data['summary'];
-        $total = $categories_summary_data['total'];
+
+        $total = $child_model->total();
+        $total_number_of_expenses = $child_model->totalNumberOfExpenses();
 
         $subcategories_summary = $category_model->subcategorySummary($child_model->id(), $category_model->id());
 
@@ -420,7 +427,9 @@ class ChildController extends BaseController
 
                 'recent_expenses' => $recent_expenses,
                 'number_of_expenses' => $number_of_expenses,
-                'total' => $total,
+
+                'total' => $total['total'],
+                'total_number_of_expenses' => $total_number_of_expenses,
 
                 'largest_essential_expense' => $largest_essential_expense,
                 'largest_non_essential_expense' => $largest_non_essential_expense,
@@ -446,12 +455,14 @@ class ChildController extends BaseController
         $overview_model = new Overview();
         $expense_model = new Expense();
         $child_model = $this->childModel($child);
-        $category_model = Category::modelByUriSlug($category_uri);
+        $category_model = Category::modelById($category_uri);
         $subcategory_model = new Subcategory();
 
         $categories_summary_data = $overview_model->categoriesSummary($child_model->id());
         $categories_summary = $categories_summary_data['summary'];
-        $total = $categories_summary_data['total'];
+
+        $total = $child_model->total();
+        $total_number_of_expenses = $child_model->totalNumberOfExpenses();
 
         $subcategories_summary = $category_model->subcategorySummary($child_model->id(), $category_model->id());
 
@@ -508,7 +519,9 @@ class ChildController extends BaseController
 
                 'recent_expenses' => $recent_expenses,
                 'number_of_expenses' => $number_of_expenses,
-                'total' => $total,
+
+                'total' => $total['total'],
+                'total_number_of_expenses' => $total_number_of_expenses,
 
                 'largest_essential_expense' => $largest_essential_expense,
                 'largest_non_essential_expense' => $largest_non_essential_expense,
@@ -535,6 +548,9 @@ class ChildController extends BaseController
         $annual_model = new Annual();
 
         $child_model = $this->childModel($child);
+
+        $total = $child_model->total();
+        $total_number_of_expenses = $child_model->totalNumberOfExpenses();
 
         $annual_summary = $annual_model->annualSummary($child_model->id(), false);
         $monthly_summary = $annual_model->monthlySummary($child_model->id(), (int) $year);
@@ -579,7 +595,9 @@ class ChildController extends BaseController
 
                 'recent_expenses' => $recent_expenses,
                 'number_of_expenses' => $number_of_expenses,
-                'total' => $child_model->total()['total'],
+
+                'total' => $total['total'],
+                'total_number_of_expenses' => $total_number_of_expenses,
 
                 'largest_essential_expense' => $largest_essential_expense,
                 'largest_non_essential_expense' => $largest_non_essential_expense,
@@ -607,6 +625,9 @@ class ChildController extends BaseController
         $annual_model = new Annual();
 
         $child_model = $this->childModel($child);
+
+        $total = $child_model->total();
+        $total_number_of_expenses = $child_model->totalNumberOfExpenses();
 
         $annual_summary = $annual_model->annualSummary($child_model->id(), false);
         $monthly_summary = $annual_model->monthlySummary($child_model->id(), (int) $year);
@@ -656,7 +677,9 @@ class ChildController extends BaseController
 
                 'recent_expenses' => $recent_expenses,
                 'number_of_expenses' => $number_of_expenses,
-                'total' => $child_model->total()['total'],
+
+                'total' => $total['total'],
+                'total_number_of_expenses' => $total_number_of_expenses,
 
                 'largest_essential_expense' => $largest_essential_expense,
                 'largest_non_essential_expense' => $largest_non_essential_expense,

@@ -17,6 +17,33 @@
 
         <hr />
 
+        <h2>[v1.06.1] - 6th July 2019</h2>
+
+        <h3>Changed</h3>
+
+        <ul>
+            <li>The URLs for the category details pages have changed, now referenced by category id, not the name; we may
+                need to change the names in the future.</li>
+            <li>Link colour darkened.</li>
+            <li>The number of expenses count is now always the total, not for the section.</li>
+            <li>The view all expenses links have been updated to filter the full expenses list based on the current context.</li>
+            <li>The site now runs on PHP 7.3.</li>
+        </ul>
+
+        <h3>Fixed</h3>
+
+        <ul>
+            <li>Filtering the form now jumps you down to the expenses data table rather than the top of the page.</li>
+            <li>Filtering the form does not respect the selected limit value.</li>
+        </ul>
+
+        <hr />
+        <p class="small text-muted text-right">
+            <strong>Files changed:</strong> 16 -
+            <strong>Lines added:</strong> 277 -
+            <strong>Lines removed:</strong> 215
+        </p>
+
         <h2>[v1.06.0] - 5th July 2019</h2>
 
         <h3>Added</h3>

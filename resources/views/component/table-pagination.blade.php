@@ -2,7 +2,7 @@
     <div class="row">
         <div class="pages col-9 col-sm-10 col-xl-11">
             @if ($offset > 0)
-            <a href="{{ $uri['base'] }}?offset={{ $offset - $limit }}&limit={{ $limit }}{{ $uri['parameters'] }}#expenses-data" class="btn btn-primary"><</a>
+            <a href="{{ $uri['base'] }}?offset={{ $offset - $limit }}&limit={{ $limit }}{{ $uri['parameters'] }}#expenses-table" class="btn btn-primary"><</a>
             @else
             <a class="btn btn-primary disabled"><</a>
             @endif
@@ -18,7 +18,7 @@
                 {{ $total }}
             </a>
             @if ($total > ($offset + $limit))
-            <a href="{{ $uri['base'] }}?offset={{ $offset + $limit }}&limit={{ $limit }}{{ $uri['parameters'] }}#expenses-data" class="btn btn-primary">></a>
+            <a href="{{ $uri['base'] }}?offset={{ $offset + $limit }}&limit={{ $limit }}{{ $uri['parameters'] }}#expenses-table" class="btn btn-primary">></a>
             @else
             <a class="btn btn-primary disabled">></a>
             @endif

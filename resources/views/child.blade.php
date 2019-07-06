@@ -26,7 +26,7 @@
                 <div class="col-md-6 col-12">
                     <h5>Number of expenses</h5>
                     <p class="sub-heading text-muted d-none d-md-block">How many purchases have we made?</p>
-                    <p class="data">{{ $number_of_expenses }} <small><a href="{{ $child_details['uri'] }}/expenses">(View all)</a></small></p>
+                    <p class="data">{{ $total_number_of_expenses }} <small><a href="{{ $child_details['uri'] }}/expenses">(View all)</a></small></p>
                     @if ($largest_essential_expense !== null)
                         <h5>Top Essential expense</h5>
                         <p class="sub-heading text-muted d-none d-md-block">The grandest expense?</p>
@@ -67,7 +67,7 @@
         <div class="media summary-block shadow-sm h-100">
             <img src="{{ asset('images/theme/expenses.png') }}" class="mr-2" width="48" height="48" alt="icon">
             <div class="media-body">
-                <h4 class="mt-0"><a href="{{ $active . '/expenses/category/' . $category['uri-slug'] }}">{{ $category['name'] }}</a></h4>
+                <h4 class="mt-0"><a href="{{ $active . '/expenses/category/' . $category['id'] }}">{{ $category['name'] }}</a></h4>
                 <h6 class="mt-0">{{ $category['description'] }}</h6>
                 <p class="total mb-0">&pound;{{ number_format((float) $category['total'], 2) }}</p>
             </div>

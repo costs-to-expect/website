@@ -24,9 +24,9 @@
                     <p class="data">&pound;{{ number_format((float) $total, 2) }}</p>
                 </div>
                 <div class="col-md-6 col-12">
-                    <h5>Number of expenses in {{ $active_month_name . ' '  . $active_year }}</h5>
-                    <p class="sub-heading text-muted d-none d-md-block">How many purchases did we make in the month?</p>
-                    <p class="data">{{ $number_of_expenses }}</p>
+                    <h5>Number of expenses</h5>
+                    <p class="sub-heading text-muted d-none d-md-block">How many purchases have we made?</p>
+                    <p class="data">{{ $total_number_of_expenses }} <small><a href="{{ $child_details['uri'] }}/expenses">(View all)</a></small></p>
                     @if ($largest_essential_expense !== null)
                         <h5>Top Essential expense</h5>
                         <p class="sub-heading text-muted d-none d-md-block">The grandest expense?</p>
@@ -115,9 +115,9 @@
 <div class="row mt-4">
     <div class="col-12">
         <h4>The 25 most recent expenses for {{ $child_details['short_name'] }} in
-            {{ $active_month_name . ' ' . $active_year }} <small> - <a href="{{ $child_details['uri'] . '/expenses' }}">(View all)</a></small></h4>
+            {{ $active_month_name . ' ' . $active_year }} <small> - <a href="{{ $child_details['uri'] . '/expenses?year=' . $active_year . '&month=' . $active_month }}">(View all {{ $active_month_name . ' ' . $active_year }} expenses )</a></small></h4>
 
-        <p>The table below lists the last 25 expenses we have logged for {{ $child_details['short_name'] }} in {{ $active_year }},
+        <p>The table below lists the last 25 expenses we have logged for {{ $child_details['short_name'] }} in {{ $active_year . '/' . $active_month_name }},
             to see more select any summary count, year or month.</p>
     </div>
 </div>
