@@ -67,7 +67,7 @@
         <div class="media summary-block shadow-sm h-100 @if($category_id === $active_category_id) active @endif">
             <img src="{{ asset('images/theme/expenses.png') }}" class="mr-2" width="48" height="48" alt="icon">
             <div class="media-body">
-                <h4 class="mt-0"><a href="{{ $active . '/expenses/category/' . $category['uri-slug'] }}">{{ $category['name'] }}</a></h4>
+                <h4 class="mt-0"><a href="{{ $active . '/expenses/category/' . $category['id'] }}">{{ $category['name'] }}</a></h4>
                 <h6 class="mt-0">{{ $category['description'] }}</h6>
                 <p class="total mb-0">&pound;{{ number_format((float) $category['total'], 2) }}</p>
             </div>
@@ -99,7 +99,7 @@
             <div class="media summary-block shadow-sm h-100">
                 <img src="{{ asset('images/theme/expenses.png') }}" class="mr-2" width="48" height="48" alt="icon">
                 <div class="media-body">
-                    <h4 class="mt-0"><a href="{{ $active . '/expenses/category/' . $active_category_uri_slug . '/subcategory/' . $subcategory['id'] }}">{{ $subcategory['name'] }}</a></h4>
+                    <h4 class="mt-0"><a href="{{ $active . '/expenses/category/' . $active_category_id . '/subcategory/' . $subcategory['id'] }}">{{ $subcategory['name'] }}</a></h4>
                     <h6 class="mt-0">{{ $subcategory['description'] }}</h6>
                     <p class="total mb-0">&pound;{{ number_format((float) $subcategory['total'], 2) }}</p>
                 </div>

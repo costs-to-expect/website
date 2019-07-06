@@ -374,7 +374,7 @@ class ChildController extends BaseController
         $expense_model = new Expense();
 
         $child_model = $this->childModel($child);
-        $category_model = Category::modelByUriSlug($category_uri);
+        $category_model = Category::modelById($category_uri);
 
         $categories_summary_data = $overview_model->categoriesSummary($child_model->id());
         $categories_summary = $categories_summary_data['summary'];
@@ -447,7 +447,7 @@ class ChildController extends BaseController
         $overview_model = new Overview();
         $expense_model = new Expense();
         $child_model = $this->childModel($child);
-        $category_model = Category::modelByUriSlug($category_uri);
+        $category_model = Category::modelById($category_uri);
         $subcategory_model = new Subcategory();
 
         $categories_summary_data = $overview_model->categoriesSummary($child_model->id());

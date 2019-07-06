@@ -19,6 +19,13 @@
 
         <h2>[v1.06.1] - xxth July 2019</h2>
 
+        <h3>Changed</h3>
+
+        <ul>
+            <li>The URLs for the category details pages have changed, now referenced by category id, not the name; we may
+                need to change the names in the future.</li>
+        </ul>
+
         <h3>Fixed</h3>
 
         <ul>
