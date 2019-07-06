@@ -24,6 +24,7 @@
         <ul>
             <li>The URLs for the category details pages have changed, now referenced by category id, not the name; we may
                 need to change the names in the future.</li>
+            <li>The site now runs on PHP 7.3.</li>
         </ul>
 
         <h3>Fixed</h3>
