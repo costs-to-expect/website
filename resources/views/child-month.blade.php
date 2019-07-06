@@ -115,9 +115,9 @@
 <div class="row mt-4">
     <div class="col-12">
         <h4>The 25 most recent expenses for {{ $child_details['short_name'] }} in
-            {{ $active_month_name . ' ' . $active_year }} <small> - <a href="{{ $child_details['uri'] . '/expenses' }}">(View all)</a></small></h4>
+            {{ $active_month_name . ' ' . $active_year }} <small> - <a href="{{ $child_details['uri'] . '/expenses?year=' . $active_year . '&month=' . $active_month }}">(View all {{ $active_month_name . ' ' . $active_year }} expenses )</a></small></h4>
 
-        <p>The table below lists the last 25 expenses we have logged for {{ $child_details['short_name'] }} in {{ $active_year }},
+        <p>The table below lists the last 25 expenses we have logged for {{ $child_details['short_name'] }} in {{ $active_year . '/' . $active_month_name }},
             to see more select any summary count, year or month.</p>
     </div>
 </div>

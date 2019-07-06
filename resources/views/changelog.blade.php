@@ -17,7 +17,7 @@
 
         <hr />
 
-        <h2>[v1.06.1] - xxth July 2019</h2>
+        <h2>[v1.06.1] - 6th July 2019</h2>
 
         <h3>Changed</h3>
 
@@ -26,6 +26,7 @@
                 need to change the names in the future.</li>
             <li>Link colour darkened.</li>
             <li>The number of expenses count is now always the total, not for the section.</li>
+            <li>The view all expenses links have been updated to filter the full expenses list based on the current context.</li>
             <li>The site now runs on PHP 7.3.</li>
         </ul>
 
