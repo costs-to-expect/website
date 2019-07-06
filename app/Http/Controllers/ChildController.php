@@ -111,7 +111,7 @@ class ChildController extends BaseController
                 'recent_expenses' => $recent_expenses,
                 'number_of_expenses' => $number_of_expenses,
 
-                'total' => $total,
+                'total' => $total['total'],
                 'total_number_of_expenses' => $total_number_of_expenses,
                 
                 'largest_essential_expense' => $largest_essential_expense,
