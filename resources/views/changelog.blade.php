@@ -17,6 +17,27 @@
 
         <hr />
 
+        <h2>[v1.06.2] - xx July 2019</h2>
+
+        <h3>Changed</h3>
+
+        <ul>
+            <li>Modified the Docker setup, moved composer into Docker.</li>
+        </ul>
+
+        <h3>Fixed</h3>
+
+        <ul>
+            <li>Total expenses count on child detail page.</li>
+        </ul>
+
+        <hr />
+        <p class="small text-muted text-right">
+            <strong>Files changed:</strong> xx -
+            <strong>Lines added:</strong> xx -
+            <strong>Lines removed:</strong> xx
+        </p>
+
         <h2>[v1.06.1] - 6th July 2019</h2>
 
         <h3>Changed</h3>
