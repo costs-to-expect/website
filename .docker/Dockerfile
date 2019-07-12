@@ -1,6 +1,6 @@
 FROM php:7.3-apache
 
-COPY . /.docker/website/php
+COPY . /var/www/html
 COPY .docker/vhost.conf /etc/apache2/sites-available/000-default.conf
 
 RUN docker-php-ext-install bcmath
@@ -13,7 +13,7 @@ RUN curl -o /tmp/composer-setup.php https://getcomposer.org/installer \
     && php /tmp/composer-setup.php --no-ansi --install-dir=/usr/local/bin --filename=composer \
     && rm -f /tmp/composer-setup.*
 
-RUN chown -R www-data:www-data /.docker/website/php \
+RUN chown -R www-data:www-data /var/www/html \
     && a2enmod rewrite
 
-WORKDIR /.docker/website/php
+WORKDIR /var/www/html

@@ -8,5 +8,5 @@ services:
         ports:
             - 80:80
         volumes:
-            - .:/.docker/website/php
-            - /.docker/website/php/vendor
+            - .:/var/www/html
+            - /var/www/html/vendor
