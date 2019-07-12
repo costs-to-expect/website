@@ -22,13 +22,15 @@
         <h3>Changed</h3>
 
         <ul>
-            <li>Modified the Docker setup, moved composer into Docker.</li>
+            <li>Modified the Docker setup, moved composer into Docker and added Xdebug for local development.</li>
+            <li>Icons in summary counts are clickable.</li>
         </ul>
 
         <h3>Fixed</h3>
 
         <ul>
             <li>Total expenses count on child detail page.</li>
+            <li>URLs on Niall's page.</li>
         </ul>
 
         <hr />

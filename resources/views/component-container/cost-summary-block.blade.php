@@ -7,7 +7,8 @@
             'heading' => $heading,
             'subheading' => $subheading,
             'description' => $description,
-            'value' => $value
+            'value' => $value,
+            'active' => $active
         ]
     )
 </div>

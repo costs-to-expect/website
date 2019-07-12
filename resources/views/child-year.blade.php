@@ -62,16 +62,19 @@
 </div>
 <div class="row">
     @foreach ($annual_summary as $year)
-    <div class="col-12 col-sm-6 col-md-6 col-lg-4" style="margin-bottom: 1rem;">
-        <div class="media summary-block shadow-sm h-100 @if($active_year == $year['year']) active @endif">
-            <img src="{{ asset('images/theme/expenses.png') }}" class="mr-2" width="48" height="48" alt="icon">
-            <div class="media-body">
-                <h4 class="mt-0"><a href="/jack/expenses/year/{{ $year['year'] }}">{{ $year['year'] }}</a></h4>
-                <h6 class="mt-0">All the expenses for {{ $child_details['short_name'] }} in {{ $year['year'] }}</h6>
-                <p class="total mb-0">&pound;{{ number_format((float) $year['total'], 2) }}</p>
-            </div>
-        </div>
-    </div>
+        @include(
+            'component-container.cost-summary-block',
+            [
+                'icon' => 'expenses.png',
+                'uri' => '/jack/expenses/year/' . $year['year'],
+                'heading' => $year['year'],
+                'subheading' => 'Summary of all expenses for ' . $child_details['short_name'] .
+                    ' in ' . $year['year'],
+                'description' => null,
+                'value' => $year['total'],
+                'active' => ($active_year == $year['year'])
+            ]
+        )
     @endforeach
 </div>
 <div class="row">
@@ -91,17 +94,19 @@
 </div>
 <div class="row">
     @foreach ($monthly_summary as $month)
-    <div class="col-12 col-sm-6 col-md-6 col-lg-4" style="margin-bottom: 1rem;">
-        <div class="media summary-block shadow-sm h-100">
-            <img src="{{ asset('images/theme/expenses.png') }}" class="mr-2" width="48" height="48" alt="icon">
-            <div class="media-body">
-                <h4 class="mt-0"><a href="/jack/expenses/year/{{ $active_year }}/month/{{ $month['id'] }}">{{ $month['month'] }}</a></h4>
-                <h6 class="mt-0">All the expenses for {{ $child_details['short_name'] }}
-                    in {{ $month['month'] . ' ' . $active_year }}</h6>
-                <p class="total mb-0">&pound;{{ number_format((float) $month['total'], 2) }}</p>
-            </div>
-        </div>
-    </div>
+        @include(
+            'component-container.cost-summary-block',
+            [
+                'icon' => 'expenses.png',
+                'uri' => '/jack/expenses/year/' . $active_year . '/month/' . $month['id'],
+                'heading' => $month['month'] . ' ' . $active_year,
+                'subheading' => 'Summary of all expenses for ' . $child_details['short_name'] .
+                    ' in ' . $month['month'] . ' ' . $active_year,
+                'description' => null,
+                'value' => $month['total'],
+                'active' => false
+            ]
+        )
     @endforeach
 </div>
 <div class="row">

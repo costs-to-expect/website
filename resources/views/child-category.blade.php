@@ -63,16 +63,18 @@
 </div>
 <div class="row">
     @foreach ($categories_summary as $category_id => $category)
-    <div class="col-12 col-sm-6 col-md-6 col-lg-4" style="margin-bottom: 1rem;">
-        <div class="media summary-block shadow-sm h-100 @if($category_id === $active_category_id) active @endif">
-            <img src="{{ asset('images/theme/expenses.png') }}" class="mr-2" width="48" height="48" alt="icon">
-            <div class="media-body">
-                <h4 class="mt-0"><a href="{{ $active . '/expenses/category/' . $category['id'] }}">{{ $category['name'] }}</a></h4>
-                <h6 class="mt-0">{{ $category['description'] }}</h6>
-                <p class="total mb-0">&pound;{{ number_format((float) $category['total'], 2) }}</p>
-            </div>
-        </div>
-    </div>
+        @include(
+            'component-container.cost-summary-block',
+            [
+                'icon' => 'expenses.png',
+                'uri' => $active . '/expenses/category/' . $category['id'],
+                'heading' => $category['name'],
+                'subheading' => $category['description'],
+                'description' => null,
+                'value' => $category['total'],
+                'active' => ($category_id === $active_category_id)
+            ]
+        )
     @endforeach
 </div>
 <div class="row">
@@ -95,16 +97,18 @@
 <div class="row">
     @if (count($subcategories_summary) > 0)
         @foreach ($subcategories_summary as $subcategory)
-        <div class="col-12 col-sm-6 col-md-6 col-lg-4" style="margin-bottom: 1rem;">
-            <div class="media summary-block shadow-sm h-100">
-                <img src="{{ asset('images/theme/expenses.png') }}" class="mr-2" width="48" height="48" alt="icon">
-                <div class="media-body">
-                    <h4 class="mt-0"><a href="{{ $active . '/expenses/category/' . $active_category_id . '/subcategory/' . $subcategory['id'] }}">{{ $subcategory['name'] }}</a></h4>
-                    <h6 class="mt-0">{{ $subcategory['description'] }}</h6>
-                    <p class="total mb-0">&pound;{{ number_format((float) $subcategory['total'], 2) }}</p>
-                </div>
-            </div>
-        </div>
+            @include(
+                'component-container.cost-summary-block',
+                [
+                    'icon' => 'expenses.png',
+                    'uri' => $active . '/expenses/category/' . $active_category_id . '/subcategory/' . $subcategory['id'],
+                    'heading' => $subcategory['name'],
+                    'subheading' => $subcategory['description'] . ' expenses',
+                    'description' => null,
+                    'value' => $subcategory['total'],
+                    'active' => false
+                ]
+            )
         @endforeach
     @else
     <div class="col-12">
