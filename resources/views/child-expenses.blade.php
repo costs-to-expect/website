@@ -72,82 +72,67 @@
             </div>
         </form>
 
-        <div class="p-1 assigned-filters">
-            @if ($filters['category']['set'] !== null)
-                <div class="assigned-filter"><a href="{{ $assigned_filter_uris['category'] }}">{{ $filters['category']['values'][$filters['category']['set']]['name'] }}<span class="badge badge-light">&times;</span></a></div>
-            @endif
-            @if ($filters['subcategory']['set'] !== null)
-                <div class="assigned-filter"><a href="{{ $assigned_filter_uris['subcategory'] }}">{{ $filters['subcategory']['values'][$filters['subcategory']['set']]['name'] }}<span class="badge badge-light">&times;</span></a></div>
-            @endif
-            @if ($filters['year']['set'] !== null)
-                <div class="assigned-filter"><a href="{{ $assigned_filter_uris['year'] }}">{{ $filters['year']['set'] }}<span class="badge badge-light">&times;</span></a></div>
-            @endif
-            @if ($filters['month']['set'] !== null)
-                <div class="assigned-filter"><a href="{{ $assigned_filter_uris['month'] }}">{{ $filters['month']['values'][$filters['month']['set']]['name'] }}<span class="badge badge-light">&times;</span></a></div>
-            @endif
-            <!--<div class="assigned-filter"><a href="">Search: "term" <span class="badge badge-light">&times;</span></a></div>-->
-        </div>
+        @include('component.assigned-filters', $filters)
 
         @if (count($expenses) > 0)
 
-        @include(
-            'laravel-view-helpers::pagination',
-            [
-                'offset' => $pagination['offset'],
-                'total' => $pagination['total'],
-                'limit' => $pagination['limit'],
-                'limit_options' => [
-                    50,
-                    100,
-                    250
-                ],
-                'uri' => [
-                    'base' => $pagination['uri']['base'],
-                    'parameters' => $pagination['uri']['parameters'],
-                    'anchor' => $pagination['uri']['anchor']
-                ],
-                'count_prefix' => 'Expenses',
-                'css_classes' => [
-                    'left' => ' col-9 col-sm-10 col-xl-11',
-                    'right' => ' col-3 col-sm-2 col-xl-1'
+            @include(
+                'laravel-view-helpers::pagination',
+                [
+                    'offset' => $pagination['offset'],
+                    'total' => $pagination['total'],
+                    'limit' => $pagination['limit'],
+                    'limit_options' => [
+                        50,
+                        100,
+                        250
+                    ],
+                    'uri' => [
+                        'base' => $pagination['uri']['base'],
+                        'parameters' => $pagination['uri']['parameters'],
+                        'anchor' => $pagination['uri']['anchor']
+                    ],
+                    'count_prefix' => 'Expenses',
+                    'css_classes' => [
+                        'left' => ' col-9 col-sm-10 col-xl-11',
+                        'right' => ' col-3 col-sm-2 col-xl-1'
+                    ]
                 ]
-            ]
-        )
+            )
 
-        <div class="p-3 shadow-sm white-container">
-            <table class="table table-borderless table-hover">
-                <caption>All expenses for {{ $child_details['name'] }}</caption>
-                <thead>
-                    <tr>
-                        <th scope="col">Description</th>
-                        <th scope="col">Date</th>
-                        <th scope="col" class="d-none d-md-table-cell">Category</th>
-                        <th scope="col" class="d-none d-md-table-cell">Subcategory</th>
-                        <th scope="col" class="d-none d-xl-table-cell">Total</th>
-                        <th scope="col" class="d-none d-xl-table-cell">Allocation</th>
-                        <th scope="col">Amount</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($expenses as $expense)
-                    <tr class="top">
-                        <td>{{ $expense['description'] }}</td>
-                        <td><span class="d-none d-md-block">{{ date('j M Y', strtotime($expense['effective_date'])) }}</span><span class="d-table-cell d-sm-block d-md-none">{{ date('d/m/Y', strtotime($expense['effective_date'])) }}</span></td>
-                        <td class="d-none d-md-table-cell"><span class="category">{{ $expense['category']['name'] }}</span></td>
-                        <td class="d-none d-md-table-cell"><span class="category">{{ $expense['subcategory']['name'] }}</span></td>
-                        <td class="d-none d-xl-table-cell">£{{ $expense['total'] }}</td>
-                        <td class="d-none d-xl-table-cell">{{ $expense['percentage'] }}%</td>
-                        <td><strong>&pound;{{ $expense['actualised_total'] }}</strong></td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        </div>
-
+            <div class="p-3 shadow-sm white-container">
+                <table class="table table-borderless table-hover">
+                    <caption>All expenses for {{ $child_details['name'] }}</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Description</th>
+                            <th scope="col">Date</th>
+                            <th scope="col" class="d-none d-md-table-cell">Category</th>
+                            <th scope="col" class="d-none d-md-table-cell">Subcategory</th>
+                            <th scope="col" class="d-none d-xl-table-cell">Total</th>
+                            <th scope="col" class="d-none d-xl-table-cell">Allocation</th>
+                            <th scope="col">Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($expenses as $expense)
+                        <tr class="top">
+                            <td>{{ $expense['description'] }}</td>
+                            <td><span class="d-none d-md-block">{{ date('j M Y', strtotime($expense['effective_date'])) }}</span><span class="d-table-cell d-sm-block d-md-none">{{ date('d/m/Y', strtotime($expense['effective_date'])) }}</span></td>
+                            <td class="d-none d-md-table-cell"><span class="category">{{ $expense['category']['name'] }}</span></td>
+                            <td class="d-none d-md-table-cell"><span class="category">{{ $expense['subcategory']['name'] }}</span></td>
+                            <td class="d-none d-xl-table-cell">£{{ $expense['total'] }}</td>
+                            <td class="d-none d-xl-table-cell">{{ $expense['percentage'] }}%</td>
+                            <td><strong>&pound;{{ $expense['actualised_total'] }}</strong></td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
         @else
-        <div class="alert alert-info" role="alert">
-            There are no listed expenses for {{ $child_details['short_name'] }} with the set filters.
-        </div>
+            <div class="alert alert-info" role="alert">
+                There are no listed expenses for {{ $child_details['short_name'] }} with the set filters.
+            </div>
         @endif
     </div>
 </div>

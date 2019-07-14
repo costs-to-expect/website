@@ -23,6 +23,7 @@
 
         <ul>
             <li>Child details view component.</li>
+            <li>Assigned filters view component.</li>
         </ul>
 
         <h3>Changed</h3>
