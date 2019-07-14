@@ -25,52 +25,16 @@
 </div>
 <div class="row">
     <div class="col-12">
-        <form method="post" action="{{ $child_details['uri'] . '/expenses' }}" class="filter-options">
-            <div class="form-row">
-                <div class="col-6 col-md-4 col-lg-4 col-xl-2 mb-2">
-                    <select name="category" id="category-expense-filter" class="form-control">
-                        <option value="" @if($filters['category']['set'] === null)selected="selected"@endif>Category</option>
-                        @foreach ($filters['category']['values'] as $category)
-                            <option value="{{ $category['id'] }}" @if($filters['category']['set'] === $category['id'])selected="selected"@endif>{{ $category['name'] }}</option>
-                        @endforeach
-                    </select>
-                </div>
-                <div class="col-6 col-md-3 col-lg-4 col-xl-3 mb-2">
-                    <select name="subcategory" id="subcategory-expense-filter" class="form-control" @if(count($filters['subcategory']['values']) === 0)disabled="disabled"@endif>
-                        <option value="" @if($filters['subcategory']['set'] === null)selected="selected"@endif>Subcategory</option>
-                        @foreach ($filters['subcategory']['values'] as $subcategory)
-                            <option value="{{ $subcategory['id'] }}" @if($filters['subcategory']['set'] === $subcategory['id'])selected="selected"@endif>{{ $subcategory['name'] }}</option>
-                        @endforeach
-                    </select>
-                </div>
-                <div class="col-6 col-md-2 col-lg-2 col-xl-2 mb-2">
-                    <select name="year" class="form-control">
-                        <option value="" @if($filters['year']['set'] === null)selected="selected"@endif>Year</option>
-                        @foreach ($filters['year']['values'] as $year)
-                            <option value="{{ $year }}" @if($filters['year']['set'] == $year)selected="selected"@endif>{{ $year }}</option>
-                        @endforeach
-                    </select>
-                </div>
-                <div class="col-6 col-md-3 col-lg-2 col-xl-2 mb-2">
-                    <select name="month" class="form-control">
-                        <option value="" @if($filters['month']['set'] === null)selected="selected"@endif>Month</option>
-                        @foreach ($filters['month']['values'] as $month)
-                            <option value="{{ $month['id'] }}" @if($filters['month']['set'] == $month['id'])selected="selected"@endif>{{ $month['name'] }}</option>
-                        @endforeach
-                    </select>
-                </div>
-                <div class="col-9 col-md-6 col-lg-3 col-xl-2 mb-2">
-                    <input type="text" class="form-control" placeholder="Search... " disabled="disabled" />
-                </div>
-                <div class="col-3 col-md-6 col-lg-9 col-xl-1 mb-2">
-                    <input type="hidden" name="offset" value="{{ $pagination['offset'] }}" />
-                    <input type="hidden" name="limit" value="{{ $pagination['limit'] }}" />
-                    <input type="hidden" name="child" value="{{ $child_details['uri'] }}" />
-                    <button type="submit" class="btn btn-primary">Filter</button>
-                    {{ csrf_field() }}
-                </div>
-            </div>
-        </form>
+
+        @include(
+            'component.filters',
+            [
+                'uri' => $child_details['uri'] . '/expenses',
+                'filters' => $filters,
+                'pagination' => $pagination,
+                'child' => $child_details['uri']
+            ]
+        )
 
         @include('component.assigned-filters', $filters)
 

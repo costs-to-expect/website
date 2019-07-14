@@ -325,24 +325,32 @@ class ChildController extends BaseController
 
                 'filters' => [
                     'category' => [
+                        'name' => 'Category',
                         'values' => $category_model->allCategories(),
                         'set' => $category_id,
-                        'uri' => $assigned_filter_uris['category']
+                        'uri' => $assigned_filter_uris['category'],
+                        'classes' => 'col-6 col-md-4 col-lg-4 col-xl-2 mb-2'
                     ],
                     'subcategory' => [
+                        'name' => 'Subcategory',
                         'values' => $subcategories,
                         'set' => $subcategory_id,
-                        'uri' => $assigned_filter_uris['subcategory']
+                        'uri' => $assigned_filter_uris['subcategory'],
+                        'classes' => 'col-6 col-md-3 col-lg-4 col-xl-3 mb-2'
                     ],
                     'year' => [
+                        'name' => 'Year',
                         'values' => $years,
                         'set' => $year,
-                        'uri' => $assigned_filter_uris['year']
+                        'uri' => $assigned_filter_uris['year'],
+                        'classes' => 'col-6 col-md-2 col-lg-2 col-xl-2 mb-2'
                     ],
                     'month' => [
+                        'name' => 'Month',
                         'values' => $months,
                         'set' => $month,
-                        'uri' => $assigned_filter_uris['month']
+                        'uri' => $assigned_filter_uris['month'],
+                        'classes' => 'col-6 col-md-3 col-lg-2 col-xl-2 mb-2'
                     ]
                 ],
 
