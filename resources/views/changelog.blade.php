@@ -19,12 +19,20 @@
 
         <h2>[v1.06.2] - xx July 2019</h2>
 
+        <h3>Added</h3>
+
+        <ul>
+            <li>Child details view component.</li>
+        </ul>
+
         <h3>Changed</h3>
 
         <ul>
             <li>Modified the Docker setup, moved composer into Docker and added Xdebug for local development.</li>
             <li>Icons in summary counts are clickable.</li>
-            <li>Created a separate <a href="https://packagist.org/packages/deanblackborough/laravel-view-helpers">view helpers</a> library</li>
+            <li>I have created a separate <a href="https://packagist.org/packages/deanblackborough/laravel-view-helpers">view helpers</a> library.</li>
+            <li>I have tweaked link colours and table heading colours.</li>
+
         </ul>
 
         <h3>Fixed</h3>
