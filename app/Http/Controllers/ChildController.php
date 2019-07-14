@@ -347,7 +347,8 @@ class ChildController extends BaseController
                 'pagination' => [
                     'uri' => [
                         'base' => $child_model->uri() . '/expenses',
-                        'parameters' => $filter_parameters_string
+                        'parameters' => $filter_parameters,
+                        'anchor' => '#expenses-table'
                     ],
                     'total' => $expenses_data['total'],
                     'offset' => $expenses_data['offset'],

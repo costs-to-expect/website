@@ -4,24 +4,21 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "de6b59e4b3055dd52f5f20a18accf261",
+    "content-hash": "8d6798de84732a9de7d871e322e4a1d9",
     "packages": [
         {
             "name": "deanblackborough/laravel-view-helpers",
-            "version": "dev-master",
+            "version": "v1.00.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/deanblackborough/laravel-view-helpers.git",
-                "reference": "6694c468cf88b645309141f5f2bfcdbfaeaf6373"
+                "reference": "45c6f5735fa8a089423d96354b1fdeeab2445ee1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/deanblackborough/laravel-view-helpers/zipball/6694c468cf88b645309141f5f2bfcdbfaeaf6373",
-                "reference": "6694c468cf88b645309141f5f2bfcdbfaeaf6373",
+                "url": "https://api.github.com/repos/deanblackborough/laravel-view-helpers/zipball/45c6f5735fa8a089423d96354b1fdeeab2445ee1",
+                "reference": "45c6f5735fa8a089423d96354b1fdeeab2445ee1",
                 "shasum": ""
-            },
-            "require": {
-                "illuminate/support": "*"
             },
             "type": "library",
             "extra": {
@@ -46,8 +43,13 @@
                     "email": "dean@g3d-development.com"
                 }
             ],
-            "description": "Collection of general and bootstrap specific view helpers for use in laravel blades",
-            "time": "2019-07-13T15:51:57+00:00"
+            "description": "Collection of general and bootstrap specific view helpers for use in Laravel blade files",
+            "keywords": [
+                "blade view helpers",
+                "bootstrap",
+                "laravel"
+            ],
+            "time": "2019-07-13T23:46:08+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -4963,9 +4965,7 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "deanblackborough/laravel-view-helpers": 20
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

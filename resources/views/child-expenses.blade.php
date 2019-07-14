@@ -130,9 +130,8 @@
         @if (count($expenses) > 0)
 
         @include(
-            'component.table-pagination',
+            'laravel-view-helpers::pagination',
             [
-                'prefix' => 'Expenses',
                 'offset' => $pagination['offset'],
                 'total' => $pagination['total'],
                 'limit' => $pagination['limit'],
@@ -143,7 +142,13 @@
                 ],
                 'uri' => [
                     'base' => $pagination['uri']['base'],
-                    'parameters' => $pagination['uri']['parameters']
+                    'parameters' => $pagination['uri']['parameters'],
+                    'anchor' => $pagination['uri']['anchor']
+                ],
+                'count_prefix' => 'Expenses',
+                'css_classes' => [
+                    'left' => ' col-9 col-sm-10 col-xl-11',
+                    'right' => ' col-3 col-sm-2 col-xl-1'
                 ]
             ]
         )

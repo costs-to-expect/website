@@ -65,7 +65,7 @@
         <p>I will list the answers to any additional questions here.</p>
 
         <p>We will update this page as complexities arise, now that we have a second child we
-            have to think about transfer or ownership and shared expenses.</p>
+            have to think about how we are going to handle transfers of items and shared expenses.</p>
 
         <h3>Share of shopping?</h3>
 
