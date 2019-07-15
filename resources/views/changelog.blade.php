@@ -34,7 +34,7 @@
             <li>Icons in summary counts are clickable.</li>
             <li>I have created a separate <a href="https://packagist.org/packages/deanblackborough/laravel-view-helpers">view helpers</a> library.</li>
             <li>I have tweaked link colours and table heading colours.</li>
-
+            <li>Refactoring in preparation for new development.</li>
         </ul>
 
         <h3>Fixed</h3>

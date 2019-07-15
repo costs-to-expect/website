@@ -102,7 +102,6 @@ class ChildController extends BaseController
                 'annual_summary' => $annual_summary,
 
                 'child_overview' => $child_overview,
-
                 'child_details' => $child_model->details(),
 
                 'recent_expenses' => $recent_expenses,
@@ -164,6 +163,8 @@ class ChildController extends BaseController
         $year = request()->get('year');
         $month = request()->get('month');
 
+        $child_overview = $this->childOverview($child_model, $overview_model);
+
         $subcategories = [];
         if ($category_id !== null) {
             $selected_category_model = Category::modelById($category_id);
@@ -172,13 +173,6 @@ class ChildController extends BaseController
 
         $years = $child_model->years();
         $months = $overview_model->months();
-
-        $total = $child_model->total();
-        $total_number_of_expenses = $child_model->totalNumberOfExpenses();
-
-        $largest_essential_expense = $overview_model->largestEssentialExpense($child_model->id());
-        $largest_non_essential_expense = $overview_model->largestNonEssentialExpense($child_model->id());
-        $largest_hobby_interest_expense = $overview_model->largestHobbyInterestExpense($child_model->id());
 
         $filter_parameters = [];
         if ($category_id !== null) {
@@ -306,10 +300,8 @@ class ChildController extends BaseController
 
                 'api_requests' => Api::calledURIs(),
 
+                'child_overview' => $child_overview,
                 'child_details' => $child_model->details(),
-
-                'total' => $total['total'],
-                'total_number_of_expenses' => $total_number_of_expenses,
 
                 'expenses' => $expenses_data['expenses'],
 
@@ -355,11 +347,7 @@ class ChildController extends BaseController
                     'total' => $expenses_data['total'],
                     'offset' => $expenses_data['offset'],
                     'limit' => $expenses_data['limit']
-                ],
-
-                'largest_essential_expense' => $largest_essential_expense,
-                'largest_non_essential_expense' => $largest_non_essential_expense,
-                'largest_hobby_interest_expense' => $largest_hobby_interest_expense
+                ]
             ]
         );
     }
@@ -383,17 +371,12 @@ class ChildController extends BaseController
         $child_model = $this->childModel($child);
         $category_model = Category::modelById($category_uri);
 
+        $child_overview = $this->childOverview($child_model, $overview_model);
+
         $categories_summary_data = $overview_model->categoriesSummary($child_model->id());
         $categories_summary = $categories_summary_data['summary'];
 
-        $total = $child_model->total();
-        $total_number_of_expenses = $child_model->totalNumberOfExpenses();
-
         $subcategories_summary = $category_model->subcategorySummary($child_model->id(), $category_model->id());
-
-        $largest_essential_expense = $overview_model->largestEssentialExpense($child_model->id());
-        $largest_non_essential_expense = $overview_model->largestNonEssentialExpense($child_model->id());
-        $largest_hobby_interest_expense = $overview_model->largestHobbyInterestExpense($child_model->id());
 
         $recent_expenses_data = $expense_model->recentExpensesByCategory($child_model->id(), $category_model->id());
         $recent_expenses = $recent_expenses_data['expenses'];
@@ -422,6 +405,7 @@ class ChildController extends BaseController
                 'categories_summary' => $categories_summary,
                 'subcategories_summary' =>$subcategories_summary,
 
+                'child_overview' => $child_overview,
                 'child_details' => $child_model->details(),
 
                 'active_category_id' => $category_model->id(),
@@ -430,13 +414,6 @@ class ChildController extends BaseController
 
                 'recent_expenses' => $recent_expenses,
                 'number_of_expenses' => $number_of_expenses,
-
-                'total' => $total['total'],
-                'total_number_of_expenses' => $total_number_of_expenses,
-
-                'largest_essential_expense' => $largest_essential_expense,
-                'largest_non_essential_expense' => $largest_non_essential_expense,
-                'largest_hobby_interest_expense' => $largest_hobby_interest_expense
             ]
         );
     }
@@ -461,11 +438,10 @@ class ChildController extends BaseController
         $category_model = Category::modelById($category_uri);
         $subcategory_model = new Subcategory();
 
+        $child_overview = $this->childOverview($child_model, $overview_model);
+
         $categories_summary_data = $overview_model->categoriesSummary($child_model->id());
         $categories_summary = $categories_summary_data['summary'];
-
-        $total = $child_model->total();
-        $total_number_of_expenses = $child_model->totalNumberOfExpenses();
 
         $subcategories_summary = $category_model->subcategorySummary($child_model->id(), $category_model->id());
 
@@ -473,10 +449,6 @@ class ChildController extends BaseController
         if ($subcategory === null) {
             redirect('/');
         }
-
-        $largest_essential_expense = $overview_model->largestEssentialExpense($child_model->id());
-        $largest_non_essential_expense = $overview_model->largestNonEssentialExpense($child_model->id());
-        $largest_hobby_interest_expense = $overview_model->largestHobbyInterestExpense($child_model->id());
 
         $recent_expenses_data = $expense_model->recentExpensesBySubcategory(
             $child_model->id(),
@@ -511,6 +483,7 @@ class ChildController extends BaseController
                 'categories_summary' => $categories_summary,
                 'subcategories_summary' =>$subcategories_summary,
 
+                'child_overview' => $child_overview,
                 'child_details' => $child_model->details(),
 
                 'active_category_id' => $category_model->id(),
@@ -522,13 +495,6 @@ class ChildController extends BaseController
 
                 'recent_expenses' => $recent_expenses,
                 'number_of_expenses' => $number_of_expenses,
-
-                'total' => $total['total'],
-                'total_number_of_expenses' => $total_number_of_expenses,
-
-                'largest_essential_expense' => $largest_essential_expense,
-                'largest_non_essential_expense' => $largest_non_essential_expense,
-                'largest_hobby_interest_expense' => $largest_hobby_interest_expense
             ]
         );
     }
@@ -552,15 +518,10 @@ class ChildController extends BaseController
 
         $child_model = $this->childModel($child);
 
-        $total = $child_model->total();
-        $total_number_of_expenses = $child_model->totalNumberOfExpenses();
+        $child_overview = $this->childOverview($child_model, $overview_model);
 
         $annual_summary = $annual_model->annualSummary($child_model->id(), false);
         $monthly_summary = $annual_model->monthlySummary($child_model->id(), (int) $year);
-
-        $largest_essential_expense = $overview_model->largestEssentialExpense($child_model->id());
-        $largest_non_essential_expense = $overview_model->largestNonEssentialExpense($child_model->id());
-        $largest_hobby_interest_expense = $overview_model->largestHobbyInterestExpense($child_model->id());
 
         $recent_expenses_data = $expense_model->recentExpensesByYear(
             $child_model->id(),
@@ -592,19 +553,13 @@ class ChildController extends BaseController
                 'annual_summary' => $annual_summary,
                 'monthly_summary' => $monthly_summary,
 
+                'child_overview' => $child_overview,
                 'child_details' => $child_model->details(),
 
                 'active_year' => $year,
 
                 'recent_expenses' => $recent_expenses,
-                'number_of_expenses' => $number_of_expenses,
-
-                'total' => $total['total'],
-                'total_number_of_expenses' => $total_number_of_expenses,
-
-                'largest_essential_expense' => $largest_essential_expense,
-                'largest_non_essential_expense' => $largest_non_essential_expense,
-                'largest_hobby_interest_expense' => $largest_hobby_interest_expense
+                'number_of_expenses' => $number_of_expenses
             ]
         );
     }
@@ -629,15 +584,10 @@ class ChildController extends BaseController
 
         $child_model = $this->childModel($child);
 
-        $total = $child_model->total();
-        $total_number_of_expenses = $child_model->totalNumberOfExpenses();
+        $child_overview = $this->childOverview($child_model, $overview_model);
 
         $annual_summary = $annual_model->annualSummary($child_model->id(), false);
         $monthly_summary = $annual_model->monthlySummary($child_model->id(), (int) $year);
-
-        $largest_essential_expense = $overview_model->largestEssentialExpense($child_model->id());
-        $largest_non_essential_expense = $overview_model->largestNonEssentialExpense($child_model->id());
-        $largest_hobby_interest_expense = $overview_model->largestHobbyInterestExpense($child_model->id());
 
         $recent_expenses_data = $expense_model->recentExpensesByMonth(
             $child_model->id(),
@@ -672,6 +622,7 @@ class ChildController extends BaseController
                 'annual_summary' => $annual_summary,
                 'monthly_summary' => $monthly_summary,
 
+                'child_overview' => $child_overview,
                 'child_details' => $child_model->details(),
 
                 'active_year' => $year,
@@ -679,14 +630,7 @@ class ChildController extends BaseController
                 'active_month_name' => $active_month_name,
 
                 'recent_expenses' => $recent_expenses,
-                'number_of_expenses' => $number_of_expenses,
-
-                'total' => $total['total'],
-                'total_number_of_expenses' => $total_number_of_expenses,
-
-                'largest_essential_expense' => $largest_essential_expense,
-                'largest_non_essential_expense' => $largest_non_essential_expense,
-                'largest_hobby_interest_expense' => $largest_hobby_interest_expense
+                'number_of_expenses' => $number_of_expenses
             ]
         );
     }

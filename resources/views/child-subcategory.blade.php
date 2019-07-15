@@ -5,12 +5,12 @@
 @include(
     'page-component.child-details',
     [
-        'child_details' => $child_details,
-        'total' => $total,
-        'total_number_of_expenses' => $total_number_of_expenses,
-        'largest_essential_expense' => '$largest_essential_expense',
-        'largest_non_essential_expense' => '$largest_non_essential_expense',
-        'largest_hobby_interest_expense' => '$largest_hobby_interest_expense'
+        'child_details' => $child_overview['child_details'],
+        'total' => $child_overview['total'],
+        'total_number_of_expenses' => $child_overview['total_number_of_expenses'],
+        'largest_essential_expense' => $child_overview['largest_essential_expense'],
+        'largest_non_essential_expense' => $child_overview['largest_non_essential_expense'],
+        'largest_hobby_interest_expense' => $child_overview['largest_hobby_interest_expense']
     ]
 )
 
