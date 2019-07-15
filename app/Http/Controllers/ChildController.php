@@ -67,17 +67,12 @@ class ChildController extends BaseController
 
         $child_model = $this->childModel($child);
 
+        $child_overview = $this->childOverview($child_model, $overview_model);
+
         $categories_summary_data = $overview_model->categoriesSummary($child_model->id());
         $categories_summary = $categories_summary_data['summary'];
 
-        $total = $child_model->total();
-        $total_number_of_expenses = $child_model->totalNumberOfExpenses();
-
         $annual_summary = $annual_model->annualSummary($child_model->id());
-
-        $largest_essential_expense = $overview_model->largestEssentialExpense($child_model->id());
-        $largest_non_essential_expense = $overview_model->largestNonEssentialExpense($child_model->id());
-        $largest_hobby_interest_expense = $overview_model->largestHobbyInterestExpense($child_model->id());
 
         $recent_expenses_data = $expense_model->recentExpenses($child_model->id());
         $recent_expenses = $recent_expenses_data['expenses'];
@@ -106,17 +101,12 @@ class ChildController extends BaseController
                 'categories_summary' => $categories_summary,
                 'annual_summary' => $annual_summary,
 
+                'child_overview' => $child_overview,
+
                 'child_details' => $child_model->details(),
 
                 'recent_expenses' => $recent_expenses,
                 'number_of_expenses' => $number_of_expenses,
-
-                'total' => $total['total'],
-                'total_number_of_expenses' => $total_number_of_expenses,
-                
-                'largest_essential_expense' => $largest_essential_expense,
-                'largest_non_essential_expense' => $largest_non_essential_expense,
-                'largest_hobby_interest_expense' => $largest_hobby_interest_expense
             ]
         );
     }
@@ -709,5 +699,23 @@ class ChildController extends BaseController
     private function menus(): array
     {
         return Config::get('web.menus');
+    }
+
+    /**
+     * @param Child $child_model
+     * @param Overview $overview_model
+     *
+     * @return array
+     */
+    private function childOverview(Child $child_model, Overview $overview_model)
+    {
+        return [
+            'child_details' => $child_model->details(),
+            'total' => $child_model->total()['total'],
+            'total_number_of_expenses' => $child_model->totalNumberOfExpenses(),
+            'largest_essential_expense' => $overview_model->largestEssentialExpense($child_model->id()),
+            'largest_non_essential_expense' => $overview_model->largestNonEssentialExpense($child_model->id()),
+            'largest_hobby_interest_expense' => $overview_model->largestHobbyInterestExpense($child_model->id())
+        ];
     }
 }
