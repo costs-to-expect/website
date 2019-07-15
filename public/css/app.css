@@ -152,12 +152,12 @@ sup {
 }
 
 a {
-  color: #696969;
+  color: #A8369B;
   text-decoration: none;
   background-color: transparent;
 }
 a:hover {
-  color: #434343;
+  color: #6e2366;
   text-decoration: underline;
 }
 
@@ -2712,11 +2712,11 @@ fieldset:disabled a.btn {
 
 .btn-link {
   font-weight: 400;
-  color: #696969;
+  color: #A8369B;
   text-decoration: none;
 }
 .btn-link:hover {
-  color: #434343;
+  color: #6e2366;
   text-decoration: underline;
 }
 .btn-link:focus, .btn-link.focus {
@@ -4339,13 +4339,13 @@ input[type=button].btn-block {
   padding: 0.5rem 0.75rem;
   margin-left: -1px;
   line-height: 1.25;
-  color: #696969;
+  color: #A8369B;
   background-color: #fff;
   border: 1px solid #dee2e6;
 }
 .page-link:hover {
   z-index: 2;
-  color: #434343;
+  color: #6e2366;
   text-decoration: none;
   background-color: #e9ecef;
   border-color: #dee2e6;
@@ -9680,6 +9680,9 @@ html, body {
   margin-top: 5rem;
   margin-bottom: 3rem;
 }
+.container-cte .container-row .container-left li.nav-item a {
+  color: #404040;
+}
 .container-cte .container-row .container-left li.nav-item a.active {
   background-color: #f6f5f8;
   color: #404040;
@@ -9767,6 +9770,7 @@ html, body {
 .container-cte .container-row .container-right .white-container table th {
   color: #bcbcbc;
   font-size: 0.8rem;
+  font-weight: normal;
 }
 .container-cte .container-row .container-right .white-container table tr.top {
   border-top: 1px solid #f2f2f2;
@@ -9778,6 +9782,9 @@ html, body {
   padding: 0.2rem 0.4rem;
   color: #645a90;
   font-weight: bold;
+}
+.container-cte .container-row .container-right .white-container table span.category a {
+  color: #392C70;
 }
 .container-cte .container-row .container-right .no-radius-top {
   border-top-left-radius: 0;

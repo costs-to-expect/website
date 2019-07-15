@@ -18,7 +18,8 @@
             'heading' => $jack_total['name'],
             'subheading' => 'Total Expenses',
             'description' => 'From birth, ' . $jack_total['dob'],
-            'value' => $jack_total['total']
+            'value' => $jack_total['total'],
+            'active' => false
         ]
     )
     @include(
@@ -29,7 +30,8 @@
             'heading' => $niall_total['name'],
             'subheading' => 'Total Expenses',
             'description' => 'From birth, ' . $niall_total['dob'],
-            'value' => $niall_total['total']
+            'value' => $niall_total['total'],
+            'active' => false
         ]
     )
     @include(
@@ -40,7 +42,8 @@
             'heading' => 'The Blackboroughs',
             'subheading' => 'Total Expenses',
             'description' => 'For both our children to date',
-            'value' => $jack_total['total'] + $niall_total['total']
+            'value' => $jack_total['total'] + $niall_total['total'],
+            'active' => false
         ]
     )
     <hr />
@@ -62,7 +65,8 @@
             'heading' => 'Jack Blackborough',
             'subheading' => date('Y'),
             'description' => 'All expenses in ' . date('Y'),
-            'value' => ($jack_current_year !== null ? $jack_current_year : 0.00)
+            'value' => ($jack_current_year !== null ? $jack_current_year : 0.00),
+            'active' => false
         ]
     )
     @include(
@@ -73,7 +77,8 @@
             'heading' => 'Niall Blackborough',
             'subheading' => date('Y'),
             'description' => 'All expenses in ' . date('Y'),
-            'value' => ($niall_current_year !== null ? $niall_current_year : 0.00)
+            'value' => ($niall_current_year !== null ? $niall_current_year : 0.00),
+            'active' => false
         ]
     )
     @include(
@@ -84,7 +89,8 @@
             'heading' => 'The Blackboroughs',
             'subheading' => date('Y'),
             'description' => 'All expenses in ' . date('Y'),
-            'value' => ($jack_current_year !== null ? $jack_current_year : 0.00) + ($niall_current_year !== null ? $niall_current_year : 0.00)
+            'value' => ($jack_current_year !== null ? $jack_current_year : 0.00) + ($niall_current_year !== null ? $niall_current_year : 0.00),
+            'active' => false
         ]
     )
 </div>

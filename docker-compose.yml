@@ -8,4 +8,4 @@ services:
         ports:
             - 80:80
         volumes:
-            - .:/.docker/app/php
+            - .:/var/www/html

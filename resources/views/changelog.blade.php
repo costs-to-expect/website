@@ -17,6 +17,42 @@
 
         <hr />
 
+        <h2>[v1.06.2] - 15th July 2019</h2>
+
+        <h3>Added</h3>
+
+        <ul>
+            <li>Child details view component.</li>
+            <li>Assigned filters view component.</li>
+            <li>Filters view component.</li>
+            <li>Expenses table view component.</li>
+        </ul>
+
+        <h3>Changed</h3>
+
+        <ul>
+            <li>Modified the Docker setup, moved composer into Docker and added Xdebug for local development.</li>
+            <li>Icons in summary counts are clickable.</li>
+            <li>I have created a separate <a href="https://packagist.org/packages/deanblackborough/laravel-view-helpers">view helpers</a> library.</li>
+            <li>I have tweaked link colours and table heading colours.</li>
+            <li>Refactoring in preparation for new development.</li>
+        </ul>
+
+        <h3>Fixed</h3>
+
+        <ul>
+            <li>Total expenses count on child detail page.</li>
+            <li>URLs on Niall's page.</li>
+            <li>Spelling error on "<a href="/what-we-count">What we count?</a>" page</li>
+        </ul>
+
+        <hr />
+        <p class="small text-muted text-right">
+            <strong>Files changed:</strong> 28 -
+            <strong>Lines added:</strong> 630 -
+            <strong>Lines removed:</strong> 820
+        </p>
+
         <h2>[v1.06.1] - 6th July 2019</h2>
 
         <h3>Changed</h3>
