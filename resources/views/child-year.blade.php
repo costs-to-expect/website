@@ -90,33 +90,14 @@
 <div class="row">
     <div class="col-12">
         <div class="p-3 shadow-sm white-container">
-            <table class="table table-borderless table-hover">
-                <caption>25 most recent expenses</caption>
-                <thead>
-                    <tr>
-                        <th scope="col">Description</th>
-                        <th scope="col">Date</th>
-                        <th scope="col" class="d-none d-md-table-cell">Category</th>
-                        <th scope="col" class="d-none d-md-table-cell">Subcategory</th>
-                        <th scope="col" class="d-none d-xl-table-cell">Total</th>
-                        <th scope="col" class="d-none d-xl-table-cell">Allocation</th>
-                        <th scope="col">Amount</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($recent_expenses as $expense)
-                    <tr class="top">
-                        <td>{{ $expense['description'] }}</td>
-                        <td><span class="d-none d-md-block">{{ date('j M Y', strtotime($expense['effective_date'])) }}</span><span class="d-table-cell d-sm-block d-md-none">{{ date('d/m/Y', strtotime($expense['effective_date'])) }}</span></td>
-                        <td class="d-none d-md-table-cell"><span class="category"><a href="{{ $child_details['uri'] . '/expenses?category=' . $expense['category']['id'] }}">{{ $expense['category']['name'] }}</a></span></td>
-                        <td class="d-none d-md-table-cell"><span class="category"><a href="{{ $child_details['uri'] . '/expenses?category=' . $expense['category']['id'] . '&subcategory=' . $expense['subcategory']['id'] }}">{{ $expense['subcategory']['name'] }}</a></span></td>
-                        <td class="d-none d-xl-table-cell">£{{ $expense['total'] }}</td>
-                        <td class="d-none d-xl-table-cell">{{ $expense['percentage'] }}%</td>
-                        <td><strong>&pound;{{ $expense['actualised_total'] }}</strong></td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
+            @include(
+                'component.expenses-table',
+                [
+                    'caption' => '25 most recent ' . $active_year . ' expenses for ' . $child_details['short_name'],
+                    'expenses' => $recent_expenses,
+                    'base_uri' => $child_details['uri']
+                ]
+            )
         </div>
     </div>
 </div>

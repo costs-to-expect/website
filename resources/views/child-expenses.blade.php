@@ -65,33 +65,14 @@
             )
 
             <div class="p-3 shadow-sm white-container">
-                <table class="table table-borderless table-hover">
-                    <caption>All expenses for {{ $child_details['name'] }}</caption>
-                    <thead>
-                        <tr>
-                            <th scope="col">Description</th>
-                            <th scope="col">Date</th>
-                            <th scope="col" class="d-none d-md-table-cell">Category</th>
-                            <th scope="col" class="d-none d-md-table-cell">Subcategory</th>
-                            <th scope="col" class="d-none d-xl-table-cell">Total</th>
-                            <th scope="col" class="d-none d-xl-table-cell">Allocation</th>
-                            <th scope="col">Amount</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($expenses as $expense)
-                        <tr class="top">
-                            <td>{{ $expense['description'] }}</td>
-                            <td><span class="d-none d-md-block">{{ date('j M Y', strtotime($expense['effective_date'])) }}</span><span class="d-table-cell d-sm-block d-md-none">{{ date('d/m/Y', strtotime($expense['effective_date'])) }}</span></td>
-                            <td class="d-none d-md-table-cell"><span class="category">{{ $expense['category']['name'] }}</span></td>
-                            <td class="d-none d-md-table-cell"><span class="category">{{ $expense['subcategory']['name'] }}</span></td>
-                            <td class="d-none d-xl-table-cell">£{{ $expense['total'] }}</td>
-                            <td class="d-none d-xl-table-cell">{{ $expense['percentage'] }}%</td>
-                            <td><strong>&pound;{{ $expense['actualised_total'] }}</strong></td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                @include(
+                    'component.expenses-table',
+                    [
+                        'caption' => 'All expenses for ' . $child_details['short_name'],
+                        'expenses' => $expenses,
+                        'base_uri' => $child_details['uri']
+                    ]
+                )
             </div>
         @else
             <div class="alert alert-info" role="alert">

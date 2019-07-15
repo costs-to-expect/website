@@ -17,7 +17,7 @@
 
         <hr />
 
-        <h2>[v1.06.2] - xx July 2019</h2>
+        <h2>[v1.06.2] - 15th July 2019</h2>
 
         <h3>Added</h3>
 
@@ -25,6 +25,7 @@
             <li>Child details view component.</li>
             <li>Assigned filters view component.</li>
             <li>Filters view component.</li>
+            <li>Expenses table view component.</li>
         </ul>
 
         <h3>Changed</h3>
@@ -42,7 +43,7 @@
         <ul>
             <li>Total expenses count on child detail page.</li>
             <li>URLs on Niall's page.</li>
-            <li>Spelling error on "What we count?" page</li>
+            <li>Spelling error on "<a href="/what-we-count">What we count?</a>" page</li>
         </ul>
 
         <hr />
