@@ -662,4 +662,206 @@ class ChildController extends BaseController
             'largest_hobby_interest_expense' => $overview_model->largestHobbyInterestExpense($child_model->id())
         ];
     }
+
+    /**
+     * Generate the uris for any assigned filters, remove the assigned filter
+     * leaving the applicable filters after removal
+     *
+     * @param string $base_uri
+     * @param string $named_anchor
+     * @param string $category_id
+     * @param string $subcategory_id
+     * @param integer $year
+     * @param integer $month
+     *
+     * @return array
+     */
+    private function assignedFilterUris(
+        string $base_uri,
+        string $named_anchor,
+        string $category_id = null,
+        string $subcategory_id = null,
+        int $year = null,
+        int $month = null
+    ): array
+    {
+        $uris = [
+            'category' => null,
+            'subcategory' => null,
+            'year' => null,
+            'month' => null,
+        ];
+
+        if ($category_id !== null) {
+            $params = $this->assignedFilterUriParamsCategory(
+                $year,
+                $month
+            );
+
+            if (count($params) !== 0) {
+                $uris['category'] = $this->generateAssignedFilterUri(
+                    $base_uri,
+                    $named_anchor,
+                    $params
+                );
+            }
+        }
+
+        if ($subcategory_id !== null) {
+            $params = $this->assignedFilterUriParamsSubcategory(
+                $category_id,
+                $year,
+                $month
+            );
+
+            if (count($params) !== 0) {
+                $uris['subcategory'] = $this->generateAssignedFilterUri(
+                    $base_uri,
+                    $named_anchor,
+                    $params
+                );
+            }
+        }
+
+        if ($year !== null && $year !== 0) {
+            $params = $this->assignedFilterUriParamsYear(
+                $category_id,
+                $subcategory_id
+            );
+
+            if (count($params) !== 0) {
+                $uris['year'] = $this->generateAssignedFilterUri(
+                    $base_uri,
+                    $named_anchor,
+                    $params
+                );
+            }
+        }
+
+        if ($month !== null) {
+            $params = $this->assignedFilterUriParamsMonth(
+                $category_id,
+                $subcategory_id,
+                $year
+            );
+
+            if (count($params) !== 0) {
+                $uris['month'] = $this->generateAssignedFilterUri(
+                    $base_uri,
+                    $named_anchor,
+                    $params
+                );
+            }
+        }
+
+        return $uris;
+    }
+
+
+    /**
+     * @param string|null $category_id
+     * @param string|null $subcategory_id
+     * @return array
+     */
+    private function assignedFilterUriParamsYear(
+        string $category_id = null,
+        string $subcategory_id = null
+    ): array
+    {
+        $params = [];
+        if ($category_id !== null) {
+            $params['category'] = $category_id;
+        }
+        if ($subcategory_id !== null) {
+            $params['subcategory'] = $subcategory_id;
+        }
+
+        return $params;
+    }
+
+    /**
+     * @param string|null $category_id
+     * @param string|null $subcategory_id
+     * @param integer|null $year
+     * @return array
+     */
+    private function assignedFilterUriParamsMonth(
+        string $category_id = null,
+        string $subcategory_id = null,
+        int $year = null
+    ): array
+    {
+        $params = [];
+        if ($category_id !== null) {
+            $params['category'] = $category_id;
+        }
+        if ($subcategory_id !== null) {
+            $params['subcategory'] = $subcategory_id;
+        }
+        if ($year !== null && $year !== 0) {
+            $params['year'] = $year;
+        }
+
+        return $params;
+    }
+
+    /**
+     * @param integer|null $year
+     * @param integer|null $month
+     * @return array
+     */
+    private function assignedFilterUriParamsCategory(
+        int $year = null,
+        int $month = null
+    ): array
+    {
+        $params = [];
+        if ($year !== null && $year !== 0) {
+            $params['year'] = $year;
+        }
+        if ($month !== null && $month !== 0) {
+            $params['month'] = $month;
+        }
+
+        return $params;
+    }
+
+    /**
+     * @param string|null $category_id
+     * @param integer|null $year
+     * @param integer|null $month
+     * @return array
+     */
+    private function assignedFilterUriParamsSubcategory(
+        string $category_id = null,
+        int $year = null,
+        int $month = null
+    ): array
+    {
+        $params = [];
+        if ($category_id !== null) {
+            $params['category'] = $category_id;
+        }
+        if ($year !== null && $year !== 0) {
+            $params['year'] = $year;
+        }
+        if ($month !== null && $month !== 0) {
+            $params['month'] = $month;
+        }
+
+        return $params;
+    }
+
+    private function generateAssignedFilterUri(
+        string $base_uri,
+        string $named_anchor,
+        array $params
+    ): string
+    {
+        $uri = $base_uri;
+        foreach ($params as $param => $value) {
+            $uri .= '&' . $param . '=' . $value;
+        }
+        return $uri . $named_anchor;
+    }
 }
