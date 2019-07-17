@@ -48,17 +48,19 @@ class Expense
      * @param string|null $subcategory
      * @param integer|null $year
      * @param integer|null $month
+     * @param string|null $term
      *
      * @return array|null Returned array had four indexes, expenses, total, limit and offset
      */
     public function expenses(
         string $child_id,
-        $offset,
-        $limit,
-        $category = null,
-        $subcategory = null,
-        $year = null,
-        $month = null
+        int $offset,
+        int $limit,
+        string $category = null,
+        string $subcategory = null,
+        int $year = null,
+        int $month = null,
+        string $term = null
     ): ?array
     {
         if ($this->expenses_populated === false) {
@@ -69,7 +71,8 @@ class Expense
                 $category,
                 $subcategory,
                 $year,
-                $month
+                $month,
+                $term
             );
             $headers = Api::previousRequestHeaders();
             Api::setCalledURI('All expenses', Api::lastUri());

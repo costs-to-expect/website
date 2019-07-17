@@ -128,6 +128,9 @@ class ChildController extends BaseController
         if (array_key_exists('month', $params) === true && intval($params['month']) !== 0) {
             $filter_params['month'] = intval($params['month']);
         }
+        if (array_key_exists('term', $params) === true && strlen($params['term']) > 0) {
+            $filter_params['term'] = urlencode($params['term']);
+        }
 
         $url = $params['child'] . '/expenses?offset=' . $params['offset'] . '&limit=' . $params['limit'];
         foreach ($filter_params as $param => $value) {
@@ -156,12 +159,13 @@ class ChildController extends BaseController
 
         $child_model = $this->childModel($child);
 
-        $offset = (int) request()->get('offset', 0);
-        $limit = (int) request()->get('limit', 50);
-        $category_id = request()->get('category');
-        $subcategory_id = request()->get('subcategory');
-        $year = request()->get('year');
-        $month = request()->get('month');
+        $offset = (int) request()->query('offset', 0);
+        $limit = (int) request()->query('limit', 50);
+        $category_id = request()->query('category');
+        $subcategory_id = request()->query('subcategory');
+        $year = request()->query('year');
+        $month = request()->query('month');
+        $term = request()->query('term');
 
         $child_overview = $this->childOverview($child_model, $overview_model);
 
@@ -174,7 +178,14 @@ class ChildController extends BaseController
         $years = $child_model->years();
         $months = $overview_model->months();
 
-        $filter_parameters = [];
+        $filter_parameters = [
+            'category' => $category_id,
+            'subcategory' => $subcategory_id,
+            'year' => $year,
+            'month' => $month,
+            'term' => $term
+        ];
+
         if ($category_id !== null) {
             $filter_parameters['category'] = $category_id;
 
@@ -182,103 +193,40 @@ class ChildController extends BaseController
                 $filter_parameters['subcategory'] = $subcategory_id;
             }
         }
-        if ($year !== null) {
-            $filter_parameters['year'] = $year;
+        if ($year !== null && (int) $year !== 0) {
+            $filter_parameters['year'] = (int) $year;
 
-            if ($month !== null) {
-                $filter_parameters['month'] = $month;
+            if ($month !== null && (int) $month !== 0) {
+                $filter_parameters['month'] = (int) $month;
             }
         }
-
-        $filter_parameters_string = '';
-        foreach ($filter_parameters as $parameter => $value) {
-            $filter_parameters_string .= '&' . $parameter . '=' . $value;
+        if ($term !== null) {
+            $filter_parameters['term'] = $term;
         }
 
         $expenses_data = $expense_model->expenses(
             $child_model->id(),
             $offset,
             $limit,
-            $category_id,
-            $subcategory_id,
-            (int) $year,
-            (int) $month
+            $filter_parameters['category'],
+            $filter_parameters['subcategory'],
+            $filter_parameters['year'],
+            $filter_parameters['month'],
+            $filter_parameters['term']
         );
 
         $base_uri = $uri = $child_model->uri() . '/expenses?limit=' . $limit . '&offset=' . $offset;
         $named_anchor = '#expenses-table';
-        $assigned_filter_uris = [
-            'category' => null,
-            'subcategory' => null,
-            'year' => null,
-            'month' => null,
-        ];
-        if ($category_id !== null) {
-            $params = [];
-            if ($year !== null) {
-                $params['year'] = $year;
-            }
-            if ($month !== null) {
-                $params['month'] = $month;
-            }
 
-            $uri = $base_uri;
-            foreach ($params as $param => $value) {
-                $uri .= '&' . $param . '=' . $value;
-            }
-            $assigned_filter_uris['category'] = $uri . $named_anchor;
-        }
-        if ($subcategory_id !== null) {
-            $params = [];
-            if ($category_id !== null) {
-                $params['category'] = $category_id;
-            }
-            if ($year !== null) {
-                $params['year'] = $year;
-            }
-            if ($month !== null) {
-                $params['month'] = $month;
-            }
-
-            $uri = $base_uri;
-            foreach ($params as $param => $value) {
-                $uri .= '&' . $param . '=' . $value;
-            }
-            $assigned_filter_uris['subcategory'] = $uri . $named_anchor;
-        }
-        if ($year !== null) {
-            $params = [];
-            if ($category_id !== null) {
-                $params['category'] = $category_id;
-            }
-            if ($subcategory_id !== null) {
-                $params['subcategory'] = $subcategory_id;
-            }
-
-            $uri = $base_uri;
-            foreach ($params as $param => $value) {
-                $uri .= '&' . $param . '=' . $value;
-            }
-            $assigned_filter_uris['year'] = $uri . $named_anchor;
-        }
-        if ($month !== null) {
-            $params = [];
-            if ($category_id !== null) {
-                $params['category'] = $category_id;
-            }
-            if ($subcategory_id !== null) {
-                $params['subcategory'] = $subcategory_id;
-            }
-            if ($year !== null) {
-                $params['year'] = $year;
-            }
-
-            $uri = $base_uri;
-            foreach ($params as $param => $value) {
-                $uri .= '&' . $param . '=' . $value;
-            }
-            $assigned_filter_uris['month'] = $uri . $named_anchor;
-        }
+        $assigned_filter_uris = $this->assignedFilterUris(
+            $base_uri,
+            $named_anchor,
+            $filter_parameters['category'],
+            $filter_parameters['subcategory'],
+            $filter_parameters['year'],
+            $filter_parameters['month'],
+            $filter_parameters['term']
+        );
 
         return view(
             'child-expenses',
@@ -309,34 +257,39 @@ class ChildController extends BaseController
                     'category' => [
                         'name' => 'Category',
                         'values' => $category_model->allCategories(),
-                        'set' => $category_id,
+                        'set' => $filter_parameters['category'],
                         'uri' => $assigned_filter_uris['category'],
                         'classes' => 'col-6 col-md-4 col-lg-4 col-xl-2 mb-2'
                     ],
                     'subcategory' => [
                         'name' => 'Subcategory',
                         'values' => $subcategories,
-                        'set' => $subcategory_id,
+                        'set' => $filter_parameters['subcategory'],
                         'uri' => $assigned_filter_uris['subcategory'],
                         'classes' => 'col-6 col-md-3 col-lg-4 col-xl-3 mb-2'
                     ],
                     'year' => [
                         'name' => 'Year',
                         'values' => $years,
-                        'set' => $year,
+                        'set' => $filter_parameters['year'],
                         'uri' => $assigned_filter_uris['year'],
                         'classes' => 'col-6 col-md-2 col-lg-2 col-xl-2 mb-2'
                     ],
                     'month' => [
                         'name' => 'Month',
                         'values' => $months,
-                        'set' => $month,
+                        'set' => $filter_parameters['month'],
                         'uri' => $assigned_filter_uris['month'],
                         'classes' => 'col-6 col-md-3 col-lg-2 col-xl-2 mb-2'
+                    ],
+                    'term' => [
+                        'name' => 'Search',
+                        'values' => [],
+                        'set' => $term,
+                        'uri' => $assigned_filter_uris['term'],
+                        'classes' => null
                     ]
                 ],
-
-                'assigned_filter_uris' => $assigned_filter_uris,
 
                 'pagination' => [
                     'uri' => [
@@ -661,5 +614,287 @@ class ChildController extends BaseController
             'largest_non_essential_expense' => $overview_model->largestNonEssentialExpense($child_model->id()),
             'largest_hobby_interest_expense' => $overview_model->largestHobbyInterestExpense($child_model->id())
         ];
+    }
+
+    /**
+     * Generate the uris for any assigned filters, remove the assigned filter
+     * leaving the applicable filters after removal
+     *
+     * @param string $base_uri
+     * @param string $named_anchor
+     * @param string $category_id
+     * @param string $subcategory_id
+     * @param integer $year
+     * @param integer $month
+     * @param string $term
+     *
+     * @return array
+     */
+    private function assignedFilterUris(
+        string $base_uri,
+        string $named_anchor,
+        string $category_id = null,
+        string $subcategory_id = null,
+        int $year = null,
+        int $month = null,
+        string $term = null
+    ): array
+    {
+        $uris = [
+            'category' => $base_uri . $named_anchor,
+            'subcategory' => $base_uri . $named_anchor,
+            'year' => $base_uri . $named_anchor,
+            'month' => $base_uri . $named_anchor,
+            'term' => $base_uri . $named_anchor,
+        ];
+
+        if ($category_id !== null) {
+            $params = $this->assignedFilterUriParamsCategory(
+                $year,
+                $month,
+                $term
+            );
+
+            if (count($params) !== 0) {
+                $uris['category'] = $this->generateAssignedFilterUri(
+                    $base_uri,
+                    $named_anchor,
+                    $params
+                );
+            }
+        }
+
+        if ($subcategory_id !== null) {
+            $params = $this->assignedFilterUriParamsSubcategory(
+                $category_id,
+                $year,
+                $month,
+                $term
+            );
+
+            if (count($params) !== 0) {
+                $uris['subcategory'] = $this->generateAssignedFilterUri(
+                    $base_uri,
+                    $named_anchor,
+                    $params
+                );
+            }
+        }
+
+        if ($year !== null && $year !== 0) {
+            $params = $this->assignedFilterUriParamsYear(
+                $category_id,
+                $subcategory_id,
+                $term
+            );
+
+            if (count($params) !== 0) {
+                $uris['year'] = $this->generateAssignedFilterUri(
+                    $base_uri,
+                    $named_anchor,
+                    $params
+                );
+            }
+        }
+
+        if ($month !== null) {
+            $params = $this->assignedFilterUriParamsMonth(
+                $category_id,
+                $subcategory_id,
+                $year,
+                $term
+            );
+
+            if (count($params) !== 0) {
+                $uris['month'] = $this->generateAssignedFilterUri(
+                    $base_uri,
+                    $named_anchor,
+                    $params
+                );
+            }
+        }
+
+        if ($term !== null) {
+            $params = $this->assignedFilterUriParamsTerm(
+                $category_id,
+                $subcategory_id,
+                $year,
+                $month
+            );
+
+            if (count($params) !== 0) {
+                $uris['term'] = $this->generateAssignedFilterUri(
+                    $base_uri,
+                    $named_anchor,
+                    $params
+                );
+            }
+        }
+
+        return $uris;
+    }
+
+
+    /**
+     * @param string|null $category_id
+     * @param string|null $subcategory_id
+     * @param string|null $term
+     *
+     * @return array
+     */
+    private function assignedFilterUriParamsYear(
+        string $category_id = null,
+        string $subcategory_id = null,
+        string $term = null
+    ): array
+    {
+        $params = [];
+        if ($category_id !== null) {
+            $params['category'] = $category_id;
+        }
+        if ($subcategory_id !== null) {
+            $params['subcategory'] = $subcategory_id;
+        }
+        if ($term !== null) {
+            $params['term'] = urlencode($term);
+        }
+
+        return $params;
+    }
+
+    /**
+     * @param string|null $category_id
+     * @param string|null $subcategory_id
+     * @param integer|null $year
+     * @param string|null $term
+     *
+     * @return array
+     */
+    private function assignedFilterUriParamsMonth(
+        string $category_id = null,
+        string $subcategory_id = null,
+        int $year = null,
+        string $term = null
+    ): array
+    {
+        $params = [];
+        if ($category_id !== null) {
+            $params['category'] = $category_id;
+        }
+        if ($subcategory_id !== null) {
+            $params['subcategory'] = $subcategory_id;
+        }
+        if ($year !== null && $year !== 0) {
+            $params['year'] = $year;
+        }
+        if ($term !== null) {
+            $params['term'] = urlencode($term);
+        }
+
+        return $params;
+    }
+
+    /**
+     * @param integer|null $year
+     * @param integer|null $month
+     * @param string|null $term
+     *
+     * @return array
+     */
+    private function assignedFilterUriParamsCategory(
+        int $year = null,
+        int $month = null,
+        string $term = null
+    ): array
+    {
+        $params = [];
+        if ($year !== null && $year !== 0) {
+            $params['year'] = $year;
+        }
+        if ($month !== null && $month !== 0) {
+            $params['month'] = $month;
+        }
+        if ($term !== null) {
+            $params['term'] = urlencode($term);
+        }
+
+        return $params;
+    }
+
+    /**
+     * @param string|null $category_id
+     * @param integer|null $year
+     * @param integer|null $month
+     * @param string|null $term
+     *
+     * @return array
+     */
+    private function assignedFilterUriParamsSubcategory(
+        string $category_id = null,
+        int $year = null,
+        int $month = null,
+        string $term = null
+    ): array
+    {
+        $params = [];
+        if ($category_id !== null) {
+            $params['category'] = $category_id;
+        }
+        if ($year !== null && $year !== 0) {
+            $params['year'] = $year;
+        }
+        if ($month !== null && $month !== 0) {
+            $params['month'] = $month;
+        }
+        if ($term !== null) {
+            $params['term'] = urlencode($term);
+        }
+
+        return $params;
+    }
+
+    /**
+     * @param string|null $category_id
+     * @param string|null $subcategory_id
+     * @param integer|null $year
+     * @param integer|null $month
+     *
+     * @return array
+     */
+    private function assignedFilterUriParamsTerm(
+        string $category_id = null,
+        string $subcategory_id = null,
+        int $year = null,
+        int $month = null
+    ): array
+    {
+        $params = [];
+        if ($category_id !== null) {
+            $params['category'] = $category_id;
+        }
+        if ($subcategory_id !== null) {
+            $params['subcategory'] = $subcategory_id;
+        }
+        if ($year !== null && $year !== 0) {
+            $params['year'] = $year;
+        }
+        if ($month !== null && $month !== 0) {
+            $params['month'] = $month;
+        }
+
+        return $params;
+    }
+
+    private function generateAssignedFilterUri(
+        string $base_uri,
+        string $named_anchor,
+        array $params
+    ): string
+    {
+        $uri = $base_uri;
+        foreach ($params as $param => $value) {
+            $uri .= '&' . $param . '=' . $value;
+        }
+        return $uri . $named_anchor;
     }
 }

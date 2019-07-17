@@ -17,6 +17,34 @@
 
         <hr />
 
+        <h2>[v1.07.0] - 18th July 2019</h2>
+
+        <h3>Added</h3>
+
+        <ul>
+            <li>Search added to the full expenses view, allows you to search on expense description.</li>
+        </ul>
+
+        <h3>Changed</h3>
+
+        <ul>
+            <li>Year no longer treated differently in the filter code.</li>
+            <li>General code refactoring.</li>
+        </ul>
+
+        <h3>Fixed</h3>
+
+        <ul>
+            <li>Under specific scenarios, the URI on the final assigned filter is incorrect.</li>
+        </ul>
+
+        <hr />
+        <p class="small text-muted text-right">
+            <strong>Files changed:</strong> xx -
+            <strong>Lines added:</strong> xxx -
+            <strong>Lines removed:</strong> xxx
+        </p>
+
         <h2>[v1.06.2] - 15th July 2019</h2>
 
         <h3>Added</h3>

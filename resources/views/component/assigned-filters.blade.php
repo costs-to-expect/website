@@ -1,16 +1,23 @@
 <div class="p-1 assigned-filters">
     @foreach ($filters as $filter => $filter_data)
-        @if ($filter_data['set'] !== null)
-        <div class="assigned-filter">
-            <a href="{{ $filter_data['uri'] }}">
-                @if ($filter !== 'year')
-                {{ $filter_data['values'][$filter_data['set']]['name'] }}
-                @else
-                {{ $filter_data['set'] }}
-                @endif
-                <span class="badge badge-light">&times;</span>
-            </a>
-        </div>
+        @if ($filter !== 'term')
+            @if ($filter_data['set'] !== null)
+            <div class="assigned-filter">
+                <a href="{{ $filter_data['uri'] }}">
+                    {{ $filter_data['values'][$filter_data['set']]['name'] }}
+                    <span class="badge badge-light">&times;</span>
+                </a>
+            </div>
+            @endif
+        @else
+            @if ($filters['term']['set'] !== null)
+            <div class="assigned-filter">
+                <a href="{{ $filters['term']['uri'] }}">
+                    Search term: "{{ $filters['term']['set'] }}"
+                    <span class="badge badge-light">&times;</span>
+                </a>
+            </div>
+            @endif
         @endif
     @endforeach
 </div>

@@ -220,6 +220,7 @@ class Api
      * @param string|null $subcategory
      * @param integer|null $year
      * @param integer|null $month
+     * @param string|null $term
      *
      * @return array|null
      */
@@ -230,7 +231,8 @@ class Api
         string $category = null,
         string $subcategory = null,
         int $year = null,
-        int $month = null
+        int $month = null,
+        string $term = null
     ): ?array
     {
         self::$uri = Uri::expenses(
@@ -241,6 +243,7 @@ class Api
             $subcategory,
             $year,
             $month,
+            $term,
             true,
             true
         );

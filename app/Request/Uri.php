@@ -114,6 +114,7 @@ class Uri
      * @param string|null $subcategory
      * @param integer|null $year
      * @param integer|null $month
+     * @param string|null $term
      * @param boolean $include_categories
      * @param boolean $include_subcategories
      *
@@ -127,6 +128,7 @@ class Uri
         string $subcategory = null,
         int $year = null,
         int $month = null,
+        string $term = null,
         bool $include_categories = false,
         bool $include_subcategories = false
     ): string
@@ -148,6 +150,10 @@ class Uri
             if ($month !== null) {
                 $uri .= '&month=' . $month;
             }
+        }
+
+        if ($term !== null) {
+            $uri .= "&search=description:" . urlencode($term);
         }
 
         if ($include_categories === true) {

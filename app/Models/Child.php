@@ -145,7 +145,10 @@ abstract class Child
         $years = [];
 
         for ($i = intval(date('Y')); $i >= $this->first_year; $i--) {
-            $years[] = $i;
+            $years[$i] = [
+                'id' => $i,
+                'name' => $i
+            ];
         }
 
         return $years;
