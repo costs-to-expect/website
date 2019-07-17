@@ -190,11 +190,6 @@ class ChildController extends BaseController
             }
         }
 
-        $filter_parameters_string = '';
-        foreach ($filter_parameters as $parameter => $value) {
-            $filter_parameters_string .= '&' . $parameter . '=' . $value;
-        }
-
         $expenses_data = $expense_model->expenses(
             $child_model->id(),
             $offset,
@@ -207,78 +202,15 @@ class ChildController extends BaseController
 
         $base_uri = $uri = $child_model->uri() . '/expenses?limit=' . $limit . '&offset=' . $offset;
         $named_anchor = '#expenses-table';
-        $assigned_filter_uris = [
-            'category' => null,
-            'subcategory' => null,
-            'year' => null,
-            'month' => null,
-        ];
-        if ($category_id !== null) {
-            $params = [];
-            if ($year !== null) {
-                $params['year'] = $year;
-            }
-            if ($month !== null) {
-                $params['month'] = $month;
-            }
 
-            $uri = $base_uri;
-            foreach ($params as $param => $value) {
-                $uri .= '&' . $param . '=' . $value;
-            }
-            $assigned_filter_uris['category'] = $uri . $named_anchor;
-        }
-        if ($subcategory_id !== null) {
-            $params = [];
-            if ($category_id !== null) {
-                $params['category'] = $category_id;
-            }
-            if ($year !== null) {
-                $params['year'] = $year;
-            }
-            if ($month !== null) {
-                $params['month'] = $month;
-            }
-
-            $uri = $base_uri;
-            foreach ($params as $param => $value) {
-                $uri .= '&' . $param . '=' . $value;
-            }
-            $assigned_filter_uris['subcategory'] = $uri . $named_anchor;
-        }
-        if ($year !== null) {
-            $params = [];
-            if ($category_id !== null) {
-                $params['category'] = $category_id;
-            }
-            if ($subcategory_id !== null) {
-                $params['subcategory'] = $subcategory_id;
-            }
-
-            $uri = $base_uri;
-            foreach ($params as $param => $value) {
-                $uri .= '&' . $param . '=' . $value;
-            }
-            $assigned_filter_uris['year'] = $uri . $named_anchor;
-        }
-        if ($month !== null) {
-            $params = [];
-            if ($category_id !== null) {
-                $params['category'] = $category_id;
-            }
-            if ($subcategory_id !== null) {
-                $params['subcategory'] = $subcategory_id;
-            }
-            if ($year !== null) {
-                $params['year'] = $year;
-            }
-
-            $uri = $base_uri;
-            foreach ($params as $param => $value) {
-                $uri .= '&' . $param . '=' . $value;
-            }
-            $assigned_filter_uris['month'] = $uri . $named_anchor;
-        }
+        $assigned_filter_uris = $this->assignedFilterUris(
+            $base_uri,
+            $named_anchor,
+            $category_id,
+            $subcategory_id,
+            $year,
+            $month
+        );
 
         return view(
             'child-expenses',
@@ -335,8 +267,6 @@ class ChildController extends BaseController
                         'classes' => 'col-6 col-md-3 col-lg-2 col-xl-2 mb-2'
                     ]
                 ],
-
-                'assigned_filter_uris' => $assigned_filter_uris,
 
                 'pagination' => [
                     'uri' => [
@@ -686,10 +616,10 @@ class ChildController extends BaseController
     ): array
     {
         $uris = [
-            'category' => null,
-            'subcategory' => null,
-            'year' => null,
-            'month' => null,
+            'category' => $base_uri . $named_anchor,
+            'subcategory' => $base_uri . $named_anchor,
+            'year' => $base_uri . $named_anchor,
+            'month' => $base_uri . $named_anchor,
         ];
 
         if ($category_id !== null) {
