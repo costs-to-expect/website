@@ -128,6 +128,9 @@ class ChildController extends BaseController
         if (array_key_exists('month', $params) === true && intval($params['month']) !== 0) {
             $filter_params['month'] = intval($params['month']);
         }
+        if (array_key_exists('term', $params) === true && strlen($params['term']) > 0) {
+            $filter_params['term'] = urlencode($params['term']);
+        }
 
         $url = $params['child'] . '/expenses?offset=' . $params['offset'] . '&limit=' . $params['limit'];
         foreach ($filter_params as $param => $value) {
@@ -156,12 +159,13 @@ class ChildController extends BaseController
 
         $child_model = $this->childModel($child);
 
-        $offset = (int) request()->get('offset', 0);
-        $limit = (int) request()->get('limit', 50);
-        $category_id = request()->get('category');
-        $subcategory_id = request()->get('subcategory');
-        $year = request()->get('year');
-        $month = request()->get('month');
+        $offset = (int) request()->query('offset', 0);
+        $limit = (int) request()->query('limit', 50);
+        $category_id = request()->query('category');
+        $subcategory_id = request()->query('subcategory');
+        $year = request()->query('year');
+        $month = request()->query('month');
+        $term = request()->query('term');
 
         $child_overview = $this->childOverview($child_model, $overview_model);
 
@@ -174,7 +178,13 @@ class ChildController extends BaseController
         $years = $child_model->years();
         $months = $overview_model->months();
 
-        $filter_parameters = [];
+        $filter_parameters = [
+            'category' => $category_id,
+            'subcategory' => $subcategory_id,
+            'year' => $year,
+            'month' => $month
+        ];
+
         if ($category_id !== null) {
             $filter_parameters['category'] = $category_id;
 
@@ -182,22 +192,25 @@ class ChildController extends BaseController
                 $filter_parameters['subcategory'] = $subcategory_id;
             }
         }
-        if ($year !== null) {
-            $filter_parameters['year'] = $year;
+        if ($year !== null && (int) $year !== 0) {
+            $filter_parameters['year'] = (int) $year;
 
-            if ($month !== null) {
-                $filter_parameters['month'] = $month;
+            if ($month !== null && (int) $month !== 0) {
+                $filter_parameters['month'] = (int) $month;
             }
+        }
+        if ($term !== null) {
+            $filter_parameters['term'] = $term;
         }
 
         $expenses_data = $expense_model->expenses(
             $child_model->id(),
             $offset,
             $limit,
-            $category_id,
-            $subcategory_id,
-            (int) $year,
-            (int) $month
+            $filter_parameters['category'],
+            $filter_parameters['subcategory'],
+            $filter_parameters['year'],
+            $filter_parameters['month']
         );
 
         $base_uri = $uri = $child_model->uri() . '/expenses?limit=' . $limit . '&offset=' . $offset;
@@ -206,10 +219,10 @@ class ChildController extends BaseController
         $assigned_filter_uris = $this->assignedFilterUris(
             $base_uri,
             $named_anchor,
-            $category_id,
-            $subcategory_id,
-            $year,
-            $month
+            $filter_parameters['category'],
+            $filter_parameters['subcategory'],
+            $filter_parameters['year'],
+            $filter_parameters['month']
         );
 
         return view(
@@ -241,30 +254,37 @@ class ChildController extends BaseController
                     'category' => [
                         'name' => 'Category',
                         'values' => $category_model->allCategories(),
-                        'set' => $category_id,
+                        'set' => $filter_parameters['category'],
                         'uri' => $assigned_filter_uris['category'],
                         'classes' => 'col-6 col-md-4 col-lg-4 col-xl-2 mb-2'
                     ],
                     'subcategory' => [
                         'name' => 'Subcategory',
                         'values' => $subcategories,
-                        'set' => $subcategory_id,
+                        'set' => $filter_parameters['subcategory'],
                         'uri' => $assigned_filter_uris['subcategory'],
                         'classes' => 'col-6 col-md-3 col-lg-4 col-xl-3 mb-2'
                     ],
                     'year' => [
                         'name' => 'Year',
                         'values' => $years,
-                        'set' => $year,
+                        'set' => $filter_parameters['year'],
                         'uri' => $assigned_filter_uris['year'],
                         'classes' => 'col-6 col-md-2 col-lg-2 col-xl-2 mb-2'
                     ],
                     'month' => [
                         'name' => 'Month',
                         'values' => $months,
-                        'set' => $month,
+                        'set' => $filter_parameters['month'],
                         'uri' => $assigned_filter_uris['month'],
                         'classes' => 'col-6 col-md-3 col-lg-2 col-xl-2 mb-2'
+                    ],
+                    'term' => [
+                        'name' => 'Search',
+                        'values' => [],
+                        'set' => $term,
+                        'uri' => null,
+                        'classes' => null
                     ]
                 ],
 
