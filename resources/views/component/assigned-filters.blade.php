@@ -9,6 +9,15 @@
                 </a>
             </div>
             @endif
+        @else
+            @if ($filters['term']['set'] !== null)
+            <div class="assigned-filter">
+                <a href="{{ $filters['term']['uri'] }}">
+                    Search term: "{{ $filters['term']['set'] }}"
+                    <span class="badge badge-light">&times;</span>
+                </a>
+            </div>
+            @endif
         @endif
     @endforeach
 </div>

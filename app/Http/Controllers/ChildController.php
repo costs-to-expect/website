@@ -182,7 +182,8 @@ class ChildController extends BaseController
             'category' => $category_id,
             'subcategory' => $subcategory_id,
             'year' => $year,
-            'month' => $month
+            'month' => $month,
+            'term' => $term
         ];
 
         if ($category_id !== null) {
@@ -210,7 +211,8 @@ class ChildController extends BaseController
             $filter_parameters['category'],
             $filter_parameters['subcategory'],
             $filter_parameters['year'],
-            $filter_parameters['month']
+            $filter_parameters['month'],
+            $filter_parameters['term']
         );
 
         $base_uri = $uri = $child_model->uri() . '/expenses?limit=' . $limit . '&offset=' . $offset;
@@ -222,7 +224,8 @@ class ChildController extends BaseController
             $filter_parameters['category'],
             $filter_parameters['subcategory'],
             $filter_parameters['year'],
-            $filter_parameters['month']
+            $filter_parameters['month'],
+            $filter_parameters['term']
         );
 
         return view(
@@ -283,7 +286,7 @@ class ChildController extends BaseController
                         'name' => 'Search',
                         'values' => [],
                         'set' => $term,
-                        'uri' => null,
+                        'uri' => $assigned_filter_uris['term'],
                         'classes' => null
                     ]
                 ],
@@ -623,6 +626,7 @@ class ChildController extends BaseController
      * @param string $subcategory_id
      * @param integer $year
      * @param integer $month
+     * @param string $term
      *
      * @return array
      */
@@ -632,7 +636,8 @@ class ChildController extends BaseController
         string $category_id = null,
         string $subcategory_id = null,
         int $year = null,
-        int $month = null
+        int $month = null,
+        string $term = null
     ): array
     {
         $uris = [
@@ -640,12 +645,14 @@ class ChildController extends BaseController
             'subcategory' => $base_uri . $named_anchor,
             'year' => $base_uri . $named_anchor,
             'month' => $base_uri . $named_anchor,
+            'term' => $base_uri . $named_anchor,
         ];
 
         if ($category_id !== null) {
             $params = $this->assignedFilterUriParamsCategory(
                 $year,
-                $month
+                $month,
+                $term
             );
 
             if (count($params) !== 0) {
@@ -661,7 +668,8 @@ class ChildController extends BaseController
             $params = $this->assignedFilterUriParamsSubcategory(
                 $category_id,
                 $year,
-                $month
+                $month,
+                $term
             );
 
             if (count($params) !== 0) {
@@ -676,7 +684,8 @@ class ChildController extends BaseController
         if ($year !== null && $year !== 0) {
             $params = $this->assignedFilterUriParamsYear(
                 $category_id,
-                $subcategory_id
+                $subcategory_id,
+                $term
             );
 
             if (count($params) !== 0) {
@@ -692,11 +701,29 @@ class ChildController extends BaseController
             $params = $this->assignedFilterUriParamsMonth(
                 $category_id,
                 $subcategory_id,
-                $year
+                $year,
+                $term
             );
 
             if (count($params) !== 0) {
                 $uris['month'] = $this->generateAssignedFilterUri(
+                    $base_uri,
+                    $named_anchor,
+                    $params
+                );
+            }
+        }
+
+        if ($term !== null) {
+            $params = $this->assignedFilterUriParamsTerm(
+                $category_id,
+                $subcategory_id,
+                $year,
+                $month
+            );
+
+            if (count($params) !== 0) {
+                $uris['term'] = $this->generateAssignedFilterUri(
                     $base_uri,
                     $named_anchor,
                     $params
@@ -711,11 +738,14 @@ class ChildController extends BaseController
     /**
      * @param string|null $category_id
      * @param string|null $subcategory_id
+     * @param string|null $term
+     *
      * @return array
      */
     private function assignedFilterUriParamsYear(
         string $category_id = null,
-        string $subcategory_id = null
+        string $subcategory_id = null,
+        string $term = null
     ): array
     {
         $params = [];
@@ -724,6 +754,9 @@ class ChildController extends BaseController
         }
         if ($subcategory_id !== null) {
             $params['subcategory'] = $subcategory_id;
+        }
+        if ($term !== null) {
+            $params['term'] = urlencode($term);
         }
 
         return $params;
@@ -733,12 +766,15 @@ class ChildController extends BaseController
      * @param string|null $category_id
      * @param string|null $subcategory_id
      * @param integer|null $year
+     * @param string|null $term
+     *
      * @return array
      */
     private function assignedFilterUriParamsMonth(
         string $category_id = null,
         string $subcategory_id = null,
-        int $year = null
+        int $year = null,
+        string $term = null
     ): array
     {
         $params = [];
@@ -751,6 +787,9 @@ class ChildController extends BaseController
         if ($year !== null && $year !== 0) {
             $params['year'] = $year;
         }
+        if ($term !== null) {
+            $params['term'] = urlencode($term);
+        }
 
         return $params;
     }
@@ -758,11 +797,14 @@ class ChildController extends BaseController
     /**
      * @param integer|null $year
      * @param integer|null $month
+     * @param string|null $term
+     *
      * @return array
      */
     private function assignedFilterUriParamsCategory(
         int $year = null,
-        int $month = null
+        int $month = null,
+        string $term = null
     ): array
     {
         $params = [];
@@ -772,6 +814,9 @@ class ChildController extends BaseController
         if ($month !== null && $month !== 0) {
             $params['month'] = $month;
         }
+        if ($term !== null) {
+            $params['term'] = urlencode($term);
+        }
 
         return $params;
     }
@@ -780,10 +825,45 @@ class ChildController extends BaseController
      * @param string|null $category_id
      * @param integer|null $year
      * @param integer|null $month
+     * @param string|null $term
+     *
      * @return array
      */
     private function assignedFilterUriParamsSubcategory(
         string $category_id = null,
+        int $year = null,
+        int $month = null,
+        string $term = null
+    ): array
+    {
+        $params = [];
+        if ($category_id !== null) {
+            $params['category'] = $category_id;
+        }
+        if ($year !== null && $year !== 0) {
+            $params['year'] = $year;
+        }
+        if ($month !== null && $month !== 0) {
+            $params['month'] = $month;
+        }
+        if ($term !== null) {
+            $params['term'] = urlencode($term);
+        }
+
+        return $params;
+    }
+
+    /**
+     * @param string|null $category_id
+     * @param string|null $subcategory_id
+     * @param integer|null $year
+     * @param integer|null $month
+     *
+     * @return array
+     */
+    private function assignedFilterUriParamsTerm(
+        string $category_id = null,
+        string $subcategory_id = null,
         int $year = null,
         int $month = null
     ): array
@@ -791,6 +871,9 @@ class ChildController extends BaseController
         $params = [];
         if ($category_id !== null) {
             $params['category'] = $category_id;
+        }
+        if ($subcategory_id !== null) {
+            $params['subcategory'] = $subcategory_id;
         }
         if ($year !== null && $year !== 0) {
             $params['year'] = $year;
