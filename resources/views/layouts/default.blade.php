@@ -67,7 +67,7 @@
                         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                                 @include(
-                                    'component.site-mobile-menu',
+                                    'component.site-menu',
                                     [
                                         'title' => $menus['children']['title'],
                                         'active' => $active,
@@ -75,7 +75,7 @@
                                     ]
                                 )
                                 @include(
-                                    'component.site-mobile-menu',
+                                    'component.site-menu',
                                     [
                                         'title' => $menus['site']['title'],
                                         'active' => $active,

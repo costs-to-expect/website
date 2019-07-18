@@ -9685,7 +9685,7 @@ html, body {
 }
 .container-cte .container-row .container-left li.nav-item a.active {
   background-color: #f6f5f8;
-  color: #404040;
+  color: #A8369B;
   margin-right: -15px;
   margin-left: -15px;
   padding-left: 32px;
@@ -9713,22 +9713,19 @@ html, body {
 .container-cte .container-row .container-right nav.navbar {
   padding-top: 0;
 }
-.container-cte .container-row .container-right nav.navbar li.nav-item a.active {
-  color: #000000;
-}
 .container-cte .container-row .container-right nav.navbar li.nav-item a {
-  color: #939393;
+  color: #404040;
 }
-.container-cte .container-row .container-right nav.navbar li.nav-item a:hover {
-  color: #616161;
+.container-cte .container-row .container-right nav.navbar li.nav-item a.active {
+  color: #A8369B;
+}
+.container-cte .container-row .container-right nav.navbar li.nav-item a.nav-link.icon img {
+  margin-right: 1rem;
 }
 .container-cte .container-row .container-right nav.navbar li.nav-item span.nav-title {
-  padding: 0.5rem 0rem;
+  padding: 0.5rem 1rem 0.5rem 0;
   display: block;
   font-weight: bolder;
-}
-.container-cte .container-row .container-right nav.navbar li.nav-item.active {
-  background-color: red;
 }
 .container-cte .container-row .container-right .summary-block {
   background-color: #fff;

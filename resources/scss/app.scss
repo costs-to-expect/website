@@ -26,7 +26,7 @@ $brand-grey-highlight: #dddcdf;
 @import "../../public/node_modules/bootstrap/scss/code";
 @import "../../public/node_modules/bootstrap/scss/grid";*/
 
-html,body {
+html, body {
     height: 100%;
 }
 
@@ -53,7 +53,7 @@ html,body {
 
                 a.active {
                     background-color: #f6f5f8;
-                    color: #404040;
+                    color: $brand-purple;
                     margin-right: -15px;
                     margin-left: -15px;
                     padding-left: 32px;
@@ -99,27 +99,26 @@ html,body {
 
                 li.nav-item {
 
-                    a.active {
-                        color: #000000;
+                    a {
+                        color: #404040;
                     }
 
-                    a {
-                        color: #939393;
+                    a.active {
+                        color: $brand-purple;
+                    }
 
-                        &:hover {
-                            color: #616161;
+                    a.nav-link.icon {
+
+                        img {
+                            margin-right: 1rem;
                         }
                     }
 
                     span.nav-title {
-                        padding: 0.5rem 0rem;
+                        padding: 0.5rem 1rem 0.5rem 0;
                         display: block;
                         font-weight: $font-weight-bolder;
                     }
-                }
-
-                li.nav-item.active {
-                    background-color: red;
                 }
             }
 

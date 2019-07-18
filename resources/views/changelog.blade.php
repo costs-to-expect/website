@@ -17,6 +17,22 @@
 
         <hr />
 
+        <h2>[v1.07.1] - 18th July 2019</h2>
+
+        <h3>Changed</h3>
+
+        <ul>
+            <li>We have tweaked the mobile, and the main website menu, the active state is more evident, and the mobile menu matches the main site menu.</li>
+            <li>Correction to the changelog.</li>
+        </ul>
+
+        <hr />
+        <p class="small text-muted text-right">
+            <strong>Files changed:</strong> x -
+            <strong>Lines added:</strong> xx -
+            <strong>Lines removed:</strong> xx
+        </p>
+
         <h2>[v1.07.0] - 18th July 2019</h2>
 
         <h3>Added</h3>
@@ -61,8 +77,8 @@
         <ul>
             <li>Modified the Docker setup, moved composer into Docker and added Xdebug for local development.</li>
             <li>Icons in summary counts are clickable.</li>
-            <li>I have created a separate <a href="https://packagist.org/packages/deanblackborough/laravel-view-helpers">view helpers</a> library.</li>
-            <li>I have tweaked link colours and table heading colours.</li>
+            <li>We have created a separate <a href="https://packagist.org/packages/deanblackborough/laravel-view-helpers">view helpers</a> library.</li>
+            <li>We have tweaked link colours and table heading colours.</li>
             <li>Refactoring in preparation for new development.</li>
         </ul>
 
