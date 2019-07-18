@@ -28,9 +28,9 @@
 
         <hr />
         <p class="small text-muted text-right">
-            <strong>Files changed:</strong> x -
-            <strong>Lines added:</strong> xx -
-            <strong>Lines removed:</strong> xx
+            <strong>Files changed:</strong> 6 -
+            <strong>Lines added:</strong> 41 -
+            <strong>Lines removed:</strong> 29
         </p>
 
         <h2>[v1.07.0] - 18th July 2019</h2>
