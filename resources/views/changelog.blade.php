@@ -17,6 +17,23 @@
 
         <hr />
 
+        <h2>[v1.08.0] - xxth July 2019</h2>
+
+        <h3>Changed</h3>
+
+        <ul>
+            <li>Added pagination controls below the expenses table.</li>
+            <li>Minor changes to the design.</li>
+            <li>Minor changes to the text in some of the summary counts.</li>
+        </ul>
+
+        <hr />
+        <p class="small text-muted text-right">
+            <strong>Files changed:</strong> xx -
+            <strong>Lines added:</strong> xxx -
+            <strong>Lines removed:</strong> xxx
+        </p>
+
         <h2>[v1.07.1] - 18th July 2019</h2>
 
         <h3>Changed</h3>
