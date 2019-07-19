@@ -40,14 +40,17 @@
 
         @if (count($expenses) > 0)
 
+            @if ($filtered === true)
             <div class="p-1 text-center">
                 <div class="filter-summary" title="Remove all filter(s)">
-                    <a href="/">
-                        Filter(s) summary: xx expenses, total &pound;175.00
+                    <a href="{{ $child_details['uri'] }}/expenses">
+                        Filter(s) summary: {{ $pagination['total'] }} expenses,
+                        total &pound;175.00
                         <span class="badge badge-light">&times;</span>
                     </a>
                 </div>
             </div>
+            @endif
 
             @include(
                 'laravel-view-helpers::pagination',

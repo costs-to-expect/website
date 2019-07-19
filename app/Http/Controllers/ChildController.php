@@ -167,6 +167,8 @@ class ChildController extends BaseController
         $month = request()->query('month');
         $term = request()->query('term');
 
+        $filtered = false;
+
         $child_overview = $this->childOverview($child_model, $overview_model);
 
         $subcategories = [];
@@ -188,32 +190,24 @@ class ChildController extends BaseController
 
         if ($category_id !== null) {
             $filter_parameters['category'] = $category_id;
+            $filtered = true;
 
             if ($subcategory_id !== null) {
                 $filter_parameters['subcategory'] = $subcategory_id;
             }
         }
         if ($year !== null && (int) $year !== 0) {
+            $filtered = true;
             $filter_parameters['year'] = (int) $year;
-
-            if ($month !== null && (int) $month !== 0) {
-                $filter_parameters['month'] = (int) $month;
-            }
+        }
+        if ($month !== null && (int) $month !== 0) {
+            $filtered = true;
+            $filter_parameters['month'] = (int) $month;
         }
         if ($term !== null) {
+            $filtered = true;
             $filter_parameters['term'] = $term;
         }
-
-        $expenses_data = $expense_model->expenses(
-            $child_model->id(),
-            $offset,
-            $limit,
-            $filter_parameters['category'],
-            $filter_parameters['subcategory'],
-            $filter_parameters['year'],
-            $filter_parameters['month'],
-            $filter_parameters['term']
-        );
 
         $base_uri = $uri = $child_model->uri() . '/expenses?limit=' . $limit . '&offset=' . $offset;
         $named_anchor = '#expenses-table';
@@ -221,6 +215,17 @@ class ChildController extends BaseController
         $assigned_filter_uris = $this->assignedFilterUris(
             $base_uri,
             $named_anchor,
+            $filter_parameters['category'],
+            $filter_parameters['subcategory'],
+            $filter_parameters['year'],
+            $filter_parameters['month'],
+            $filter_parameters['term']
+        );
+
+        $expenses_data = $expense_model->expenses(
+            $child_model->id(),
+            $offset,
+            $limit,
             $filter_parameters['category'],
             $filter_parameters['subcategory'],
             $filter_parameters['year'],
@@ -252,6 +257,8 @@ class ChildController extends BaseController
                 'child_details' => $child_model->details(),
 
                 'expenses' => $expenses_data['expenses'],
+
+                'filtered' => $filtered,
 
                 'filters' => [
                     'category' => [
