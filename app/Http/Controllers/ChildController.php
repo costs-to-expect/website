@@ -233,6 +233,22 @@ class ChildController extends BaseController
             $filter_parameters['term']
         );
 
+        $filtered_summary = null;
+        if ($filtered === true) {
+            $filtered_summary = $expense_model->expensesSummary(
+                $child_model->id(),
+                $filter_parameters['category'],
+                $filter_parameters['subcategory'],
+                $filter_parameters['year'],
+                $filter_parameters['month'],
+                $filter_parameters['term']
+            );
+
+            if ($filtered_summary !== null) {
+                $filtered_summary = $filtered_summary['total'];
+            }
+        }
+
         return view(
             'child-expenses',
             [
@@ -259,6 +275,7 @@ class ChildController extends BaseController
                 'expenses' => $expenses_data['expenses'],
 
                 'filtered' => $filtered,
+                'filtered_summary' => $filtered_summary,
 
                 'filters' => [
                     'category' => [

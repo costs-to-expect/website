@@ -169,6 +169,60 @@ class Uri
 
     /**
      * @param string $child_id
+     * @param string|null $category
+     * @param string|null $subcategory
+     * @param integer|null $year
+     * @param integer|null $month
+     * @param string|null $term
+     *
+     * @return string
+     */
+    public static function expensesSummary(
+        string $child_id,
+        string $category = null,
+        string $subcategory = null,
+        int $year = null,
+        int $month = null,
+        string $term = null
+    ): string
+    {
+        $uri = '/v1/summary/resource-types/' . self::$resource_type . '/resources/' .
+            $child_id . '/items';
+
+        $params = [];
+
+        if ($category !== null) {
+            $params['category'] = $category;
+
+            if ($subcategory !== null) {
+                $params['subcategory'] = $subcategory;
+            }
+        }
+
+        if ($year !== null) {
+            $params['year'] = $year;
+
+            if ($month !== null) {
+                $params['month'] = $month;
+            }
+        }
+
+        if ($term !== null) {
+            $params['search'] = 'description:' . urlencode($term);
+        }
+
+        $i = 0;
+        foreach ($params as $field => $value) {
+            $join = ($i === 0 ? '?' : '&');
+            $uri .= $join . $field . '=' . $value;
+            $i ++;
+        }
+
+        return $uri;
+    }
+
+    /**
+     * @param string $child_id
      * @param integer $limit
      * @param boolean $include_categories
      * @param boolean $include_subcategories

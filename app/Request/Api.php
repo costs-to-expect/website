@@ -261,6 +261,45 @@ class Api
 
     /**
      * @param string $child_id
+     * @param string|null $category
+     * @param string|null $subcategory
+     * @param integer|null $year
+     * @param integer|null $month
+     * @param string|null $term
+     *
+     * @return array|null
+     */
+    public static function expensesSummary(
+        string $child_id,
+        string $category = null,
+        string $subcategory = null,
+        int $year = null,
+        int $month = null,
+        string $term = null
+    ): ?array
+    {
+        self::$uri = Uri::expensesSummary(
+            $child_id,
+            $category,
+            $subcategory,
+            $year,
+            $month,
+            $term
+        );
+
+        $response = Http::getInstance()
+            ->public()
+            ->get(self::$uri, true);
+
+        if ($response !== null) {
+            return $response;
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * @param string $child_id
      *
      * @return array|null
      */

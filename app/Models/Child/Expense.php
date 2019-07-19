@@ -39,6 +39,15 @@ class Expense
     private $expenses_populated = false;
 
     /**
+     * @var array|null
+     */
+    private $expenses_summary = [];
+    /**
+     * @var bool
+     */
+    private $expenses_summary_populated = false;
+
+    /**
      * Fetch all expenses for a data table
      *
      * @param string $child_id
@@ -50,7 +59,7 @@ class Expense
      * @param integer|null $month
      * @param string|null $term
      *
-     * @return array|null Returned array had four indexes, expenses, total, limit and offset
+     * @return array|null Returned array has four indexes, expenses, total, limit and offset
      */
     public function expenses(
         string $child_id,
@@ -106,6 +115,47 @@ class Expense
             'limit' => $limit,
             'offset' => $offset
         ];
+    }
+
+    /**
+     * Fetch the summary of filtered expenses
+     *
+     * @param string $child_id
+     * @param string|null $category
+     * @param string|null $subcategory
+     * @param integer|null $year
+     * @param integer|null $month
+     * @param string|null $term
+     *
+     * @return array|null
+     */
+    public function expensesSummary(
+        string $child_id,
+        string $category = null,
+        string $subcategory = null,
+        int $year = null,
+        int $month = null,
+        string $term = null
+    ): ?array
+    {
+        if ($this->expenses_summary_populated === false) {
+            $response = Api::expensesSummary(
+                $child_id,
+                $category,
+                $subcategory,
+                $year,
+                $month,
+                $term
+            );
+            Api::setCalledURI('Filtered expenses summary', Api::lastUri());
+
+            if ($response !== null) {
+                $this->expenses_summary = $response;
+                $this->expenses_summary_populated = true;
+            }
+        }
+
+        return $this->expenses_summary;
     }
 
     /**
