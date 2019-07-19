@@ -256,6 +256,7 @@ class ChildController extends BaseController
                 'filters' => [
                     'category' => [
                         'name' => 'Category',
+                        'title' => 'Filter by category',
                         'values' => $category_model->allCategories(),
                         'set' => $filter_parameters['category'],
                         'uri' => $assigned_filter_uris['category'],
@@ -263,6 +264,7 @@ class ChildController extends BaseController
                     ],
                     'subcategory' => [
                         'name' => 'Subcategory',
+                        'title' => 'Filter by subcategory',
                         'values' => $subcategories,
                         'set' => $filter_parameters['subcategory'],
                         'uri' => $assigned_filter_uris['subcategory'],
@@ -270,6 +272,7 @@ class ChildController extends BaseController
                     ],
                     'year' => [
                         'name' => 'Year',
+                        'title' => 'Filter by year',
                         'values' => $years,
                         'set' => $filter_parameters['year'],
                         'uri' => $assigned_filter_uris['year'],
@@ -277,6 +280,7 @@ class ChildController extends BaseController
                     ],
                     'month' => [
                         'name' => 'Month',
+                        'title' => 'Filter by month',
                         'values' => $months,
                         'set' => $filter_parameters['month'],
                         'uri' => $assigned_filter_uris['month'],
