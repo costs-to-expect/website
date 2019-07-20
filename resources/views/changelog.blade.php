@@ -19,12 +19,24 @@
 
         <h2>[v1.08.0] - xxth July 2019</h2>
 
+        <h3>Added</h3>
+
+        <ul>
+            <li>Filter summary added to the expenses view, whenever a filter is applied, you will get a summary for the filter.</li>
+        </ul>
+
         <h3>Changed</h3>
 
         <ul>
             <li>Added pagination controls below the expenses table.</li>
             <li>Minor changes to the design.</li>
             <li>Minor changes to the text in some of the summary counts.</li>
+        </ul>
+
+        <h3>Fixed</h3>
+
+        <ul>
+            <li>Month filter only being applied to request if year filter set.</li>
         </ul>
 
         <hr />
