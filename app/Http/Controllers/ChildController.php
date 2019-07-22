@@ -205,7 +205,7 @@ class ChildController extends BaseController
             $filter_parameters['month'] = (int) $month;
         }
         if ($term !== null) {
-            $filtered = true;
+            $filtered = false; // Not supported for now
             $filter_parameters['term'] = $term;
         }
 
