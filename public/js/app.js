@@ -3,8 +3,18 @@ $(document).ready(function () {
         window.location = $(this).data('uri') + '?limit=' + $(this).val();
     });
 
-    $('select#category-expense-filter').change(function () {
-        $('select#subcategory-expense-filter option').remove();
-        $('select#subcategory-expense-filter').attr('disabled', 'disabled').prepend($("<option />").val('').text('Subcategory'));
+    let category_selector = 'select#category-expense-filter';
+    let base_value = $(category_selector).val();
+
+    $(category_selector).change(function () {
+        let subcategory_selector = 'select#subcategory-expense-filter';
+
+        if (base_value !== $(this).val()) {
+            $(subcategory_selector).attr('disabled', 'disabled');
+        } else {
+            if ($(subcategory_selector).attr('disabled') !== undefined) {
+                $(subcategory_selector).removeAttr('disabled');
+            }
+        }
     });
 });
