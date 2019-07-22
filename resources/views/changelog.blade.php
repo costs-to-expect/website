@@ -17,7 +17,7 @@
 
         <hr />
 
-        <h2>[v1.08.0] - xxth July 2019</h2>
+        <h2>[v1.08.0] - 23rd July 2019</h2>
 
         <h3>Added</h3>
 
@@ -37,6 +37,8 @@
 
         <ul>
             <li>Month filter only being applied to request if year filter set.</li>
+            <li>Subcategory filter not disabled when there are no selectable options.</li>
+            <li>The subcategory filter cleared options when the category value changed; We now disable the element if we need to load new subcategories.</li>
         </ul>
 
         <hr />
