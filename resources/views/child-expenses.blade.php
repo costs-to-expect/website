@@ -40,6 +40,18 @@
 
         @if (count($expenses) > 0)
 
+            @if ($filtered === true && $filtered_summary !== null)
+            <div class="p-1 text-center">
+                <div class="filter-summary" title="Remove all filter(s)">
+                    <a href="{{ $child_details['uri'] }}/expenses">
+                        Filter(s) summary: {{ $pagination['total'] }} expenses,
+                        total &pound;{{ number_format((float) $filtered_summary, 2) }}
+                        <span class="badge badge-light">&times;</span>
+                    </a>
+                </div>
+            </div>
+            @endif
+
             @include(
                 'laravel-view-helpers::pagination',
                 [
@@ -74,6 +86,30 @@
                     ]
                 )
             </div>
+
+            @include(
+                'laravel-view-helpers::pagination',
+                [
+                    'offset' => $pagination['offset'],
+                    'total' => $pagination['total'],
+                    'limit' => $pagination['limit'],
+                    'limit_options' => [
+                        50,
+                        100,
+                        250
+                    ],
+                    'uri' => [
+                        'base' => $pagination['uri']['base'],
+                        'parameters' => $pagination['uri']['parameters'],
+                        'anchor' => $pagination['uri']['anchor']
+                    ],
+                    'count_prefix' => 'Expenses',
+                    'css_classes' => [
+                        'left' => ' col-9 col-sm-10 col-xl-11',
+                        'right' => ' col-3 col-sm-2 col-xl-1'
+                    ]
+                ]
+            )
         @else
             <div class="alert alert-info" role="alert">
                 There are no listed expenses for {{ $child_details['short_name'] }} with the set filters.

@@ -1,6 +1,6 @@
 <div class="row mb-3">
     <div class="col-md-3 col-lg-4 col-sm-6 col-12">
-        <img src="{{ asset($child_details['image_uri']) }}" class="img-fluid rounded mx-auto d-block" alt="icon">
+        <img src="{{ asset($child_details['image_uri']) }}" title="{{ $child_details['short_name'] }} as a baby" class="img-fluid rounded mx-auto d-block" alt="icon">
     </div>
     <div class="col-md-9 col-lg-8 col-sm-6 col-12">
         <div class="detail-page-intro">

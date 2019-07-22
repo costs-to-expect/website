@@ -17,6 +17,37 @@
 
         <hr />
 
+        <h2>[v1.08.0] - 23rd July 2019</h2>
+
+        <h3>Added</h3>
+
+        <ul>
+            <li>Filter summary added to the expenses view, whenever a filter is applied, you will get a summary for the filter.</li>
+        </ul>
+
+        <h3>Changed</h3>
+
+        <ul>
+            <li>Added pagination controls below the expenses table.</li>
+            <li>Minor changes to the design.</li>
+            <li>Minor changes to the text in some of the summary counts.</li>
+        </ul>
+
+        <h3>Fixed</h3>
+
+        <ul>
+            <li>Month filter only being applied to request if year filter set.</li>
+            <li>Subcategory filter not disabled when there are no selectable options.</li>
+            <li>The subcategory filter cleared options when the category value changed; We now disable the element if we need to load new subcategories.</li>
+        </ul>
+
+        <hr />
+        <p class="small text-muted text-right">
+            <strong>Files changed:</strong> 16 -
+            <strong>Lines added:</strong> 399 -
+            <strong>Lines removed:</strong> 107
+        </p>
+
         <h2>[v1.07.1] - 18th July 2019</h2>
 
         <h3>Changed</h3>

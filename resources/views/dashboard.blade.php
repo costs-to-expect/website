@@ -16,8 +16,8 @@
             'icon' => 'expenses.png',
             'uri' => '/jack',
             'heading' => $jack_total['name'],
-            'subheading' => 'Total Expenses',
-            'description' => 'From birth, ' . $jack_total['dob'],
+            'subheading' => 'Summary of all expenses since ' . $jack_total['dob'],
+            'description' => null,
             'value' => $jack_total['total'],
             'active' => false
         ]
@@ -28,8 +28,8 @@
             'icon' => 'expenses.png',
             'uri' => '/niall',
             'heading' => $niall_total['name'],
-            'subheading' => 'Total Expenses',
-            'description' => 'From birth, ' . $niall_total['dob'],
+            'subheading' => 'Summary of all expenses since ' . $jack_total['dob'],
+            'description' => null,
             'value' => $niall_total['total'],
             'active' => false
         ]
@@ -40,8 +40,8 @@
             'icon' => 'expenses.png',
             'uri' => null,
             'heading' => 'The Blackboroughs',
-            'subheading' => 'Total Expenses',
-            'description' => 'For both our children to date',
+            'subheading' => 'Summary of all expenses',
+            'description' => null,
             'value' => $jack_total['total'] + $niall_total['total'],
             'active' => false
         ]
@@ -63,8 +63,8 @@
             'icon' => 'expenses.png',
             'uri' => '/jack/expenses/year/' . date('Y'),
             'heading' => 'Jack Blackborough',
-            'subheading' => date('Y'),
-            'description' => 'All expenses in ' . date('Y'),
+            'subheading' => 'Summary of expenses in ' . date('Y'),
+            'description' => null,
             'value' => ($jack_current_year !== null ? $jack_current_year : 0.00),
             'active' => false
         ]
@@ -75,8 +75,8 @@
             'icon' => 'expenses.png',
             'uri' => '/niall/expenses/year/' . date('Y'),
             'heading' => 'Niall Blackborough',
-            'subheading' => date('Y'),
-            'description' => 'All expenses in ' . date('Y'),
+            'subheading' => 'Summary of expenses in ' . date('Y'),
+            'description' => null,
             'value' => ($niall_current_year !== null ? $niall_current_year : 0.00),
             'active' => false
         ]
@@ -87,8 +87,8 @@
             'icon' => 'expenses.png',
             'uri' => null,
             'heading' => 'The Blackboroughs',
-            'subheading' => date('Y'),
-            'description' => 'All expenses in ' . date('Y'),
+            'subheading' => 'Summary of expenses in ' . date('Y'),
+            'description' => null,
             'value' => ($jack_current_year !== null ? $jack_current_year : 0.00) + ($niall_current_year !== null ? $niall_current_year : 0.00),
             'active' => false
         ]

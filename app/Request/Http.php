@@ -90,7 +90,7 @@ class Http
                     self::$headers = $response->getHeaders();
                 }
             } else {
-                // Nothing yet
+                // Nothing yet, this is where we log API errors as long as we didn't get a 503.
                 return null;
             }
         } catch (ClientException $e) {
@@ -110,25 +110,21 @@ class Http
      */
     public static function head(string $uri): ?array
     {
-        $headers = [];
-
         try {
             $response = self::$client->head($uri, ['http_errors' => false]);
 
             self::$status_code = $response->getStatusCode();
 
             if (self::$status_code === 200) {
-                $headers = $response->getHeaders();
+                return $response->getHeaders();
             } else {
-                // Nothing yet
+                // Nothing yet, this is where we log API errors as long as we didn't get a 503.
                 return null;
             }
         } catch (ClientException $e) {
             // Nothing yet
             return null;
         }
-
-        return $headers;
     }
 
     /**
