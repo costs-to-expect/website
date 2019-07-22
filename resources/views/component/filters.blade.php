@@ -3,11 +3,13 @@
         @foreach ($filters as $filter => $filter_data)
         @if ($filter !== 'term')
         <div class="{{ $filter_data['classes'] }}">
-            <select name="{{ $filter }}" id="{{ $filter }}-expense-filter" title="{{ $filter_data['title'] }}" class="form-control">
+            <select name="{{ $filter }}" id="{{ $filter }}-expense-filter" title="{{ $filter_data['title'] }}" class="form-control" @if(count($filter_data['values']) === 0) disabled="disabled" @endif>
                 <option value="" @if($filter_data['set'] === null)selected="selected"@endif>{{ $filter_data['name'] }}</option>
-                @foreach ($filter_data['values'] as $value)
-                    <option value="{{ $value['id'] }}" @if($filter_data['set'] == $value['id'])selected="selected"@endif>{{ $value['name'] }}</option>
-                @endforeach
+                @if (count($filter_data['values']) > 0)
+                    @foreach ($filter_data['values'] as $value)
+                        <option value="{{ $value['id'] }}" @if($filter_data['set'] == $value['id'])selected="selected"@endif>{{ $value['name'] }}</option>
+                    @endforeach
+                @endif
             </select>
         </div>
         @endif
