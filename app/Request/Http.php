@@ -4,6 +4,7 @@ namespace App\Request;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
+use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\RequestOptions;
 use Illuminate\Support\Facades\Config;
 
@@ -98,7 +99,7 @@ class Http
                     ]
                 ]
             );
-        } catch (ClientException $e) {
+        } catch (\Exception $e) {
             // Nothing yet
             return null;
         }
@@ -136,9 +137,12 @@ class Http
 
                 return null;
             }
+        } catch (ConnectException $e) {
+            abort(503, 'There was an error connecting to the Costs to Expect API.');
         } catch (ClientException $e) {
-            // Nothing yet
-            return null;
+            abort(400, 'There was an error interpreting the response from the Costs to Expect API.');
+        } catch(\Exception $e) {
+            abort(500, 'Unexpected error, please be patient whilst we fix it.');
         }
 
         return $content;
@@ -170,9 +174,12 @@ class Http
 
                 return null;
             }
+        } catch (ConnectException $e) {
+            abort(503, 'There was an error connecting to the Costs to Expect API.');
         } catch (ClientException $e) {
-            // Nothing yet
-            return null;
+            abort(400, 'There was an error interpreting the response from the Costs to Expect API.');
+        } catch(\Exception $e) {
+            abort(500, 'Unexpected error, please be patient whilst we fix it.');
         }
     }
 
