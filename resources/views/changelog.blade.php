@@ -17,6 +17,35 @@
 
         <hr />
 
+        <h2>[v1.09.0] - 31st July 2019</h2>
+
+        <h3>Added</h3>
+
+        <ul>
+            <li>The API request class logs unexpected responses from the Costs to Expect API.</li>
+        </ul>
+
+        <h3>Changed</h3>
+
+        <ul>
+            <li>The filter summary displays when a search term is used to filter the expenses.</li>
+            <li>Updated dependencies.</li>
+        </ul>
+
+        <h3>Fixed</h3>
+
+        <ul>
+            <li>Upgraded to v1.00.3 of `deanblackborough/laravel-view-helpers`, corrects a small issue with the pagination URIs.</li>
+            <li>Slightly better error pages.</li>
+        </ul>
+
+        <hr />
+        <p class="small text-muted text-right">
+            <strong>Files changed:</strong> 17 -
+            <strong>Lines added:</strong> 853 -
+            <strong>Lines removed:</strong> 114
+        </p>
+
         <h2>[v1.08.0] - 23rd July 2019</h2>
 
         <h3>Added</h3>

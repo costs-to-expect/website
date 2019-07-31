@@ -4,6 +4,8 @@ namespace App\Request;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
+use GuzzleHttp\Exception\ConnectException;
+use GuzzleHttp\RequestOptions;
 use Illuminate\Support\Facades\Config;
 
 /**
@@ -68,6 +70,42 @@ class Http
     }
 
     /**
+     * Silently log an error to the API
+     *
+     * @param string $method
+     * @param integer $expected_status_code
+     * @param integer $returned_status_code
+     * @param string $requested_uri
+     *
+     * @return null
+     */
+    protected static function logApiError(
+        string $method,
+        int $expected_status_code,
+        int $returned_status_code,
+        string $requested_uri
+    )
+    {
+        try {
+            $response = self::$client->post(
+                '/v1/request/error-log',
+                [
+                    RequestOptions::JSON => [
+                        'method' => $method,
+                        'expected_status_code' => $expected_status_code,
+                        'returned_status_code' => $returned_status_code,
+                        'request_uri' => $requested_uri,
+                        'source' => 'website'
+                    ]
+                ]
+            );
+        } catch (\Exception $e) {
+            // Nothing yet
+            return null;
+        }
+    }
+
+    /**
      * Make a GET request to the API
      *
      * @param string $uri The URI we want to call
@@ -90,12 +128,21 @@ class Http
                     self::$headers = $response->getHeaders();
                 }
             } else {
-                // Nothing yet, this is where we log API errors as long as we didn't get a 503.
+                self::getInstance()->public()->logApiError(
+                    'GET',
+                    200,
+                    self::$status_code,
+                    $uri
+                );
+
                 return null;
             }
+        } catch (ConnectException $e) {
+            abort(503, 'There was an error connecting to the Costs to Expect API.');
         } catch (ClientException $e) {
-            // Nothing yet
-            return null;
+            abort(400, 'There was an error interpreting the response from the Costs to Expect API.');
+        } catch(\Exception $e) {
+            abort(500, 'Unexpected error, please be patient whilst we fix it.');
         }
 
         return $content;
@@ -118,12 +165,21 @@ class Http
             if (self::$status_code === 200) {
                 return $response->getHeaders();
             } else {
-                // Nothing yet, this is where we log API errors as long as we didn't get a 503.
+                self::getInstance()->public()->logApiError(
+                    'GET',
+                    200,
+                    self::$status_code,
+                    $uri
+                );
+
                 return null;
             }
+        } catch (ConnectException $e) {
+            abort(503, 'There was an error connecting to the Costs to Expect API.');
         } catch (ClientException $e) {
-            // Nothing yet
-            return null;
+            abort(400, 'There was an error interpreting the response from the Costs to Expect API.');
+        } catch(\Exception $e) {
+            abort(500, 'Unexpected error, please be patient whilst we fix it.');
         }
     }
 
