@@ -36,6 +36,7 @@
 
         <ul>
             <li>Upgraded to v1.00.3 of `deanblackborough/laravel-view-helpers`, corrects a small issue with the pagination URIs.</li>
+            <li>Slightly better error pages.</li>
         </ul>
 
         <hr />
