@@ -28,7 +28,7 @@
             'component-container.cost-summary-block',
             [
                 'icon' => 'expenses.png',
-                'uri' => '/jack/expenses/year/' . $year['year'],
+                'uri' => $active . '/expenses/year/' . $year['year'],
                 'heading' => $year['year'],
                 'subheading' => 'Summary of all expenses for ' . $child_details['short_name'] .
                     ' in ' . $year['year'],
@@ -60,7 +60,7 @@
             'component-container.cost-summary-block',
             [
                 'icon' => 'expenses.png',
-                'uri' => '/jack/expenses/year/' . $active_year . '/month/' . $month['id'],
+                'uri' => $active . '/expenses/year/' . $active_year . '/month/' . $month['id'],
                 'heading' => $month['month'] . ' ' . $active_year,
                 'subheading' => 'Summary of all expenses for ' . $child_details['short_name'] .
                     ' in ' . $month['month'] . ' ' . $active_year,
