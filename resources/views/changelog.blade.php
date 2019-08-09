@@ -17,6 +17,22 @@
 
         <hr />
 
+        <h2>[v1.09.1] - 9th August 2019</h2>
+
+        <h3>Fixed</h3>
+
+        <ul>
+            <li>Year and month summary pages for Niall forwarding to Jack.</li>
+            <li>Minor content correction.</li>
+        </ul>
+
+        <hr />
+        <p class="small text-muted text-right">
+            <strong>Files changed:</strong> 5 -
+            <strong>Lines added:</strong> 23 -
+            <strong>Lines removed:</strong> 7
+        </p>
+
         <h2>[v1.09.0] - 31st July 2019</h2>
 
         <h3>Added</h3>

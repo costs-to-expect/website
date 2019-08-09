@@ -44,7 +44,7 @@
             <div class="p-1 text-center">
                 <div class="filter-summary" title="Remove all filter(s)">
                     <a href="{{ $child_details['uri'] }}/expenses">
-                        Filter(s) summary: {{ $pagination['total'] }} expenses,
+                        Filter(s) summary: {{ $pagination['total'] }} expense(s),
                         total &pound;{{ number_format((float) $filtered_summary, 2) }}
                         <span class="badge badge-light">&times;</span>
                     </a>
