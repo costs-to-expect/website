@@ -76,6 +76,7 @@ class Http
      * @param integer $expected_status_code
      * @param integer $returned_status_code
      * @param string $requested_uri
+     * @param string $debug Optional debug information
      *
      * @return null
      */
@@ -83,7 +84,8 @@ class Http
         string $method,
         int $expected_status_code,
         int $returned_status_code,
-        string $requested_uri
+        string $requested_uri,
+        array $debug = []
     )
     {
         try {
@@ -95,7 +97,8 @@ class Http
                         'expected_status_code' => $expected_status_code,
                         'returned_status_code' => $returned_status_code,
                         'request_uri' => $requested_uri,
-                        'source' => 'website'
+                        'source' => 'website',
+                        'debug' => implode(':', $debug)
                     ]
                 ]
             );
@@ -110,10 +113,11 @@ class Http
      *
      * @param string $uri The URI we want to call
      * @param boolean $headers Store the headers so they can be fetched later
+     * @param array $debug Optional debug data
      *
      * @return mixed
      */
-    public static function get(string $uri, $headers = false): ?array
+    public static function get(string $uri, bool $headers = false, array $debug = []): ?array
     {
         $content = null;
 
@@ -132,7 +136,8 @@ class Http
                     'GET',
                     200,
                     self::$status_code,
-                    $uri
+                    $uri,
+                    array_merge(['GET'], $debug)
                 );
 
                 return null;
@@ -152,10 +157,11 @@ class Http
      * Make a HEAD request to the API
      *
      * @param string $uri The URI we want to call
+     * @param array $debug Optional debug data
      *
      * @return mixed
      */
-    public static function head(string $uri): ?array
+    public static function head(string $uri, array $debug = []): ?array
     {
         try {
             $response = self::$client->head($uri, ['http_errors' => false]);
@@ -169,7 +175,8 @@ class Http
                     'GET',
                     200,
                     self::$status_code,
-                    $uri
+                    $uri,
+                    array_merge(['HEAD'], $debug)
                 );
 
                 return null;
