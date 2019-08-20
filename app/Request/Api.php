@@ -76,7 +76,7 @@ class Api
 
         $response = Http::getInstance()
             ->public()
-            ->get(self::$uri);
+            ->get(self::$uri, false, [__CLASS__, __METHOD__]);
 
         if ($response !== null) {
             return $response;
@@ -96,7 +96,7 @@ class Api
 
         $response = Http::getInstance()
             ->public()
-            ->get(self::$uri);
+            ->get(self::$uri, false, [__CLASS__, __METHOD__]);
 
         if ($response !== null) {
             return $response;
@@ -116,7 +116,7 @@ class Api
 
         $response = Http::getInstance()
             ->public()
-            ->get(self::$uri);
+            ->get(self::$uri, false, [__CLASS__, __METHOD__]);
 
         if ($response !== null) {
             return $response;
@@ -140,7 +140,7 @@ class Api
 
         $response = Http::getInstance()
             ->public()
-            ->get(self::$uri);
+            ->get(self::$uri, false, [__CLASS__, __METHOD__]);
 
         if ($response !== null) {
             return $response;
@@ -160,7 +160,7 @@ class Api
 
         $response = Http::getInstance()
             ->public()
-            ->get(self::$uri);
+            ->get(self::$uri, false, [__CLASS__, __METHOD__]);
 
         if ($response !== null) {
             return $response;
@@ -181,7 +181,7 @@ class Api
 
         $response = Http::getInstance()
             ->public()
-            ->get(self::$uri);
+            ->get(self::$uri, false, [__CLASS__, __METHOD__]);
 
         if ($response !== null) {
             return $response;
@@ -203,7 +203,7 @@ class Api
 
         $response = Http::getInstance()
             ->public()
-            ->get(self::$uri, true);
+            ->get(self::$uri, true, [__CLASS__, __METHOD__]);
 
         if ($response !== null) {
             return $response;
@@ -250,7 +250,7 @@ class Api
 
         $response = Http::getInstance()
             ->public()
-            ->get(self::$uri, true);
+            ->get(self::$uri, true, [__CLASS__, __METHOD__]);
 
         if ($response !== null) {
             return $response;
@@ -289,7 +289,7 @@ class Api
 
         $response = Http::getInstance()
             ->public()
-            ->get(self::$uri, true);
+            ->get(self::$uri, true, [__CLASS__, __METHOD__]);
 
         if ($response !== null) {
             return $response;
@@ -314,7 +314,7 @@ class Api
 
         $response = Http::getInstance()
             ->public()
-            ->get(self::$uri, true);
+            ->get(self::$uri, true, [__CLASS__, __METHOD__]);
 
         if ($response !== null) {
             return $response;
@@ -344,7 +344,7 @@ class Api
 
         $response = Http::getInstance()
             ->public()
-            ->get(self::$uri, true);
+            ->get(self::$uri, true, [__CLASS__, __METHOD__]);
 
         if ($response !== null) {
             return $response;
@@ -374,7 +374,7 @@ class Api
 
         $response = Http::getInstance()
             ->public()
-            ->get(self::$uri, true);
+            ->get(self::$uri, true, [__CLASS__, __METHOD__]);
 
         if ($response !== null) {
             return $response;
@@ -407,7 +407,7 @@ class Api
 
         $response = Http::getInstance()
             ->public()
-            ->get(self::$uri, true);
+            ->get(self::$uri, true, [__CLASS__, __METHOD__]);
 
         if ($response !== null) {
             return $response;
@@ -440,7 +440,7 @@ class Api
 
         $response = Http::getInstance()
             ->public()
-            ->get(self::$uri, true);
+            ->get(self::$uri, true, [__CLASS__, __METHOD__]);
 
         if ($response !== null) {
             return $response;
@@ -464,7 +464,7 @@ class Api
 
         $response = Http::getInstance()
             ->public()
-            ->get(self::$uri);
+            ->get(self::$uri, false, [__CLASS__, __METHOD__]);
 
         if ($response !== null) {
             return $response;
@@ -485,7 +485,7 @@ class Api
 
         $response = Http::getInstance()
             ->public()
-            ->get(self::$uri);
+            ->get(self::$uri, false, [__CLASS__, __METHOD__]);
 
         if ($response !== null) {
             return $response;
@@ -505,7 +505,7 @@ class Api
 
         $response = Http::getInstance()
             ->public()
-            ->get(self::$uri);
+            ->get(self::$uri, false, [__CLASS__, __METHOD__]);
 
         if ($response !== null) {
             return $response;

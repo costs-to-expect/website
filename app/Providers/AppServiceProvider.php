@@ -34,7 +34,7 @@ class AppServiceProvider extends ServiceProvider
 
         Http::getInstance()
             ->public()
-            ->get('/v1');
+            ->get('/v1', false, [__CLASS__, __METHOD__]);
 
         View()->composer(['layouts.default'], function($view) {
             $view->with(
