@@ -17,6 +17,20 @@
 
         <hr />
 
+        <h2>[v1.09.2] - xxth August 2019</h2>
+
+        <h3>Changed</h3>
+
+        <ul>
+            <li></li>
+        </ul>
+
+        <h3>Fixed</h3>
+
+        <ul>
+            <li></li>
+        </ul>
+
         <h2>[v1.09.1] - 9th August 2019</h2>
 
         <h3>Fixed</h3>
