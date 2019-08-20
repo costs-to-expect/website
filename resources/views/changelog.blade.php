@@ -17,7 +17,7 @@
 
         <hr />
 
-        <h2>[v1.09.2] - xxth August 2019</h2>
+        <h2>[v1.09.2] - 21st August 2019</h2>
 
         <h3>Changed</h3>
 
@@ -29,9 +29,9 @@
 
         <hr />
         <p class="small text-muted text-right">
-            <strong>Files changed:</strong> 5 -
-            <strong>Lines added:</strong> 23 -
-            <strong>Lines removed:</strong> 7
+            <strong>Files changed:</strong> 7 -
+            <strong>Lines added:</strong> 74 -
+            <strong>Lines removed:</strong> 30
         </p>
 
         <h2>[v1.09.1] - 9th August 2019</h2>
