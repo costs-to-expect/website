@@ -22,14 +22,17 @@
         <h3>Changed</h3>
 
         <ul>
-            <li></li>
+            <li>We have updated the copyright for the website; it should have been my company and not me.</li>
+            <li>We now send additional information for API request errors. The additional information is limited to HTTP verb, class and method names.</li>
+            <li>We have added a check to redirect when an invalid category and subcategory are requested. The page correctly handled the request, but now we strip the subcategory from the URI.</li>
         </ul>
 
-        <h3>Fixed</h3>
-
-        <ul>
-            <li></li>
-        </ul>
+        <hr />
+        <p class="small text-muted text-right">
+            <strong>Files changed:</strong> 5 -
+            <strong>Lines added:</strong> 23 -
+            <strong>Lines removed:</strong> 7
+        </p>
 
         <h2>[v1.09.1] - 9th August 2019</h2>
 
