@@ -409,7 +409,7 @@ class ChildController extends BaseController
      *
      * @return View
      */
-    public function subcategory(Request $request, string $child, string $category_uri, string $subcategory_id): View
+    public function subcategory(Request $request, string $child, string $category_uri, string $subcategory_id)
     {
         Api::resetCalledURIs();
 
@@ -426,9 +426,28 @@ class ChildController extends BaseController
 
         $subcategories_summary = $category_model->subcategorySummary($child_model->id(), $category_model->id());
 
+        $exists = false;
+        foreach ($subcategories_summary as $sub) {
+            if ($sub['id'] === $subcategory_id) {
+                $exists = true;
+                continue;
+            }
+        }
+
+        if ($exists === false) {
+            return redirect()->action(
+                'ChildController@category',
+                [
+                    'child' => $child,
+                    'category_uri' => $category_uri
+                ]
+            );
+        }
+
         $subcategory = $subcategory_model->subcategory($category_model->id(), $subcategory_id);
+
         if ($subcategory === null) {
-            redirect('/');
+            return redirect()->action('DashboardController@index');
         }
 
         $recent_expenses_data = $expense_model->recentExpensesBySubcategory(
