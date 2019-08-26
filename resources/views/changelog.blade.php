@@ -17,6 +17,14 @@
 
         <hr />
 
+        <h2>[v1.10.0] - xxth August/September 2019 (Open Source release)</h2>
+
+        <h3>Changed</h3>
+
+        <ul>
+
+        </ul>
+
         <h2>[v1.09.2] - 21st August 2019</h2>
 
         <h3>Changed</h3>
