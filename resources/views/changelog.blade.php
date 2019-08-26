@@ -6,12 +6,12 @@
     <div class="col-12">
         <h2>Releases</h2>
 
-        <p>The changelog for the Costs to Expect service, we try not to say
+        <p>The changelog for the Costs to Expect website, we try not to say
             <code>bug fixes and improvements</code>, we may on occasion not fully detail a
-            change or fix if we don't feel it is necessary, however, we will always try to be as
-            open as possible.</p>
+            change or fix if we don't feel it is necessary, however, as the website is Open Source
+            you can simply head on over to GitHub.</p>
 
-        <p>The changelog for the Costs to Expect API can be found over on
+        <p>The Website consumes the Costs to Expect API, its changelog can be found over on
             <a href="https://github.com/costs-to-expect/api/blob/master/CHANGELOG.md">GitHub</a>,
             the API changelog details every change, the API is Open Source.</p>
 
@@ -19,10 +19,24 @@
 
         <h2>[v1.10.0] - xxth August/September 2019 (Open Source release)</h2>
 
+        <h3>Added</h3>
+
+        <ul>
+            <li>We have added a README with a brief overview and set up instructions</li>
+        </ul>
+
         <h3>Changed</h3>
 
         <ul>
+            <li>New content for the Changelog content page ready for the Open Source release.</li>
+            <li>New content for the About content page ready for the Open Source release.</li>
+        </ul>
 
+        <h3>Removed</h3>
+
+        <ul>
+            <li>We have removed the meta details for each release, they are no longer necessary
+            now that the website has been Open Sourced.</li>
         </ul>
 
         <h2>[v1.09.2] - 21st August 2019</h2>
