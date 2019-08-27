@@ -6,16 +6,40 @@
     <div class="col-12">
         <h2>Releases</h2>
 
-        <p>The changelog for the Costs to Expect service, we try not to say
+        <p>The changelog for the Costs to Expect website, we try not to say
             <code>bug fixes and improvements</code>, we may on occasion not fully detail a
-            change or fix if we don't feel it is necessary, however, we will always try to be as
-            open as possible.</p>
+            change or fix if we don't feel it is necessary, however, as the website is Open Source
+            you can simply head on over to GitHub.</p>
 
-        <p>The changelog for the Costs to Expect API can be found over on
+        <p>The Website consumes the Costs to Expect API, its changelog can be found over on
             <a href="https://github.com/costs-to-expect/api/blob/master/CHANGELOG.md">GitHub</a>,
             the API changelog details every change, the API is Open Source.</p>
 
         <hr />
+
+        <h2>[v1.10.0] - 27th August 2019 (Open Source release)</h2>
+
+        <h3>Added</h3>
+
+        <ul>
+            <li>We have added a README with a brief overview and set up instructions.</li>
+            <li>We have added Google Analytics to the website, GPDR friendly.</li>
+            <li>We have added a privacy policy page.</li>
+        </ul>
+
+        <h3>Changed</h3>
+
+        <ul>
+            <li>New content for the Changelog content page ready for the Open Source release.</li>
+            <li>New content for the About content page ready for the Open Source release.</li>
+        </ul>
+
+        <h3>Removed</h3>
+
+        <ul>
+            <li>We have removed the meta details for each release, they are no longer necessary
+            now that the website has been Open Sourced.</li>
+        </ul>
 
         <h2>[v1.09.2] - 21st August 2019</h2>
 
@@ -27,13 +51,6 @@
             <li>We have added a check to redirect when an invalid category and subcategory are requested. The page correctly handled the request, but now we strip the subcategory from the URI.</li>
         </ul>
 
-        <hr />
-        <p class="small text-muted text-right">
-            <strong>Files changed:</strong> 7 -
-            <strong>Lines added:</strong> 74 -
-            <strong>Lines removed:</strong> 30
-        </p>
-
         <h2>[v1.09.1] - 9th August 2019</h2>
 
         <h3>Fixed</h3>
@@ -42,13 +59,6 @@
             <li>Year and month summary pages for Niall forwarding to Jack.</li>
             <li>Minor content correction.</li>
         </ul>
-
-        <hr />
-        <p class="small text-muted text-right">
-            <strong>Files changed:</strong> 5 -
-            <strong>Lines added:</strong> 23 -
-            <strong>Lines removed:</strong> 7
-        </p>
 
         <h2>[v1.09.0] - 31st July 2019</h2>
 
@@ -71,13 +81,6 @@
             <li>Upgraded to v1.00.3 of `deanblackborough/laravel-view-helpers`, corrects a small issue with the pagination URIs.</li>
             <li>Slightly better error pages.</li>
         </ul>
-
-        <hr />
-        <p class="small text-muted text-right">
-            <strong>Files changed:</strong> 17 -
-            <strong>Lines added:</strong> 853 -
-            <strong>Lines removed:</strong> 114
-        </p>
 
         <h2>[v1.08.0] - 23rd July 2019</h2>
 
@@ -103,13 +106,6 @@
             <li>The subcategory filter cleared options when the category value changed; We now disable the element if we need to load new subcategories.</li>
         </ul>
 
-        <hr />
-        <p class="small text-muted text-right">
-            <strong>Files changed:</strong> 16 -
-            <strong>Lines added:</strong> 399 -
-            <strong>Lines removed:</strong> 107
-        </p>
-
         <h2>[v1.07.1] - 18th July 2019</h2>
 
         <h3>Changed</h3>
@@ -118,13 +114,6 @@
             <li>We have tweaked the mobile, and the main website menu, the active state is more evident, and the mobile menu matches the main site menu.</li>
             <li>Correction to the changelog.</li>
         </ul>
-
-        <hr />
-        <p class="small text-muted text-right">
-            <strong>Files changed:</strong> 6 -
-            <strong>Lines added:</strong> 41 -
-            <strong>Lines removed:</strong> 29
-        </p>
 
         <h2>[v1.07.0] - 18th July 2019</h2>
 
@@ -146,13 +135,6 @@
         <ul>
             <li>Under specific scenarios, the URI on the final assigned filter is incorrect.</li>
         </ul>
-
-        <hr />
-        <p class="small text-muted text-right">
-            <strong>Files changed:</strong> 9 -
-            <strong>Lines added:</strong> 405 -
-            <strong>Lines removed:</strong> 129
-        </p>
 
         <h2>[v1.06.2] - 15th July 2019</h2>
 
@@ -183,13 +165,6 @@
             <li>Spelling error on "<a href="/what-we-count">What we count?</a>" page</li>
         </ul>
 
-        <hr />
-        <p class="small text-muted text-right">
-            <strong>Files changed:</strong> 28 -
-            <strong>Lines added:</strong> 630 -
-            <strong>Lines removed:</strong> 820
-        </p>
-
         <h2>[v1.06.1] - 6th July 2019</h2>
 
         <h3>Changed</h3>
@@ -209,13 +184,6 @@
             <li>Filtering the form now jumps you down to the expenses data table rather than the top of the page.</li>
             <li>Filtering the form does not respect the selected limit value.</li>
         </ul>
-
-        <hr />
-        <p class="small text-muted text-right">
-            <strong>Files changed:</strong> 16 -
-            <strong>Lines added:</strong> 277 -
-            <strong>Lines removed:</strong> 215
-        </p>
 
         <h2>[v1.06.0] - 5th July 2019</h2>
 
@@ -241,13 +209,6 @@
             <li>The current year links on the dashboard go to the relevant child year page.</li>
         </ul>
 
-        <hr />
-        <p class="small text-muted text-right">
-            <strong>Files changed:</strong> 27 -
-            <strong>Lines added:</strong> 1,106 -
-            <strong>Lines removed:</strong> 101
-        </p>
-
         <h2>[v1.05.0] - 24th June 2019</h2>
 
         <h3>Added</h3>
@@ -266,13 +227,6 @@
             <li>Meta details added to the changelog.</li>
             <li>Changed the order of the years in the last three years summary.</li>
         </ul>
-
-        <hr />
-        <p class="small text-muted text-right">
-            <strong>Files changed:</strong> 25 -
-            <strong>Lines added:</strong> 2,199 -
-            <strong>Lines removed:</strong> 479
-        </p>
 
         <h2>[v1.04.1] - 19th June 2019</h2>
 
@@ -294,13 +248,6 @@
             <li>Removed redundant horizontal line on the child detail page.</li>
         </ul>
 
-        <hr />
-        <p class="small text-muted text-right">
-            <strong>Files changed:</strong> 28 -
-            <strong>Lines added:</strong> 1,440 -
-            <strong>Lines removed:</strong> 1,696
-        </p>
-
         <h2>[v1.04.0] - 3rd June 2019</h2>
 
         <h3>Added</h3>
@@ -317,13 +264,6 @@
             <li>Minor content changes for mobile layout.</li>
             <li>Disabled the all years pages, I need to do some additional development before bringing them back.</li>
         </ul>
-
-        <hr />
-        <p class="small text-muted text-right">
-            <strong>Files changed:</strong> 15 -
-            <strong>Lines added:</strong> 1,246 -
-            <strong>Lines removed:</strong> 780
-        </p>
 
         <h2>[v1.03.2] - 31st May 2019</h2>
 
@@ -345,13 +285,6 @@
             <li>Content update to 'What we count?' page.</li>
         </ul>
 
-        <hr />
-        <p class="small text-muted text-right">
-            <strong>Files changed:</strong> 2 -
-            <strong>Lines added:</strong> 2 -
-            <strong>Lines removed:</strong> 2
-        </p>
-
         <h2>[v1.03.1] - 29th May 2019</h2>
 
         <h3>Fixed</h3>
@@ -359,13 +292,6 @@
         <ul>
             <li>Pagination controls should not show the prefix text on mobile.</li>
         </ul>
-
-        <hr />
-        <p class="small text-muted text-right">
-            <strong>Files changed:</strong> 3 -
-            <strong>Lines added:</strong> 10 -
-            <strong>Lines removed:</strong> 2
-        </p>
 
         <h2>[v1.03.0] - 29th May 2019</h2>
 
@@ -395,13 +321,6 @@
             <li>Removed the 100% height on elements, causing minor scrolling issues on some mobile devices.</li>
         </ul>
 
-        <hr />
-        <p class="small text-muted text-right">
-            <strong>Files changed:</strong> 20 -
-            <strong>Lines added:</strong> 819 -
-            <strong>Lines removed:</strong> 987
-        </p>
-
         <h2>[v1.02.0] - 9th May 2019</h2>
 
         <h3>Added</h3>
@@ -427,13 +346,6 @@
             <li>Typo, Niall's name incorrect on the detail page, shown as Jack.</li>
         </ul>
 
-        <hr />
-        <p class="small text-muted text-right">
-            <strong>Files changed:</strong> 20 -
-            <strong>Lines added:</strong> 1,641 -
-            <strong>Lines removed:</strong> 326
-        </p>
-
         <h2>[v1.01.0] - 27th April 2019</h2>
 
         <h3>Added</h3>
@@ -453,13 +365,6 @@
             <li>API requests breaking out of the table.</li>
         </ul>
 
-        <hr />
-        <p class="small text-muted text-right">
-            <strong>Files changed:</strong> 14 -
-            <strong>Lines added:</strong> 721 -
-            <strong>Lines removed:</strong> 162
-        </p>
-
         <h2>[v1.00.1] - 23rd April 2019</h2>
 
         <h3>Changed</h3>
@@ -467,13 +372,6 @@
         <ul>
             <li>Minor content update, added <code>Niall</code>.</li>
         </ul>
-
-        <hr />
-        <p class="small text-muted text-right">
-            <strong>Files changed:</strong> 18 -
-            <strong>Lines added:</strong> 1,062 -
-            <strong>Lines removed:</strong> 68
-        </p>
 
         <h2>[v1.00.0] - 20th April 2019</h2>
 
@@ -485,13 +383,6 @@
             <li>About page, provides a little detail on the future service and website.</li>
             <li>Changelog, this page, detail every change to the website.</li>
         </ul>
-
-        <hr />
-        <p class="small text-muted text-right">
-            <strong>Files changed:</strong> 14 -
-            <strong>Lines added:</strong> 721 -
-            <strong>Lines removed:</strong> 162
-        </p>
     </div>
 </div>
 

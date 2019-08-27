@@ -26,3 +26,4 @@ Route::post('/{child}/expenses', 'ChildController@setExpensesFilter');
 Route::get('/about', 'ContentController@about');
 Route::get('/what-we-count', 'ContentController@whatWeCount');
 Route::get('/changelog', 'ContentController@changelog');
+Route::get('/privacy-policy', 'ContentController@privacyPolicy');

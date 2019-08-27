@@ -99,6 +99,34 @@ class ContentController extends BaseController
     }
 
     /**
+     * Changelog
+     *
+     * @return View
+     */
+    public function privacyPolicy(): View
+    {
+        return view(
+            'privacy-policy',
+            [
+                'menus' => $this->menus(),
+                'active' => '/privacy-policy',
+                'meta' => [
+                    'title' => 'Privacy policy',
+                    'description' => 'The Costs to Expect Privacy policy'
+                ],
+                'welcome' => [
+                    'title' => 'Privacy policy',
+                    'description' => 'The Cots to Expect Privacy policy',
+                    'image' => [
+                        'icon' => 'info.png',
+                        'title' => 'Privacy policy'
+                    ]
+                ]
+            ]
+        );
+    }
+
+    /**
      * Return the menus
      *
      * @return array
