@@ -17,12 +17,14 @@
 
         <hr />
 
-        <h2>[v1.10.0] - xxth August/September 2019 (Open Source release)</h2>
+        <h2>[v1.10.0] - 27th August 2019 (Open Source release)</h2>
 
         <h3>Added</h3>
 
         <ul>
-            <li>We have added a README with a brief overview and set up instructions</li>
+            <li>We have added a README with a brief overview and set up instructions.</li>
+            <li>We have added Google Analytics to the website, GPDR friendly.</li>
+            <li>We have added a privacy policy page.</li>
         </ul>
 
         <h3>Changed</h3>

@@ -1,6 +1,22 @@
 <!doctype html>
 <html lang="en">
     <head>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-64736-11"></script>
+        <script>
+        _doNotTrack = (
+            window.doNotTrack === "1" ||
+            navigator.doNotTrack === "yes" ||
+            navigator.doNotTrack === "1"
+        );
+        if (!_doNotTrack) {
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'UA-64736-11');
+            gtag('config', '<GA_MEASUREMENT_ID>', { 'anonymize_ip': true });
+        }
+        </script>
         <meta charset="utf-8">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -120,7 +136,7 @@
                         <div class="col-12">
                             <p class="text-center text-muted footer">
                                 <a href="https://www.costs-to-expect.com">Costs to Expect</a> Copyright &copy; <a href="{{ $footer['copyright_url'] }}">{{ $footer['copyright'] }}</a><br />
-                                <a href="{{ $footer['api-link'] }}">Costs to Expect API</a> | <a href="/changelog">Changelog</a><br />
+                                <a href="{{ $footer['api-link'] }}">Costs to Expect API</a> | <a href="/changelog">Changelog</a> | <a href="/privacy-policy">Privacy policy</a><br />
                                 <small>{{ $footer['release'] }} released {{ $footer['date'] }}</small>
                             </p>
                         </div>

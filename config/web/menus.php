@@ -46,6 +46,12 @@ return [
                 'title' => 'Costs to Expect Changelog',
                 'icon' => null,
                 'uri' => '/changelog'
+            ],
+            [
+                'name' => 'Privacy policy',
+                'title' => 'Our privacy policy',
+                'icon' => null,
+                'uri' => '/privacy-policy'
             ]
         ]
     ]
