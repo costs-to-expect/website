@@ -6,16 +6,30 @@
     <div class="col-12">
         <h2>Releases</h2>
 
-        <p>The changelog for the Costs to Expect website, we try not to say
-            <code>bug fixes and improvements</code>, we may on occasion not fully detail a
-            change or fix if we don't feel it is necessary, however, as the website is Open Source
-            you can simply head on over to GitHub.</p>
+        <p>This is the changelog for the Costs to Expect Website. In our updates
+            we try not to say <code>bug fixes and improvements</code>, however,
+            we may on occasion list slightly less detail here
+            if we don't feel it is necessary to mention a change.
+            </p>
+        <p>This website is Open Source so you can simply head on over to
+            <a href="https://github.com/costs-to-expect/website/blob/master/CHANGELOG.md">GitHub</a>
+            to see everything.</p>
 
-        <p>The Website consumes the Costs to Expect API, its changelog can be found over on
-            <a href="https://github.com/costs-to-expect/api/blob/master/CHANGELOG.md">GitHub</a>,
-            the API changelog details every change, the API is Open Source.</p>
+        <p>The Costs to Expect Website consumes the Costs to Expect API, the full changelog for
+            the Costs to Expect API can also be found on
+            <a href="https://github.com/costs-to-expect/api/blob/master/CHANGELOG.md">GitHub</a>, both
+            products are Open Source.</p>
 
         <hr />
+
+        <h2>[v1.10.1] - 31st August 2019</h2>
+
+        <h3>Changed</h3>
+
+        <ul>
+            <li>We have updated the CHANGELOG and added links to the GitHub repositories for the
+            Costs to Expect Website and API.</li>
+        </ul>
 
         <h2>[v1.10.0] - 27th August 2019 (Open Source release)</h2>
 
