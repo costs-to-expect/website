@@ -24,6 +24,12 @@
 
         <h2>[v1.10.1] - 31st August 2019</h2>
 
+        <h3>Added</h3>
+
+        <ul>
+            <li>We have added a CHANGELOG file to the repo, it will contain full details of all changes post v1.10.0.</li>
+        </ul>
+
         <h3>Changed</h3>
 
         <ul>

@@ -4,6 +4,9 @@ The complete changelog for the Costs to Expect Website, follows the format defin
 
 ## [v1.10.1] - 2019-08-31
 
+### Added 
+- We have added a CHANGELOG file to the repo, it will contain full details of all changes post v1.10.0. 
+
 ### Changed
 - We have updated the CHANGELOG and added links to the GitHub repositories for the Costs to Expect Website and API.
 
