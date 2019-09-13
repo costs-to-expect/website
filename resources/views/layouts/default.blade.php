@@ -117,13 +117,26 @@
                         </div>
                     </div>
 
-                    @if ($api_status === false)
+                    @if ($api_status === 503)
                     <div class="row mb-3">
                         <div class="col-12">
                             <div class="alert alert-warning" role="alert">
                                 The Costs to Expect API is temporarily not available, there is a better than zero chance
                                 that the API is down for maintenance, please try again later.<br />
                                 If the error persists please reach out to us on
+                                <a href="https://twitter.com/coststoexpect">Twitter</a>
+                            </div>
+                        </div>
+                    </div>
+                    @endif
+
+                    @if ($api_status === 404)
+                    <div class="row mb-3">
+                        <div class="col-12">
+                            <div class="alert alert-warning" role="alert">
+                                The Costs to Expect API is not available, as it is returning a 404 it is likely
+                                we are performing an upgrade..<br />
+                                If the error persists for more than a few hours, please reach out to us on
                                 <a href="https://twitter.com/coststoexpect">Twitter</a>
                             </div>
                         </div>
