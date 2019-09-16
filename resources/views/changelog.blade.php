@@ -22,7 +22,7 @@
 
         <hr />
 
-        <h2>[v1.10.2] - 15th September 2019</h2>
+        <h2>[v1.10.2] - 17th September 2019</h2>
 
         <h3>Changed</h3>
 
