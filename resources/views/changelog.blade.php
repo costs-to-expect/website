@@ -22,6 +22,16 @@
 
         <hr />
 
+        <h2>[v1.10.2] - 17th September 2019</h2>
+
+        <h3>Changed</h3>
+
+        <ul>
+            <li>We have added a `version` property to the `Uri` class so it will be simpler to switch to a newer version of the Costs to Expect API in the future.</li>
+            <li>The Costs to Expect website consumes data from v2 of the Costs to Expect API.</li>
+            <li>The website displays a warning if the root of the API returns a 404.</li>
+        </ul>
+
         <h2>[v1.10.1] - 31st August 2019</h2>
 
         <h3>Added</h3>

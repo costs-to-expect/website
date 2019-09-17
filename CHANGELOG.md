@@ -1,6 +1,12 @@
 # Changelog
 
 The complete changelog for the Costs to Expect Website, follows the format defined at https://keepachangelog.com/en/1.0.0/
+## [v1.10.2] - 2019-09-17
+
+### Changed
+- We have added a `version` property to the `Uri` class so it will be simpler to switch to a newer version of the Costs to Expect API in the future.
+- The Costs to Expect website consumes data from v2 of the Costs to Expect API.
+- The website displays a warning if the root of the API returns a 404.
 
 ## [v1.10.1] - 2019-08-31
 

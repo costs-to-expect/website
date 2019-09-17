@@ -34,12 +34,12 @@ class AppServiceProvider extends ServiceProvider
 
         Http::getInstance()
             ->public()
-            ->get('/v1', false, [__CLASS__, __METHOD__]);
+            ->get('/v2', false, [__CLASS__, __METHOD__]);
 
         View()->composer(['layouts.default'], function($view) {
             $view->with(
                 'api_status',
-                (Http::getInstance()->previousRequestStatusCode() === 503 ? false : true)
+                Http::getInstance()->previousRequestStatusCode()
             );
         });
     }

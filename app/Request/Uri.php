@@ -11,6 +11,7 @@ namespace App\Request;
 class Uri
 {
     private static $resource_type = 'd185Q15grY';
+    private static $version = 'v2';
 
     /**
      * @param string $child_id
@@ -18,7 +19,7 @@ class Uri
      */
     public static function summaryExpenses(string $child_id): string
     {
-        return '/v1/summary/resource-types/' . self::$resource_type .
+        return '/' . self::$version . '/summary/resource-types/' . self::$resource_type .
             '/resources/' . $child_id . '/items';
     }
 
@@ -28,7 +29,7 @@ class Uri
      */
     public static function summaryExpensesForCurrentYear(string $child_id): string
     {
-        return '/v1/summary/resource-types/' . self::$resource_type .
+        return '/' . self::$version . '/summary/resource-types/' . self::$resource_type .
             '/resources/' . $child_id . '/items?year=' . date('Y');
     }
 
@@ -38,7 +39,7 @@ class Uri
      */
     public static function summaryExpensesGroupByCategory(string $child_id): string
     {
-        return '/v1/summary/resource-types/' . self::$resource_type .
+        return '/' . self::$version . '/summary/resource-types/' . self::$resource_type .
             '/resources/' . $child_id . '/items?categories=true';
     }
 
@@ -53,7 +54,7 @@ class Uri
         string $category_id
     ): string
     {
-        return '/v1/summary/resource-types/' . self::$resource_type .
+        return '/' . self::$version . '/summary/resource-types/' . self::$resource_type .
             '/resources/' . $child_id . '/items?category=' . $category_id .
             '&subcategories=true';
     }
@@ -64,7 +65,7 @@ class Uri
      */
     public static function summaryExpensesAnnual(string $child_id): string
     {
-        return '/v1/summary/resource-types/' . self::$resource_type .
+        return '/' . self::$version . '/summary/resource-types/' . self::$resource_type .
             '/resources/' . $child_id . '/items?years=true';
     }
 
@@ -76,7 +77,7 @@ class Uri
      */
     public static function summaryExpensesMonthly(string $child_id, int $year): string
     {
-        return '/v1/summary/resource-types/' . self::$resource_type .
+        return '/' . self::$version . '/summary/resource-types/' . self::$resource_type .
             '/resources/' . $child_id . '/items?year=' . $year . '&months=true';
     }
 
@@ -93,7 +94,7 @@ class Uri
         bool $include_subcategories = false
     ): string
     {
-        $uri = '/v1/resource-types/' . self::$resource_type . '/items?limit=' . $limit;
+        $uri = '/' . self::$version . '/resource-types/' . self::$resource_type . '/items?limit=' . $limit;
 
         if ($include_categories === true) {
             $uri .= '&include-categories=true';
@@ -133,7 +134,7 @@ class Uri
         bool $include_subcategories = false
     ): string
     {
-        $uri = '/v1/resource-types/' . self::$resource_type . '/resources/' .
+        $uri = '/' . self::$version . '/resource-types/' . self::$resource_type . '/resources/' .
             $child_id . '/items?offset=' . $offset . '&limit=' . $limit;
 
         if ($category !== null) {
@@ -186,7 +187,7 @@ class Uri
         string $term = null
     ): string
     {
-        $uri = '/v1/summary/resource-types/' . self::$resource_type . '/resources/' .
+        $uri = '/' . self::$version . '/summary/resource-types/' . self::$resource_type . '/resources/' .
             $child_id . '/items';
 
         $params = [];
@@ -236,7 +237,7 @@ class Uri
         bool $include_subcategories = false
     ): string
     {
-        $uri = '/v1/resource-types/' . self::$resource_type . '/resources/' .
+        $uri = '/' . self::$version . '/resource-types/' . self::$resource_type . '/resources/' .
             $child_id . '/items?limit=' . $limit;
 
         if ($include_categories === true) {
@@ -267,7 +268,7 @@ class Uri
         bool $include_subcategories = false
     ): string
     {
-        $uri = '/v1/resource-types/' . self::$resource_type . '/resources/' .
+        $uri = '/' . self::$version . '/resource-types/' . self::$resource_type . '/resources/' .
             $child_id . '/items?category=' . $category_id . '&limit=' . $limit;
 
         if ($include_categories === true) {
@@ -298,7 +299,7 @@ class Uri
         bool $include_subcategories = false
     ): string
     {
-        $uri = '/v1/resource-types/' . self::$resource_type . '/resources/' .
+        $uri = '/' . self::$version . '/resource-types/' . self::$resource_type . '/resources/' .
             $child_id . '/items?year=' . $year . '&limit=' . $limit;
 
         if ($include_categories === true) {
@@ -331,7 +332,7 @@ class Uri
         bool $include_subcategories = false
     ): string
     {
-        $uri = '/v1/resource-types/' . self::$resource_type . '/resources/' .
+        $uri = '/' . self::$version . '/resource-types/' . self::$resource_type . '/resources/' .
             $child_id . '/items?year=' . $year . '&month=' . $month . '&limit=' . $limit;
 
         if ($include_categories === true) {
@@ -364,7 +365,7 @@ class Uri
         bool $include_subcategories = false
     ): string
     {
-        $uri = '/v1/resource-types/' . self::$resource_type . '/resources/' .
+        $uri = '/' . self::$version . '/resource-types/' . self::$resource_type . '/resources/' .
             $child_id . '/items?category=' . $category_id . '&subcategory=' .
             $subcategory_id . '&limit=' . $limit;
 
@@ -389,7 +390,7 @@ class Uri
         string $child_id,
         string $category_id): string
     {
-        $uri = '/v1/resource-types/' . self::$resource_type . '/resources/' .
+        $uri = '/' . self::$version . '/resource-types/' . self::$resource_type . '/resources/' .
             $child_id . '/items?category='. $category_id .
             '&sort=actualised_total:desc&limit=1';
 
@@ -404,7 +405,7 @@ class Uri
      */
     public static function subcategory(string $category_id, string $subcategory_id): string
     {
-        return '/v1/categories/' . $category_id . '/subcategories/' .
+        return '/' . self::$version . '/categories/' . $category_id . '/subcategories/' .
             $subcategory_id;
     }
 
@@ -415,6 +416,6 @@ class Uri
      */
     public static function subcategories(string $category_id): string
     {
-        return '/v1/categories/' . $category_id . '/subcategories/';
+        return '/' . self::$version . '/categories/' . $category_id . '/subcategories/';
     }
 }
