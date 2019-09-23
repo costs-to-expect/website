@@ -1,6 +1,15 @@
 # Changelog
 
 The complete changelog for the Costs to Expect Website, follows the format defined at https://keepachangelog.com/en/1.0.0/
+
+## [v1.10.3] - 2019-09-23
+
+### Changed
+- We have updated a couple of calls to the API, category routes in the API have been moved.
+
+### Fixed
+- The expenses list errors when a filtered expense response contains no results.
+
 ## [v1.10.2] - 2019-09-17
 
 ### Changed

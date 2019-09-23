@@ -22,6 +22,20 @@
 
         <hr />
 
+        <h2>[v1.10.3] - 23rd September 2019</h2>
+
+        <h3>Changed</h3>
+
+        <ul>
+            <li>We have updated a couple of calls to the API, category routes in the API have been moved.</li>
+        </ul>
+
+        <h3>Fixed</h3>
+
+        <ul>
+            <li>The expenses list errors when a filtered expense response contains no results.</li>
+        </ul>
+
         <h2>[v1.10.2] - 17th September 2019</h2>
 
         <h3>Changed</h3>
