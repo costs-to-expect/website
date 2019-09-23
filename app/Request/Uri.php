@@ -405,7 +405,7 @@ class Uri
      */
     public static function subcategory(string $category_id, string $subcategory_id): string
     {
-        return '/' . self::$version . '/categories/' . $category_id . '/subcategories/' .
+        return '/' . self::$version . '/resource-types/' . self::$resource_type . '/categories/' . $category_id . '/subcategories/' .
             $subcategory_id;
     }
 
@@ -416,6 +416,6 @@ class Uri
      */
     public static function subcategories(string $category_id): string
     {
-        return '/' . self::$version . '/categories/' . $category_id . '/subcategories/';
+        return '/' . self::$version . '/resource-types/' . self::$resource_type . '/categories/' . $category_id . '/subcategories/';
     }
 }

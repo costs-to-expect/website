@@ -244,7 +244,10 @@ class ChildController extends BaseController
                 $filter_parameters['term']
             );
 
-            if ($filtered_summary !== null) {
+            if (
+                $filtered_summary !== null &&
+                array_key_exists('total', $filtered_summary) === true
+            ) {
                 $filtered_summary = $filtered_summary['total'];
             }
         }
