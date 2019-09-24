@@ -22,6 +22,14 @@
 
         <hr />
 
+        <h2>[v1.10.4] - 24th September 2019</h2>
+
+        <h3>Changed</h3>
+
+        <ul>
+            <li>The format of the returned expense item has changed, we have updated all views to use `name` rather than `description`.</li>
+        </ul>
+
         <h2>[v1.10.3] - 23rd September 2019</h2>
 
         <h3>Changed</h3>

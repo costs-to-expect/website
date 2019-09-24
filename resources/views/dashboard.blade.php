@@ -117,7 +117,7 @@
                 <thead>
                     <tr>
                         <th scope="col">Child</th>
-                        <th scope="col">Description</th>
+                        <th scope="col">Expense</th>
                         <th scope="col">Date</th>
                         <th scope="col" class="d-none d-md-table-cell">Category</th>
                         <th scope="col" class="d-none d-md-table-cell">Subcategory</th>
@@ -130,7 +130,7 @@
                     @foreach ($recent_expenses as $expense)
                     <tr class="top">
                         <td><a href="/{{ strtolower($expense['resource']['name']) }}">{{ $expense['resource']['name'] }}</a></td>
-                        <td>{{ $expense['description'] }}</td>
+                        <td>{{ $expense['name'] }}</td>
                         <td><span class="d-none d-md-block">{{ date('j M Y', strtotime($expense['effective_date'])) }}</span><span class="d-table-cell d-sm-block d-md-none">{{ date('d/m/Y', strtotime($expense['effective_date'])) }}</span></td>
                         <td class="d-none d-md-table-cell"><span class="category"><a href="{{ strtolower($expense['resource']['name']) . '/expenses?category=' . $expense['category']['id'] }}">{{ $expense['category']['name'] }}</a></span></td>
                         <td class="d-none d-md-table-cell"><span class="category"><a href="{{ strtolower($expense['resource']['name']) . '/expenses?category=' . $expense['category']['id'] . '&subcategory=' . $expense['subcategory']['id'] }}">{{ $expense['subcategory']['name'] }}</a></span></td>
