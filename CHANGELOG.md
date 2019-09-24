@@ -2,6 +2,11 @@
 
 The complete changelog for the Costs to Expect Website, follows the format defined at https://keepachangelog.com/en/1.0.0/
 
+## [v1.10.4] - 2019-09-24
+
+### Changed
+- The format of the returned expense item has changed, we have updated all views to use `name` rather than `description`.
+
 ## [v1.10.3] - 2019-09-23
 
 ### Changed
