@@ -22,6 +22,14 @@
 
         <hr />
 
+        <h2>[v1.10.5] - 4th October 2019</h2>
+
+        <h3>Fixed</h3>
+
+        <ul>
+            <li>The website was asking the Costs to Expect API to search on the wrong field.</li>
+        </ul>
+
         <h2>[v1.10.4] - 24th September 2019</h2>
 
         <h3>Changed</h3>

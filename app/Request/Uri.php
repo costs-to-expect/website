@@ -154,7 +154,7 @@ class Uri
         }
 
         if ($term !== null) {
-            $uri .= "&search=description:" . urlencode($term);
+            $uri .= "&search=name:" . urlencode($term);
         }
 
         if ($include_categories === true) {
