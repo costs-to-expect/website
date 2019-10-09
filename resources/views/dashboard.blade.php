@@ -28,7 +28,7 @@
             'icon' => 'expenses.png',
             'uri' => '/niall',
             'heading' => $niall_total['name'],
-            'subheading' => 'Summary of all expenses since ' . $jack_total['dob'],
+            'subheading' => 'Summary of all expenses since ' . $niall_total['dob'],
             'description' => null,
             'value' => $niall_total['total'],
             'active' => false
