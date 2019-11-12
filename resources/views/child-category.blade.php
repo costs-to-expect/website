@@ -16,7 +16,7 @@
 
 @if ($categories_summary !== null)
 <div class="row mt-4">
-    <div class="col-12">
+    <div class="col-12" id="categories">
         <h4>Total expenses by category</h4>
 
         <p>We group expenses into three core categories, these are the totals for each category,
@@ -29,7 +29,7 @@
             'component-container.cost-summary-block',
             [
                 'icon' => 'expenses.png',
-                'uri' => $active . '/expenses/category/' . $category['id'],
+                'uri' => $active . '/expenses/category/' . $category['id'] . '#subcategories',
                 'heading' => $category['name'],
                 'subheading' => $category['description'],
                 'description' => null,
@@ -48,7 +48,7 @@
 
 @if ($subcategories_summary !== null)
 <div class="row mt-4">
-    <div class="col-12">
+    <div class="col-12" id="subcategories">
         <h4>Total expenses by subcategory</h4>
 
         <p>These are the totals for all the subcategories in the
@@ -63,7 +63,7 @@
                 'component-container.cost-summary-block',
                 [
                     'icon' => 'expenses.png',
-                    'uri' => $active . '/expenses/category/' . $active_category_id . '/subcategory/' . $subcategory['id'],
+                    'uri' => $active . '/expenses/category/' . $active_category_id . '/subcategory/' . $subcategory['id'] . '#subcategories',
                     'heading' => $subcategory['name'],
                     'subheading' => $subcategory['description'] . ' expenses',
                     'description' => null,

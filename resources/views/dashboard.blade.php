@@ -14,7 +14,7 @@
         'component-container.cost-summary-block',
         [
             'icon' => 'expenses.png',
-            'uri' => '/jack',
+            'uri' => '/jack#categories',
             'heading' => $jack_total['name'],
             'subheading' => 'Summary of all expenses since ' . $jack_total['dob'],
             'description' => null,
@@ -26,7 +26,7 @@
         'component-container.cost-summary-block',
         [
             'icon' => 'expenses.png',
-            'uri' => '/niall',
+            'uri' => '/niall#categories',
             'heading' => $niall_total['name'],
             'subheading' => 'Summary of all expenses since ' . $niall_total['dob'],
             'description' => null,
@@ -61,7 +61,7 @@
         'component-container.cost-summary-block',
         [
             'icon' => 'expenses.png',
-            'uri' => '/jack/expenses/year/' . date('Y'),
+            'uri' => '/jack/expenses/year/' . date('Y') . '#years',
             'heading' => 'Jack Blackborough',
             'subheading' => 'Summary of expenses in ' . date('Y'),
             'description' => null,
@@ -73,7 +73,7 @@
         'component-container.cost-summary-block',
         [
             'icon' => 'expenses.png',
-            'uri' => '/niall/expenses/year/' . date('Y'),
+            'uri' => '/niall/expenses/year/' . date('Y') . '#years',
             'heading' => 'Niall Blackborough',
             'subheading' => 'Summary of expenses in ' . date('Y'),
             'description' => null,

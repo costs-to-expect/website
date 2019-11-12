@@ -16,7 +16,7 @@
 
 @if ($categories_summary !== null)
 <div class="row mt-4">
-    <div class="col-12">
+    <div class="col-12" id="categories">
         <h4>Total expenses by category</h4>
 
         <p>We group expenses into three core categories, these are the totals for each category,
@@ -29,7 +29,7 @@
             'component-container.cost-summary-block',
             [
                 'icon' => 'expenses.png',
-                'uri' => $active . '/expenses/category/' . $category['id'],
+                'uri' => $active . '/expenses/category/' . $category['id'] . '#subcategories',
                 'heading' => $category['name'],
                 'subheading' => $category['description'],
                 'description' => null,
@@ -47,7 +47,7 @@
 @endif
 @if ($annual_summary !== null)
 <div class="row mt-4">
-    <div class="col-12">
+    <div class="col-12" id="years">
         <h4>Expenses for the last three years</h4>
 
         <p>Total expenses for the last three years, select a year for additional detail including
@@ -60,7 +60,7 @@
             'component-container.cost-summary-block',
             [
                 'icon' => 'expenses.png',
-                'uri' => $active . '/expenses/year/' . $year['year'],
+                'uri' => $active . '/expenses/year/' . $year['year'] . '#months',
                 'heading' => $year['year'],
                 'subheading' => 'Summary of all expenses for ' . $child_details['short_name'] . ' in ' . $year['year'],
                 'description' => null,

@@ -16,7 +16,7 @@
 
 @if ($annual_summary !== null)
 <div class="row mt-4">
-    <div class="col-12">
+    <div class="col-12" id="years">
         <h4>Total expenses by year</h4>
 
         <p>Total expenses grouped by year for each year of {{ $child_details['short_name'] }}'s life.</p>
@@ -28,7 +28,7 @@
             'component-container.cost-summary-block',
             [
                 'icon' => 'expenses.png',
-                'uri' => $active . '/expenses/year/' . $year['year'],
+                'uri' => $active . '/expenses/year/' . $year['year'] . '#months',
                 'heading' => $year['year'],
                 'subheading' => 'Summary of all expenses for ' . $child_details['short_name'] .
                     ' in ' . $year['year'],
@@ -48,7 +48,7 @@
 
 @if ($monthly_summary !== null)
 <div class="row mt-4">
-    <div class="col-12">
+    <div class="col-12" id="months">
         <h4>Total expenses by month for {{ $active_year }}</h4>
 
         <p>Total expenses grouped by month for {{ $active_year }} of {{ $child_details['short_name'] }}'s life.</p>
@@ -60,7 +60,7 @@
             'component-container.cost-summary-block',
             [
                 'icon' => 'expenses.png',
-                'uri' => $active . '/expenses/year/' . $active_year . '/month/' . $month['id'],
+                'uri' => $active . '/expenses/year/' . $active_year . '/month/' . $month['id'] . '#months',
                 'heading' => $month['month'] . ' ' . $active_year,
                 'subheading' => 'Summary of all expenses for ' . $child_details['short_name'] .
                     ' in ' . $month['month'] . ' ' . $active_year,
