@@ -110,7 +110,7 @@ class ChildController extends BaseController
         );
     }
 
-    public function setExpensesFilter(Request $request, string $child)
+    public function setExpensesFilter(string $child)
     {
         $params = request()->all();
 
@@ -132,7 +132,7 @@ class ChildController extends BaseController
             $filter_params['term'] = urlencode($params['term']);
         }
 
-        $url = $params['child'] . '/expenses?offset=' . $params['offset'] . '&limit=' . $params['limit'];
+        $url = $params['child'] . '/expenses?limit=' . $params['limit'];
         foreach ($filter_params as $param => $value) {
             $url .= '&' . $param . '=' . $value;
         }
@@ -144,12 +144,11 @@ class ChildController extends BaseController
     /**
      * Filterable and searchable expenses view for each child
      *
-     * @param Request $request
      * @param string $child
      *
      * @return View
      */
-    public function expenses(Request $request, string $child): View
+    public function expenses(string $child): View
     {
         Api::resetCalledURIs();
 
@@ -258,7 +257,7 @@ class ChildController extends BaseController
                 'menus' => $this->menus(),
                 'active' => $child_model->uri(),
                 'meta' => [
-                    'title' => $child_model->details()['name'],
+                    'title' => $child_model->details()['name'] . ': All expenses',
                     'description' => 'What does it cost to raise a child to adulthood in the UK?'
                 ],
                 'welcome' => [
@@ -372,7 +371,7 @@ class ChildController extends BaseController
                 'menus' => $this->menus(),
                 'active' => $child_model->uri(),
                 'meta' => [
-                    'title' => $child_model->details()['name'],
+                    'title' => $child_model->details()['name'] . ': ' . $category_model->name() . ' expenses' ,
                     'description' => 'What does it cost to raise a child to adulthood in the UK?'
                 ],
                 'welcome' => [
@@ -467,7 +466,8 @@ class ChildController extends BaseController
                 'menus' => $this->menus(),
                 'active' => $child_model->uri(),
                 'meta' => [
-                    'title' => $child_model->details()['name'],
+                    'title' => $child_model->details()['name'] . ': ' .
+                        $category_model->name() . '/' . $subcategory['name'] . ' expenses' ,
                     'description' => 'What does it cost to raise a child to adulthood in the UK?'
                 ],
                 'welcome' => [
@@ -539,7 +539,7 @@ class ChildController extends BaseController
                 'menus' => $this->menus(),
                 'active' => $child_model->uri(),
                 'meta' => [
-                    'title' => $child_model->details()['name'],
+                    'title' => $child_model->details()['name'] . ': ' . $year . ' expenses' ,
                     'description' => 'What does it cost to raise a child to adulthood in the UK?'
                 ],
                 'welcome' => [
@@ -608,7 +608,7 @@ class ChildController extends BaseController
                 'menus' => $this->menus(),
                 'active' => $child_model->uri(),
                 'meta' => [
-                    'title' => $child_model->details()['name'],
+                    'title' => $child_model->details()['name'] . ': ' . $active_month_name . ' ' . $year . ' expenses' ,
                     'description' => 'What does it cost to raise a child to adulthood in the UK?'
                 ],
                 'welcome' => [

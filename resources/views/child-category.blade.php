@@ -16,7 +16,7 @@
 
 @if ($categories_summary !== null)
 <div class="row mt-4">
-    <div class="col-12">
+    <div class="col-12" id="categories">
         <h4>Total expenses by category</h4>
 
         <p>We group expenses into three core categories, these are the totals for each category,
@@ -29,7 +29,7 @@
             'component-container.cost-summary-block',
             [
                 'icon' => 'expenses.png',
-                'uri' => $active . '/expenses/category/' . $category['id'],
+                'uri' => $active . '/expenses/category/' . $category['id'] . '#subcategories',
                 'heading' => $category['name'],
                 'subheading' => $category['description'],
                 'description' => null,
@@ -48,7 +48,7 @@
 
 @if ($subcategories_summary !== null)
 <div class="row mt-4">
-    <div class="col-12">
+    <div class="col-12" id="subcategories">
         <h4>Total expenses by subcategory</h4>
 
         <p>These are the totals for all the subcategories in the
@@ -63,7 +63,7 @@
                 'component-container.cost-summary-block',
                 [
                     'icon' => 'expenses.png',
-                    'uri' => $active . '/expenses/category/' . $active_category_id . '/subcategory/' . $subcategory['id'],
+                    'uri' => $active . '/expenses/category/' . $active_category_id . '/subcategory/' . $subcategory['id'] . '#subcategories',
                     'heading' => $subcategory['name'],
                     'subheading' => $subcategory['description'] . ' expenses',
                     'description' => null,
@@ -92,7 +92,7 @@
 <div class="row mt-4">
     <div class="col-12">
         <h4>The 25 most recent {{ $active_category_name }} expenses for
-            {{ $child_details['short_name'] }} <small> - <a href="{{ $child_details['uri'] . '/expenses?category=' . $active_category_id }}">(View all {{ $active_category_name }} expenses)</a></small></h4>
+            {{ $child_details['short_name'] }} <small> - <a href="{{ $child_details['uri'] . '/expenses?category=' . $active_category_id . '#expenses-table' }}">(View all {{ $active_category_name }} expenses)</a></small></h4>
 
         <p>The table below lists the last 25 expenses we have logged for
             {{ $child_details['short_name'] }} in the {{ $active_category_name }} category,

@@ -44,11 +44,11 @@ class DashboardController extends BaseController
                 'menus' => $this->menus(),
                 'active' => '/',
                 'meta' => [
-                    'title' => 'Dashboard',
+                    'title' => null,
                     'description' => 'What does it cost to raise a child to adulthood in the UK?'
                 ],
                 'welcome' => [
-                    'title' => 'Cost to raise a child?',
+                    'title' => 'The cost of raising a child?',
                     'description' => 'Welcome to Costs to Expect.com',
                     'image' => [
                         'icon' => 'dashboard.png',

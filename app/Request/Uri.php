@@ -416,6 +416,6 @@ class Uri
      */
     public static function subcategories(string $category_id): string
     {
-        return '/' . self::$version . '/resource-types/' . self::$resource_type . '/categories/' . $category_id . '/subcategories/';
+        return '/' . self::$version . '/resource-types/' . self::$resource_type . '/categories/' . $category_id . '/subcategories/?collection=true';
     }
 }
