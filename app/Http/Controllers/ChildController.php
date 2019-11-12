@@ -110,7 +110,7 @@ class ChildController extends BaseController
         );
     }
 
-    public function setExpensesFilter(Request $request, string $child)
+    public function setExpensesFilter(string $child)
     {
         $params = request()->all();
 
@@ -132,7 +132,7 @@ class ChildController extends BaseController
             $filter_params['term'] = urlencode($params['term']);
         }
 
-        $url = $params['child'] . '/expenses?offset=' . $params['offset'] . '&limit=' . $params['limit'];
+        $url = $params['child'] . '/expenses?limit=' . $params['limit'];
         foreach ($filter_params as $param => $value) {
             $url .= '&' . $param . '=' . $value;
         }
