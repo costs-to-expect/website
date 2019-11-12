@@ -79,7 +79,7 @@
 @if ($recent_expenses !== null)
 <div class="row mt-4">
     <div class="col-12">
-        <h4>The 25 most recent expenses for {{ $child_details['short_name'] }} <small> - <a href="{{ $child_details['uri'] . '/expenses' }}">(View all)</a></small></h4>
+        <h4>The 25 most recent expenses for {{ $child_details['short_name'] }} <small> - <a href="{{ $child_details['uri'] . '/expenses#expenses-table' }}">(View all)</a></small></h4>
 
         <p>The table below lists the last 25 expenses we have logged for {{ $child_details['short_name'] }}, to see more select any
             summary count, category or subcategory.</p>

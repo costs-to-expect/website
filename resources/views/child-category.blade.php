@@ -92,7 +92,7 @@
 <div class="row mt-4">
     <div class="col-12">
         <h4>The 25 most recent {{ $active_category_name }} expenses for
-            {{ $child_details['short_name'] }} <small> - <a href="{{ $child_details['uri'] . '/expenses?category=' . $active_category_id }}">(View all {{ $active_category_name }} expenses)</a></small></h4>
+            {{ $child_details['short_name'] }} <small> - <a href="{{ $child_details['uri'] . '/expenses?category=' . $active_category_id . '#expenses-table' }}">(View all {{ $active_category_name }} expenses)</a></small></h4>
 
         <p>The table below lists the last 25 expenses we have logged for
             {{ $child_details['short_name'] }} in the {{ $active_category_name }} category,
