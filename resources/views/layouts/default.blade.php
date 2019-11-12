@@ -29,7 +29,7 @@
         <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('images/theme/favicon-180.png') }}">
         <meta name="msapplication-TileColor" content="#FFFFFF">
         <meta name="msapplication-TileImage" content="{{ asset('images/theme/favicon-144.png') }}">
-        <title>{{ $meta['title'] }}: Costs to Expect</title>
+        <title>@if ($meta['title'] !== null){{ $meta['title'] . ': Costs to Expect' }} @else Costs to Expect @endif</title>
         <meta name="twitter:image:src" content="{{ asset('images/theme/favicon-192.png') }}" />
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:site" content="@coststoexpect" />
