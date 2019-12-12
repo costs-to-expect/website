@@ -2,6 +2,11 @@
 
 The complete changelog for the Costs to Expect Website, follows the format defined at https://keepachangelog.com/en/1.0.0/
 
+## [v1.10.7] - 2019-12-12
+### Fixed
+- LICENSE file missing.
+- Updated dependencies.
+
 ## [v1.10.6] - 2019-11-12
 
 ### Fixed

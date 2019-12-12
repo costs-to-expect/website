@@ -22,6 +22,24 @@
 
         <hr />
 
+        <h2>[v1.10.7] - 12th December 2019</h2>
+
+        <h3>Fixed</h3>
+
+        <ul>
+            <li>LICENSE file missing.</li>
+            <li>Updated dependencies.</li>
+        </ul>
+
+        <h2>[v1.10.6] - 12th November 2019</h2>
+
+        <h3>Fixed</h3>
+
+        <ul>
+            <li>We have corrected the shown date of birth for Niall.</li>
+            <li>The subcategories API request should return the entire collection.</li>
+        </ul>
+
         <h2>[v1.10.5] - 4th October 2019</h2>
 
         <h3>Fixed</h3>
