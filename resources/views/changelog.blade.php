@@ -22,6 +22,14 @@
 
         <hr />
 
+        <h2>[v1.10.8] - 17th December 2019</h2>
+
+        <h3>Changed</h3>
+
+        <ul>
+            <li>We have added links to the API and the App.</li>
+        </ul>
+
         <h2>[v1.10.7] - 12th December 2019</h2>
 
         <h3>Fixed</h3>

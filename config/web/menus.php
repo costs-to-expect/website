@@ -52,6 +52,18 @@ return [
                 'title' => 'Our privacy policy',
                 'icon' => null,
                 'uri' => '/privacy-policy'
+            ],
+            [
+                'name' => 'The App (In alpha)',
+                'title' => 'The Costs to Expect App',
+                'icon' => null,
+                'uri' => 'https://app.costs-to-expect.com'
+            ],
+            [
+                'name' => 'The API',
+                'title' => 'The Costs to Expect API',
+                'icon' => null,
+                'uri' => 'https://api.costs-to-expect.com'
             ]
         ]
     ]
