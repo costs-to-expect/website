@@ -148,8 +148,8 @@
                     <div class="row mt-5 mb-5">
                         <div class="col-12">
                             <p class="text-center text-muted footer">
-                                <a href="https://www.costs-to-expect.com">Costs to Expect</a> Copyright &copy; <a href="{{ $footer['copyright_url'] }}">{{ $footer['copyright'] }}</a><br />
-                                <a href="{{ $footer['api-link'] }}">Costs to Expect API</a> | <a href="/changelog">Changelog</a> | <a href="/privacy-policy">Privacy policy</a><br />
+                                Copyright &copy; <a href="{{ $footer['copyright_url'] }}">{{ $footer['copyright'] }}</a><br />
+                                Costs to Expect (The <a href="{{ $footer['api-link'] }}">API</a>, The <a href="{{ $footer['app-link'] }}">App</a>) | <a href="/changelog">Changelog</a> | <a href="/privacy-policy">Privacy policy</a><br />
                                 <small>{{ $footer['release'] }} released {{ $footer['date'] }}</small>
                             </p>
                         </div>
