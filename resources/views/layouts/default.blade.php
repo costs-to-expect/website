@@ -44,6 +44,11 @@
     </head>
     <body>
         <div class="container-fluid container-cte">
+            <div class="row">
+                <div class="col-12 preview text-center">
+                    <p>The <a href="https://app.costs-to-expect.com">Costs to Expect App</a> is in the alpha stage, the beta is coming soon.</p>
+                </div>
+            </div>
             <div class="row container-row">
                 <div class="col-xl-2 col-lg-3 col-md-3 container-column container-left d-none d-sm-none d-md-block sticky-top">
                     <div class="logo">

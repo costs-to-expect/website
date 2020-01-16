@@ -24,6 +24,12 @@
 
         <h2>[v1.10.9] - 16th January 2019</h2>
 
+        <h3>Added</h3>
+
+        <ul>
+            <li>We have added a banner for the Costs to Expect app.</li>
+        </ul>
+
         <h3>Changed</h3>
 
         <ul>

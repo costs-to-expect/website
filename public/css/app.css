@@ -9670,6 +9670,21 @@ html, body {
   height: 100%;
 }
 
+.preview {
+  background-color: #392C70;
+  border-bottom: 1px solid #000000;
+}
+
+.preview p {
+  font-size: 0.8rem;
+  margin: 0.2rem 0 0.2rem 0;
+  color: #F5F5F8;
+}
+
+.preview p a {
+  color: #F250E2;
+}
+
 .container-cte .container-row .container-left {
   background-color: #fff;
   background-image: url("../images/theme/left-sidebar.png");

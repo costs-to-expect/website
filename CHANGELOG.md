@@ -3,6 +3,9 @@
 The complete changelog for the Costs to Expect Website, our changelog follows the format defined at https://keepachangelog.com/en/1.0.0/
 
 ## [v1.10.9] -2020-01-16
+### Added 
+- We have added a banner for the Costs to Expect app.
+
 ### Changed
 - Minor SEO tweaks.
 - We have added a link to the status page for the service.
