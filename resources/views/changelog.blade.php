@@ -22,6 +22,22 @@
 
         <hr />
 
+        <h2>[v1.10.9] - 16th January 2019</h2>
+
+        <h3>Changed</h3>
+
+        <ul>
+            <li>Minor SEO tweaks.</li>
+            <li>We have added a link to the status page for the service.</li>
+            <li>We have updated the copyright, now a personal project, not attached to G3D Development Limited.</li>
+        </ul>
+
+        <h3>Fixed</h3>
+
+        <ul>
+            <li>The date for current year on the dashboard is incorrect.</li>
+        </ul>
+
         <h2>[v1.10.8] - 17th December 2019</h2>
 
         <h3>Changed</h3>

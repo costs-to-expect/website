@@ -28,7 +28,7 @@ class ContentController extends BaseController
                 'active' => '/about',
                 'meta' => [
                     'title' => 'About',
-                    'description' => 'What is Costs to Expect.com? Why does it exist and what will the service do?'
+                    'description' => 'What does it cost to raise a child to adulthood in the UK?'
                 ],
                 'welcome' => [
                     'title' => 'About',

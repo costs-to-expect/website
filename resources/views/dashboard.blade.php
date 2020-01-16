@@ -51,7 +51,7 @@
 @if ($jack_current_year !== null && $niall_current_year !== null)
 <div class="row mt-4">
     <div class="col-12">
-        <h4>Expenses for current year (2019)</h4>
+        <h4>Expenses for current year ({{ date('Y') }})</h4>
 
         <p>Sum of expenses for the current year, select to see the total for each year.</p>
     </div>
