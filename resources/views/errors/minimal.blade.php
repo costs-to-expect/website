@@ -56,6 +56,8 @@
 
             <div class="message" style="padding: 10px;">
                 @yield('message')
+
+                <p>View our <a href="https://status.costs-to-expect.com">status</a> page for more information.</p>
             </div>
         </div>
     </body>

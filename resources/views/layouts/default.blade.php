@@ -34,16 +34,21 @@
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:site" content="@coststoexpect" />
         <meta name="twitter:title" content="What does it costs to raise a child in the UK?" />
-        <meta name="twitter:description" content="Costs to Expect is a service which will allow tracking and forecasting of any expenses, be they the costs to raise a child to the age of 18 or your Business account budget for the next financial year." />
+        <meta name="twitter:description" content="What does it costs to raise a child in the UK? We are finding out." />
         <meta property="og:image" content="{{ asset('images/theme/favicon-192.png') }}" />
         <meta property="og:site_name" content="Costs to Expect" />
         <meta property="og:type" content="object" />
         <meta property="og:title" content="What does it costs to raise a child in the UK?" />
         <meta property="og:url" content="https://www.costs-to-expect.com" />
-        <meta property="og:description" content="Costs to Expect is a service which will allow tracking and forecasting of any expenses, be they the costs to raise a child to the age of 18 or your Business account budget for the next financial year." />
+        <meta property="og:description" content="What does it costs to raise a child in the UK? We are finding out." />
     </head>
     <body>
         <div class="container-fluid container-cte">
+            <div class="row">
+                <div class="col-12 preview text-center">
+                    <p>The <a href="https://app.costs-to-expect.com">Costs to Expect App</a> is in the alpha stage, the beta is coming soon.</p>
+                </div>
+            </div>
             <div class="row container-row">
                 <div class="col-xl-2 col-lg-3 col-md-3 container-column container-left d-none d-sm-none d-md-block sticky-top">
                     <div class="logo">
@@ -149,7 +154,7 @@
                         <div class="col-12">
                             <p class="text-center text-muted footer">
                                 Copyright &copy; <a href="{{ $footer['copyright_url'] }}">{{ $footer['copyright'] }}</a><br />
-                                Costs to Expect (The <a href="{{ $footer['api-link'] }}">API</a>, The <a href="{{ $footer['app-link'] }}">App</a>) | <a href="/changelog">Changelog</a> | <a href="/privacy-policy">Privacy policy</a><br />
+                                Costs to Expect (The <a href="{{ $footer['api-link'] }}">API</a>, The <a href="{{ $footer['app-link'] }}">App</a>) | <a href="https://status.costs-to-expect.com">Status</a> | <a href="/changelog">Changelog</a> | <a href="/privacy-policy">Privacy policy</a><br />
                                 <small>{{ $footer['release'] }} released {{ $footer['date'] }}</small>
                             </p>
                         </div>

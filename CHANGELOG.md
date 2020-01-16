@@ -1,6 +1,19 @@
 # Changelog
 
-The complete changelog for the Costs to Expect Website, follows the format defined at https://keepachangelog.com/en/1.0.0/
+The complete changelog for the Costs to Expect Website, our changelog follows the format defined at https://keepachangelog.com/en/1.0.0/
+
+## [v1.10.9] -2020-01-16
+### Added 
+- We have added a banner for the Costs to Expect app.
+
+### Changed
+- Minor SEO tweaks.
+- We have added a link to the status page for the service.
+- We have updated the copyright, now a personal project, not attached to G3D Development Limited.
+- We have tweaked the content on the about page.
+
+### Fixed
+- The date for current year on the dashboard is incorrect.
 
 ## [v1.10.8] - 2019-12-17
 ### Changed
