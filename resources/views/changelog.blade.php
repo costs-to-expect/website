@@ -36,6 +36,7 @@
             <li>Minor SEO tweaks.</li>
             <li>We have added a link to the status page for the service.</li>
             <li>We have updated the copyright, now a personal project, not attached to G3D Development Limited.</li>
+            <li>- We have tweaked the content on the about page.</li>
         </ul>
 
         <h3>Fixed</h3>

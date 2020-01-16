@@ -10,6 +10,7 @@ The complete changelog for the Costs to Expect Website, our changelog follows th
 - Minor SEO tweaks.
 - We have added a link to the status page for the service.
 - We have updated the copyright, now a personal project, not attached to G3D Development Limited.
+- We have tweaked the content on the about page.
 
 ### Fixed
 - The date for current year on the dashboard is incorrect.
