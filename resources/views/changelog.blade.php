@@ -22,7 +22,32 @@
 
         <hr />
 
-        <h2>[v1.10.9] - 16th January 2019</h2>
+        <h2>[v1.11.0] - 3rd February 2020</h2>
+
+        <h3>Added</h3>
+
+        <ul>
+            <li>We have updated the Docker configuration to include a MySQL database.</li>
+            <li>We have added the 'migrations' table.</li>
+            <li>We have added the `sessions` and `cache` table migrations.</li>
+            <li>We have updated the website to cache some responses from the Costs to Expect API; API responses get cached for one hour. The caching solution is temporary and will be updated soon(tm).</li>
+        </ul>
+
+        <h3>Changed</h3>
+
+        <ul>
+            <li>We have updated the dependencies for the website.</li>
+            <li>We have made a minor tweak to the `web.config` file.</li>
+        </ul>
+
+        <h3>Fixed</h3>
+
+        <ul>
+            <li>We have added the hover for menu items.</li>
+            <li>We have corrected a date in the changelog.</li>
+        </ul>
+
+        <h2>[v1.10.9] - 16th January 2020</h2>
 
         <h3>Added</h3>
 
