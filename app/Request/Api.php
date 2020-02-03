@@ -74,14 +74,22 @@ class Api
     {
         self::$uri = Uri::summaryExpenses($child_id);
 
-        $response = Http::getInstance()
-            ->public()
-            ->get(self::$uri, false, [__CLASS__, __METHOD__]);
+        $cache = new Cache('api');
+        $cached = $cache->get(self::$uri);
 
-        if ($response !== null) {
-            return $response;
+        if ($cached === null) {
+            $response = Http::getInstance()
+                ->public()
+                ->get(self::$uri, false, [__CLASS__, __METHOD__]);
+
+            if ($response !== null) {
+                $cache->put(self::$uri, $response);
+                return $response;
+            } else {
+                return null;
+            }
         } else {
-            return null;
+            return $cached;
         }
     }
 
@@ -94,14 +102,22 @@ class Api
     {
         self::$uri = Uri::summaryExpensesForCurrentYear($child_id);
 
-        $response = Http::getInstance()
-            ->public()
-            ->get(self::$uri, false, [__CLASS__, __METHOD__]);
+        $cache = new Cache('api');
+        $cached = $cache->get(self::$uri);
 
-        if ($response !== null) {
-            return $response;
+        if ($cached === null) {
+            $response = Http::getInstance()
+                ->public()
+                ->get(self::$uri, false, [__CLASS__, __METHOD__]);
+
+            if ($response !== null) {
+                $cache->put(self::$uri, $response);
+                return $response;
+            } else {
+                return null;
+            }
         } else {
-            return null;
+            return $cached;
         }
     }
 
@@ -158,14 +174,22 @@ class Api
     {
         self::$uri = Uri::summaryExpensesAnnual($child_id);
 
-        $response = Http::getInstance()
-            ->public()
-            ->get(self::$uri, false, [__CLASS__, __METHOD__]);
+        $cache = new Cache('api');
+        $cached = $cache->get(self::$uri);
 
-        if ($response !== null) {
-            return $response;
+        if ($cached === null) {
+            $response = Http::getInstance()
+                ->public()
+                ->get(self::$uri, false, [__CLASS__, __METHOD__]);
+
+            if ($response !== null) {
+                $cache->put(self::$uri, $response);
+                return $response;
+            } else {
+                return null;
+            }
         } else {
-            return null;
+            return $cached;
         }
     }
 
@@ -179,14 +203,22 @@ class Api
     {
         self::$uri = Uri::summaryExpensesMonthly($child_id, $year);
 
-        $response = Http::getInstance()
-            ->public()
-            ->get(self::$uri, false, [__CLASS__, __METHOD__]);
+        $cache = new Cache('api');
+        $cached = $cache->get(self::$uri);
 
-        if ($response !== null) {
-            return $response;
+        if ($cached === null) {
+            $response = Http::getInstance()
+                ->public()
+                ->get(self::$uri, false, [__CLASS__, __METHOD__]);
+
+            if ($response !== null) {
+                $cache->put(self::$uri, $response);
+                return $response;
+            } else {
+                return null;
+            }
         } else {
-            return null;
+            return $cached;
         }
     }
 
@@ -201,14 +233,22 @@ class Api
             true
         );
 
-        $response = Http::getInstance()
-            ->public()
-            ->get(self::$uri, true, [__CLASS__, __METHOD__]);
+        $cache = new Cache('api');
+        $cached = $cache->get(self::$uri);
 
-        if ($response !== null) {
-            return $response;
+        if ($cached === null) {
+            $response = Http::getInstance()
+                ->public()
+                ->get(self::$uri, true, [__CLASS__, __METHOD__]);
+
+            if ($response !== null) {
+                $cache->put(self::$uri, $response);
+                return $response;
+            } else {
+                return null;
+            }
         } else {
-            return null;
+            return $cached;
         }
     }
 
@@ -312,14 +352,22 @@ class Api
             true
         );
 
-        $response = Http::getInstance()
-            ->public()
-            ->get(self::$uri, true, [__CLASS__, __METHOD__]);
+        $cache = new Cache('api');
+        $cached = $cache->get(self::$uri);
 
-        if ($response !== null) {
-            return $response;
+        if ($cached === null) {
+            $response = Http::getInstance()
+                ->public()
+                ->get(self::$uri, true, [__CLASS__, __METHOD__]);
+
+            if ($response !== null) {
+                $cache->put(self::$uri, $response);
+                return $response;
+            } else {
+                return null;
+            }
         } else {
-            return null;
+            return $cached;
         }
     }
 
@@ -342,14 +390,22 @@ class Api
             true
         );
 
-        $response = Http::getInstance()
-            ->public()
-            ->get(self::$uri, true, [__CLASS__, __METHOD__]);
+        $cache = new Cache('api');
+        $cached = $cache->get(self::$uri);
 
-        if ($response !== null) {
-            return $response;
+        if ($cached === null) {
+            $response = Http::getIntance()
+                ->public()
+                ->get(self::$uri, true, [__CLASS__, __METHOD__]);
+
+            if ($response !== null) {
+                $cache->put(self::$uri, $response);
+                return $response;
+            } else {
+                return null;
+            }
         } else {
-            return null;
+            return $cached;
         }
     }
 
@@ -372,14 +428,22 @@ class Api
             true
         );
 
-        $response = Http::getInstance()
-            ->public()
-            ->get(self::$uri, true, [__CLASS__, __METHOD__]);
+        $cache = new Cache('api');
+        $cached = $cache->get(self::$uri);
 
-        if ($response !== null) {
-            return $response;
+        if ($cached === null) {
+            $response = Http::getInstance()
+                ->public()
+                ->get(self::$uri, true, [__CLASS__, __METHOD__]);
+
+            if ($response !== null) {
+                $cache->put(self::$uri, $response);
+                return $response;
+            } else {
+                return null;
+            }
         } else {
-            return null;
+            return $cached;
         }
     }
 
@@ -405,14 +469,22 @@ class Api
             true
         );
 
-        $response = Http::getInstance()
-            ->public()
-            ->get(self::$uri, true, [__CLASS__, __METHOD__]);
+        $cache = new Cache('api');
+        $cached = $cache->get(self::$uri);
 
-        if ($response !== null) {
-            return $response;
+        if ($cached === null) {
+            $response = Http::getInstance()
+                ->public()
+                ->get(self::$uri, true, [__CLASS__, __METHOD__]);
+
+            if ($response !== null) {
+                $cache->put(self::$uri, $response);
+                return $response;
+            } else {
+                return null;
+            }
         } else {
-            return null;
+            return $cached;
         }
     }
 
@@ -438,14 +510,22 @@ class Api
             true
         );
 
-        $response = Http::getInstance()
-            ->public()
-            ->get(self::$uri, true, [__CLASS__, __METHOD__]);
+        $cache = new Cache('api');
+        $cached = $cache->get(self::$uri);
 
-        if ($response !== null) {
-            return $response;
+        if ($cached === null) {
+            $response = Http::getInstance()
+                ->public()
+                ->get(self::$uri, true, [__CLASS__, __METHOD__]);
+
+            if ($response !== null) {
+                $cache->put(self::$uri, $response);
+                return $response;
+            } else {
+                return null;
+            }
         } else {
-            return null;
+            return $cached;
         }
     }
 
@@ -462,14 +542,22 @@ class Api
     {
         self::$uri = Uri::largestExpenseInCategory($child_id, $category_id);
 
-        $response = Http::getInstance()
-            ->public()
-            ->get(self::$uri, false, [__CLASS__, __METHOD__]);
+        $cache = new Cache('api');
+        $cached = $cache->get(self::$uri);
 
-        if ($response !== null) {
-            return $response;
+        if ($cached === null) {
+            $response = Http::getInstance()
+                ->public()
+                ->get(self::$uri, false, [__CLASS__, __METHOD__]);
+
+            if ($response !== null) {
+                $cache->put(self::$uri, $response);
+                return $response;
+            } else {
+                return null;
+            }
         } else {
-            return null;
+            return $cached;
         }
     }
 
