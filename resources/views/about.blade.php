@@ -6,8 +6,8 @@
     <div class="col-12">
         <h2>How much does it cost to raise a child in the UK.</h2>
 
-        <p>Costs to Expect is a long-term project; my wife and I are tracking
-            the expenses to raise our children to adulthood, 18.</p>
+        <p>Costs to Expect is a long-term social experiment; my wife and I are
+            tracking the expenses to raise our children to adulthood, 18.</p>
 
         <h3>Why?</h3>
 

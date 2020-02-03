@@ -2,7 +2,24 @@
 
 The complete changelog for the Costs to Expect Website, our changelog follows the format defined at https://keepachangelog.com/en/1.0.0/
 
-## [v1.10.9] -2020-01-16
+## [v1.11.0] - 2020-02-03
+### Added
+
+- We have updated the Docker configuration to include a MySQL database.
+- We have added the 'migrations' table.
+- We have added the `sessions` and `cache` table migrations.
+- We have updated the website to cache some responses from the Costs to Expect API; API responses get cached for one hour. The caching solution is temporary and will be updated soon(tm).
+
+### Changed
+
+- We have updated the dependencies for the website. 
+- We have made a minor tweak to the `web.config` file.
+
+### Fixed
+- We have added the hover for menu items.
+- We have corrected a date in the changelog.
+
+## [v1.10.9] - 2020-01-16
 ### Added 
 - We have added a banner for the Costs to Expect app.
 

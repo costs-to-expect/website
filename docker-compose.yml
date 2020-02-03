@@ -3,9 +3,33 @@ services:
     website:
         build:
             context: .
-            dockerfile: .docker/Dockerfile
+            dockerfile: .docker/app/Dockerfile
         image: costs-to-expect-website
         ports:
             - 80:80
         volumes:
             - .:/var/www/html
+        links:
+            - mysql
+        env_file: .env
+        environment:
+            TZ: UTC
+            DB_HOST: ${DB_CONNECTION}
+            DB_DATABASE: ${DB_DATABASE}
+            DB_USERNAME: ${DB_USERNAME}
+            DB_PASSWORD: ${DB_PASSWORD}
+    mysql:
+        build:
+            context: .
+            dockerfile: .docker/mysql/Dockerfile
+        ports:
+            - 3306:3306
+        env_file: .env
+        environment:
+            TZ: UTC
+            MYSQL_DATABASE: ${DB_DATABASE}
+            MYSQL_USER: ${DB_USERNAME}
+            MYSQL_PASSWORD: ${DB_PASSWORD}
+            MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+        volumes:
+            - ./.docker/mysql/data:/var/lib/mysql
