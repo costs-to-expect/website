@@ -4,4 +4,4 @@
 /public/storage
 /storage/*.key
 .env
-/.docker/website
+/.docker/mysql/data
