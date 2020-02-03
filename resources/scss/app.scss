@@ -67,6 +67,10 @@ html, body {
 
                 a {
                     color: #404040;
+
+                    &:hover {
+                        color: $brand-pink;
+                    }
                 }
 
                 a.active {

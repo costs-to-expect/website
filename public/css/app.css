@@ -9698,6 +9698,9 @@ html, body {
 .container-cte .container-row .container-left li.nav-item a {
   color: #404040;
 }
+.container-cte .container-row .container-left li.nav-item a:hover {
+  color: #A8369B;
+}
 .container-cte .container-row .container-left li.nav-item a.active {
   background-color: #f6f5f8;
   color: #A8369B;
