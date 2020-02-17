@@ -74,23 +74,7 @@ class Api
     {
         self::$uri = Uri::summaryExpenses($child_id);
 
-        $cache = new Cache('api');
-        $cached = $cache->get(self::$uri);
-
-        if ($cached === null) {
-            $response = Http::getInstance()
-                ->public()
-                ->get(self::$uri, false, [__CLASS__, __METHOD__]);
-
-            if ($response !== null) {
-                $cache->put(self::$uri, $response);
-                return $response;
-            } else {
-                return null;
-            }
-        } else {
-            return $cached;
-        }
+        return self::cacheableGetRequest(self::$uri);
     }
 
     /**
@@ -102,23 +86,7 @@ class Api
     {
         self::$uri = Uri::summaryExpensesForCurrentYear($child_id);
 
-        $cache = new Cache('api');
-        $cached = $cache->get(self::$uri);
-
-        if ($cached === null) {
-            $response = Http::getInstance()
-                ->public()
-                ->get(self::$uri, false, [__CLASS__, __METHOD__]);
-
-            if ($response !== null) {
-                $cache->put(self::$uri, $response);
-                return $response;
-            } else {
-                return null;
-            }
-        } else {
-            return $cached;
-        }
+        return self::cacheableGetRequest(self::$uri);
     }
 
     /**
@@ -130,15 +98,7 @@ class Api
     {
         self::$uri = Uri::summaryExpensesGroupByCategory($child_id);
 
-        $response = Http::getInstance()
-            ->public()
-            ->get(self::$uri, false, [__CLASS__, __METHOD__]);
-
-        if ($response !== null) {
-            return $response;
-        } else {
-            return null;
-        }
+        return self::cacheableGetRequest(self::$uri);
     }
 
     /**
@@ -154,15 +114,7 @@ class Api
     {
         self::$uri = Uri::summaryExpensesGroupBySubcategory($child_id, $category_id);
 
-        $response = Http::getInstance()
-            ->public()
-            ->get(self::$uri, false, [__CLASS__, __METHOD__]);
-
-        if ($response !== null) {
-            return $response;
-        } else {
-            return null;
-        }
+        return self::cacheableGetRequest(self::$uri);
     }
 
     /**
@@ -174,23 +126,7 @@ class Api
     {
         self::$uri = Uri::summaryExpensesAnnual($child_id);
 
-        $cache = new Cache('api');
-        $cached = $cache->get(self::$uri);
-
-        if ($cached === null) {
-            $response = Http::getInstance()
-                ->public()
-                ->get(self::$uri, false, [__CLASS__, __METHOD__]);
-
-            if ($response !== null) {
-                $cache->put(self::$uri, $response);
-                return $response;
-            } else {
-                return null;
-            }
-        } else {
-            return $cached;
-        }
+        return self::cacheableGetRequest(self::$uri);
     }
 
     /**
@@ -203,23 +139,7 @@ class Api
     {
         self::$uri = Uri::summaryExpensesMonthly($child_id, $year);
 
-        $cache = new Cache('api');
-        $cached = $cache->get(self::$uri);
-
-        if ($cached === null) {
-            $response = Http::getInstance()
-                ->public()
-                ->get(self::$uri, false, [__CLASS__, __METHOD__]);
-
-            if ($response !== null) {
-                $cache->put(self::$uri, $response);
-                return $response;
-            } else {
-                return null;
-            }
-        } else {
-            return $cached;
-        }
+        return self::cacheableGetRequest(self::$uri);
     }
 
     /**
@@ -233,23 +153,7 @@ class Api
             true
         );
 
-        $cache = new Cache('api');
-        $cached = $cache->get(self::$uri);
-
-        if ($cached === null) {
-            $response = Http::getInstance()
-                ->public()
-                ->get(self::$uri, true, [__CLASS__, __METHOD__]);
-
-            if ($response !== null) {
-                $cache->put(self::$uri, $response);
-                return $response;
-            } else {
-                return null;
-            }
-        } else {
-            return $cached;
-        }
+        return self::cacheableGetRequest(self::$uri);
     }
 
     /**
@@ -288,15 +192,7 @@ class Api
             true
         );
 
-        $response = Http::getInstance()
-            ->public()
-            ->get(self::$uri, true, [__CLASS__, __METHOD__]);
-
-        if ($response !== null) {
-            return $response;
-        } else {
-            return null;
-        }
+        return self::cacheableGetRequest(self::$uri);
     }
 
     /**
@@ -327,15 +223,7 @@ class Api
             $term
         );
 
-        $response = Http::getInstance()
-            ->public()
-            ->get(self::$uri, true, [__CLASS__, __METHOD__]);
-
-        if ($response !== null) {
-            return $response;
-        } else {
-            return null;
-        }
+        return self::cacheableGetRequest(self::$uri);
     }
 
     /**
@@ -352,23 +240,7 @@ class Api
             true
         );
 
-        $cache = new Cache('api');
-        $cached = $cache->get(self::$uri);
-
-        if ($cached === null) {
-            $response = Http::getInstance()
-                ->public()
-                ->get(self::$uri, true, [__CLASS__, __METHOD__]);
-
-            if ($response !== null) {
-                $cache->put(self::$uri, $response);
-                return $response;
-            } else {
-                return null;
-            }
-        } else {
-            return $cached;
-        }
+        return self::cacheableGetRequest(self::$uri);
     }
 
     /**
@@ -390,23 +262,7 @@ class Api
             true
         );
 
-        $cache = new Cache('api');
-        $cached = $cache->get(self::$uri);
-
-        if ($cached === null) {
-            $response = Http::getIntance()
-                ->public()
-                ->get(self::$uri, true, [__CLASS__, __METHOD__]);
-
-            if ($response !== null) {
-                $cache->put(self::$uri, $response);
-                return $response;
-            } else {
-                return null;
-            }
-        } else {
-            return $cached;
-        }
+        return self::cacheableGetRequest(self::$uri);
     }
 
     /**
@@ -428,23 +284,7 @@ class Api
             true
         );
 
-        $cache = new Cache('api');
-        $cached = $cache->get(self::$uri);
-
-        if ($cached === null) {
-            $response = Http::getInstance()
-                ->public()
-                ->get(self::$uri, true, [__CLASS__, __METHOD__]);
-
-            if ($response !== null) {
-                $cache->put(self::$uri, $response);
-                return $response;
-            } else {
-                return null;
-            }
-        } else {
-            return $cached;
-        }
+        return self::cacheableGetRequest(self::$uri);
     }
 
     /**
@@ -469,23 +309,7 @@ class Api
             true
         );
 
-        $cache = new Cache('api');
-        $cached = $cache->get(self::$uri);
-
-        if ($cached === null) {
-            $response = Http::getInstance()
-                ->public()
-                ->get(self::$uri, true, [__CLASS__, __METHOD__]);
-
-            if ($response !== null) {
-                $cache->put(self::$uri, $response);
-                return $response;
-            } else {
-                return null;
-            }
-        } else {
-            return $cached;
-        }
+        return self::cacheableGetRequest(self::$uri);
     }
 
     /**
@@ -510,23 +334,7 @@ class Api
             true
         );
 
-        $cache = new Cache('api');
-        $cached = $cache->get(self::$uri);
-
-        if ($cached === null) {
-            $response = Http::getInstance()
-                ->public()
-                ->get(self::$uri, true, [__CLASS__, __METHOD__]);
-
-            if ($response !== null) {
-                $cache->put(self::$uri, $response);
-                return $response;
-            } else {
-                return null;
-            }
-        } else {
-            return $cached;
-        }
+        return self::cacheableGetRequest(self::$uri);
     }
 
     /**
@@ -542,23 +350,7 @@ class Api
     {
         self::$uri = Uri::largestExpenseInCategory($child_id, $category_id);
 
-        $cache = new Cache('api');
-        $cached = $cache->get(self::$uri);
-
-        if ($cached === null) {
-            $response = Http::getInstance()
-                ->public()
-                ->get(self::$uri, false, [__CLASS__, __METHOD__]);
-
-            if ($response !== null) {
-                $cache->put(self::$uri, $response);
-                return $response;
-            } else {
-                return null;
-            }
-        } else {
-            return $cached;
-        }
+        return self::cacheableGetRequest(self::$uri);
     }
 
     /**
@@ -571,15 +363,7 @@ class Api
     {
         self::$uri = Uri::subcategory($category_id, $subcategory_id);
 
-        $response = Http::getInstance()
-            ->public()
-            ->get(self::$uri, false, [__CLASS__, __METHOD__]);
-
-        if ($response !== null) {
-            return $response;
-        } else {
-            return null;
-        }
+        return self::cacheableGetRequest(self::$uri);
     }
 
     /**
@@ -591,15 +375,7 @@ class Api
     {
         self::$uri = Uri::subcategories($category_id);
 
-        $response = Http::getInstance()
-            ->public()
-            ->get(self::$uri, false, [__CLASS__, __METHOD__]);
-
-        if ($response !== null) {
-            return $response;
-        } else {
-            return null;
-        }
+        return self::cacheableGetRequest(self::$uri);
     }
 
     /**
@@ -620,5 +396,34 @@ class Api
     public static function previousRequestStatusCode(): ?int
     {
         return Http::getInstance()->previousRequestStatusCode();
+    }
+
+    /**
+     * Execute a GET request against the API, check the cache first, store the
+     * results in the cache if we end up making a request
+     *
+     * @param string $uri
+     *
+     * @return array|null
+     */
+    private static function cacheableGetRequest(string $uri): ?array
+    {
+        $cache = new Cache('api');
+        $cached = $cache->get($uri);
+
+        if ($cached === null) {
+            $response = Http::getInstance()
+                ->public()
+                ->get($uri, true, [__CLASS__, __METHOD__]);
+
+            if ($response !== null) {
+                $cache->put($uri, $response);
+                return $response;
+            } else {
+                return null;
+            }
+        } else {
+            return $cached;
+        }
     }
 }
