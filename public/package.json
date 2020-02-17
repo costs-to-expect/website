@@ -4,9 +4,9 @@
     "description": "The Costs to Expect website for the service",
     "license": "MIT",
     "dependencies": {
-        "bootstrap": "^4.3.1",
-        "jquery": "^3.3.1",
-        "popper.js": "^1.14.7"
+        "bootstrap": "^4.4.1",
+        "jquery": "^3.4.1",
+        "popper.js": "^1.16"
     },
     "main": "index.php",
     "repository": "https://github.com/deanblackborough/costs-to-expect-website.git",

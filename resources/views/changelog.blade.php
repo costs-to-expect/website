@@ -22,6 +22,29 @@
 
         <hr />
 
+        <h2>[v1.12.0] - 17th February 2020</h2>
+
+        <h3>Added</h3>
+
+        <ul>
+            <li>We have added caching for the requests not covered in the v1.11.0 update.</li>
+        </ul>
+
+        <h3>Changed</h3>
+
+        <ul>
+            <li>We have updated the back-end dependencies.</li>
+            <li>We have updated the front-end dependencies and switch to using the slim and minified versions.</li>
+            <li>We have refactored the 'Request/Api' class to remove code duplication.</li>
+            <li>We have increased the cache lifetime to four hours.</li>
+        </ul>
+
+        <h3>Fixed</h3>
+
+        <ul>
+            <li>We have fixed a typo in the 'Request/Api' class.</li>
+        </ul>
+
         <h2>[v1.11.0] - 3rd February 2020</h2>
 
         <h3>Added</h3>

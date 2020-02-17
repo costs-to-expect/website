@@ -3,8 +3,8 @@
 declare(strict_types=1);
 
 return [
-    'release' => 'v1.11.0',
-    'date' => '3rd February 2020',
+    'release' => 'v1.12.0',
+    'date' => '17th February 2020',
     'copyright' => 'Dean Blackborough 2018 - ' . date('Y'),
     'copyright_url' => 'https://www.deanblackborough.com',
     'api-link' => 'https://api.costs-to-expect.com',

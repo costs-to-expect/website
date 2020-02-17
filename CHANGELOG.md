@@ -2,16 +2,27 @@
 
 The complete changelog for the Costs to Expect Website, our changelog follows the format defined at https://keepachangelog.com/en/1.0.0/
 
+## [v1.12.0] - 2020-02-17
+### Added
+- We have added caching for the requests not covered in the v1.11.0 update.
+
+### Changed
+- We have updated the back-end dependencies.
+- We have updated the front-end dependencies and switch to using the slim and minified versions.
+- We have refactored the 'Request/Api' class to remove code duplication.
+- We have increased the cache lifetime to four hours.
+
+### Fixed
+- We have fixed a typo in the 'Request/Api' class.
+
 ## [v1.11.0] - 2020-02-03
 ### Added
-
 - We have updated the Docker configuration to include a MySQL database.
 - We have added the 'migrations' table.
 - We have added the `sessions` and `cache` table migrations.
 - We have updated the website to cache some responses from the Costs to Expect API; API responses get cached for one hour. The caching solution is temporary and will be updated soon(tm).
 
 ### Changed
-
 - We have updated the dependencies for the website. 
 - We have made a minor tweak to the `web.config` file.
 
