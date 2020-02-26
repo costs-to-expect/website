@@ -2,6 +2,11 @@
 
 The complete changelog for the Costs to Expect Website, our changelog follows the format defined at https://keepachangelog.com/en/1.0.0/
 
+## [v1.12.1] - 2020-02-26
+### Fixed
+- Search the name field rather than the description field.
+- Selecting a subcategory will now jump you to the expenses table.
+
 ## [v1.12.0] - 2020-02-17
 ### Added
 - We have added caching for the requests not covered in the v1.11.0 update.
