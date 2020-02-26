@@ -63,7 +63,7 @@
                 'component-container.cost-summary-block',
                 [
                     'icon' => 'expenses.png',
-                    'uri' => $active . '/expenses/category/' . $active_category_id . '/subcategory/' . $subcategory['id'] . '#subcategories',
+                    'uri' => $active . '/expenses/category/' . $active_category_id . '/subcategory/' . $subcategory['id'] . '#expenses-table',
                     'heading' => $subcategory['name'],
                     'subheading' => $subcategory['description'] . ' expenses',
                     'description' => null,
@@ -90,7 +90,7 @@
 
 @if ($recent_expenses !== null)
 <div class="row mt-4">
-    <div class="col-12">
+    <div class="col-12" id="expenses-table">
         <h4>The 25 most recent {{ $active_category_name . '/' . $active_subcategory_name }} expenses for
             {{ $child_details['short_name'] }} <small> - <a href="{{ $child_details['uri'] . '/expenses?category=' . $active_category_id . '&subcategory=' . $active_subcategory_id . '#expenses-table' }}">(View all {{ $active_category_name . '/' . $active_subcategory_name }} expenses)</a></small></h4>
 
@@ -113,7 +113,7 @@
             )
         </div>
         @else
-        <div class="alert alert-info" role="alert">
+        <div class="alert alert-info" role="alert" id="expenses-table">
             There are no listed expenses for {{ $child_details['short_name'] }} in
                 the {{ $active_category_name }} category.
         </div>

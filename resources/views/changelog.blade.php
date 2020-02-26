@@ -22,6 +22,15 @@
 
         <hr />
 
+        <h2>[v1.12.1] - 26th February 2020</h2>
+
+        <h3>Fixed</h3>
+
+        <ul>
+            <li>Search the name field rather than the description field.</li>
+            <li>Selecting a subcategory will now jump you to the expenses table.</li>
+        </ul>
+
         <h2>[v1.12.0] - 17th February 2020</h2>
 
         <h3>Added</h3>

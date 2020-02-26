@@ -209,7 +209,7 @@ class Uri
         }
 
         if ($term !== null) {
-            $params['search'] = 'description:' . urlencode($term);
+            $params['search'] = 'name:' . urlencode($term);
         }
 
         $i = 0;
