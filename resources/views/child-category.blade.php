@@ -63,7 +63,7 @@
                 'component-container.cost-summary-block',
                 [
                     'icon' => 'expenses.png',
-                    'uri' => $active . '/expenses/category/' . $active_category_id . '/subcategory/' . $subcategory['id'] . '#subcategories',
+                    'uri' => $active . '/expenses/category/' . $active_category_id . '/subcategory/' . $subcategory['id'] . '#expenses-table',
                     'heading' => $subcategory['name'],
                     'subheading' => $subcategory['description'] . ' expenses',
                     'description' => null,
