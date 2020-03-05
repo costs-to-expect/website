@@ -65,7 +65,7 @@
                     'icon' => 'expenses.png',
                     'uri' => $active . '/expenses/category/' . $active_category_id . '/subcategory/' . $subcategory['id'] . '#expenses-table',
                     'heading' => $subcategory['name'],
-                    'subheading' => $subcategory['description'] . ' expenses',
+                    'subheading' => $subcategory['description'],
                     'description' => null,
                     'value' => $subcategory['total'],
                     'active' => ($subcategory['id'] === $active_subcategory_id)
