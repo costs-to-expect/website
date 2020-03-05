@@ -64,6 +64,12 @@ return [
                 'title' => 'The Costs to Expect API',
                 'icon' => null,
                 'uri' => 'https://api.costs-to-expect.com'
+            ],
+            [
+                'name' => 'Our Blog',
+                'title' => 'The Costs to Expect Blog',
+                'icon' => null,
+                'uri' => 'https://blog.costs-to-expect.com'
             ]
         ]
     ]
