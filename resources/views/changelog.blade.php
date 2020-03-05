@@ -22,6 +22,21 @@
 
         <hr />
 
+        <h2>[v1.12.2] - 5th March 2020</h2>
+
+        <h3>Changed</h3>
+
+        <ul>
+            <li>We have updated the category descriptions.</li>
+            <li>We have added a link to our blog.</li>
+        </ul>
+
+        <h3>Fixed</h3>
+
+        <ul>
+            <li>We have removed `expenses` from the subcategory descriptions.</li>
+        </ul>
+
         <h2>[v1.12.1] - 26th February 2020</h2>
 
         <h3>Fixed</h3>
