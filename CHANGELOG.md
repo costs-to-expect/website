@@ -2,6 +2,13 @@
 
 The complete changelog for the Costs to Expect Website, our changelog follows the format defined at https://keepachangelog.com/en/1.0.0/
 
+## [v1.12.3] - 2020-04-12
+### Changed
+- We have updated the font; the new font is the same font we use for the rest of the service.
+
+### Fixed
+- We have fixed the pagination on the all expenses page; the limit parameter was not set.
+
 ## [v1.12.2] - 2020-03-05
 ### Changed 
 - We have updated the category descriptions.

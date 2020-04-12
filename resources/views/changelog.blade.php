@@ -22,6 +22,20 @@
 
         <hr />
 
+        <h2>[v1.12.3] - 12th April 2020</h2>
+
+        <h3>Changed</h3>
+
+        <ul>
+            <li>We have updated the font; the new font is the same font we use for the rest of the service.</li>
+        </ul>
+
+        <h3>Fixed</h3>
+
+        <ul>
+            <li>We have fixed the pagination on the all expenses page; the limit parameter was not set.</li>
+        </ul>
+
         <h2>[v1.12.2] - 5th March 2020</h2>
 
         <h3>Changed</h3>
