@@ -172,6 +172,9 @@ class ChildController extends BaseController
 
         $subcategories = [];
         if ($category_id !== null) {
+            if (strlen(trim($category_id)) !== 10) {
+                abort(404, 'The supplied category is invalid, please try again.');
+            }
             $selected_category_model = Category::modelById($category_id);
             $subcategories = $selected_category_model->subcategories($category_id);
         }
@@ -192,6 +195,10 @@ class ChildController extends BaseController
             $filtered = true;
 
             if ($subcategory_id !== null) {
+                if (strlen(trim($subcategory_id)) !== 10) {
+                    abort(404, 'The supplied subcategory is invalid, please try again.');
+                }
+
                 $filter_parameters['subcategory'] = $subcategory_id;
             }
         }
@@ -338,15 +345,18 @@ class ChildController extends BaseController
     /**
      * Categories overview page for each child
      *
-     * @param Request $request
      * @param string $child
      * @param string $category_uri
      *
      * @return View
      */
-    public function category(Request $request, string $child, string $category_uri): View
+    public function category(string $child, string $category_uri): View
     {
         Api::resetCalledURIs();
+
+        if (strlen(trim($category_uri)) !== 10) {
+            abort(404, 'The supplied category is invalid, please try again.');
+        }
 
         $overview_model = new Overview();
         $expense_model = new Expense();
@@ -404,16 +414,23 @@ class ChildController extends BaseController
     /**
      * Subcategories overview page for each child
      *
-     * @param Request $request
      * @param string $child
      * @param string $category_uri
      * @param string $subcategory_id
      *
      * @return View
      */
-    public function subcategory(Request $request, string $child, string $category_uri, string $subcategory_id)
+    public function subcategory(
+        string $child,
+        string $category_uri,
+        string $subcategory_id
+    )
     {
         Api::resetCalledURIs();
+
+        if (strlen(trim($category_uri)) !== 10 || strlen(trim($subcategory_id)) !== 10) {
+            abort(404, 'The supplied category or subcategory is invalid, please try again.');
+        }
 
         $overview_model = new Overview();
         $expense_model = new Expense();

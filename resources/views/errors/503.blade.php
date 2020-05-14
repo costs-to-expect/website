@@ -1,4 +1,4 @@
-@extends('errors::layout')
+@extends('errors::illustrated-layout')
 
 @section('title', __('Costs to Expect is unavailable'))
 @section('code', '503')
