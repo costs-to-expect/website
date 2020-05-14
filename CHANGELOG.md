@@ -2,7 +2,7 @@
 
 The complete changelog for the Costs to Expect Website, our changelog follows the format defined at https://keepachangelog.com/en/1.0.0/
 
-## [v1.12.4] - 2020-04-14
+## [v1.12.4] - 2020-05-14
 ### Changed
 - We have updated the dependencies for our website, front-end and back-end dependencies.
 ### Fixed
