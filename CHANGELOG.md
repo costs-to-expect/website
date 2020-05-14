@@ -2,6 +2,13 @@
 
 The complete changelog for the Costs to Expect Website, our changelog follows the format defined at https://keepachangelog.com/en/1.0.0/
 
+## [v1.12.4] - 2020-05-14
+### Changed
+- We have updated the dependencies for our website, front-end and back-end dependencies.
+### Fixed
+- We have added a check to stop processing when we come across a subcategory or category id that is not formatted correctly.
+- We have removed an invalid link on the child page; we were linking to the detail page for a year when there is no data.
+
 ## [v1.12.3] - 2020-04-12
 ### Changed
 - We have updated the font; the new font is the same font we use for the rest of the service.

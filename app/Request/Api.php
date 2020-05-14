@@ -419,9 +419,9 @@ class Api
             if ($response !== null) {
                 $cache->put($uri, $response);
                 return $response;
-            } else {
-                return null;
             }
+
+            return null;
         } else {
             return $cached;
         }

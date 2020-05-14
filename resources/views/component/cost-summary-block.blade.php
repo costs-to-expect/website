@@ -5,7 +5,7 @@
     <img src="{{ asset('images/theme/' . $icon) }}" class="mr-2" width="48" height="48" alt="icon" />
     @endif
     <div class="media-body">
-        <h4 class="mt-0">@if ($uri !== null)
+        <h4 class="mt-0">@if ($uri !== null && (float) $value !== 0.00)
             <a href="{{ $uri }}">{{ $heading }}</a>
             @else
             {{ $heading }}

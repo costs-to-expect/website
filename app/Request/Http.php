@@ -197,7 +197,7 @@ class Http
      */
     public static function previousRequestHeaders(): array
     {
-        return (self::$headers !== null) ? self::$headers : [];
+        return self::$headers ?? [];
     }
 
     /**

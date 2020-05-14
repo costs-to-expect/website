@@ -22,6 +22,21 @@
 
         <hr />
 
+        <h2>[v1.12.4] - 14th May 2020</h2>
+
+        <h3>Changed</h3>
+
+        <ul>
+            <li>We have updated the dependencies for our website, front-end and back-end dependencies.</li>
+        </ul>
+
+        <h3>Fixed</h3>
+
+        <ul>
+            <li>We have added a check to stop processing when we come across a subcategory or category id that is not formatted correctly.</li>
+            <li>We have removed an invalid link on the child page; we were linking to the detail page for a year when there is no data.</li>
+        </ul>
+
         <h2>[v1.12.3] - 12th April 2020</h2>
 
         <h3>Changed</h3>

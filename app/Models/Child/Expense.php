@@ -373,7 +373,7 @@ class Expense
                 case 'X-Limit':
                 case 'X-Offset':
                     if (array_key_exists($key, $headers) === true) {
-                        $return = intval($headers[$key][0]);
+                        $return = (int) $headers[$key][0];
                     }
                     break;
                 default:
