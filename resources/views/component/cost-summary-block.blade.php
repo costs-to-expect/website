@@ -1,5 +1,5 @@
 <div class="media summary-block shadow-sm h-100 @if ($active === true) active @endif">
-    @if ($uri !== null)
+    @if ($uri !== null && (float) $value !== 0.00)
     <a href="{{ $uri }}"><img src="{{ asset('images/theme/' . $icon) }}" class="mr-2" width="48" height="48" alt="icon" /></a>
     @else
     <img src="{{ asset('images/theme/' . $icon) }}" class="mr-2" width="48" height="48" alt="icon" />
