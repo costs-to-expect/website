@@ -2,6 +2,15 @@
 
 The complete changelog for the Costs to Expect Website, our changelog follows the format defined at https://keepachangelog.com/en/1.0.0/
 
+## [v1.12.5] - 2020-06-06
+### Changed
+- We are updating the Website to run on PHP7.4.
+- We have updated the Website to work with v2.11.0 of the Costs to Expect API. The format of the categories object was updated.
+- We have tweaked the Docker setup, we have added a network.
+### Fixed
+- When we hastily added the caching, we did not cache the response headers, only the body. We have updated the Website to cache the response body and headers.
+- We have removed a link that would direct the user to a page we know will not have content.
+
 ## [v1.12.4] - 2020-05-14
 ### Changed
 - We have updated the dependencies for our website, front-end and back-end dependencies.

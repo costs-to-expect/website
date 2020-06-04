@@ -22,7 +22,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="{{ $meta['description'] }}">
         <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
-        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/app.css?' . $footer['release']) }}" rel="stylesheet">
         <link rel="shortcut icon" href="{{ asset('images/theme/favicon.ico') }}">
         <link rel="icon" sizes="16x16 32x32 64x64" href="{{ asset('images/theme/favicon.ico') }}">
         <link rel="icon" type="image/png" sizes="196x196" href="{{ asset('images/theme/favicon-192.png') }}">
@@ -165,6 +165,6 @@
         <script src="{{ asset('node_modules/jquery/dist/jquery.slim.js') }}" defer></script>
         <script src="{{ asset('node_modules/popper.js/dist/umd/popper.min.js') }}" defer></script>
         <script src="{{ asset('node_modules/bootstrap/dist/js/bootstrap.min.js') }}" defer></script>
-        <script src="{{ asset('js/app.js') }}" defer></script>
+        <script src="{{ asset('js/app.js?' . $footer['release']) }}" defer></script>
     </body>
 </html>
