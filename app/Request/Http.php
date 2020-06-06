@@ -209,4 +209,9 @@ class Http
     {
         return self::$status_code;
     }
+
+    public function setHeaders($headers)
+    {
+        self::$headers = $headers;
+    }
 }

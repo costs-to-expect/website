@@ -417,13 +417,20 @@ class Api
                 ->get($uri, true, [__CLASS__, __METHOD__]);
 
             if ($response !== null) {
-                $cache->put($uri, $response);
+                $cache->put(
+                    $uri,
+                    [
+                        'body' => $response,
+                        'headers' => Http::getInstance()->previousRequestHeaders()
+                    ]
+                );
                 return $response;
             }
 
             return null;
         } else {
-            return $cached;
+            Http::getInstance()->setHeaders($cached['headers']);
+            return $cached['body'];
         }
     }
 }

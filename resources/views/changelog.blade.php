@@ -22,6 +22,23 @@
 
         <hr />
 
+        <h2>[v1.12.5] - 6th June 2020</h2>
+
+        <h3>Changed</h3>
+
+        <ul>
+            <li>We are updating the Website to run on PHP7.4.</li>
+            <li>We have updated the Website to work with v2.11.0 of the Costs to Expect API. The format of the categories object was updated.</li>
+            <li>We have tweaked the Docker setup, we have added a network.</li>
+        </ul>
+
+        <h3>Fixed</h3>
+
+        <ul>
+            <li>When we hastily added the caching, we did not cache the response headers, only the body. We have updated the Website to cache the response body and headers.</li>
+            <li>We have removed a link that would direct the user to a page we know will not have content.</li>
+        </ul>
+
         <h2>[v1.12.4] - 14th May 2020</h2>
 
         <h3>Changed</h3>

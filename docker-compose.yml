@@ -33,3 +33,8 @@ services:
             MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
         volumes:
             - ./.docker/mysql/data:/var/lib/mysql
+networks:
+    default:
+        external:
+            name: costs-to-expect-network
+
