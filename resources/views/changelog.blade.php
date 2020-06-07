@@ -22,6 +22,15 @@
 
         <hr />
 
+        <h2>[v1.12.6] - 7th June 2020</h2>
+
+        <h3>Fixed</h3>
+
+        <ul>
+            <li>We have updated the expense tables; it is possible for the category and subcategory values to
+            be `null`.</li>
+        </ul>
+
         <h2>[v1.12.5] - 6th June 2020</h2>
 
         <h3>Changed</h3>
