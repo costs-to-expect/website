@@ -22,6 +22,15 @@
 
         <hr />
 
+        <h2>[v1.12.7] - 19th June 2020</h2>
+
+        <h3>Changed</h3>
+
+        <ul>
+            <li>We have switched to Redis for our caching.</li>
+            <li>We have updated our cache to eight hours.</li>
+        </ul>
+
         <h2>[v1.12.6] - 7th June 2020</h2>
 
         <h3>Fixed</h3>
