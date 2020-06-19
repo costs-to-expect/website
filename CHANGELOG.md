@@ -2,6 +2,11 @@
 
 The complete changelog for the Costs to Expect Website, our changelog follows the format defined at https://keepachangelog.com/en/1.0.0/
 
+## [v1.12.7] - 2020-06-19
+### Changed
+- We have switched to Redis for our caching.
+- We have updated our cache to eight hours.
+
 ## [v1.12.6] - 2020-06-07
 ### Fixed
 - We have updated the expense tables; it is possible for the category and subcategory values to be `null`.
