@@ -190,7 +190,12 @@ class Overview
                 $this->setCategoriesSummaryData();
 
                 foreach ($response as $category) {
-                    $this->summary[$category['id']]['total'] = $category['total'];
+                    foreach ($category['subtotals'] as $subtotal) {
+                        if ($subtotal['currency']['code'] === 'GBP') {
+                            $this->summary[$category['id']]['total'] = $subtotal['subtotal'];
+                            break;
+                        }
+                    }
                 }
 
                 $total = $this->summary['98WLap7Bx3']['total'] +
