@@ -250,11 +250,22 @@ class ChildController extends BaseController
                 $filter_parameters['term']
             );
 
-            if (
-                $filtered_summary !== null &&
-                array_key_exists('total', $filtered_summary) === true
-            ) {
-                $filtered_summary = $filtered_summary['total'];
+            if ($filtered_summary !== null) {
+                if (array_key_exists('subtotals', $filtered_summary) === true) {
+                    foreach ($filtered_summary['subtotals'] as $subtotal) {
+                        if ($subtotal['currency']['code'] === 'GBP') {
+                            $filtered_summary = $subtotal['subtotal'];
+                            break;
+                        }
+                    }
+                } else {
+                    foreach ($filtered_summary as $subtotal) {
+                        if (array_key_exists('subtotal', $subtotal) && $subtotal['currency']['code'] === 'GBP') {
+                            $filtered_summary = $subtotal['subtotal'];
+                            break;
+                        }
+                    }
+                }
             }
         }
 
