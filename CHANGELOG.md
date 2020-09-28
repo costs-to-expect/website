@@ -2,6 +2,13 @@
 
 The complete changelog for the Costs to Expect Website, our changelog follows the format defined at https://keepachangelog.com/en/1.0.0/
 
+## [v1.13.0] - 2020-09-17
+### Added 
+- We have updated the Website to use the latest version of the Costs to Expect API, v2.14.0.
+
+### Changed
+- We return additional information for failed API requests.
+
 ## [v1.12.7] - 2020-06-19
 ### Changed
 - We have switched to Redis for our caching.

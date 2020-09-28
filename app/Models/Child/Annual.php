@@ -37,7 +37,7 @@ class Annual
             Api::setCalledURI('Expenses summary by year', Api::lastUri());
 
             if ($partial === true) {
-                for ($i = intval(date('Y')); $i > intval(date('Y')) - 3; $i--) {
+                for ($i = (int) date('Y'); $i > (int) date('Y') - 3; $i--) {
                     $this->summary[$i] = [
                         'year' => $i,
                         'total' => 0.00
@@ -47,7 +47,12 @@ class Annual
                 if ($response !== null) {
                     foreach ($response as $year) {
                         if (array_key_exists($year['year'], $this->summary) === true) {
-                            $this->summary[$year['year']]['total'] = (float) $year['total'];
+                            foreach ($year['subtotals'] as $subtotal) {
+                                if ($subtotal['currency']['code'] === 'GBP') {
+                                    $this->summary[$year['year']]['total'] = (float) $subtotal['subtotal'];
+                                    break;
+                                }
+                            }
                         }
                     }
                 }
@@ -55,9 +60,15 @@ class Annual
                 if ($response !== null) {
                     foreach ($response as $year) {
                         $this->summary[$year['year']] = [
-                            'year' => $year['year'],
-                            'total' => (float) $year['total']
+                            'year' => $year['year']
                         ];
+
+                        foreach ($year['subtotals'] as $subtotal) {
+                            if ($subtotal['currency']['code'] === 'GBP') {
+                                $this->summary[$year['year']]['total'] = (float) $subtotal['subtotal'];
+                                break;
+                            }
+                        }
                     }
                     $this->summary = array_reverse($this->summary);
                 } else {

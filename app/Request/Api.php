@@ -60,9 +60,9 @@ class Api
 
         if ($response !== null) {
             return $response;
-        } else {
-            return null;
         }
+
+        return null;
     }
 
     /**
@@ -414,7 +414,7 @@ class Api
         if ($cached === null) {
             $response = Http::getInstance()
                 ->public()
-                ->get($uri, true, [__CLASS__, __METHOD__]);
+                ->get($uri, true, [__CLASS__, __METHOD__, request()->getRequestUri()]);
 
             if ($response !== null) {
                 $cache->put(
@@ -428,9 +428,9 @@ class Api
             }
 
             return null;
-        } else {
-            Http::getInstance()->setHeaders($cached['headers']);
-            return $cached['body'];
         }
+
+        Http::getInstance()->setHeaders($cached['headers']);
+        return $cached['body'];
     }
 }

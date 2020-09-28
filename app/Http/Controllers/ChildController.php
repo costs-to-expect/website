@@ -250,11 +250,22 @@ class ChildController extends BaseController
                 $filter_parameters['term']
             );
 
-            if (
-                $filtered_summary !== null &&
-                array_key_exists('total', $filtered_summary) === true
-            ) {
-                $filtered_summary = $filtered_summary['total'];
+            if ($filtered_summary !== null) {
+                if (array_key_exists('subtotals', $filtered_summary) === true) {
+                    foreach ($filtered_summary['subtotals'] as $subtotal) {
+                        if ($subtotal['currency']['code'] === 'GBP') {
+                            $filtered_summary = $subtotal['subtotal'];
+                            break;
+                        }
+                    }
+                } else {
+                    foreach ($filtered_summary as $subtotal) {
+                        if (array_key_exists('subtotal', $subtotal) && $subtotal['currency']['code'] === 'GBP') {
+                            $filtered_summary = $subtotal['subtotal'];
+                            break;
+                        }
+                    }
+                }
             }
         }
 
@@ -369,7 +380,21 @@ class ChildController extends BaseController
         $categories_summary_data = $overview_model->categoriesSummary($child_model->id());
         $categories_summary = $categories_summary_data['summary'];
 
-        $subcategories_summary = $category_model->subcategorySummary($child_model->id(), $category_model->id());
+        $subcategories_summary_data = $category_model->subcategorySummary($child_model->id(), $category_model->id());
+
+        $subcategories_summary = [];
+
+        foreach ($subcategories_summary_data as $subcategory) {
+            $subcategory['total'] = 0;
+            foreach ($subcategory['subtotals'] as $subtotal) {
+                if ($subtotal['currency']['code'] === 'GBP') {
+                    $subcategory['total'] = $subtotal['subtotal'];
+                    break;
+                }
+            }
+
+            $subcategories_summary[] = $subcategory;
+        }
 
         $recent_expenses_data = $expense_model->recentExpensesByCategory($child_model->id(), $category_model->id());
         $recent_expenses = $recent_expenses_data['expenses'];
@@ -443,24 +468,19 @@ class ChildController extends BaseController
         $categories_summary_data = $overview_model->categoriesSummary($child_model->id());
         $categories_summary = $categories_summary_data['summary'];
 
-        $subcategories_summary = $category_model->subcategorySummary($child_model->id(), $category_model->id());
+        $subcategories_summary_data = $category_model->subcategorySummary($child_model->id(), $category_model->id());
+        $subcategories_summary = [];
 
-        $exists = false;
-        foreach ($subcategories_summary as $sub) {
-            if ($sub['id'] === $subcategory_id) {
-                $exists = true;
-                continue;
+        foreach ($subcategories_summary_data as $subcategory) {
+            $subcategory['total'] = 0;
+            foreach ($subcategory['subtotals'] as $subtotal) {
+                if ($subtotal['currency']['code'] === 'GBP') {
+                    $subcategory['total'] = $subtotal['subtotal'];
+                    break;
+                }
             }
-        }
 
-        if ($exists === false) {
-            return redirect()->action(
-                'ChildController@category',
-                [
-                    'child' => $child,
-                    'category_uri' => $category_uri
-                ]
-            );
+            $subcategories_summary[] = $subcategory;
         }
 
         $subcategory = $subcategory_model->subcategory($category_model->id(), $subcategory_id);
@@ -541,7 +561,20 @@ class ChildController extends BaseController
         $child_overview = $this->childOverview($child_model, $overview_model);
 
         $annual_summary = $annual_model->annualSummary($child_model->id(), false);
-        $monthly_summary = $annual_model->monthlySummary($child_model->id(), (int) $year);
+        $monthly_summary_data = $annual_model->monthlySummary($child_model->id(), (int) $year);
+        $monthly_summary = [];
+
+        foreach ($monthly_summary_data as $month) {
+            $month['total'] = 0;
+            foreach ($month['subtotals'] as $subtotal) {
+                if ($subtotal['currency']['code'] === 'GBP') {
+                    $month['total'] = $subtotal['subtotal'];
+                    break;
+                }
+            }
+
+            $monthly_summary[] = $month;
+        }
 
         $recent_expenses_data = $expense_model->recentExpensesByYear(
             $child_model->id(),
@@ -607,7 +640,20 @@ class ChildController extends BaseController
         $child_overview = $this->childOverview($child_model, $overview_model);
 
         $annual_summary = $annual_model->annualSummary($child_model->id(), false);
-        $monthly_summary = $annual_model->monthlySummary($child_model->id(), (int) $year);
+        $monthly_summary_data = $annual_model->monthlySummary($child_model->id(), (int) $year);
+        $monthly_summary = [];
+
+        foreach ($monthly_summary_data as $month_subtotals) {
+            $month_subtotals['total'] = 0;
+            foreach ($month_subtotals['subtotals'] as $subtotal) {
+                if ($subtotal['currency']['code'] === 'GBP') {
+                    $month_subtotals['total'] = $subtotal['subtotal'];
+                    break;
+                }
+            }
+
+            $monthly_summary[] = $month_subtotals;
+        }
 
         $recent_expenses_data = $expense_model->recentExpensesByMonth(
             $child_model->id(),

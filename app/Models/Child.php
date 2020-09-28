@@ -70,9 +70,14 @@ abstract class Child
                 'total' => 0.00
             ];
 
-            if ($response !== null && array_key_exists('total', $response) === true) {
-                    $this->total['total'] = $response['total'];
-                    $this->total_populated = true;
+            if ($response !== null) {
+                foreach ($response as $subtotal) {
+                    if ($subtotal['currency']['code'] === 'GBP') {
+                        $this->total['total'] = $subtotal['subtotal'];
+                        $this->total_populated = true;
+                        break;
+                    }
+                }
             }
         }
 
@@ -125,9 +130,14 @@ abstract class Child
 
             $this->total_current_year = 0.00;
 
-            if ($response !== null && array_key_exists('total', $response) === true) {
-                $this->total_current_year = (float) $response['total'];
-                $this->total_current_year_populated = true;
+            if ($response !== null && array_key_exists('subtotals', $response) === true) {
+                foreach ($response['subtotals'] as $subtotal) {
+                    if ($subtotal['currency']['code'] === 'GBP') {
+                        $this->total_current_year = (float) $subtotal['subtotal'];
+                        $this->total_current_year_populated = true;
+                        break;
+                    }
+                }
             }
         }
 

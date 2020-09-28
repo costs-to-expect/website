@@ -22,6 +22,20 @@
 
         <hr />
 
+        <h2>[v1.13.0] - 27th Sepetember 2020</h2>
+
+        <h3>Added</h3>
+
+        <ul>
+            <li>We have updated the Website to use the latest version of the Costs to Expect API, v2.14.0.</li>
+        </ul>
+
+        <h3>Changed</h3>
+
+        <ul>
+            <li>We return additional information for failed API requests.</li>
+        </ul>
+
         <h2>[v1.12.7] - 19th June 2020</h2>
 
         <h3>Changed</h3>
