@@ -16,7 +16,7 @@ class Cache
 {
     private $prefix = null;
 
-    private $ttl = 28800;
+    private $ttl = 43200;
 
     public function __construct($cache_prefix)
     {
