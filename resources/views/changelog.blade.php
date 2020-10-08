@@ -22,7 +22,17 @@
 
         <hr />
 
-        <h2>[v1.13.0] - 27th Sepetember 2020</h2>
+        <h2>[v1.13.1] - 8th October 2020</h2>
+
+        <h3>Changed</h3>
+
+        <ul>
+            <li>We have updated all our dependencies, front-end and back-end.</li>
+            <li>We have updated the Website to handle the new format of categories from the Costs to Expect API.</li>
+            <li>We have slightly tweaked the look of categories in the expense tables.</li>
+        </ul>
+
+        <h2>[v1.13.0] - 27th September 2020</h2>
 
         <h3>Added</h3>
 
