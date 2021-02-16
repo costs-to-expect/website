@@ -22,13 +22,22 @@
 
         <hr />
 
+        <h2>[v1.13.2] - 16th February 2021</h2>
+
+        <h3>Changed</h3>
+
+        <ul>
+            <li>We have upgraded to version 7 of the Laravel framework.</li>
+            <li>We have upgraded our environment to PHP8.0 and MySQL 8.0</li>
+        </ul>
+
         <h2>[v1.13.1] - 8th October 2020</h2>
 
         <h3>Changed</h3>
 
         <ul>
             <li>We have updated all our dependencies, front-end and back-end.</li>
-            <li>We have updated the Website to handle the new format of categories from the Costs to Expect API.</li>
+            <li>We have updated the website to handle the new format of categories from the Costs to Expect API.</li>
             <li>We have slightly tweaked the look of categories in the expense tables.</li>
         </ul>
 
