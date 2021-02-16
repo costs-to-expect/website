@@ -4,12 +4,13 @@ $(document).ready(function () {
     });
 
     let category_selector = 'select#category-expense-filter';
-    let base_value = $(category_selector).val();
 
     $(category_selector).change(function () {
+
+        let value = $(category_selector).val();
         let subcategory_selector = 'select#subcategory-expense-filter';
 
-        if (base_value !== $(this).val()) {
+        if (value !== $(this).val()) {
             $(subcategory_selector).attr('disabled', 'disabled');
         } else {
             if ($(subcategory_selector).attr('disabled') !== undefined) {
