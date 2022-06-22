@@ -16,11 +16,12 @@ class Cache
 {
     private $prefix = null;
 
-    private $ttl = 43200;
+    private $ttl;
 
     public function __construct($cache_prefix)
     {
         $this->prefix = '-' . $cache_prefix . '-';
+        $this->ttl = now()->addDays(3);
     }
 
     /**
