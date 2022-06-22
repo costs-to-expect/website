@@ -1,28 +1,31 @@
 {
-    "name": "laravel/laravel",
+    "name": "costs-to-expect/website",
     "type": "project",
-    "description": "The Laravel Framework.",
+    "description": "About\nThe public website for the Costs to Expect service, tracks costs to raise our children to adulthood",
     "keywords": [
-        "framework",
-        "laravel"
+        "failmy-data",
+        "costs-to-expect",
+        "child-costs",
+        "uk"
     ],
     "license": "MIT",
     "require": {
-        "php": "^7.4|^8.0",
+        "php": "^8.0",
         "ext-json": "*",
         "deanblackborough/laravel-view-helpers": "^1",
         "fideloper/proxy": "^4.0",
-        "guzzlehttp/guzzle": "^6.5",
-        "laravel/framework": "^7.0",
+        "guzzlehttp/guzzle": "^7.4.5",
+        "laravel/framework": "^8.0",
         "laravel/tinker": "^2.0",
         "laravel/helpers": "^1.0"
     },
     "require-dev": {
+        "roave/security-advisories": "dev-latest",
         "beyondcode/laravel-dump-server": "^1.0",
         "filp/whoops": "^2.0",
         "fzaninotto/faker": "^1.4",
         "mockery/mockery": "^1.0",
-        "nunomaduro/collision": "^4.1",
+        "nunomaduro/collision": "^5.0",
         "phpunit/phpunit": "^9"
     },
     "config": {

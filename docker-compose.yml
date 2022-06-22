@@ -4,13 +4,12 @@ services:
         build:
             context: .
             dockerfile: .docker/app/Dockerfile
-        image: costs-to-expect-website
+        image: costs.website.app
+        container_name: costs.website.app
         ports:
             - "80:80"
         volumes:
             - .:/var/www/html
-        links:
-            - mysql
         env_file: .env
         environment:
             TZ: UTC
@@ -22,6 +21,8 @@ services:
         build:
             context: .
             dockerfile: .docker/mysql/Dockerfile
+        image: costs.website.mysql
+        container_name: costs.website.mysql
         ports:
             - "3306:3306"
         env_file: .env
@@ -35,6 +36,6 @@ services:
             - ./.docker/mysql/data:/var/lib/mysql
 networks:
     default:
-        name: costs-to-expect-network
+        name: costs.network
         external: true
 
