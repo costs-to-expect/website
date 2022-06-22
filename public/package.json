@@ -4,7 +4,7 @@
     "description": "The Costs to Expect website for the service",
     "license": "MIT",
     "dependencies": {
-        "bootstrap": "^4.6.0",
+        "bootstrap": "^4.6.1",
         "jquery": "^3.5.1",
         "popper.js": "^1.16.1"
     },
