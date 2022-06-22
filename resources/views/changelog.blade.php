@@ -22,6 +22,17 @@
 
         <hr />
 
+        <h2>[v2.00.0] - 22nd June 2022</h2>
+
+        <h3>Changed</h3>
+
+        <ul>
+            <li>We have updated all our dependencies, front-end and back-end.</li>
+            <li>We have adjusted the cache to three days.</li>
+            <li>We have tweaked the docker setup.</li>
+            <li>We have Upgraded to Laravel 9 and PHP 8.1.</li>
+        </ul>
+
         <h2>[v1.13.2] - 16th February 2021</h2>
 
         <h3>Changed</h3>
