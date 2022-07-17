@@ -2,8 +2,12 @@
 
 The complete changelog for the Costs to Expect Website, our changelog follows the format defined at https://keepachangelog.com/en/1.0.0/
 
+## [v2.01.0] - 2022-06-17
+### Changed
+- We have updated the website to target v3 of the Costs to Expect API.
+
 ## [v2.00.0] - 2022-06-22
-## Changed
+### Changed
 - We have updated all our dependencies, front-end and back-end.
 - We have adjusted the cache to three days.
 - We have tweaked the docker setup.

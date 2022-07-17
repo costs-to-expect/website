@@ -22,6 +22,14 @@
 
         <hr />
 
+        <h2>[v2.01.0] - 17th July 2022</h2>
+
+        <h3>Changed</h3>
+
+        <ul>
+            <li>We have updated the website to target v3 of the Costs to Expect API.</li>
+        </ul>
+
         <h2>[v2.00.0] - 22nd June 2022</h2>
 
         <h3>Changed</h3>

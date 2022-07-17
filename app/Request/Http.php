@@ -90,7 +90,7 @@ class Http
     {
         try {
             $response = self::$client->post(
-                '/v2/request/error-log',
+                '/v3/request/error-log',
                 [
                     RequestOptions::JSON => [
                         'method' => $method,

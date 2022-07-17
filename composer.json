@@ -1,7 +1,7 @@
 {
     "name": "costs-to-expect/website",
     "type": "project",
-    "description": "About\nThe public website for the Costs to Expect service, tracks costs to raise our children to adulthood",
+    "description": "The public website for the Costs to Expect service, tracks costs to raise our children to adulthood",
     "keywords": [
         "failmy-data",
         "costs-to-expect",
