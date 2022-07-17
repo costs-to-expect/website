@@ -11,7 +11,7 @@ namespace App\Request;
 class Uri
 {
     private static $resource_type = 'd185Q15grY';
-    private static $version = 'v2';
+    private static $version = 'v3';
 
     /**
      * @param string $child_id
