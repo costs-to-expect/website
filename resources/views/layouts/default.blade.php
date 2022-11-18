@@ -1,21 +1,14 @@
 <!doctype html>
 <html lang="en">
     <head>
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-64736-11"></script>
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-W7XEDMDMY9"></script>
         <script>
-        _doNotTrack = (
-            window.doNotTrack === "1" ||
-            navigator.doNotTrack === "yes" ||
-            navigator.doNotTrack === "1"
-        );
-        if (!_doNotTrack) {
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'UA-64736-11');
-            gtag('config', '<GA_MEASUREMENT_ID>', { 'anonymize_ip': true });
-        }
+
+            gtag('config', 'G-W7XEDMDMY9');
         </script>
         <meta charset="utf-8">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
