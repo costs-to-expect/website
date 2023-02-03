@@ -35,29 +35,22 @@ class ChildController extends BaseController
     {
         if ($name === 'niall') {
             return new Niall();
-        } else {
-            return new Jack();
         }
+
+        return new Jack();
     }
 
-    public function jack()
+    public function jack(): View
     {
         return $this->child('jack');
     }
 
-    public function niall()
+    public function niall(): View
     {
         return $this->child('niall');
     }
 
-    /**
-     * Overview page for each child
-     *
-     * @param string $child
-     *
-     * @return View
-     */
-    public function child($child): View
+    public function child(string $child): View
     {
         Api::resetCalledURIs();
 
@@ -566,6 +559,11 @@ class ChildController extends BaseController
 
         foreach ($monthly_summary_data as $month) {
             $month['total'] = 0;
+
+            if (array_key_exists('subtotals', $month) === false) {
+                continue;
+            }
+
             foreach ($month['subtotals'] as $subtotal) {
                 if ($subtotal['currency']['code'] === 'GBP') {
                     $month['total'] = $subtotal['subtotal'];
@@ -645,6 +643,11 @@ class ChildController extends BaseController
 
         foreach ($monthly_summary_data as $month_subtotals) {
             $month_subtotals['total'] = 0;
+
+            if (array_key_exists('subtotals', $month_subtotals) === false) {
+                continue;
+            }
+
             foreach ($month_subtotals['subtotals'] as $subtotal) {
                 if ($subtotal['currency']['code'] === 'GBP') {
                     $month_subtotals['total'] = $subtotal['subtotal'];

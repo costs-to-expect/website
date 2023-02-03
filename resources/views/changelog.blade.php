@@ -22,6 +22,21 @@
 
         <hr />
 
+        <h2>[v2.01.1] - 3rd February 2023</h2>
+
+        <h3>Changed</h3>
+
+        <ul>
+            <li>We have updated all back end dependencies.</li>
+            <li>We have removed the app from the side panel and added links to Budget and Budget Pro.</li>
+        </ul>
+
+        <h3>Fixed</h3>
+
+        <ul>
+            <li>We have implemented a minor tweak to try and correct the occasional 500 error.</li>
+        </ul>
+
         <h2>[v2.01.0] - 17th July 2022</h2>
 
         <h3>Changed</h3>

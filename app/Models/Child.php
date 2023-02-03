@@ -92,9 +92,9 @@ abstract class Child
 
         if (array_key_exists('X-Total-Count', $this->expenses_headers) === true) {
             return (int) $this->expenses_headers['X-Total-Count'][0];
-        } else {
-            return 0;
         }
+
+        return 0;
     }
 
     protected function expensesHeaders(): array
