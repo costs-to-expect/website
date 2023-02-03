@@ -54,10 +54,16 @@ return [
                 'uri' => '/privacy-policy'
             ],
             [
-                'name' => 'The App (In alpha)',
-                'title' => 'The Costs to Expect App',
+                'name' => 'Budget',
+                'title' => 'Budgeting by Costs to Expect',
                 'icon' => null,
-                'uri' => 'https://app.costs-to-expect.com'
+                'uri' => 'https://budget.costs-to-expect.com'
+            ],
+            [
+                'name' => 'Budget Pro',
+                'title' => 'Budgeting by Costs to Expect',
+                'icon' => null,
+                'uri' => 'https://budget-pro.costs-to-expect.com'
             ],
             [
                 'name' => 'The API',

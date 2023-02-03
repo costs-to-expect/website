@@ -2,6 +2,14 @@
 
 The complete changelog for the Costs to Expect Website, our changelog follows the format defined at https://keepachangelog.com/en/1.0.0/
 
+## [v2.01.1] - 2023-03-03
+### Changed
+- We have updated all back end dependencies.
+- We have removed the app from the side panel and added links to Budget and Budget Pro.
+
+### Fixed
+- We have implemented a minor tweak to try and correct the occasional 500 error
+
 ## [v2.01.0] - 2022-06-17
 ### Changed
 - We have updated the website to target v3 of the Costs to Expect API.

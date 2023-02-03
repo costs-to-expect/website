@@ -39,7 +39,7 @@
         <div class="container-fluid container-cte">
             <div class="row">
                 <div class="col-12 preview text-center">
-                    <p>The <a href="https://app.costs-to-expect.com">Costs to Expect App</a> is in the alpha stage, the beta is coming soon.</p>
+                    <p>We recently released <a href="https://budget.costs-to-expect.com">Budget</a>, our free and open source budgeting App.</p>
                 </div>
             </div>
             <div class="row container-row">
@@ -147,7 +147,7 @@
                         <div class="col-12">
                             <p class="text-center text-muted footer">
                                 Copyright &copy; <a href="{{ $footer['copyright_url'] }}">{{ $footer['copyright'] }}</a><br />
-                                Costs to Expect (The <a href="{{ $footer['api-link'] }}">API</a>, The <a href="{{ $footer['app-link'] }}">App</a>) | <a href="https://status.costs-to-expect.com">Status</a> | <a href="/changelog">Changelog</a> | <a href="/privacy-policy">Privacy policy</a><br />
+                                Costs to Expect | <a href="https://budget.costs-to-expect.com">Budget</a> | <a href="https://budget-pro.costs-to-expect.com">Budget Pro</a> | <a href="{{ $footer['api-link'] }}">API</a> | <a href="https://status.costs-to-expect.com">Status</a> | <a href="/changelog">Changelog</a> | <a href="/privacy-policy">Privacy policy</a><br />
                                 <small>{{ $footer['release'] }} released {{ $footer['date'] }}</small>
                             </p>
                         </div>
