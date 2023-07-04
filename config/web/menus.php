@@ -76,6 +76,18 @@ return [
                 'title' => 'The Costs to Expect Blog',
                 'icon' => null,
                 'uri' => 'https://blog.costs-to-expect.com'
+            ],
+            [
+                'name' => 'Yahtzee Game Scorer',
+                'title' => 'Our free Yahtzee game scorer',
+                'icon' => null,
+                'uri' => 'https://yahtzee.game-scorer.com'
+            ],
+            [
+                'name' => 'Yatzy Game Scorer',
+                'title' => 'Our free Yatzy game scorer',
+                'icon' => null,
+                'uri' => 'https://yatzy.game-scorer.com'
             ]
         ]
     ]

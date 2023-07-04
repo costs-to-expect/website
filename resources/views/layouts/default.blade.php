@@ -39,7 +39,7 @@
         <div class="container-fluid container-cte">
             <div class="row">
                 <div class="col-12 preview text-center">
-                    <p>We recently released <a href="https://budget.costs-to-expect.com">Budget</a>, our free and open source budgeting App.</p>
+                    <p>We recently released <a href="https://budget.costs-to-expect.com">Budget</a> and <a href="https://budget-pro.costs-to-expect.com">Budget Pro</a>, our  budgeting Apps.</p>
                 </div>
             </div>
             <div class="row container-row">
