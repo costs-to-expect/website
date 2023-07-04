@@ -22,6 +22,16 @@
 
         <hr />
 
+        <h2>[v2.02.0] - 4th July 2023</h2>
+
+        <h3>Changed</h3>
+
+        <ul>
+            <li>We have added an additional link to Budget Pro.</li>
+            <li>We have added links to our game scorers.</li>
+            <li>We have updated all back end dependencies.</li>
+        </ul>
+
         <h2>[v2.01.1] - 3rd February 2023</h2>
 
         <h3>Changed</h3>

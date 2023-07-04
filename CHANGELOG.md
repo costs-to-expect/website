@@ -2,6 +2,12 @@
 
 The complete changelog for the Costs to Expect Website, our changelog follows the format defined at https://keepachangelog.com/en/1.0.0/
 
+## [v2.02.0] - 2023-07-04
+### Changed
+- We have added an additional link to Budget Pro.
+- We have added links to our game scorers.
+- We have updated all back end dependencies.
+
 ## [v2.01.1] - 2023-03-03
 ### Changed
 - We have updated all back end dependencies.
