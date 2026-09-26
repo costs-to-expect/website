@@ -81,7 +81,7 @@
             <div class="row container-row">
                 <div class="col-xl-2 col-lg-3 col-md-3 container-column container-left d-none d-sm-none d-md-block sticky-top">
                     <div class="logo">
-                        <a href="/"><img src="{{ asset('images/theme/logo-190.png') }}" width="64" height="64" alt="Logo" title="Costs to Expect" /></a>
+                        <a href="/"><img src="{{ asset('images/theme/logo-190.png') }}" width="64" height="64" alt="Costs to Expect" title="Costs to Expect" /></a>
                     </div>
                     <ul class="nav flex-column">
                         @include(
@@ -139,7 +139,7 @@
                         <div class="col-12">
                             <div class="screen-intro">
                                 <div class="icon">
-                                    <img src="{{ asset('images/theme/' . $welcome['image']['icon']) }}" width="50" height="50" alt="Screen icon" title="{{ $welcome['image']['title'] }}" />
+                                    <img src="{{ asset('images/theme/' . $welcome['image']['icon']) }}" width="50" height="50" alt="{{ $welcome['image']['title'] }}" title="{{ $welcome['image']['title'] }}" />
                                 </div>
                                 <div class="welcome">
                                     <small class="text-muted">{{ $welcome['description'] }}</small>
