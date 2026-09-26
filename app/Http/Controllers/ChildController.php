@@ -78,7 +78,7 @@ class ChildController extends BaseController
                 'active' => $child_model->uri(),
                 'meta' => [
                     'title' => $child_model->details()['name'],
-                    'description' => 'What does it cost to raise a child to adulthood in the UK?'
+                    'description' => $child_model->details()['name'] . '\'s expense overview - category breakdowns, annual totals and the most recently logged purchases.'
                 ],
                 'welcome' => [
                     'title' => $child_model->details()['name'],
@@ -269,7 +269,7 @@ class ChildController extends BaseController
                 'active' => $child_model->uri(),
                 'meta' => [
                     'title' => $child_model->details()['name'] . ': All expenses',
-                    'description' => 'What does it cost to raise a child to adulthood in the UK?'
+                    'description' => 'Every logged expense for ' . $child_model->details()['name'] . ', filterable by category, subcategory, year and month.'
                 ],
                 'welcome' => [
                     'title' => $child_model->details()['name'] . ': All expenses' ,
@@ -400,7 +400,7 @@ class ChildController extends BaseController
                 'active' => $child_model->uri(),
                 'meta' => [
                     'title' => $child_model->details()['name'] . ': ' . $category_model->name() . ' expenses' ,
-                    'description' => 'What does it cost to raise a child to adulthood in the UK?'
+                    'description' => 'A breakdown of ' . $child_model->details()['name'] . '\'s ' . $category_model->name() . ' expenses, split by subcategory.'
                 ],
                 'welcome' => [
                     'title' => $child_model->details()['name'] . ': ' . $category_model->name() . ' expenses' ,
@@ -498,7 +498,11 @@ class ChildController extends BaseController
                 'meta' => [
                     'title' => $child_model->details()['name'] . ': ' .
                         $category_model->name() . '/' . $subcategory['name'] . ' expenses' ,
-                    'description' => 'What does it cost to raise a child to adulthood in the UK?'
+                    'description' => rtrim(
+                        'Every ' . $child_model->details()['name'] . ' expense logged under ' .
+                            $category_model->name() . '/' . $subcategory['name'],
+                        '.'
+                    ) . '.'
                 ],
                 'welcome' => [
                     'title' => $child_model->details()['name'] . ': ' .
@@ -588,7 +592,7 @@ class ChildController extends BaseController
                 'active' => $child_model->uri(),
                 'meta' => [
                     'title' => $child_model->details()['name'] . ': ' . $year . ' expenses' ,
-                    'description' => 'What does it cost to raise a child to adulthood in the UK?'
+                    'description' => $child_model->details()['name'] . '\'s expenses for ' . $year . ', broken down month by month.'
                 ],
                 'welcome' => [
                     'title' => $child_model->details()['name'] . ': ' . $year . ' expenses' ,
@@ -675,7 +679,7 @@ class ChildController extends BaseController
                 'active' => $child_model->uri(),
                 'meta' => [
                     'title' => $child_model->details()['name'] . ': ' . $active_month_name . ' ' . $year . ' expenses' ,
-                    'description' => 'What does it cost to raise a child to adulthood in the UK?'
+                    'description' => $child_model->details()['name'] . '\'s expenses for ' . $active_month_name . ' ' . $year . '.'
                 ],
                 'welcome' => [
                     'title' => $child_model->details()['name'] . ': ' . $active_month_name . ' ' . $year . ' expenses' ,

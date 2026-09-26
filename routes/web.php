@@ -13,6 +13,8 @@
 
 Route::get('/', 'DashboardController@index');
 
+Route::get('/sitemap.xml', 'SitemapController@index');
+
 Route::get('/jack', 'ChildController@jack');
 Route::get('/niall', 'ChildController@niall');
 

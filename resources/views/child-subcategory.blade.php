@@ -17,7 +17,7 @@
 @if ($categories_summary !== null)
 <div class="row mt-4">
     <div class="col-12" id="categories">
-        <h4>Total expenses by category</h4>
+        <h2>Total expenses by category</h2>
 
         <p>We group expenses into three core categories, these are the totals for each category,
             select a category for more detail.</p>
@@ -49,7 +49,7 @@
 @if ($subcategories_summary !== null)
 <div class="row mt-4">
     <div class="col-12" id="subcategories">
-        <h4>Total expenses by subcategory</h4>
+        <h2>Total expenses by subcategory</h2>
 
         <p>These are the totals for all the subcategories in the
             {{ $active_category_name }} category, select a subcategory for
@@ -91,8 +91,8 @@
 @if ($recent_expenses !== null)
 <div class="row mt-4">
     <div class="col-12" id="expenses-table">
-        <h4>The 25 most recent {{ $active_category_name . '/' . $active_subcategory_name }} expenses for
-            {{ $child_details['short_name'] }} <small> - <a href="{{ $child_details['uri'] . '/expenses?category=' . $active_category_id . '&subcategory=' . $active_subcategory_id . '#expenses-table' }}">(View all {{ $active_category_name . '/' . $active_subcategory_name }} expenses)</a></small></h4>
+        <h2>The 25 most recent {{ $active_category_name . '/' . $active_subcategory_name }} expenses for
+            {{ $child_details['short_name'] }} <small> - <a href="{{ $child_details['uri'] . '/expenses?category=' . $active_category_id . '&subcategory=' . $active_subcategory_id . '#expenses-table' }}">(View all {{ $active_category_name . '/' . $active_subcategory_name }} expenses)</a></small></h2>
 
         <p>The table below lists the last 25 expenses we have logged for
             {{ $child_details['short_name'] }} in the {{ $active_category_name }} category,

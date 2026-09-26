@@ -45,7 +45,7 @@ class DashboardController extends BaseController
                 'active' => '/',
                 'meta' => [
                     'title' => null,
-                    'description' => 'What does it cost to raise a child to adulthood in the UK?'
+                    'description' => 'Tracking the real cost of raising Jack and Niall Blackborough to adulthood in the UK, from birth to eighteen.'
                 ],
                 'welcome' => [
                     'title' => 'The cost of raising a child?',

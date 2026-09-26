@@ -17,7 +17,7 @@
 @if ($categories_summary !== null)
 <div class="row mt-4">
     <div class="col-12" id="categories">
-        <h4>Total expenses by category</h4>
+        <h2>Total expenses by category</h2>
 
         <p>We group expenses into three core categories, these are the totals for each category,
             select a category for more detail.</p>
@@ -48,7 +48,7 @@
 @if ($annual_summary !== null)
 <div class="row mt-4">
     <div class="col-12" id="years">
-        <h4>Expenses for the last three years</h4>
+        <h2>Expenses for the last three years</h2>
 
         <p>Total expenses for the last three years, select a year for additional detail including
             the ability to view all years.</p>
@@ -79,7 +79,7 @@
 @if ($recent_expenses !== null)
 <div class="row mt-4">
     <div class="col-12">
-        <h4>The 25 most recent expenses for {{ $child_details['short_name'] }} <small> - <a href="{{ $child_details['uri'] . '/expenses#expenses-table' }}">(View all)</a></small></h4>
+        <h2>The 25 most recent expenses for {{ $child_details['short_name'] }} <small> - <a href="{{ $child_details['uri'] . '/expenses#expenses-table' }}">(View all)</a></small></h2>
 
         <p>The table below lists the last 25 expenses we have logged for {{ $child_details['short_name'] }}, to see more select any
             summary count, category or subcategory.</p>

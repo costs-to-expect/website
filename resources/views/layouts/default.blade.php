@@ -1,6 +1,43 @@
 <!doctype html>
 <html lang="en">
     <head>
+        @php
+            $page_title = 'Costs to Expect';
+            if ($meta['title'] !== null) {
+                $page_title_with_suffix = $meta['title'] . ' - Costs to Expect';
+                $page_title = strlen($page_title_with_suffix) > 60
+                    ? $meta['title']
+                    : $page_title_with_suffix;
+            }
+            $canonical_url = url()->current();
+            $has_query_params = count(request()->query()) > 0;
+
+            $json_ld = [
+                '@context' => 'https://schema.org',
+                '@graph' => [
+                    [
+                        '@type' => 'Organization',
+                        '@id' => url('/') . '#organization',
+                        'name' => 'Costs to Expect',
+                        'url' => url('/'),
+                        'logo' => asset('images/theme/logo-190.png'),
+                        'sameAs' => [
+                            'https://twitter.com/coststoexpect',
+                        ],
+                    ],
+                    [
+                        '@type' => 'WebSite',
+                        '@id' => url('/') . '#website',
+                        'name' => 'Costs to Expect',
+                        'url' => url('/'),
+                        'description' => 'Tracking the real cost of raising children to adulthood in the UK.',
+                        'publisher' => [
+                            '@id' => url('/') . '#organization',
+                        ],
+                    ],
+                ],
+            ];
+        @endphp
         <!-- Google tag (gtag.js) -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-W7XEDMDMY9"></script>
         <script>
@@ -14,6 +51,10 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="{{ $meta['description'] }}">
+        <link rel="canonical" href="{{ $canonical_url }}">
+        @if ($has_query_params)
+        <meta name="robots" content="noindex, follow">
+        @endif
         <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
         <link href="{{ asset('css/app.css?' . $footer['release']) }}" rel="stylesheet">
         <link rel="shortcut icon" href="{{ asset('images/theme/favicon.ico') }}">
@@ -22,18 +63,19 @@
         <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('images/theme/favicon-180.png') }}">
         <meta name="msapplication-TileColor" content="#FFFFFF">
         <meta name="msapplication-TileImage" content="{{ asset('images/theme/favicon-144.png') }}">
-        <title>@if ($meta['title'] !== null){{ $meta['title'] . ': Costs to Expect' }} @else Costs to Expect @endif</title>
+        <title>{{ $page_title }}</title>
         <meta name="twitter:image:src" content="{{ asset('images/theme/favicon-192.png') }}" />
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:site" content="@coststoexpect" />
-        <meta name="twitter:title" content="What does it costs to raise a child in the UK?" />
-        <meta name="twitter:description" content="What does it costs to raise a child in the UK? We are finding out." />
+        <meta name="twitter:title" content="{{ $page_title }}" />
+        <meta name="twitter:description" content="{{ $meta['description'] }}" />
         <meta property="og:image" content="{{ asset('images/theme/favicon-192.png') }}" />
         <meta property="og:site_name" content="Costs to Expect" />
         <meta property="og:type" content="object" />
-        <meta property="og:title" content="What does it costs to raise a child in the UK?" />
-        <meta property="og:url" content="https://www.costs-to-expect.com" />
-        <meta property="og:description" content="What does it costs to raise a child in the UK? We are finding out." />
+        <meta property="og:title" content="{{ $page_title }}" />
+        <meta property="og:url" content="{{ $canonical_url }}" />
+        <meta property="og:description" content="{{ $meta['description'] }}" />
+        <script type="application/ld+json">{!! json_encode($json_ld, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}</script>
     </head>
     <body>
         <div class="container-fluid container-cte">
@@ -45,7 +87,7 @@
             <div class="row container-row">
                 <div class="col-xl-2 col-lg-3 col-md-3 container-column container-left d-none d-sm-none d-md-block sticky-top">
                     <div class="logo">
-                        <a href="/"><img src="{{ asset('images/theme/logo-190.png') }}" width="64" height="64" alt="Logo" title="Costs to Expect" /></a>
+                        <a href="/"><img src="{{ asset('images/theme/logo-190.png') }}" width="64" height="64" alt="Costs to Expect" title="Costs to Expect" /></a>
                     </div>
                     <ul class="nav flex-column">
                         @include(
@@ -103,7 +145,7 @@
                         <div class="col-12">
                             <div class="screen-intro">
                                 <div class="icon">
-                                    <img src="{{ asset('images/theme/' . $welcome['image']['icon']) }}" width="50" height="50" alt="Screen icon" title="{{ $welcome['image']['title'] }}" />
+                                    <img src="{{ asset('images/theme/' . $welcome['image']['icon']) }}" width="50" height="50" alt="{{ $welcome['image']['title'] }}" title="{{ $welcome['image']['title'] }}" />
                                 </div>
                                 <div class="welcome">
                                     <small class="text-muted">{{ $welcome['description'] }}</small>
