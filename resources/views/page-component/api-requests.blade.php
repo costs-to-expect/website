@@ -5,7 +5,7 @@
 </div>
 <div class="row mt-4">
     <div class="col-12">
-        <h4>API Requests to Costs to Expect API</h4>
+        <h2>API Requests to Costs to Expect API</h2>
 
         <p>This page was generated using the data returned from the API requests shown below.</p>
 

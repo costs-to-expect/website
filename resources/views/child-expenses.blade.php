@@ -17,7 +17,7 @@
 @if ($expenses !== null)
 <div class="row mt-4">
     <div class="col-12" id="expenses-table">
-        <h4>All expenses for {{ $child_details['short_name'] }}</h4>
+        <h2>All expenses for {{ $child_details['short_name'] }}</h2>
 
         <p>The table below lists all the expenses assigned to {{ $child_details['short_name'] }},
             filter and search the data using the options below.</p>

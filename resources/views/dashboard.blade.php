@@ -4,7 +4,7 @@
 
 <div class="row mt-4">
     <div class="col-12">
-        <h4>Total expenses to date</h4>
+        <h2>Total expenses to date</h2>
 
         <p>Total expenses for each child to date, select a child to see further detail.</p>
     </div>
@@ -51,7 +51,7 @@
 @if ($jack_current_year !== null && $niall_current_year !== null)
 <div class="row mt-4">
     <div class="col-12">
-        <h4>Expenses for current year ({{ date('Y') }})</h4>
+        <h2>Expenses for current year ({{ date('Y') }})</h2>
 
         <p>Sum of expenses for the current year, select to see the total for each year.</p>
     </div>
@@ -103,7 +103,7 @@
 @if ($recent_expenses !== null)
 <div class="row mt-4">
     <div class="col-12">
-        <h4>The 25 most recent expenses for both children</h4>
+        <h2>The 25 most recent expenses for both children</h2>
 
         <p>The table below lists the last 25 expenses we have logged for both children, to see more,
             select a child, any summary count or a category or subcategory.</p>
