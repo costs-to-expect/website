@@ -2,7 +2,13 @@
 <html lang="en">
     <head>
         @php
-            $page_title = $meta['title'] !== null ? $meta['title'] . ': Costs to Expect' : 'Costs to Expect';
+            $page_title = 'Costs to Expect';
+            if ($meta['title'] !== null) {
+                $page_title_with_suffix = $meta['title'] . ' - Costs to Expect';
+                $page_title = strlen($page_title_with_suffix) > 60
+                    ? $meta['title']
+                    : $page_title_with_suffix;
+            }
             $canonical_url = url()->current();
             $has_query_params = count(request()->query()) > 0;
 
