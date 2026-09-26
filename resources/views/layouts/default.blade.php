@@ -1,6 +1,10 @@
 <!doctype html>
 <html lang="en">
     <head>
+        @php
+            $page_title = $meta['title'] !== null ? $meta['title'] . ': Costs to Expect' : 'Costs to Expect';
+            $canonical_url = url()->current();
+        @endphp
         <!-- Google tag (gtag.js) -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-W7XEDMDMY9"></script>
         <script>
@@ -14,6 +18,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="{{ $meta['description'] }}">
+        <link rel="canonical" href="{{ $canonical_url }}">
         <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
         <link href="{{ asset('css/app.css?' . $footer['release']) }}" rel="stylesheet">
         <link rel="shortcut icon" href="{{ asset('images/theme/favicon.ico') }}">
@@ -22,18 +27,18 @@
         <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('images/theme/favicon-180.png') }}">
         <meta name="msapplication-TileColor" content="#FFFFFF">
         <meta name="msapplication-TileImage" content="{{ asset('images/theme/favicon-144.png') }}">
-        <title>@if ($meta['title'] !== null){{ $meta['title'] . ': Costs to Expect' }} @else Costs to Expect @endif</title>
+        <title>{{ $page_title }}</title>
         <meta name="twitter:image:src" content="{{ asset('images/theme/favicon-192.png') }}" />
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:site" content="@coststoexpect" />
-        <meta name="twitter:title" content="What does it costs to raise a child in the UK?" />
-        <meta name="twitter:description" content="What does it costs to raise a child in the UK? We are finding out." />
+        <meta name="twitter:title" content="{{ $page_title }}" />
+        <meta name="twitter:description" content="{{ $meta['description'] }}" />
         <meta property="og:image" content="{{ asset('images/theme/favicon-192.png') }}" />
         <meta property="og:site_name" content="Costs to Expect" />
         <meta property="og:type" content="object" />
-        <meta property="og:title" content="What does it costs to raise a child in the UK?" />
-        <meta property="og:url" content="https://www.costs-to-expect.com" />
-        <meta property="og:description" content="What does it costs to raise a child in the UK? We are finding out." />
+        <meta property="og:title" content="{{ $page_title }}" />
+        <meta property="og:url" content="{{ $canonical_url }}" />
+        <meta property="og:description" content="{{ $meta['description'] }}" />
     </head>
     <body>
         <div class="container-fluid container-cte">
