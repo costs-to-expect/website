@@ -2,6 +2,11 @@
 
 The complete changelog for the Costs to Expect Website, our changelog follows the format defined at https://keepachangelog.com/en/1.0.0/
 
+## [v2.03.0] - 2026-09-29
+### Changed
+- Updated docker setup, slightly.
+- Minor SEO pass.
+
 ## [v2.02.0] - 2023-07-04
 ### Changed
 - We have added an additional link to Budget Pro.
