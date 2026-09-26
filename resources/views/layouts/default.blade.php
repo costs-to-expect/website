@@ -5,6 +5,32 @@
             $page_title = $meta['title'] !== null ? $meta['title'] . ': Costs to Expect' : 'Costs to Expect';
             $canonical_url = url()->current();
             $has_query_params = count(request()->query()) > 0;
+
+            $json_ld = [
+                '@context' => 'https://schema.org',
+                '@graph' => [
+                    [
+                        '@type' => 'Organization',
+                        '@id' => url('/') . '#organization',
+                        'name' => 'Costs to Expect',
+                        'url' => url('/'),
+                        'logo' => asset('images/theme/logo-190.png'),
+                        'sameAs' => [
+                            'https://twitter.com/coststoexpect',
+                        ],
+                    ],
+                    [
+                        '@type' => 'WebSite',
+                        '@id' => url('/') . '#website',
+                        'name' => 'Costs to Expect',
+                        'url' => url('/'),
+                        'description' => 'Tracking the real cost of raising children to adulthood in the UK.',
+                        'publisher' => [
+                            '@id' => url('/') . '#organization',
+                        ],
+                    ],
+                ],
+            ];
         @endphp
         <!-- Google tag (gtag.js) -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-W7XEDMDMY9"></script>
@@ -43,6 +69,7 @@
         <meta property="og:title" content="{{ $page_title }}" />
         <meta property="og:url" content="{{ $canonical_url }}" />
         <meta property="og:description" content="{{ $meta['description'] }}" />
+        <script type="application/ld+json">{!! json_encode($json_ld, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}</script>
     </head>
     <body>
         <div class="container-fluid container-cte">
