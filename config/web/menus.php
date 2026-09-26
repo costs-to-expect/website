@@ -72,12 +72,6 @@ return [
                 'uri' => 'https://api.costs-to-expect.com'
             ],
             [
-                'name' => 'Our Blog',
-                'title' => 'The Costs to Expect Blog',
-                'icon' => null,
-                'uri' => 'https://blog.costs-to-expect.com'
-            ],
-            [
                 'name' => 'Yahtzee Game Scorer',
                 'title' => 'Our free Yahtzee game scorer',
                 'icon' => null,

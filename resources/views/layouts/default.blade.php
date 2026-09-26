@@ -4,6 +4,7 @@
         @php
             $page_title = $meta['title'] !== null ? $meta['title'] . ': Costs to Expect' : 'Costs to Expect';
             $canonical_url = url()->current();
+            $has_query_params = count(request()->query()) > 0;
         @endphp
         <!-- Google tag (gtag.js) -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-W7XEDMDMY9"></script>
@@ -19,6 +20,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="{{ $meta['description'] }}">
         <link rel="canonical" href="{{ $canonical_url }}">
+        @if ($has_query_params)
+        <meta name="robots" content="noindex, follow">
+        @endif
         <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
         <link href="{{ asset('css/app.css?' . $footer['release']) }}" rel="stylesheet">
         <link rel="shortcut icon" href="{{ asset('images/theme/favicon.ico') }}">
