@@ -28,7 +28,7 @@ class ContentController extends BaseController
                 'active' => '/about',
                 'meta' => [
                     'title' => 'About',
-                    'description' => 'What does it cost to raise a child to adulthood in the UK?'
+                    'description' => 'Find out more about Costs to Expect, our social experiment tracking the real cost of raising two children to adulthood in the UK.'
                 ],
                 'welcome' => [
                     'title' => 'About',
