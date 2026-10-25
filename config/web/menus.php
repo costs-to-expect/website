@@ -55,15 +55,21 @@ return [
             ],
             [
                 'name' => 'Budget',
-                'title' => 'Budgeting by Costs to Expect',
+                'title' => 'Free planning-first budgeting app',
                 'icon' => null,
                 'uri' => 'https://budget.costs-to-expect.com'
             ],
             [
                 'name' => 'Budget Pro',
-                'title' => 'Budgeting by Costs to Expect',
+                'title' => 'Plan your finances before they happen',
                 'icon' => null,
                 'uri' => 'https://budget-pro.costs-to-expect.com'
+            ],
+            [
+                'name' => 'Cashflow',
+                'title' => 'Money in. Money out. Allocated where it belongs.',
+                'icon' => null,
+                'uri' => 'https://cashflow.costs-to-expect.com'
             ],
             [
                 'name' => 'The API',
@@ -82,6 +88,12 @@ return [
                 'title' => 'Our free Yatzy game scorer',
                 'icon' => null,
                 'uri' => 'https://yatzy.game-scorer.com'
+            ],
+            [
+                'name' => 'Scrabble Game Scorer',
+                'title' => 'Our free Scrabble game scorer',
+                'icon' => null,
+                'uri' => 'https://scrabble.game-scorer.com'
             ]
         ]
     ]
