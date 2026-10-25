@@ -2,6 +2,18 @@
 
 The complete changelog for the Costs to Expect Website, our changelog follows the format defined at https://keepachangelog.com/en/1.0.0/
 
+## [v2.04.0] - 2026-10-25
+### Changed
+- Upgraded to PHP 8.5 and Laravel 12 (from PHP 8.1 and Laravel 9).
+- Updated Docker base image to `php:8.5-apache`.
+- Converted `routes/web.php` to use array/FQCN controller syntax.
+- Replaced abandoned `fzaninotto/faker` with `fakerphp/faker`; dropped unused `beyondcode/laravel-dump-server`.
+- Added a `phpunit.xml` (PHPUnit 11) so the test suite runs again.
+- Replaced the deprecated `PDO::MYSQL_ATTR_SSL_CA` constant with `Pdo\Mysql::ATTR_SSL_CA` in `config/database.php`.
+
+### Fixed
+- Resolved a high-severity Laravel mail-handling CVE (CVE-2026-48019) by moving off Laravel 9.
+
 ## [v2.03.0] - 2026-09-29
 ### Changed
 - Updated docker setup, slightly.
