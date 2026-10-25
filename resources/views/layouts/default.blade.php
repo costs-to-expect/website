@@ -81,7 +81,7 @@
         <div class="container-fluid container-cte">
             <div class="row">
                 <div class="col-12 preview text-center">
-                    <p>We recently released <a href="https://budget.costs-to-expect.com">Budget</a> and <a href="https://budget-pro.costs-to-expect.com">Budget Pro</a>, our  budgeting Apps.</p>
+                    <p>Checkout our budgeting and expense apps, <a href="https://budget.costs-to-expect.com">Budget</a> and <a href="https://budget-pro.costs-to-expect.com">Budget Pro</a>, and <a href="https://cashflow.costs-to-expect.com">Cashflow</a>.</p>
                 </div>
             </div>
             <div class="row container-row">
@@ -189,7 +189,14 @@
                         <div class="col-12">
                             <p class="text-center text-muted footer">
                                 Copyright &copy; <a href="{{ $footer['copyright_url'] }}">{{ $footer['copyright'] }}</a><br />
-                                Costs to Expect | <a href="https://budget.costs-to-expect.com">Budget</a> | <a href="https://budget-pro.costs-to-expect.com">Budget Pro</a> | <a href="{{ $footer['api-link'] }}">API</a> | <a href="https://status.costs-to-expect.com">Status</a> | <a href="/changelog">Changelog</a> | <a href="/privacy-policy">Privacy policy</a><br />
+                                Costs to Expect |
+                                <a href="https://budget.costs-to-expect.com">Budget</a> |
+                                <a href="https://budget-pro.costs-to-expect.com">Budget Pro</a> |
+                                <a href="https://cashflow.costs-to-expect.com">Cashflow</a> |
+                                <a href="{{ $footer['api-link'] }}">API</a> |
+                                <a href="https://status.costs-to-expect.com">Status</a> |
+                                <a href="/changelog">Changelog</a> |
+                                <a href="/privacy-policy">Privacy policy</a><br />
                                 <small>{{ $footer['release'] }} released {{ $footer['date'] }}</small>
                             </p>
                         </div>

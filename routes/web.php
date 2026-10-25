@@ -1,5 +1,10 @@
 <?php
 
+use App\Http\Controllers\ChildController;
+use App\Http\Controllers\ContentController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\SitemapController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,21 +16,21 @@
 |
 */
 
-Route::get('/', 'DashboardController@index');
+Route::get('/', [DashboardController::class, 'index']);
 
-Route::get('/sitemap.xml', 'SitemapController@index');
+Route::get('/sitemap.xml', [SitemapController::class, 'index']);
 
-Route::get('/jack', 'ChildController@jack');
-Route::get('/niall', 'ChildController@niall');
+Route::get('/jack', [ChildController::class, 'jack']);
+Route::get('/niall', [ChildController::class, 'niall']);
 
-Route::get('/{child}/expenses/category/{category_uri}', 'ChildController@category');
-Route::get('/{child}/expenses/category/{category_uri}/subcategory/{subcategory_id}', 'ChildController@subcategory');
-Route::get('/{child}/expenses/year/{year}', 'ChildController@year');
-Route::get('/{child}/expenses/year/{year}/month/{month}', 'ChildController@month');
-Route::get('/{child}/expenses', 'ChildController@expenses');
-Route::post('/{child}/expenses', 'ChildController@setExpensesFilter');
+Route::get('/{child}/expenses/category/{category_uri}', [ChildController::class, 'category']);
+Route::get('/{child}/expenses/category/{category_uri}/subcategory/{subcategory_id}', [ChildController::class, 'subcategory']);
+Route::get('/{child}/expenses/year/{year}', [ChildController::class, 'year']);
+Route::get('/{child}/expenses/year/{year}/month/{month}', [ChildController::class, 'month']);
+Route::get('/{child}/expenses', [ChildController::class, 'expenses']);
+Route::post('/{child}/expenses', [ChildController::class, 'setExpensesFilter']);
 
-Route::get('/about', 'ContentController@about');
-Route::get('/what-we-count', 'ContentController@whatWeCount');
-Route::get('/changelog', 'ContentController@changelog');
-Route::get('/privacy-policy', 'ContentController@privacyPolicy');
+Route::get('/about', [ContentController::class, 'about']);
+Route::get('/what-we-count', [ContentController::class, 'whatWeCount']);
+Route::get('/changelog', [ContentController::class, 'changelog']);
+Route::get('/privacy-policy', [ContentController::class, 'privacyPolicy']);

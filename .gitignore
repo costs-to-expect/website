@@ -6,3 +6,4 @@
 /storage/*.key
 .env
 /.docker/mysql/data
+.phpunit.result.cache

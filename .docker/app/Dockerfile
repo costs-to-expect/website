@@ -1,4 +1,4 @@
-FROM php:8.1-apache
+FROM php:8.5-apache
 
 COPY . /var/www/html
 COPY .docker/app/vhost.conf /etc/apache2/sites-available/000-default.conf
@@ -6,6 +6,7 @@ COPY .docker/app/vhost.conf /etc/apache2/sites-available/000-default.conf
 RUN docker-php-ext-install pdo_mysql bcmath
 RUN apt-get update
 RUN apt-get install -y git zip unzip
+RUN apt-get install -y nodejs npm && npm install -g yarn
 
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
